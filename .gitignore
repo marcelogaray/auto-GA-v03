@@ -45,8 +45,8 @@ gradle/
 gradlew
 gradlew.bat
 
- .idea/misc.xml
- .idea/vcs.xml
+.idea/misc.xml
+.idea/vcs.xml
 
 out/production/
 out/test/classes/
