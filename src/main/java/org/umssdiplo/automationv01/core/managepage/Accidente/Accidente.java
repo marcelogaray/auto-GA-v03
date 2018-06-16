@@ -23,8 +23,15 @@ public class Accidente extends BasePage {
 
     }
 
-    public void verifyRegistroAccidente() {
-        CommonEvents.isVisible(accidenteForm);
+    public boolean verifyRegistroAccidente() throws Exception {
+        try {
+            CommonEvents.isVisible(accidenteForm);
+            return true;
+
+        } catch (Exception ex) {
+            return false;
+        }
+
     }
 
 }

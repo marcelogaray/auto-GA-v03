@@ -28,6 +28,7 @@ public class StepsDefinitiosSHAccidentes {
     public void VerifyRegistroAccidentForm() throws InterruptedException {
         try {
             accidente.verifyRegistroAccidente();
+
         } catch (Exception ex) {
         }
     }
