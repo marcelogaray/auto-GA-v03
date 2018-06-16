@@ -43,3 +43,5 @@ bin/
 gradle/
 gradlew
 gradlew.bat
+out/production/
+out/test/classes/
