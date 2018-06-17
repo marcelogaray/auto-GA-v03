@@ -13,7 +13,7 @@ public class SHLogin extends BasePage {
     @FindBy(name = "password")
     private WebElement passwordInputField;
 
-    @FindBy(name = "emp_button")
+    @FindBy(name = "login_button")
     private WebElement loginBtn;
 
     @FindBy(name = "accept_login_button")
