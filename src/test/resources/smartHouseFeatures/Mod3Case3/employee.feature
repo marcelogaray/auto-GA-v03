@@ -4,4 +4,4 @@ Feature: SHLogin
   Scenario: Home page is displayed once set credential in login page
     Given 'SMARTHOUSE' page is loaded
     And set admin credentials on 'Login' page
-    And open new organization form for 'SmartHouse'
+    And open and complete new employee form for 'SmartHouse'
