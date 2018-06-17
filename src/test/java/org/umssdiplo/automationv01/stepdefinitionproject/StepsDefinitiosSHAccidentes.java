@@ -32,4 +32,9 @@ public class StepsDefinitiosSHAccidentes {
         } catch (Exception ex) {
         }
     }
+
+    @And("^Set From Data$")
+    public void setFormData() {
+        accidente.setFormData();
+    }
 }

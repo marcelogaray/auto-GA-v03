@@ -5,3 +5,4 @@ Feature: Login
     And Access to 'Accidents' link
     And click into 'Registrar Accidente' link
     And verify "Registro Accidente" Form is Present
+    And Set From Data

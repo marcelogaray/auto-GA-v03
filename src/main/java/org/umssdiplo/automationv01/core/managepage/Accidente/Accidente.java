@@ -14,6 +14,9 @@ public class Accidente extends BasePage {
     @FindBy(id = "mat-dialog-0")
     private WebElement accidenteForm;
 
+    @FindBy(name = "title")
+    private WebElement titulo;
+
     public void accesTabAccidents() {
         CommonEvents.clickButton(accidentbtn);
     }
@@ -32,6 +35,10 @@ public class Accidente extends BasePage {
             return false;
         }
 
+    }
+
+    public void setFormData() {
+        CommonEvents.setInputField(titulo, "esto es titulo");
     }
 
 }
