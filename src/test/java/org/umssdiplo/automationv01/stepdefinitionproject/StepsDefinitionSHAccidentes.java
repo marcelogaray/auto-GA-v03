@@ -1,4 +1,4 @@
-package org.umssdiplo.automationv01.stepdefinitionproject;
+/*package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -28,3 +28,4 @@ public class StepsDefinitionSHAccidentes {
     }
 
 }
+*/

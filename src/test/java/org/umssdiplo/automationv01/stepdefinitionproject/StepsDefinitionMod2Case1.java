@@ -33,7 +33,13 @@ public class StepsDefinitionMod2Case1 {
 
     @And("^Verify \"Crear\" button is Enable$")
     public void verifyButtonCrearIsAnable() throws Throwable {
-        shAccident.verifyButtonCrearIsAnable();
+        shAccident.verifyButtonCrearIsEnable();
+    }
+
+    @And("^Verify Cancle, Close Btn$")
+    public void veryCloseCanlebtn() throws Throwable {
+        // shAccident = new SHAccident();
+        shAccident.closeBtnCancelBtn();
     }
 
 }

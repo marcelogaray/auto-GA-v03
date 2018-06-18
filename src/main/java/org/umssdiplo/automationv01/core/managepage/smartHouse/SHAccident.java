@@ -11,6 +11,8 @@ public class SHAccident extends BasePage {
     private WebElement accidentbtn;
     @FindBy(xpath = "//*[@id=\"mat-dialog-title-1\"]/div[2]/button")
     private WebElement accFormClosBtn;
+    @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[1]")
+    private WebElement accFormCanelBtn;
     @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccidente;
     @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[2]")
@@ -45,8 +47,15 @@ public class SHAccident extends BasePage {
     public void accidentFomDeploy() {
         CommonEvents.clickButton(accidentbtn);
         CommonEvents.clickButton(registrarAccidente);
-        //CommonEvents.isVisible(accidenteForm);
-        //CommonEvents.clickButton(accFormClosBtn);
+    }
+
+    public void closeBtnCancelBtn() {
+        // CommonEvents.clickButton(accidentbtn);
+        //CommonEvents.clickButton(registrarAccidente);
+        CommonEvents.clickButton(accFormClosBtn);
+        CommonEvents.clickButton(registrarAccidente);
+        CommonEvents.clickButton(accFormCanelBtn);
+
     }
 
     public void setFormFullData1() {
@@ -66,13 +75,10 @@ public class SHAccident extends BasePage {
         CommonEvents.jsClickElement(starusOption);
         CommonEvents.jsClickElement(tipoAccidenteSelect);
         CommonEvents.jsClickElement(tipoAccidenteOption);
-        //CommonEvents.clickButton(crearbtn);
-        //String resp = CommonEvents.isEnable(crearbtn,"ng-reflect-disabled");
-        //CommonEvents.isVisible(crearbtn);
 
     }
 
-    public void verifyButtonCrearIsAnable() {
+    public void verifyButtonCrearIsEnable() {
         if (CommonEvents.isAttribtuePresent(crearbtn, "disabled")) {
             System.out.println("Esta Desabilitaso");
         } else {
