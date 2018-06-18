@@ -1,7 +1,7 @@
 # Login feature review the behavior in thie feature
 Feature: SHAccident
 
-  Scenario: The user is logged in and Home menu is displayed
+  Scenario: The user close the dialog to register accidents
     Given 'SMARTHOUSE' page is loaded
     And Access to 'Accidents' link
     And click into 'Registrar Accidente' link

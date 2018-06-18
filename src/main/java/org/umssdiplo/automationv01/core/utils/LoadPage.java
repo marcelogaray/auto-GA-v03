@@ -6,11 +6,11 @@ import org.umssdiplo.automationv01.core.managepage.smartHouse.SHAccident;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
 
 public final class LoadPage {
-    public static Login loginPage() {
-        ManageDriver.getInstance().getWebDriver()
-                .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
-        return new Login();
-    }
+//    public static Login loginPage() {
+//        ManageDriver.getInstance().getWebDriver()
+//                .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
+//        return new Login();
+//    }
 
     public static SHLogin smartHousePage() {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
@@ -19,7 +19,7 @@ public final class LoadPage {
 
     public static SHAccident accidentePage() {
         ManageDriver.getInstance().getWebDriver()
-            .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
+            .navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new SHAccident();
     }
 }
