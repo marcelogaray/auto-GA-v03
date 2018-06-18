@@ -1,7 +1,9 @@
 package org.umssdiplo.automationv01.core.utils;
 
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
+import org.umssdiplo.automationv01.core.managepage.Accidente.Accidente;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.smartHouse.SHAccident;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
 
 public final class LoadPage {
@@ -12,6 +14,12 @@ public final class LoadPage {
     public static SHLogin smartHousePage() {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new SHLogin();
+    }
+
+    public static SHAccident shAccident() {
+        ManageDriver.getInstance().getWebDriver()
+                .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
+        return new SHAccident();
     }
 
     public static Accidente accidentePage() {

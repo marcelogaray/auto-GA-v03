@@ -129,4 +129,6 @@ public class CommonEvents {
     {
         return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
     }
+
+
 }

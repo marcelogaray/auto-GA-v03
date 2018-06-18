@@ -4,41 +4,77 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
+import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class Accidente extends BasePage {
-    @FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/a[4]")
+    @FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/a[2]")
     private WebElement accidentbtn;
-    @FindBy(xpath = "/html/body/app-root/app-accident/div/div/a")
+    @FindBy(xpath = "//*[@id=\"mat-dialog-title-1\"]/div[2]/button")
+    private WebElement accFormClosBtn;
+    @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccidente;
+    @FindBy(xpath = "//*[@id=\"mat-dialog-0\"]/app-accident-new-form/form/mat-dialog-actions/button[2]")
+    private WebElement crearbtn;
 
     @FindBy(id = "mat-dialog-0")
     private WebElement accidenteForm;
-
+    @FindBy(name = "employee")
+    private WebElement employee;
     @FindBy(name = "title")
     private WebElement titulo;
+    @FindBy(name = "code")
+    private WebElement codigo;
+    @FindBy(name = "levelRisk")
+    private WebElement nivelriesgo;
+    @FindBy(name = "dateEvent")
+    private WebElement fecha;
+    @FindBy(name = "describeIssue")
+    private WebElement descripcion;
 
-    public void accesTabAccidents() {
+    @FindBy(name = "status")
+    private WebElement statusSelect;
+    @FindBy(xpath = "//*[@id=\"mat-option-0\"]")
+    private WebElement starusOption;
+    @FindBy(name = "accidentTypeKey")
+    private WebElement tipoAccidenteSelect;
+    ////*[@id="mat-select-0"]/div/div[1]
+    @FindBy(id = "mat-option-2")
+    private WebElement tipoAccidenteOption;
+
+    public void accidentFomDeploy() {
         CommonEvents.clickButton(accidentbtn);
-    }
-
-    public void clickRegistarAccidente() {
         CommonEvents.clickButton(registrarAccidente);
-
+        setFormData();
+        //CommonEvents.clickButton(accFormClosBtn);
     }
 
-    public boolean verifyRegistroAccidente() throws Exception {
-        try {
-            CommonEvents.isVisible(accidenteForm);
-            return true;
-
-        } catch (Exception ex) {
-            return false;
-        }
-
-    }
 
     public void setFormData() {
-        CommonEvents.setInputField(titulo, "esto es titulo");
+        String employeeAc = PropertyAccessor.getInstance().getSHDataProperty("employeeAC");
+        String tituloAc = PropertyAccessor.getInstance().getSHDataProperty("titleAC");
+        String codigoAc = PropertyAccessor.getInstance().getSHDataProperty("codigoAC");
+        String levelRiskAc = PropertyAccessor.getInstance().getSHDataProperty("levelRiskAC");
+        String fechaAC = PropertyAccessor.getInstance().getSHDataProperty("dateEventAC");
+        String descAc = PropertyAccessor.getInstance().getSHDataProperty("describeIssueAC");
+        CommonEvents.setInputField(employee, employeeAc);
+
+
+        CommonEvents.setInputField(titulo, tituloAc);
+        CommonEvents.setInputField(codigo, codigoAc);
+        CommonEvents.setInputField(nivelriesgo, levelRiskAc);
+        CommonEvents.setInputField(fecha, fechaAC);
+        CommonEvents.setInputField(descripcion, descAc);
+
+
+        CommonEvents.jsClickElement(statusSelect);
+        CommonEvents.jsClickElement(starusOption);
+
+        CommonEvents.jsClickElement(tipoAccidenteSelect);
+        CommonEvents.jsClickElement(tipoAccidenteOption);
+        //CommonEvents.clickButton(crearbtn);
+        //String resp = CommonEvents.isEnable(crearbtn,"ng-reflect-disabled");
+        //CommonEvents.isVisible(crearbtn);
+
     }
 
 }
