@@ -2,5 +2,5 @@
 Feature: SHLogin
 
   Scenario: Home page is displayed once set credential in login page
-    Given 'SMARTHOUSE' page is loaded
-    And set admin credentials on 'Login' page
+    GSE' page is loaded
+    And set admin civen 'SMARTHOUredentials on 'Login' page

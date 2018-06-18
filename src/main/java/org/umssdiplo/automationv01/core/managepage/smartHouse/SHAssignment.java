@@ -27,4 +27,5 @@ public class SHAssignment extends BasePage {
     private WebElement equipmentOption;
     @FindBy(xpath = "/html/body/app-root/app-assignmentform/form/mat-card/mat-list/mat-list-item[4]/div/mat-input-container/div/div[1]/div")
     private WebElement equipmentSelect;
+
 }
