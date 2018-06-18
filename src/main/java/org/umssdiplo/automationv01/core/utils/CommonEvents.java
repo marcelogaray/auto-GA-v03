@@ -18,8 +18,13 @@ public class CommonEvents {
      * @param content    Is the content that will be set to the web element.
      */
     public static void setInputField(WebElement webElement, String content) {
+        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+        if(isInputOfTypeDate(webElement)) {
+            webElement.sendKeys(Keys.DELETE);
+        }else {
+            webElement.clear();
+        }
         webElement.sendKeys(content);
     }
 
@@ -29,6 +34,7 @@ public class CommonEvents {
      * @param webElement Is the web element that will be pressed.
      */
     public static void clickButton(WebElement webElement) {
+        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -114,6 +120,14 @@ public class CommonEvents {
      */
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * This method return true if the current FluentWebElement is an input of type date
+     */
+    private static boolean isInputOfTypeDate(WebElement webElement)
+    {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
     }
 
 }

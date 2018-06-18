@@ -1,6 +1,6 @@
 # Login feature review the behavior in thie feature
-Feature: Login
+Feature: SHLogin
 
   Scenario: Home page is displayed once set credential in login page
-    Given 'PHP travel' page is loaded
-    And set my credentials on 'Login' page
+    Given 'SMARTHOUSE' page is loaded
+    And set admin credentials on 'Login' page

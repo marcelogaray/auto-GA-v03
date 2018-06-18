@@ -7,20 +7,20 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class Login extends BasePage {
-    @FindBy(name = "email")
-    private WebElement usernameInputField;
-
-    @FindBy(name = "password")
-    private WebElement passwordInputField;
-
-    @FindBy(css = ".btn-primary.btn-block")
-    private WebElement loginBtn;
-
-    public void setCredentials() {
-        String username = "admin@phptravels.com";
-        String password = "demoadmin";
-        usernameInputField.sendKeys(username);
-        passwordInputField.sendKeys(password);
-        loginBtn.click();
-    }
+//    @FindBy(name = "email")
+//    private WebElement usernameInputField;
+//
+//    @FindBy(name = "password")
+//    private WebElement passwordInputField;
+//
+//    @FindBy(css = ".btn-primary.btn-block")
+//    private WebElement loginBtn;
+//
+//    public void setCredentials() {
+//        String username = "admin@phptravels.com";
+//        String password = "demoadmin";
+//        CommonEvents.setInputField(usernameInputField, username);
+//        CommonEvents.setInputField(passwordInputField, password);
+//        CommonEvents.clickButton(loginBtn);
+//    }
 }
