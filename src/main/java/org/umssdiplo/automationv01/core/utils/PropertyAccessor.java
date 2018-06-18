@@ -17,26 +17,26 @@ public class PropertyAccessor {
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
-    private PropertyAccessor(){
-        try(FileInputStream fileInputStream = new FileInputStream("gradle.properties")) {
+    private PropertyAccessor() {
+        try (FileInputStream fileInputStream = new FileInputStream("gradle.properties")) {
             properties = new Properties();
             properties.load(fileInputStream);
-        }catch (FileNotFoundException fe){
+        } catch (FileNotFoundException fe) {
             throw new RuntimeException(fe);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static PropertyAccessor getInstance(){
-        if(PropertyAccessor == null){
+    public static PropertyAccessor getInstance() {
+        if (PropertyAccessor == null) {
             PropertyAccessor = new PropertyAccessor();
         }
         return PropertyAccessor;
     }
 
     public int getImplicitTimeWait() {
+
         return Integer.parseInt(getDataProperty("implicitTimeWait"));
     }
 
@@ -49,20 +49,26 @@ public class PropertyAccessor {
     }
 
     public int getExplicitTimeWait() {
+
         return Integer.parseInt(getDataProperty("explicitTimeWait"));
     }
 
     public String getBrowser() {
+
         return getDataProperty(BROWSER);
     }
 
     public String getBaseUrl() {
+
         return getDataProperty(BASE_URL);
     }
 
-    public String getUser() { return getDataProperty(USER); }
+    public String getUser() {
+        return getDataProperty(USER);
+    }
 
     public String getPassword() {
+
         return getDataProperty(PASSWORD);
     }
 
@@ -70,9 +76,16 @@ public class PropertyAccessor {
         return getDataProperty(SMARTHOUSE_URL);
     }
 
-    public String getSHUser() { return getDataProperty(SMARTHOUSE_USER); }
+    public String getSHUser() {
+        return getDataProperty(SMARTHOUSE_USER);
+    }
 
     public String getSHPassword() {
+
         return getDataProperty(SMARTHOUSE_PASSWORD);
+    }
+
+    public String getSHDataProperty(String data) {
+        return getDataProperty(data);
     }
 }

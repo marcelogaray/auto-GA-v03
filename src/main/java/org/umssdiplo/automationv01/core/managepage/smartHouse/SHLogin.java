@@ -19,14 +19,20 @@ public class SHLogin extends BasePage {
     @FindBy(name = "accept_login_button")
     private WebElement aceptLoginBtn;
 
-    @FindBy(name = "close_login_button")
-    private WebElement closeLoginBtn;
     public void setCredentials() {
         CommonEvents.clickButton(loginBtn);
         String username = PropertyAccessor.getInstance().getSHUser();
         String password = PropertyAccessor.getInstance().getSHPassword();
         CommonEvents.setInputField(usernameInputField, username);
         CommonEvents.setInputField(passwordInputField, password);
+
+
+    }
+
+    @FindBy(name = "close_login_button")
+    private WebElement closeLoginBtn;
+
+    public void closeLoginConfirm(){
         CommonEvents.clickButton(aceptLoginBtn);
         CommonEvents.clickButton(closeLoginBtn);
     }
