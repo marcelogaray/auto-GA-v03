@@ -13,7 +13,7 @@ public class Accidente extends BasePage {
     private WebElement accFormClosBtn;
     @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccidente;
-    @FindBy(xpath = "//*[@id=\"mat-dialog-0\"]/app-accident-new-form/form/mat-dialog-actions/button[2]")
+    @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[2]")
     private WebElement crearbtn;
 
     @FindBy(id = "mat-dialog-0")
@@ -44,12 +44,13 @@ public class Accidente extends BasePage {
     public void accidentFomDeploy() {
         CommonEvents.clickButton(accidentbtn);
         CommonEvents.clickButton(registrarAccidente);
-        setFormData();
+        // boolean d = CommonEvents.isAttribtuePresent(crearbtn,"disabled");
+        //setFormFullData();
         //CommonEvents.clickButton(accFormClosBtn);
     }
 
 
-    public void setFormData() {
+    public void setFormFullData() {
         String employeeAc = PropertyAccessor.getInstance().getSHDataProperty("employeeAC");
         String tituloAc = PropertyAccessor.getInstance().getSHDataProperty("titleAC");
         String codigoAc = PropertyAccessor.getInstance().getSHDataProperty("codigoAC");

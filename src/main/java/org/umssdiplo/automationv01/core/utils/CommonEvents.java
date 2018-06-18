@@ -131,4 +131,26 @@ public class CommonEvents {
     }
 
 
+    /**
+     * This method verifies if a web element is visible.
+     *
+     * @param webElement is the web element.
+     * @param attribute  is the attribute to be verify
+     * @return true if web element is visible or false if it isn't visible.
+     */
+
+    public static boolean isAttribtuePresent(WebElement webElement, String attribute) {
+        Boolean result = false;
+        try {
+            String value = webElement.getAttribute(attribute);
+            if (value != null) {
+                result = true;
+            }
+        } catch (Exception e) {
+        }
+
+        return result;
+    }
+
+
 }
