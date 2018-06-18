@@ -7,9 +7,9 @@ import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHOrganization;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class StepsDefinitionMod3Case3 {
+public class StepsDefinitionMod3Case5 {
     private SHLogin login;
-    private SHEmployee employee;
+    private SHOrganization organization;
 
     @Given("^'SMARTHOUSE' page is loaded$")
     public void phpTravelPageIsLoaded() throws Throwable {
@@ -19,9 +19,9 @@ public class StepsDefinitionMod3Case3 {
     public void setMyCredentialsOnLoginPage() throws Throwable {
         login.setCredentials();
     }
-    @And("^open and complete new employee form for 'SmartHouse'$")
+    @And("^open organization detail and remove child on 'SmartHouse'$")
     public void openNewOrganizationOnSmartHouse() throws Throwable {
-        employee = new SHEmployee();
-        employee.setEmployeeForm();
+        organization = new SHOrganization();
+        organization.removeOrganization();
     }
 }
