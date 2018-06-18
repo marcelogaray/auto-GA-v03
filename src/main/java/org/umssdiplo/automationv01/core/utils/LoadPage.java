@@ -19,7 +19,7 @@ public final class LoadPage {
 
     public static SHAccident accidentePage() {
         ManageDriver.getInstance().getWebDriver()
-            .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
+            .navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new SHAccident();
     }
 }
