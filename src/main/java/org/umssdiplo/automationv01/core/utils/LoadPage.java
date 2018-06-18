@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.utils;
 
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.smartHouse.SHAssignment;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
 
 public final class LoadPage {
@@ -13,8 +14,8 @@ public final class LoadPage {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new SHLogin();
     }
-    public static SHLogin assignmentPage() {
+    public static SHAssignment assignmentPage() {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
-        return new SHLogin();
+        return new SHAssignment();
     }
 }

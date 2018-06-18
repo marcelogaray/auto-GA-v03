@@ -11,7 +11,7 @@ public class StepDefinitionMod1Case1 {
     private SHAssignment assignment;
     @Given("^El usuario selecciona la opcion 'Asignación de Equipos' y selecciona el boton 'Nueva Asignación'$")
     public void el_usuario_selecciona_la_opcion_Asignación_de_Equipos_y_selecciona_el_boton_Nueva_Asignación() throws Throwable {
-//            assignment = LoadPage.assignmentPage();
+            assignment = LoadPage.assignmentPage();
     }
 
     @When("^El usuario selecciona el empleado <\"([^\"]*)\"> el equipo a ser asignado <\"([^\"]*)\"> y observaciones <\"([^\"]*)\">$")
