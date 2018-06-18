@@ -23,6 +23,17 @@ public class StepsDefinitionMod2Case1 {
     @And("^Verify \"Registro Accidente\" Form is Deploy$")
     public void verify_Form_is_Deploy() throws Throwable {
         shAccident = new SHAccident();
-        shAccident.verifyRegistroAccidente();
+        shAccident.accidentFomDeploy();
     }
+
+    @And("^Fill full data into Form$")
+    public void fillFullDataForm() throws Throwable {
+        shAccident.setFormFullData1();
+    }
+
+    @And("^Verify \"Crear\" button is Enable$")
+    public void verifyButtonCrearIsAnable() throws Throwable {
+        shAccident.verifyButtonCrearIsAnable();
+    }
+
 }

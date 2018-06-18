@@ -1,13 +1,9 @@
 package org.umssdiplo.automationv01.core.managepage.Accidente;
 
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
-import org.umssdiplo.automationv01.core.utils.CommonEvents;
-import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class Accidente extends BasePage {
-    @FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/a[2]")
+ /*   @FindBy(xpath = "/html/body/app-root/app-header/mat-toolbar/a[2]")
     private WebElement accidentbtn;
     @FindBy(xpath = "//*[@id=\"mat-dialog-title-1\"]/div[2]/button")
     private WebElement accFormClosBtn;
@@ -58,18 +54,13 @@ public class Accidente extends BasePage {
         String fechaAC = PropertyAccessor.getInstance().getSHDataProperty("dateEventAC");
         String descAc = PropertyAccessor.getInstance().getSHDataProperty("describeIssueAC");
         CommonEvents.setInputField(employee, employeeAc);
-
-
         CommonEvents.setInputField(titulo, tituloAc);
         CommonEvents.setInputField(codigo, codigoAc);
         CommonEvents.setInputField(nivelriesgo, levelRiskAc);
         CommonEvents.setInputField(fecha, fechaAC);
         CommonEvents.setInputField(descripcion, descAc);
-
-
         CommonEvents.jsClickElement(statusSelect);
         CommonEvents.jsClickElement(starusOption);
-
         CommonEvents.jsClickElement(tipoAccidenteSelect);
         CommonEvents.jsClickElement(tipoAccidenteOption);
         //CommonEvents.clickButton(crearbtn);
@@ -77,5 +68,5 @@ public class Accidente extends BasePage {
         //CommonEvents.isVisible(crearbtn);
 
     }
-
+*/
 }
