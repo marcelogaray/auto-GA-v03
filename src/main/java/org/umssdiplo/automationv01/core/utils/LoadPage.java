@@ -15,7 +15,7 @@ public final class LoadPage {
         return new SHLogin();
     }
     public static SHAssignment assignmentPage() {
-        ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
+        ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmarthouseAssignmentUrl());
         return new SHAssignment();
     }
 }

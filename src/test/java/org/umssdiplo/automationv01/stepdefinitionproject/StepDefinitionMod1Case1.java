@@ -3,12 +3,14 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHAssignment;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepDefinitionMod1Case1 {
 
     private SHAssignment assignment;
+    private Login login;
     @Given("^El usuario selecciona la opcion 'Asignación de Equipos' y selecciona el boton 'Nueva Asignación'$")
     public void el_usuario_selecciona_la_opcion_Asignación_de_Equipos_y_selecciona_el_boton_Nueva_Asignación() throws Throwable {
             assignment = LoadPage.assignmentPage();

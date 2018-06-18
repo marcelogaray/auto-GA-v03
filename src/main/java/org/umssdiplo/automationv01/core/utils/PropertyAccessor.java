@@ -13,6 +13,7 @@ public class PropertyAccessor {
     private static final String SMARTHOUSE_URL = "smartHouseBaseUrl";
     private static final String SMARTHOUSE_USER = "smartHouseUsername";
     private static final String SMARTHOUSE_PASSWORD = "smartHousePassword";
+    private static final String SMARTHOUSE_ASSIGNMENT_URL = "smartHouseAssignmentUrl";
 
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
@@ -69,7 +70,9 @@ public class PropertyAccessor {
     public String getSmartHouseBaseUrl() {
         return getDataProperty(SMARTHOUSE_URL);
     }
-
+    public String getSmarthouseAssignmentUrl() {
+        return getDataProperty(SMARTHOUSE_ASSIGNMENT_URL);
+    }
     public String getSHUser() { return getDataProperty(SMARTHOUSE_USER); }
 
     public String getSHPassword() { return getDataProperty(SMARTHOUSE_PASSWORD); }
@@ -77,5 +80,7 @@ public class PropertyAccessor {
     public String getSHDataProperty(String data) {
         return getDataProperty(data);
     }
+
+
 
 }
