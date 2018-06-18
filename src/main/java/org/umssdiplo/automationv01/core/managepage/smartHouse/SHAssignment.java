@@ -34,10 +34,10 @@ public class SHAssignment extends BasePage {
     private WebElement equipmentSelect;
 
 
-
-    public void NuevaAsignacion(){
+    public void NuevaAsignacion() {
         CommonEvents.clickButton(addAssignmentButton);
     }
+
     public void setDatos() {
         String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
 
@@ -48,8 +48,12 @@ public class SHAssignment extends BasePage {
         CommonEvents.setInputField(observationsElement, observations);
     }
 
-    public void registrarNuevaAsignacion(){
+    public void registrarNuevaAsignacion() {
         CommonEvents.clickButton(acceptNewAssignment);
     }
 
+
+    public void ListarAsignaciones() {
+        
+    }
 }
