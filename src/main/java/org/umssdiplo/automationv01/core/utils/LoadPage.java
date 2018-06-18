@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.utils;
 
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.smartHouse.ModalAsiaEquip;
 import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
 
 public final class LoadPage {
@@ -12,5 +13,9 @@ public final class LoadPage {
     public static SHLogin smartHousePage() {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new SHLogin();
+    }
+    public static ModalAsiaEquip Assignation_equips() {
+        ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getModalAsignacion());
+        return new ModalAsiaEquip();
     }
 }

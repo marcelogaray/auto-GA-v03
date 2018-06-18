@@ -13,6 +13,7 @@ public class PropertyAccessor {
     private static final String SMARTHOUSE_URL = "smartHouseBaseUrl";
     private static final String SMARTHOUSE_USER = "smartHouseUsername";
     private static final String SMARTHOUSE_PASSWORD = "smartHousePassword";
+    private static final String MODAL_ASIGNACION="modalAsignacion";
 
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
@@ -66,9 +67,9 @@ public class PropertyAccessor {
         return getDataProperty(PASSWORD);
     }
 
-    public String getSmartHouseBaseUrl() {
-        return getDataProperty(SMARTHOUSE_URL);
-    }
+    public String getSmartHouseBaseUrl() { return getDataProperty(SMARTHOUSE_URL); }
+
+    public String getModalAsignacion() { return getDataProperty(MODAL_ASIGNACION) ; }
 
     public String getSHUser() { return getDataProperty(SMARTHOUSE_USER); }
 
