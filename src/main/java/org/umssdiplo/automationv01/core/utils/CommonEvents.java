@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -21,7 +20,11 @@ public class CommonEvents {
     public static void setInputField(WebElement webElement, String content) {
         ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+        if(isInputOfTypeDate(webElement)) {
+            webElement.sendKeys(Keys.DELETE);
+        }else {
+            webElement.clear();
+        }
         webElement.sendKeys(content);
     }
 
@@ -31,6 +34,7 @@ public class CommonEvents {
      * @param webElement Is the web element that will be pressed.
      */
     public static void clickButton(WebElement webElement) {
+        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
@@ -117,5 +121,36 @@ public class CommonEvents {
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
+
+    /**
+     * This method return true if the current FluentWebElement is an input of type date
+     */
+    private static boolean isInputOfTypeDate(WebElement webElement)
+    {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
+    }
+
+
+    /**
+     * This method verifies if a web element is visible.
+     *
+     * @param webElement is the web element.
+     * @param attribute  is the attribute to be verify
+     * @return true if web element is visible or false if it isn't visible.
+     */
+
+    public static boolean isAttribtuePresent(WebElement webElement, String attribute) {
+        Boolean result = false;
+        try {
+            String value = webElement.getAttribute(attribute);
+            if (value != null) {
+                result = true;
+            }
+        } catch (Exception e) {
+        }
+
+        return result;
+    }
+
 
 }
