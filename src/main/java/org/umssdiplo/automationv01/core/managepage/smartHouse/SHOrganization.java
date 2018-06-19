@@ -17,9 +17,10 @@ public class SHOrganization extends BasePage {
     @FindBy(name = "newOrganization_button")
     private WebElement addOrganizationButton;
 
-    public void openOrganizationForm() {
-        CommonEvents.clickButton(organizationTab);
+    public void openOrganizationDetailView() {
         CommonEvents.clickButton(organizationDetailButton);
+    }
+    public void openNewOrganizationForm() {
         CommonEvents.clickButton(addOrganizationButton);
     }
 }
