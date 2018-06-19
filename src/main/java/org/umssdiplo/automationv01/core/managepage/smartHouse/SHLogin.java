@@ -30,7 +30,7 @@ public class SHLogin extends BasePage {
         CommonEvents.setInputField(usernameInputField, username);
         CommonEvents.setInputField(passwordInputField, password);
         CommonEvents.clickButton(aceptLoginBtn);
-        CommonEvents.clickButton(closeLoginBtn, By.name("logout_button"));
+        CommonEvents.clickButtonWaitVisibilityElement(closeLoginBtn, By.name("logout_button"));
     }
 
     public void setCredentialsOnLoginForm() {
@@ -45,6 +45,6 @@ public class SHLogin extends BasePage {
     }
 
     public void closeLoginPage() {
-        CommonEvents.clickButton(closeLoginBtn, By.name("logout_button"));
+        CommonEvents.clickButtonWaitVisibilityElement(closeLoginBtn, By.name("logout_button"));
     }
 }

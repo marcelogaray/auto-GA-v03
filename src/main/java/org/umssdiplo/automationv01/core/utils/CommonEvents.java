@@ -43,7 +43,7 @@ public class CommonEvents {
      *
      * @param webElement Is the web element that will be pressed.
      */
-    public static void clickButton(WebElement webElement,By by) {
+    public static void clickButtonWaitVisibilityElement(WebElement webElement,By by) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
         webElement.click();
     }
