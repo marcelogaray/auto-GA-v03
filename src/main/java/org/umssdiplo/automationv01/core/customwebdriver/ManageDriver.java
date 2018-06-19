@@ -22,6 +22,10 @@ public class ManageDriver {
         restorePreviousTimeWait();
     }
 
+    public void closeBrowser(){
+        webDriver.close();
+    }
+
     public static ManageDriver getInstance() {
         if (instance == null) {
             instance = new ManageDriver();

@@ -45,4 +45,8 @@ public class StepsDefinitionMod3Case1 {
     public void openNewOrganizationForm() throws Throwable {
         organization.openNewOrganizationForm();
     }
+    @And("^'SMARTHOUSE' page is closed")
+    public void closePage() throws Throwable {
+        LoadPage.closePage();
+    }
 }

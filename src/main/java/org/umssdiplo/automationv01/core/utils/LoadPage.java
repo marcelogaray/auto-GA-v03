@@ -14,4 +14,7 @@ public final class LoadPage {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
         return new Header();
     }
+    public static void closePage(){
+        ManageDriver.getInstance().closeBrowser();
+    }
 }

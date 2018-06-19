@@ -10,3 +10,4 @@ Feature: Organization
     And open 'Organization' page
     And open 'Organization' detail
     And open new 'Organization' form
+    And 'SMARTHOUSE' page is closed
