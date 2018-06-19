@@ -65,12 +65,7 @@ public class SHEmployee extends BasePage {
     @FindBy(xpath = "//*[@id=\"mat-option-1\"]")
     private WebElement genderOption;
 
-
-
-
-    public void setEmployeeForm() {
-        CommonEvents.clickButton(employeeTab);
-        CommonEvents.clickButton(addEmployeeButton);
+    public void setNewEmployeeForm() {
         String employeeCode = PropertyAccessor.getInstance().getSHDataProperty("employeeCode");
         String firstName = PropertyAccessor.getInstance().getSHDataProperty("firstName");
         String lastName = PropertyAccessor.getInstance().getSHDataProperty("lastName");
@@ -78,7 +73,6 @@ public class SHEmployee extends BasePage {
         String nationality = PropertyAccessor.getInstance().getSHDataProperty("nationality");
         String admisionDate = PropertyAccessor.getInstance().getSHDataProperty("admisionDate");
         String registrationDate = PropertyAccessor.getInstance().getSHDataProperty("registrationDate");
-        //CommonEvents.setInputField(organizationKeyElement, organizationKey);
         CommonEvents.jsClickElement(organizationSelect);
         CommonEvents.jsClickElement(organizationOption);
         CommonEvents.setInputField(employeeCodeElement, employeeCode);
@@ -92,6 +86,11 @@ public class SHEmployee extends BasePage {
         CommonEvents.setInputField(birthDateElement, birthDate);
         CommonEvents.setInputField(admisionDateElement, admisionDate);
         CommonEvents.setInputField(registrationDateElement, registrationDate);
+    }
+    public void clickNewEmployeeButton(){
+        CommonEvents.clickButton(addEmployeeButton);
+    }
+    public void clickAcceptNewEmployee(){
         CommonEvents.clickButton(acceptNewEmployee);
     }
 }
