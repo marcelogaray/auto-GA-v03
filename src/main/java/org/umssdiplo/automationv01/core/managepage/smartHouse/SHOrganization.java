@@ -20,18 +20,13 @@ public class SHOrganization extends BasePage {
     @FindBy(name = "del_org_2")
     private WebElement removeOrganizationButton;
 
-    public void openOrganizationForm() {
-        CommonEvents.clickButton(organizationTab);
     public void openOrganizationDetailView() {
         CommonEvents.clickButton(organizationDetailButton);
     }
     public void openNewOrganizationForm() {
         CommonEvents.clickButton(addOrganizationButton);
     }
-
     public void removeOrganization() {
-        CommonEvents.clickButton(organizationTab);
-        CommonEvents.clickButton(organizationDetailButton);
         CommonEvents.clickButton(removeOrganizationButton);
     }
 }
