@@ -22,7 +22,10 @@ public class SHOrganization extends BasePage {
 
     public void openOrganizationForm() {
         CommonEvents.clickButton(organizationTab);
+    public void openOrganizationDetailView() {
         CommonEvents.clickButton(organizationDetailButton);
+    }
+    public void openNewOrganizationForm() {
         CommonEvents.clickButton(addOrganizationButton);
     }
 
