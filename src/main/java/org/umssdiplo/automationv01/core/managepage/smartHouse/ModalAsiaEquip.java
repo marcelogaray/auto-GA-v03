@@ -10,8 +10,10 @@ public class ModalAsiaEquip extends BasePage {
     @FindBy(name = "Assignation_equips")
     private WebElement AsignacionEquipos;
 
-    public void setCredenciales() {
-        CommonEvents.clickButton(AsignacionEquipos);
+    @FindBy(id = "nueva_asignacion")
+    private WebElement nueva_asignacion;
+
+    public void setCredenciales() {CommonEvents.clickButton(nueva_asignacion);
     }
 
 }
