@@ -1,6 +1,8 @@
 # Login feature review the behavior in thie feature
 Feature: SHLogin
 
-  Scenario: Home page is displayed once set credential in login page
+  Scenario: Set admin credentials on SMARTHOUSE
     Given 'SMARTHOUSE' page is loaded
+    And open 'Login' page
     And set admin credentials on 'Login' page
+    And accept credentials on 'Login' page
