@@ -30,11 +30,11 @@ public class SHLogin extends BasePage {
     }
 
     public void setUsernameInputField(){
-        CommonEvents.setInputField(usernameInputField, "admin");
+        CommonEvents.setInputField(usernameInputField, PropertyAccessor.getInstance().getSHUser());
     }
 
     public void setPasswordInputField(){
-        CommonEvents.setInputField(passwordInputField, "123");
+        CommonEvents.setInputField(passwordInputField, PropertyAccessor.getInstance().getSHPassword());
     }
 
     public void clickAcceptLoginButton() {

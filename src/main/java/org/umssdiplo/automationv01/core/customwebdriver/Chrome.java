@@ -8,11 +8,6 @@ public class Chrome implements CustomWebDriver {
 
     @Override
     public WebDriver generateWebDriver() {
-        System.setProperty("webdriver.chrome.driver","/usr/bin/chromedriver");
-        ChromeOptions options = new ChromeOptions();
-        options.setExperimentalOption("useAutomationExtension", false);
-        options.addArguments("--no-sandbox");
-        options.addArguments("--disable-dev-shm-usage");
-        return new ChromeDriver(options);
+        return new ChromeDriver();
     }
 }
