@@ -19,9 +19,12 @@ public class CommonEvents {
      * @param content    Is the content that will be set to the web element.
      */
     public static void setInputField(WebElement webElement, String content) {
-        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+        if(isInputOfTypeDate(webElement)) {
+            webElement.sendKeys(Keys.DELETE);
+        } else {
+            webElement.clear();
+        }
         webElement.sendKeys(content);
     }
 
@@ -34,6 +37,11 @@ public class CommonEvents {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
+
+    public static boolean isClickable(WebElement webElement) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
 
     /**
      * This method perform a click in a non visible element in the UI.
@@ -116,6 +124,25 @@ public class CommonEvents {
      */
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * This method return true if the current FluentWebElement is an input of type date
+     */
+    private static boolean isInputOfTypeDate(WebElement webElement)
+    {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
+    }
+
+    public static void waitUntil(long waitTime) {
+        try {
+            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
+            synchronized (webDriverWait) {
+                webDriverWait.wait(waitTime);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }
