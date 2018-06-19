@@ -77,5 +77,4 @@ public class PropertyAccessor {
     public String getSHDataProperty(String data) {
         return getDataProperty(data);
     }
-
 }
