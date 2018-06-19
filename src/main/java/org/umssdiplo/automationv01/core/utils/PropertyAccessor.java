@@ -72,7 +72,9 @@ public class PropertyAccessor {
 
     public String getSHUser() { return getDataProperty(SMARTHOUSE_USER); }
 
-    public String getSHPassword() {
-        return getDataProperty(SMARTHOUSE_PASSWORD);
+    public String getSHPassword() { return getDataProperty(SMARTHOUSE_PASSWORD); }
+
+    public String getSHDataProperty(String data) {
+        return getDataProperty(data);
     }
 }
