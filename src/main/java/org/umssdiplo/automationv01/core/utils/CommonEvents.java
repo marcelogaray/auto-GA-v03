@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -18,11 +19,10 @@ public class CommonEvents {
      * @param content    Is the content that will be set to the web element.
      */
     public static void setInputField(WebElement webElement, String content) {
-        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         if(isInputOfTypeDate(webElement)) {
             webElement.sendKeys(Keys.DELETE);
-        }else {
+        } else {
             webElement.clear();
         }
         webElement.sendKeys(content);
@@ -34,10 +34,14 @@ public class CommonEvents {
      * @param webElement Is the web element that will be pressed.
      */
     public static void clickButton(WebElement webElement) {
-        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
+
+    public static boolean isClickable(WebElement webElement) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
 
     /**
      * This method perform a click in a non visible element in the UI.
@@ -128,6 +132,17 @@ public class CommonEvents {
     private static boolean isInputOfTypeDate(WebElement webElement)
     {
         return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
+    }
+
+    public static void waitUntil(long waitTime) {
+        try {
+            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
+            synchronized (webDriverWait) {
+                webDriverWait.wait(waitTime);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 }

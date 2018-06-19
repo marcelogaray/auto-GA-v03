@@ -24,24 +24,34 @@ public class SHLogin extends BasePage {
 
     @FindBy(name = "close_login_button")
     private WebElement closeLoginBtn;
-    public void setCredentials() {
 
-        WebElement waitElement = (new WebDriverWait(webDriver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.name("login_button")));
+    public void clickLoginButton() {
         CommonEvents.clickButton(loginBtn);
-        String username = "admin";
-        String password = "123";
-        waitElement = (new WebDriverWait(webDriver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.name("username")));
-        CommonEvents.setInputField(usernameInputField, username);
-        waitElement = (new WebDriverWait(webDriver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.name("password")));
-        CommonEvents.setInputField(passwordInputField, password);
-        waitElement = (new WebDriverWait(webDriver, 100))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("login")));
+    }
+
+    public void setUsernameInputField(){
+        CommonEvents.setInputField(usernameInputField, "admin");
+    }
+
+    public void setPasswordInputField(){
+        CommonEvents.setInputField(passwordInputField, "123");
+    }
+
+    public void clickAcceptLoginButton() {
         CommonEvents.clickButton(aceptLoginBtn);
-        waitElement = (new WebDriverWait(webDriver, 200))
-                .until(ExpectedConditions.presenceOfElementLocated(By.name("close_login_button")));
+    }
+
+    public void clickCloseLoginButton() {
         CommonEvents.clickButton(closeLoginBtn);
+    }
+
+    public SHAccident setCredentials() {
+        clickLoginButton();
+        setUsernameInputField();
+        setPasswordInputField();
+        clickAcceptLoginButton();
+        clickCloseLoginButton();
+
+        return new SHAccident();
     }
 }

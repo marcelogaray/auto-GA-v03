@@ -17,9 +17,9 @@ public final class LoadPage {
         return new SHLogin();
     }
 
-    public static SHAccident accidentePage() {
-        ManageDriver.getInstance().getWebDriver()
-            .navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
-        return new SHAccident();
-    }
+//    public static SHAccident accidentePage() {
+//        ManageDriver.getInstance().getWebDriver()
+//            .navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
+//        return new SHAccident();
+//    }
 }
