@@ -35,14 +35,13 @@ public class CommonEvents {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
         webElement.click();
     }
-//return jQuery.active == 0
 
     /**
      * This method perform a click action in a web element.
      *
      * @param webElement Is the web element that will be pressed.
      */
-    public static void clickButtonWaitVisibilityElement(WebElement webElement, By by) {
+    public static void clickButtonWaitVisibilityElement(WebElement webElement,By by) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOfElementLocated(by));
         webElement.click();
     }
