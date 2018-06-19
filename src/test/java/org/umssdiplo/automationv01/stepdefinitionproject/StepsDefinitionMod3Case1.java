@@ -14,8 +14,19 @@ public class StepsDefinitionMod3Case1 {
     public void phpTravelPageIsLoaded() throws Throwable {
         menu = LoadPage.smartHousePage();
     }
+    public void smartHousePageIsLoaded() throws Throwable {
+        menu = LoadPage.smartHousePage();
+    }
+    @And("^open 'Login' page$")
+    public void openLoginPage() throws Throwable {
+        login = menu.clickLoginButton();
+    }
     @And("^set admin credentials on 'Login' page$")
     public void setMyCredentialsOnLoginPage() throws Throwable {
-        login.setCredentials();
+        login.setCredentialsOnLoginForm();
+    }
+    @And("^accept credentials on 'Login' page$")
+    public void acceptLoginCredentials() throws Throwable {
+        login.acceptLoginCredentials();
     }
 }
