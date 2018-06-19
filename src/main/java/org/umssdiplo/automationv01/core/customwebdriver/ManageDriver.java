@@ -19,6 +19,11 @@ public class ManageDriver {
         BrowserType driverType = BrowserType.valueOf(PropertyAccessor.getInstance().getBrowser());
         webDriver = DriverFactory.getManageDriver(driverType);
         webDriver.manage().window().maximize();
+        restorePreviousTimeWait();
+    }
+
+    public void closeBrowser(){
+        webDriver.close();
     }
 
     public static ManageDriver getInstance() {

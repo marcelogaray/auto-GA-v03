@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.core.managepage.smartHouse;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
@@ -13,7 +14,7 @@ public class SHLogin extends BasePage {
     @FindBy(name = "password")
     private WebElement passwordInputField;
 
-    @FindBy(name = "emp_button")
+    @FindBy(name = "login_button")
     private WebElement loginBtn;
 
     @FindBy(name = "accept_login_button")
@@ -21,6 +22,7 @@ public class SHLogin extends BasePage {
 
     @FindBy(name = "close_login_button")
     private WebElement closeLoginBtn;
+
     public void setCredentials() {
         CommonEvents.clickButton(loginBtn);
         String username = PropertyAccessor.getInstance().getSHUser();
@@ -28,6 +30,21 @@ public class SHLogin extends BasePage {
         CommonEvents.setInputField(usernameInputField, username);
         CommonEvents.setInputField(passwordInputField, password);
         CommonEvents.clickButton(aceptLoginBtn);
-        CommonEvents.clickButton(closeLoginBtn);
+        CommonEvents.clickButtonWaitVisibilityElement(closeLoginBtn, By.name("logout_button"));
+    }
+
+    public void setCredentialsOnLoginForm() {
+        String username = PropertyAccessor.getInstance().getSHUser();
+        String password = PropertyAccessor.getInstance().getSHPassword();
+        CommonEvents.setInputField(usernameInputField, username);
+        CommonEvents.setInputField(passwordInputField, password);
+    }
+
+    public void acceptLoginCredentials(){
+        CommonEvents.clickButton(aceptLoginBtn);
+    }
+
+    public void closeLoginPage() {
+        CommonEvents.clickButtonWaitVisibilityElement(closeLoginBtn, By.name("logout_button"));
     }
 }
