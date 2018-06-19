@@ -13,43 +13,43 @@ public class StepsDefinitionMod3Case3 {
     private SHLogin login;
     private SHEmployee employee;
 
-    @Given("^'SMARTHOUSE' page is loaded$")
+    @Given("^M3C3: 'SMARTHOUSE' page is loaded$")
     public void smartHousePageIsLoaded() throws Throwable {
         menu = LoadPage.smartHousePage();
     }
-    @And("^open 'Login' page$")
+    @And("^M3C3: open 'Login' page$")
     public void openLoginPage() throws Throwable {
         login = menu.clickLoginButton();
     }
-    @And("^set admin credentials on 'Login' page$")
+    @And("^M3C3: set admin credentials on 'Login' page$")
     public void setMyCredentialsOnLoginPage() throws Throwable {
         login.setCredentialsOnLoginForm();
     }
-    @And("^accept credentials on 'Login' page$")
+    @And("^M3C3: accept credentials on 'Login' page$")
     public void acceptLoginCredentials() throws Throwable {
         login.acceptLoginCredentials();
     }
-    @And("^close 'Login' page$")
+    @And("^M3C3: close 'Login' page$")
     public void closeLoginPage() throws Throwable {
         login.closeLoginPage();
     }
-    @And("^open 'Employee' page$")
+    @And("^M3C3: open 'Employee' page$")
     public void openEmployeePage() throws Throwable {
         employee = menu.clickEmployeeTab();
     }
-    @And("^open new 'Employee' form$")
+    @And("^M3C3: open new 'Employee' form$")
     public void openNewEmployeeForm() throws Throwable {
         employee.clickNewEmployeeButton();
     }
-    @And("^complete new 'Employee' form$")
+    @And("^M3C3: complete new 'Employee' form$")
     public void openNewOrganizationOnSmartHouse() throws Throwable {
         employee.setNewEmployeeForm();
     }
-    @And("^accept new 'Employee' form$")
+    @And("^M3C3: accept new 'Employee' form$")
     public void acceptNewEmployeeForm() throws Throwable {
         employee.clickAcceptNewEmployee();
     }
-    @Given("^'SMARTHOUSE' page is closed")
+    @Given("^M3C3: 'SMARTHOUSE' page is closed")
     public void closePage() throws Throwable {
         LoadPage.closePage();
     }
