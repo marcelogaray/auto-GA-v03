@@ -30,11 +30,11 @@ public class SHLogin extends BasePage {
     }
 
     public void setUsernameInputField(){
-        CommonEvents.setInputField(usernameInputField, PropertyAccessor.getInstance().getSHUser());
+        CommonEvents.setInputField(usernameInputField, PropertyAccessor.getInstance().getUser());
     }
 
     public void setPasswordInputField(){
-        CommonEvents.setInputField(passwordInputField, PropertyAccessor.getInstance().getSHPassword());
+        CommonEvents.setInputField(passwordInputField, PropertyAccessor.getInstance().getPassword());
     }
 
     public void clickAcceptLoginButton() {
@@ -43,5 +43,13 @@ public class SHLogin extends BasePage {
 
     public void clickCloseLoginButton() {
         CommonEvents.clickButton(closeLoginBtn);
+    }
+
+    public void loginProcess() {
+        clickLoginButton();
+        setUsernameInputField();
+        setPasswordInputField();
+        clickAcceptLoginButton();
+        clickCloseLoginButton();
     }
 }

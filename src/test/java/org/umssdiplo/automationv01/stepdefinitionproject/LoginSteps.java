@@ -10,7 +10,7 @@ public class LoginSteps {
 
     @Given("^'SMARTHOUSE s page is loaded$")
     public void smarthouse_s_page_is_loaded() throws Throwable {
-        login = LoadPage.smartHousePage();
+        login = LoadPage.loginPage();
     }
 
     @And("^click on button 'Login' on the header$")
