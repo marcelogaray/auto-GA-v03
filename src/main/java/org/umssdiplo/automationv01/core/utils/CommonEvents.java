@@ -118,4 +118,32 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    /***
+     * This method to know if an element is clickable
+     * @param webElement
+     * @return
+     */
+    public static boolean isClickable(WebElement webElement) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
+    private static boolean isInputOfTypeDate(WebElement webElement) {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
+    }
+
+    /***
+     * Wait util a time determined
+     * @param waitTime
+     */
+    public static void waitUntil(long waitTime) {
+        try {
+            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
+            synchronized (webDriverWait) {
+                webDriverWait.wait(waitTime);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
