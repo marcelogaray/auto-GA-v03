@@ -127,10 +127,6 @@ public class CommonEvents {
         return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
     }
 
-    private static boolean isInputOfTypeDate(WebElement webElement) {
-        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
-    }
-
     /***
      * Wait util a time determined
      * @param waitTime
