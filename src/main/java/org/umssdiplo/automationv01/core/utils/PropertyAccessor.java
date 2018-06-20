@@ -34,10 +34,6 @@ public class PropertyAccessor {
         return PropertyAccessor;
     }
 
-    public int getImplicitTimeWait() {
-        return Integer.parseInt(getDataProperty("implicitTimeWait"));
-    }
-
     private String getDataProperty(String nameProperty) {
         String property = System.getProperty(nameProperty);
         if (property == null) {
