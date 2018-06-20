@@ -61,7 +61,5 @@ public class PropertyAccessor {
         return getDataProperty(USER);
     }
 
-    public String getPassword() {
-        return getDataProperty(PASSWORD);
-    }
+    public String getPassword() { return getDataProperty(PASSWORD); }
 }

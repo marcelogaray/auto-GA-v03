@@ -26,6 +26,18 @@ public class CommonEvents {
     }
 
     /**
+     * This method set text content to date web element.
+     *
+     * @param webElement Is web element.
+     * @param content    Is the content that will be set to the web element.
+     */
+    public static void setDateInputField(WebElement webElement, String content) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.sendKeys(Keys.DELETE);
+        webElement.sendKeys(content);
+    }
+
+    /**
      * This method perform a click action in a web element.
      *
      * @param webElement Is the web element that will be pressed.
