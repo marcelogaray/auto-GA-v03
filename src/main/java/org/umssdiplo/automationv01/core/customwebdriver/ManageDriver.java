@@ -8,7 +8,6 @@ import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 import java.util.concurrent.TimeUnit;
 
 public class ManageDriver {
-    private static final String BASE_URL = "http://www.phptravels.net/admin";
     private static final int IMPLICIT_TIME_WAIT = PropertyAccessor.getInstance().getImplicitTimeWait();
     private static final int EXPLICIT_TIME_WAIT = PropertyAccessor.getInstance().getExplicitTimeWait();
     private static ManageDriver instance;
@@ -19,7 +18,8 @@ public class ManageDriver {
         BrowserType driverType = BrowserType.valueOf(PropertyAccessor.getInstance().getBrowser());
         webDriver = DriverFactory.getManageDriver(driverType);
         webDriver.manage().window().maximize();
-        ManageDriver.getInstance().restorePreviousTimeWait();
+        setImplicitTimeWait(IMPLICIT_TIME_WAIT);
+        setExplicitTimeWait(EXPLICIT_TIME_WAIT);
     }
 
     public static ManageDriver getInstance() {
@@ -27,10 +27,6 @@ public class ManageDriver {
             instance = new ManageDriver();
         }
         return instance;
-    }
-
-    public String getBaseUrl() {
-        return BASE_URL;
     }
 
     public WebDriver getWebDriver() {
