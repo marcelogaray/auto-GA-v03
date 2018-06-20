@@ -9,6 +9,7 @@ public final class LoadPage {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new HeaderWithLogin();
     }
+
     public static HeaderWithoutLogin headerWithoutLogin() {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new HeaderWithoutLogin();

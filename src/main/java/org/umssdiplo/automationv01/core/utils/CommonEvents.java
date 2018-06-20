@@ -29,7 +29,7 @@ public class CommonEvents {
      * @param webElement Is web element.
      * @param content    Is the content that will be set to the web element.
      */
-    public static void setInputFieldDate(WebElement webElement, String content) {
+    public static void setDateInputField(WebElement webElement, String content) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.sendKeys(Keys.DELETE);
         webElement.sendKeys(content);
@@ -127,5 +127,4 @@ public class CommonEvents {
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
-
 }

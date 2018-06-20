@@ -10,24 +10,22 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER = "username";
     private static final String PASSWORD = "password";
-
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
-    private PropertyAccessor(){
-        try(FileInputStream fileInputStream = new FileInputStream("gradle.properties")) {
+    private PropertyAccessor() {
+        try (FileInputStream fileInputStream = new FileInputStream("gradle.properties")) {
             properties = new Properties();
             properties.load(fileInputStream);
-        }catch (FileNotFoundException fe){
+        } catch (FileNotFoundException fe) {
             throw new RuntimeException(fe);
-        }
-        catch (IOException e){
+        } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
-    public static PropertyAccessor getInstance(){
-        if(PropertyAccessor == null){
+    public static PropertyAccessor getInstance() {
+        if (PropertyAccessor == null) {
             PropertyAccessor = new PropertyAccessor();
         }
         return PropertyAccessor;
@@ -53,11 +51,15 @@ public class PropertyAccessor {
         return getDataProperty(BROWSER);
     }
 
-    public String getBaseUrl() { return getDataProperty(BASE_URL); }
+    public String getBaseUrl() {
+        return getDataProperty(BASE_URL);
+    }
 
     public String getUser() {
         return getDataProperty(USER);
     }
 
-    public String getPassword() { return getDataProperty(PASSWORD); }
+    public String getPassword() {
+        return getDataProperty(PASSWORD);
+    }
 }

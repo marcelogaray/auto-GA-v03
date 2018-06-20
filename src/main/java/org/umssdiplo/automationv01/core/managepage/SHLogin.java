@@ -18,7 +18,6 @@ public class SHLogin extends BasePage {
     @FindBy(name = "aassign_button")
     private WebElement assignTab;
 
-
     public SHOrganization clickOrganizationTab(){
         CommonEvents.clickButton(organizationTab);
         return new SHOrganization();
@@ -28,10 +27,12 @@ public class SHLogin extends BasePage {
         CommonEvents.clickButton(employeeTab);
         return new SHEmployee();
     }
+
     public SHAccident clickAccidentTab(){
         CommonEvents.clickButton(employeeTab);
         return new SHAccident();
     }
+
     public SHAssignation clickAssignTab(){
         CommonEvents.clickButton(employeeTab);
         return new SHAssignation();
