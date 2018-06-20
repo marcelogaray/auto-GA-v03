@@ -45,7 +45,7 @@ public class SHLogin extends BasePage {
         CommonEvents.clickButton(closeLoginBtn);
     }
 
-    public void loginProcess() {
+    public void fillCredentials() {
         clickLoginButton();
         setUsernameInputField();
         setPasswordInputField();

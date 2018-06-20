@@ -2,9 +2,5 @@
 Feature: SHLogin
 
   Scenario: Home page is displayed once set credential in login page
-    Given 'SMARTHOUSE s page is loaded
-    And click on button 'Login' on the header
-    And set username for 'admin'
-    And set password for 'admin'
-    And click on button 'Login'
-    And click on button 'x' on header modal
+    Given Given I loging to 'SMARTHOUSE' page with properly credentials
+    And I fill credentials with admin user
