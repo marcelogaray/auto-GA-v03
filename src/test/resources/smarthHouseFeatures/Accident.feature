@@ -2,7 +2,7 @@
 Feature: SHAccident
 
   Scenario: 'Registro Accidente' Modal Form is Displayed once I Clicked on 'Registrar Accidente'
-    Given I loging to 'SMARTHOUSE' page
+    Given Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And Clicked on 'Accidentes' on TabNAv
     When Click on 'Registrar Accidente' on Accidente Page
