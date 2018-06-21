@@ -34,10 +34,11 @@ public class SHLogin extends BasePage {
         CommonEvents.clickButton(closeLoginBtn);
     }
 
-    public void fillCredentials() {
+    public HeaderWithLogin fillCredentials() {
         setUsernameInputField();
         setPasswordInputField();
         clickAcceptLoginButton();
         clickCloseLoginButton();
+        return new HeaderWithLogin();
     }
 }
