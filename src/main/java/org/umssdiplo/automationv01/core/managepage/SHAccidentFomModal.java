@@ -118,6 +118,16 @@ public class SHAccidentFomModal extends BasePage {
         setAccidentTypeSelectField();
     }
 
+    public void fillModalFomWithoutFullData() {
+        setEmployeeField();
+        setTitleField();
+        setCodeField();
+        setLevelRiskField();
+        setDateEventField();
+        setDescriptionField();
+        setStatusSelectField();
+    }
+
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
