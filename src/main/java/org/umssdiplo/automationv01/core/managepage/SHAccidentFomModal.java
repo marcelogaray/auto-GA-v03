@@ -6,25 +6,29 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAccidentFomModal extends BasePage {
 
+    /**
+     * dialog that contains form
+     */
     @FindBy(id = "mat-dialog-1")
     private WebElement modalDialog;
 
-    /* buttons*/
+    /**
+     * buttons form the dialog
+     */
     @FindBy(id = "btnClose")
     private WebElement closeBtn;
 
-    // @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[2]/div[1]")
     @FindBy(xpath = "//*[@id='mat-dialog-1']/app-accident-new-form/form/mat-dialog-actions/button[2]")
     private WebElement crearBtn;
 
     @FindBy(id = "btnCancel")
     private WebElement cancelBtn;
 
-    /* Campos */
+    /**
+     * fields from the dialog
+     */
     @FindBy(name = "employee")
     private WebElement employeeAuto;
-    // @FindBy( id = "mat-option-141")
-    // @FindBy( id = "mat-option-2")
     @FindBy(id = "mat-option-19")
     private WebElement employeeOption;
     @FindBy(name = "title")
@@ -47,48 +51,74 @@ public class SHAccidentFomModal extends BasePage {
     private WebElement description;
     @FindBy(name = "status")
     private WebElement statusSelect;
-    // @FindBy(id="mat-option-122")
-    //@FindBy(className = "mat-option-text"/)
     @FindBy(id = "mat-option-0")
     private WebElement statusOption;
 
-
+    /**
+     * returns true if modal dialog is displayed
+     */
     public boolean isModalDialogPresent() {
         boolean resp;
         resp = modalDialog.isDisplayed();
         return resp;
     }
 
+    /**
+     * make click  into employee autocomplete field
+     * and select one option
+     */
     public void setEmployeeField() {
         CommonEvents.jsClickElement(employeeAuto);
         CommonEvents.jsClickElement(employeeOption);
 
     }
 
+    /**
+     * set title field
+     */
     public void setTitleField() {
         CommonEvents.setInputField(title, "Titulo Accidente");
     }
 
+    /**
+     * set code field
+     */
     public void setCodeField() {
         CommonEvents.setInputField(code, "Codigo");
     }
 
+    /**
+     * set levelRisk field
+     */
     public void setLevelRiskField() {
         CommonEvents.setInputField(levelRisk, "1");
     }
 
+    /**
+     * set dateEvent field
+     */
     public void setDateEventField() {
         CommonEvents.setDateInputField(dateEvent, "5-5-2018");
     }
 
+    /**
+     * set Description field
+     */
     public void setDescriptionField() {
         CommonEvents.setInputField(description, "Descripcion");
     }
 
+    /**
+     * make click on "Crear" button form "Registrar acciennte" Form Modal
+     */
     public void clickBtnCrear() {
         CommonEvents.jsClickElement(crearBtn);
     }
 
+    /**
+     * click on AccidentType Material Select attribute
+     * then select one opcion depends on if option that is ramdon generate is present
+     */
     public void setAccidentTypeSelectField() {
         CommonEvents.jsClickElement(accidentTypeSelect);
         if (CommonEvents.isPresent(accidentTypeOption1)) {
@@ -100,6 +130,10 @@ public class SHAccidentFomModal extends BasePage {
         }
     }
 
+    /**
+     * click on status Material Select attribute
+     * select one option
+     */
 
     public void setStatusSelectField() {
 
@@ -107,6 +141,9 @@ public class SHAccidentFomModal extends BasePage {
         CommonEvents.jsClickElement(statusOption);
     }
 
+    /**
+     * fill the modal form with full data
+     */
     public void fillModalFomFullData() {
         setEmployeeField();
         setTitleField();
@@ -118,6 +155,9 @@ public class SHAccidentFomModal extends BasePage {
         setAccidentTypeSelectField();
     }
 
+    /**
+     * fill the modal form without accidettype field
+     */
     public void fillModalFomWithoutFullData() {
         setEmployeeField();
         setTitleField();
@@ -128,10 +168,19 @@ public class SHAccidentFomModal extends BasePage {
         setStatusSelectField();
     }
 
+    /**
+     * fill the modal form with only one field( employee)
+     */
     public void fillModalFomWithOneData() {
         setEmployeeField();
     }
 
+    /**
+     * veryfy is "disabled" attribute is present
+     * on "crear" button form Modal Form "Registrar Accidente"
+     * returns true if attribuite is present
+     * returns false is attribute is not present
+     */
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }

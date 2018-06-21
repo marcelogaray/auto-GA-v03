@@ -11,6 +11,12 @@ public class SHAccident extends BasePage {
     @FindBy(xpath = "/html/body/app-root/app-accident/div/div/div[2]/div/mat-list/mat-list-item[2]/div/div[2]/h3")
     private WebElement nuevoRegistro;
 
+
+    /**
+     * wait until  "Accidentes" button from tabnav is clicleable
+     * then make a click on the button
+     * returns From modal "Registro accidente"
+     */
     public SHAccidentFomModal ClickRegistarAccBtn() {
         if (CommonEvents.isClickable(registrarAccBtn)) {
             CommonEvents.clickButton(registrarAccBtn);
@@ -18,6 +24,9 @@ public class SHAccident extends BasePage {
         return new SHAccidentFomModal();
     }
 
+    /**
+     * check  if an accident  is present on the list of accidents
+ * */
     public boolean isAccientePresent() {
         try {
             if (nuevoRegistro.isDisplayed()) {

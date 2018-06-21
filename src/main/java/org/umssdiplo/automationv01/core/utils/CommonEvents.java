@@ -153,6 +153,12 @@ public class CommonEvents {
         }
     }
 
+    /***
+     * returns true if an attribute is present i the webelement
+     *
+     * @param attr       is the attribute to be checked
+     * @param webElement is the Webelement that contains the attribute
+     */
     public static boolean isAttributPresent(WebElement webElement, String attr) {
         String value = webElement.getAttribute(attr);
         boolean resp = false;
@@ -160,7 +166,7 @@ public class CommonEvents {
             resp = true;
         }
         return resp;
-        //  return webElement.getAttribute(attr).equals("true") ? true : false;
+
     }
 
 }
