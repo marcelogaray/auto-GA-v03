@@ -128,6 +128,10 @@ public class SHAccidentFomModal extends BasePage {
         setStatusSelectField();
     }
 
+    public void fillModalFomWithOneData() {
+        setEmployeeField();
+    }
+
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }

@@ -40,6 +40,11 @@ public class AccidentSteps {
         shAccidentFomModal.fillModalFomWithoutFullData();
     }
 
+    @When("^I fill ModalForm with one requiered data$")
+    public void fillModalFormWithOneReqData() throws Throwable {
+        shAccidentFomModal.fillModalFomWithOneData();
+    }
+
     @Then("^Crear button will be enable$")
     public void verifyCrearBtnEnable() throws Throwable {
         Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable());
