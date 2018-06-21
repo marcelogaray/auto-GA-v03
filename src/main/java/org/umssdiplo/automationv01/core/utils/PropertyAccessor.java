@@ -8,8 +8,8 @@ import java.util.Properties;
 public class PropertyAccessor {
     private static final String BROWSER = "browser";
     private static final String BASE_URL = "baseurl";
-    private static final String USER = "username";
-    private static final String PASSWORD = "password";
+    private static final String USER = "smartHouseUsername";
+    private static final String PASSWORD = "smartHousePassword";
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -41,6 +41,10 @@ public class PropertyAccessor {
 
     public int getExplicitTimeWait() {
         return Integer.parseInt(getDataProperty("explicitTimeWait"));
+    }
+
+    public int getImplicitTimeWait() {
+        return Integer.parseInt(getDataProperty("implicitTimeWait"));
     }
 
     public String getBrowser() {
