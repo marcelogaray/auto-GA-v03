@@ -9,7 +9,9 @@ public class SHAccident extends BasePage {
     private WebElement registrarAccBtn;
 
     public SHAccidentFomModal ClickRegistarAccBtn() {
-        CommonEvents.clickButton(registrarAccBtn);
+        if (CommonEvents.isClickable(registrarAccBtn)) {
+            CommonEvents.clickButton(registrarAccBtn);
+        }
         return new SHAccidentFomModal();
     }
 

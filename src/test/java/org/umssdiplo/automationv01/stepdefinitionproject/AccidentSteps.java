@@ -29,4 +29,14 @@ public class AccidentSteps {
         Assert.assertTrue(shAccidentFomModal.isModalDialogPresent());
 
     }
+
+    @When("^I fill ModalForm with full requiered data$")
+    public void fillModalFormFullReqData() throws Throwable {
+        shAccidentFomModal.fillModalFomFullData();
+    }
+
+    @Then("^Crear button will be enable$")
+    public void verifyCrearBtnEnable() throws Throwable {
+        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable());
+    }
 }
