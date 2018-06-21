@@ -40,4 +40,10 @@ public class AccidentSteps {
         Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable());
         //shAccidentFomModal.clickBtnCrear();
     }
+
+    @Then("^'Crear' button will be Disable$")
+    public void verifyCrearBtnDisable() throws Throwable {
+        Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable());
+        //shAccidentFomModal.clickBtnCrear();
+    }
 }

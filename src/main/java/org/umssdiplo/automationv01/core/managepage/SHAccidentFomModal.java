@@ -13,7 +13,8 @@ public class SHAccidentFomModal extends BasePage {
     @FindBy(id = "btnClose")
     private WebElement closeBtn;
 
-    @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[2]/div[1]")
+    // @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-accident-new-form/form/mat-dialog-actions/button[2]/div[1]")
+    @FindBy(xpath = "//*[@id='mat-dialog-1']/app-accident-new-form/form/mat-dialog-actions/button[2]")
     private WebElement crearBtn;
 
     @FindBy(id = "btnCancel")
