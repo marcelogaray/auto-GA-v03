@@ -61,8 +61,4 @@ public class PropertyAccessor {
     public String getSmartHouseBaseUrl() {
         return getDataProperty(SMARTHOUSE_URL);
     }
-
-    public String getSHDataProperty(String data) {
-        return getDataProperty(data);
-    }
 }
