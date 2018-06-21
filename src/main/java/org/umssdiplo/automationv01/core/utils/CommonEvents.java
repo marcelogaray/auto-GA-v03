@@ -5,6 +5,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -127,4 +128,29 @@ public class CommonEvents {
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
+
+    /***
+     * This method to know if an element is clickable
+     * @param webElement
+     * @return
+     */
+    public static boolean isClickable(WebElement webElement) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
+    /***
+     * Wait util a time determined
+     * @param waitTime
+     */
+    public static void waitUntil(long waitTime) {
+        try {
+            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
+            synchronized (webDriverWait) {
+                webDriverWait.wait(waitTime);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }

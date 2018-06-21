@@ -6,11 +6,35 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class HeaderWithLogin extends BasePage {
 
-    @FindBy(name = "login_button")
-    private WebElement loginBtn;
+    @FindBy(name = "org_button")
+    private WebElement organizationTab;
 
-    public SHLogin openLoginPage(){
-        CommonEvents.clickButton(loginBtn);
-        return new SHLogin();
+    @FindBy(name = "emp_button")
+    private WebElement employeeTab;
+
+    @FindBy(name = "accidents_button")
+    private WebElement accidentsTab;
+
+    @FindBy(name = "aassign_button")
+    private WebElement assignTab;
+
+    public SHOrganization clickOrganizationTab() {
+        CommonEvents.clickButton(organizationTab);
+        return new SHOrganization();
+    }
+
+    public SHEmployee clickEmployeeTab() {
+        CommonEvents.clickButton(employeeTab);
+        return new SHEmployee();
+    }
+
+    public SHAccident clickAccidentTab() {
+        CommonEvents.clickButton(employeeTab);
+        return new SHAccident();
+    }
+
+    public SHAssignation clickAssignTab() {
+        CommonEvents.clickButton(employeeTab);
+        return new SHAssignation();
     }
 }
