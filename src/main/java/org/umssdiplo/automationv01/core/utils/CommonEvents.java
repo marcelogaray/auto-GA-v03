@@ -20,7 +20,11 @@ public class CommonEvents {
      */
     public static void setInputField(WebElement webElement, String content) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+        if(isInputOfTypeDate(webElement)) {
+            webElement.sendKeys(Keys.DELETE);
+        } else {
+            webElement.clear();
+        }
         webElement.sendKeys(content);
     }
 
@@ -138,6 +142,14 @@ public class CommonEvents {
         return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
     }
 
+    /**
+     * This method return true if the current FluentWebElement is an input of type date
+     */
+    private static boolean isInputOfTypeDate(WebElement webElement)
+    {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
+    }
+
     /***
      * Wait util a time determined
      * @param waitTime
@@ -153,4 +165,12 @@ public class CommonEvents {
         }
     }
 
+    public static boolean isAttributPresent(WebElement webElement, String attr) {
+        String value = webElement.getAttribute(attr);
+        boolean resp = false;
+        if (value.equals("true")) {
+            resp = true;
+        }
+        return resp;
+    }
 }
