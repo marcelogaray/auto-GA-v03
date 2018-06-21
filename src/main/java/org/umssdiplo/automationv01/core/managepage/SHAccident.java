@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.core.managepage;
 
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
@@ -18,7 +19,14 @@ public class SHAccident extends BasePage {
     }
 
     public boolean isAccientePresent() {
-        return CommonEvents.isPresent(nuevoRegistro);
+        try {
+            if (nuevoRegistro.isDisplayed()) {
+                return CommonEvents.isPresent(nuevoRegistro);
+            }
+        } catch (ExceptionHasMessage e) {
+
+        }
+        return false;
     }
 
 

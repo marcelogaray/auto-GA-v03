@@ -57,6 +57,12 @@ public class AccidentSteps {
         //shAccidentFomModal.clickBtnCrear();
     }
 
+    @Then("^I click on 'Crear' button$")
+    public void clickCrearBtn() throws Throwable {
+        shAccidentFomModal.clickBtnCrear();
+    }
+
+    @Then("^New Register will be display into accident page$")
     public void verifyNewReg() throws Throwable {
         Assert.assertTrue(shAccident.isAccientePresent());
     }
