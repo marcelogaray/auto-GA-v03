@@ -154,8 +154,13 @@ public class CommonEvents {
     }
 
     public static boolean isAttributPresent(WebElement webElement, String attr) {
-
-        return webElement.getAttribute(attr).equals("true") ? true : false;
+        String value = webElement.getAttribute(attr);
+        boolean resp = false;
+        if (value == "true") {
+            resp = true;
+        }
+        return resp;
+        //  return webElement.getAttribute(attr).equals("true") ? true : false;
     }
 
 }

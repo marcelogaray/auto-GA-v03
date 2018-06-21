@@ -65,15 +65,27 @@ public class SHAccidentFomModal extends BasePage {
     }
 
     public void setTitleField() {
-        CommonEvents.setInputField(title, "Accident Title");
+        CommonEvents.setInputField(title, "Titulo Accidente");
     }
 
     public void setCodeField() {
-        CommonEvents.setInputField(code, "Accient Code");
+        CommonEvents.setInputField(code, "Codigo");
     }
 
     public void setLevelRiskField() {
-        CommonEvents.setInputField(levelRisk, "Level Risk");
+        CommonEvents.setInputField(levelRisk, "1");
+    }
+
+    public void setDateEventField() {
+        CommonEvents.setDateInputField(dateEvent, "5-5-2018");
+    }
+
+    public void setDescriptionField() {
+        CommonEvents.setInputField(description, "Descripcion");
+    }
+
+    public void clickBtnCrear() {
+        CommonEvents.jsClickElement(crearBtn);
     }
 
     public void setAccidentTypeSelectField() {
@@ -87,13 +99,6 @@ public class SHAccidentFomModal extends BasePage {
         }
     }
 
-    public void setDateEventField() {
-        CommonEvents.setDateInputField(dateEvent, "1-1-2018");
-    }
-
-    public void setDescriptionField() {
-        CommonEvents.setInputField(description, "Accident Description");
-    }
 
     public void setStatusSelectField() {
 
