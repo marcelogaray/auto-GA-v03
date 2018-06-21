@@ -5,7 +5,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 import java.util.List;
@@ -19,9 +18,20 @@ public class CommonEvents {
      * @param content    Is the content that will be set to the web element.
      */
     public static void setInputField(WebElement webElement, String content) {
-        ManageDriver.getInstance().restorePreviousTimeWait();
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
         webElement.clear();
+        webElement.sendKeys(content);
+    }
+
+    /**
+     * This method set text content to date web element.
+     *
+     * @param webElement Is web element.
+     * @param content    Is the content that will be set to the web element.
+     */
+    public static void setDateInputField(WebElement webElement, String content) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.sendKeys(Keys.DELETE);
         webElement.sendKeys(content);
     }
 
