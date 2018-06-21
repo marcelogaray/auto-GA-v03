@@ -5,7 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class HeaderWithLogin extends BasePage {
-
     @FindBy(name = "org_button")
     private WebElement organizationTab;
 
