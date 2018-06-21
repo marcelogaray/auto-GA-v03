@@ -35,12 +35,10 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-option-0")
     private WebElement equipmentSelect;
 
-
-
-    public void NuevaAsignacion(){
+    public void addAssignment(){
         CommonEvents.clickButton(addAssignmentButton);
     }
-    public void setDatos() {
+    public void setData() {
         String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
         CommonEvents.jsClickElement(employeeKeyElement);
         CommonEvents.jsClickElement(employeeSelect);
@@ -49,7 +47,7 @@ public class SHAssignation extends BasePage {
         CommonEvents.jsClickElement(equipmentSelect);
         CommonEvents.setInputField(observationsElement, observations);
     }
-    public void registrarNuevaAsignacion(){
+    public void registerNewAssignment(){
         CommonEvents.jsClickElement(acceptNewAssignment);
     }
     public void registeredAssignment(){

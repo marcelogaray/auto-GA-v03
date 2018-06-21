@@ -29,12 +29,12 @@ public class HeaderWithLogin extends BasePage {
     }
 
     public SHAccident clickAccidentTab() {
-        CommonEvents.clickButton(employeeTab);
+        CommonEvents.clickButton(accidentsTab);
         return new SHAccident();
     }
 
     public SHAssignation clickAssignTab() {
-        CommonEvents.clickButton(employeeTab);
+        CommonEvents.clickButton(assignTab);
         return new SHAssignation();
     }
 }
