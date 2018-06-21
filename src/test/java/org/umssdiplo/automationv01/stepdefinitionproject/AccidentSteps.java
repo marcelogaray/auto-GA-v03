@@ -56,4 +56,8 @@ public class AccidentSteps {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable());
         //shAccidentFomModal.clickBtnCrear();
     }
+
+    public void verifyNewReg() throws Throwable {
+        Assert.assertTrue(shAccident.isAccientePresent());
+    }
 }
