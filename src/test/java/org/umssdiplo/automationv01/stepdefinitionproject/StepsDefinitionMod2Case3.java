@@ -2,18 +2,25 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import org.umssdiplo.automationv01.core.managepage.smartHouse.SHAccident;
-import org.umssdiplo.automationv01.core.managepage.smartHouse.SHLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
+import org.umssdiplo.automationv01.core.managepage.SHAccident;
+import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import sun.security.provider.SHA;
 
 public class StepsDefinitionMod2Case3 {
     private SHLogin login;
     private SHAccident accident;
+    private HeaderWithoutLogin headerWithoutLogin;
+    private HeaderWithLogin headerWithLogin;
 
     @Given("^'SMARTHOUSE' page is loaded$")
     public void smarthHousePageLoad() throws Throwable {
-        login = LoadPage.smartHousePage();
-        accident = login.setCredentials();
+        headerWithoutLogin = LoadPage.headerWithoutLogin();
+        login = headerWithoutLogin.openLoginPage();
+        headerWithLogin = login.fillCredentials();
+        accident = headerWithLogin.clickAccidentTab();
     }
 
     @And("^Select Accident Menu$")

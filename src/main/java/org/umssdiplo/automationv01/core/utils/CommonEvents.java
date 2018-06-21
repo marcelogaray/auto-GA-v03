@@ -50,11 +50,6 @@ public class CommonEvents {
         webElement.click();
     }
 
-    public static boolean isClickable(WebElement webElement) {
-        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
-    }
-
-
     /**
      * This method perform a click in a non visible element in the UI.
      *
@@ -154,19 +149,6 @@ public class CommonEvents {
     {
         return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
     }
-
-    public static void waitUntil(long waitTime) {
-        try {
-            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
-            synchronized (webDriverWait) {
-                webDriverWait.wait(waitTime);
-            }
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-    }
-
-}
 
     /***
      * Wait util a time determined

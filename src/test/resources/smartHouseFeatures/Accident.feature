@@ -1,8 +1,6 @@
 # Login feature review the behavior in thie feature
 Feature: SHAccident
 
-  @natalynanda
-
   Scenario: The user close the dialog to register accidents
     Given 'SMARTHOUSE' page is loaded
     And Select Accident Menu

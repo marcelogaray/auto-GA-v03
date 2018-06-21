@@ -14,9 +14,4 @@ public final class LoadPage {
         ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new HeaderWithoutLogin();
     }
-
-    public static SHLogin smartHousePage() {
-        ManageDriver.getInstance().getWebDriver().navigate().to(PropertyAccessor.getInstance().getSmartHouseBaseUrl());
-        return new SHLogin();
-    }
 }
