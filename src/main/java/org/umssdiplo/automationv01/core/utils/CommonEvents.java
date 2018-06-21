@@ -29,6 +29,18 @@ public class CommonEvents {
     }
 
     /**
+     * This method set text content to date web element.
+     *
+     * @param webElement Is web element.
+     * @param content    Is the content that will be set to the web element.
+     */
+    public static void setDateInputField(WebElement webElement, String content) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        webElement.sendKeys(Keys.DELETE);
+        webElement.sendKeys(content);
+    }
+
+    /**
      * This method perform a click action in a web element.
      *
      * @param webElement Is the web element that will be pressed.
@@ -126,6 +138,15 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    /***
+     * This method to know if an element is clickable
+     * @param webElement
+     * @return
+     */
+    public static boolean isClickable(WebElement webElement) {
+        return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
     /**
      * This method return true if the current FluentWebElement is an input of type date
      */
@@ -134,6 +155,23 @@ public class CommonEvents {
         return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
     }
 
+    public static void waitUntil(long waitTime) {
+        try {
+            WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
+            synchronized (webDriverWait) {
+                webDriverWait.wait(waitTime);
+            }
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+}
+
+    /***
+     * Wait util a time determined
+     * @param waitTime
+     */
     public static void waitUntil(long waitTime) {
         try {
             WebDriverWait webDriverWait = ManageDriver.getInstance().getWebDriverWait();
