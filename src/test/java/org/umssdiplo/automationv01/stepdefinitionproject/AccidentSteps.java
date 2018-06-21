@@ -9,13 +9,13 @@ import org.umssdiplo.automationv01.core.managepage.SHAccident;
 import org.umssdiplo.automationv01.core.managepage.SHAccidentFomModal;
 
 public class AccidentSteps {
-    private SHAccident shAccident = new SHAccident();
+    private SHAccident shAccident;
     private HeaderWithLogin headerWithLogin = new HeaderWithLogin();
     private SHAccidentFomModal shAccidentFomModal = new SHAccidentFomModal();
 
     @And("^Clicked on 'Accidentes' on TabNAv$")
     public void clikOnAccTabNav() throws Throwable {
-        headerWithLogin.clickAccidentTab();
+        shAccident = headerWithLogin.clickAccidentTab();
 
     }
 
