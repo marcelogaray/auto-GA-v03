@@ -15,7 +15,6 @@ public class SHAccident extends BasePage {
 
     public SHAccidentFormModal ClickRegistarAccBtn() {
         CommonEvents.clickButton(registrarAccBtn);
-
         return new SHAccidentFormModal();
     }
 }

@@ -15,8 +15,7 @@ public class LoginSteps {
     private SHAccident shAccident;
     private SHAccidentFormModal shAccidentFomModal;
 
-
-    @Given("^Given I loging to 'SMARTHOUSE' page")
+    @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
         headerWithoutLogin = LoadPage.headerWithoutLogin();
         login = headerWithoutLogin.openLoginPage();
@@ -27,20 +26,18 @@ public class LoginSteps {
         headerWithLogin = login.fillCredentials();
     }
 
-    @And("^Clicked on 'Accidentes' on TabNAv$")
+    @And("^click on 'Accidentes' button on navigation NavigationBar$")
     public void clikOnAccTabNav() throws Throwable {
         shAccident = headerWithLogin.clickAccidentTab();
-
     }
 
-    @When("^Click on 'Registrar Accidente' on Accidente Page$")
+    @When("^click on 'Registrar Accidente' button on Accident Page$")
     public void clickOnBtnRegAccPage() throws Throwable {
         shAccidentFomModal = shAccident.ClickRegistarAccBtn();
     }
 
-    @Then("^AccidenteFormModal is Displayed$")
+    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
     public void checkModalFomDisplayed() throws Throwable {
-        Assert.assertTrue(shAccidentFomModal.isModalDialogPresent());
-
+        Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
     }
 }
