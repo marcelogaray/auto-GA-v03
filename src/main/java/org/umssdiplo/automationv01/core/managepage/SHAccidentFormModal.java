@@ -15,7 +15,7 @@ public class SHAccidentFormModal extends BasePage {
     @FindBy(id = "btnClose")
     private WebElement closeBtn;
 
-    @FindBy(xpath = "//*[@id='mat-dialog-1']/app-accident-new-form/form/mat-dialog-actions/button[2]")
+    @FindBy(id = "create")
     private WebElement crearBtn;
 
     @FindBy(id = "btnCancel")
