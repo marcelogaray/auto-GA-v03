@@ -18,19 +18,22 @@ public class SHAssignation extends BasePage {
 
     @FindBy(name = "employee")
     private WebElement employeeKeyElement;
+
     @FindBy(name = "equipment")
     private WebElement equipmentKeyElement;
+
     @FindBy(name = "observations")
     private WebElement observationsElement;
 
     @FindBy(id = "mat-dialog-0")
     private WebElement employeeOption;
+
     @FindBy(id = "mat-option-13")
     private WebElement employeeSelect;
 
     @FindBy(id = "mat-dialog-0")
     private WebElement equipmentOption;
+
     @FindBy(id = "mat-option-0")
     private WebElement equipmentSelect;
-
 }

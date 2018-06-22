@@ -29,5 +29,4 @@ public class ListSteps {
     public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
-
 }
