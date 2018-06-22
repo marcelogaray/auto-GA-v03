@@ -22,7 +22,7 @@ public class SHLogin extends BasePage {
     private WebElement logOutBtn;
 
     public SHLogin() {
-        CommonEvents.waitUntilIsVisible(closeLoginBtn);
+        CommonEvents.waitWebElementIsVisible(closeLoginBtn);
     }
 
     public void setUsernameInputField() {
@@ -41,15 +41,15 @@ public class SHLogin extends BasePage {
         CommonEvents.clickButton(closeLoginBtn);
     }
 
-    public void itsVisibleLogOutButton() {
-        CommonEvents.waitUntilIsVisible(logOutBtn);
+    public void isLogoutButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(logOutBtn);
     }
 
     public HeaderWithLogin fillCredentials() {
         setUsernameInputField();
         setPasswordInputField();
         clickAcceptLoginButton();
-        itsVisibleLogOutButton();
+        isLogoutButtonVisible();
         clickCloseLoginButton();
         return new HeaderWithLogin();
     }
