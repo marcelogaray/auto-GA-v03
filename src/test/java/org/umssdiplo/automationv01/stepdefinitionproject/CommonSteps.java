@@ -12,7 +12,7 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
 
-    @Given("^Given I loging to 'SMARTHOUSE' page")
+    @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
         headerWithoutLogin = LoadPage.headerWithoutLogin();
         login = headerWithoutLogin.openLoginPage();
