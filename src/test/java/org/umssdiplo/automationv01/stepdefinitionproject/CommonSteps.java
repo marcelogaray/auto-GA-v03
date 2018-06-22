@@ -18,7 +18,7 @@ public class CommonSteps {
         login = headerWithoutLogin.openLoginPage();
     }
 
-    @And("^I fill properly credentials with admin user$")
+    @And("^fill properly credentials in 'Login' modal$")
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
