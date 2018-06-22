@@ -38,8 +38,8 @@ public class SHAssignation extends BasePage {
     public void addAssignment(){
         CommonEvents.clickButton(addAssignmentButton);
     }
-    public void setData() {
-        String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
+    /*public void setData() {
+        String observations = PropertyAccessor.getInstance().getDataProperty("observations");
         CommonEvents.jsClickElement(employeeKeyElement);
         CommonEvents.jsClickElement(employeeSelect);
 
@@ -47,6 +47,7 @@ public class SHAssignation extends BasePage {
         CommonEvents.jsClickElement(equipmentSelect);
         CommonEvents.setInputField(observationsElement, observations);
     }
+    */
     public void registerNewAssignment(){
         CommonEvents.jsClickElement(acceptNewAssignment);
     }

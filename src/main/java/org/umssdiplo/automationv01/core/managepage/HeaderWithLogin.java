@@ -15,7 +15,7 @@ public class HeaderWithLogin extends BasePage {
     @FindBy(name = "accidents_button")
     private WebElement accidentsTab;
 
-    @FindBy(name = "aassign_button")
+    @FindBy(name = "assignment_button")
     private WebElement assignTab;
 
     public SHOrganization clickOrganizationTab() {
