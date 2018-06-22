@@ -158,7 +158,7 @@ public class CommonEvents {
      *
      * @param webElement Is web element.
      */
-    public static void waitUntilIsVisible(WebElement webElement) {
+    public static void waitWebElementIsVisible(WebElement webElement) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
     }
 }
