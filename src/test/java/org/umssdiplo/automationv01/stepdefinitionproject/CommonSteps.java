@@ -8,7 +8,7 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class LoginSteps {
+public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
