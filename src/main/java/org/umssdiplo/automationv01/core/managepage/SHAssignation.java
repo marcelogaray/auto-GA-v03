@@ -37,7 +37,7 @@ public class SHAssignation extends BasePage {
 
 
 
-    public void NuevaAsignacion(){
+    public void newAssignment(){
         CommonEvents.clickButton(addAssignmentButton);
     }
     public void setData() {
@@ -50,9 +50,11 @@ public class SHAssignation extends BasePage {
         CommonEvents.setInputField(observationsElement, observations);
     }
     public void registerNewAssignment(){
+
         CommonEvents.jsClickElement(acceptNewAssignment);
     }
     public void registeredAssignment(){
+
         CommonEvents.jsClickElement(Ok);
     }
 }

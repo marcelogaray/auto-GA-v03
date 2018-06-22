@@ -62,4 +62,8 @@ public class PropertyAccessor {
     public String getPassword() {
         return getDataProperty(PASSWORD);
     }
+
+    public String getSHDataProperty(String data) {
+        return getDataProperty(data);
+    }
 }

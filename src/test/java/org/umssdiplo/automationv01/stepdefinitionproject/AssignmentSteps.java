@@ -14,6 +14,7 @@ public class AssignmentSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAssignation assignment;
+
     @Given("^I loging to 'SMARTHOUSE' page with properly credentials$")
     public void i_loging_to_SMARTHOUSE_page_with_properly_credentials() throws Throwable {
         headerWithoutLogin = LoadPage.headerWithoutLogin();
@@ -28,6 +29,7 @@ public class AssignmentSteps {
     @When("^Go to 'Asignacion de Equipos' on 'Header' page, press the button 'Nueva Asignacion' on 'Asignacion de Equipos' page$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_press_the_button_Nueva_Asignacion_on_Asignacion_de_Equipos_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
+        assignment.newAssignment();
     }
 
     @When("^user selects an employee, a equipment and enters observations of the assignment made$")
