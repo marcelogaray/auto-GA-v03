@@ -9,10 +9,13 @@ public class SHAccident extends BasePage {
     @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccBtn;
 
-    public SHAccidentFormModal clickRegistarAccBtn() {
-        if (CommonEvents.isClickable(registrarAccBtn)) {
-            CommonEvents.clickButton(registrarAccBtn);
-        }
+    public SHAccident() {
+        CommonEvents.isClickable(registrarAccBtn);
+    }
+
+    public SHAccidentFormModal ClickRegistarAccBtn() {
+        CommonEvents.clickButton(registrarAccBtn);
+
         return new SHAccidentFormModal();
     }
 }
