@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.core.utils;
 
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -160,5 +161,13 @@ public class CommonEvents {
             resp = true;
         }
         return resp;
+    }
+
+    public static boolean elementIsPresent(WebElement webElement) {
+        try {
+            return webElement.isDisplayed() ? CommonEvents.isPresent(webElement) : false;
+        } catch (ExceptionHasMessage e) {
+            return false;
+        }
     }
 }
