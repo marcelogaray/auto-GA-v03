@@ -10,8 +10,7 @@ public class SHAccidentFomModal extends BasePage {
 
 
     public boolean isModalDialogPresent() {
-        boolean resp;
-        resp = modalDialog.isDisplayed();
-        return resp;
+
+        return modalDialog.isDisplayed();
     }
 }
