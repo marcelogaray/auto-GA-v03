@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
 import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class LoginSteps {
+public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
