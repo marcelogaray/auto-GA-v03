@@ -154,14 +154,25 @@ public class CommonEvents {
         }
     }
 
+    /***
+     * Verify if an atributte is present on web element
+     * @param webElement
+     * @param attr
+     * @return
+     */
     public static boolean isAttributPresent(WebElement webElement, String attr) {
         String value = webElement.getAttribute(attr);
         return value != null ? value.equals("true") : false;
     }
 
+    /***
+     * Verify if an element is displayed first to verify if is present
+     * @param webElement
+     * @return
+     */
     public static boolean elementIsPresent(WebElement webElement) {
         try {
-            return webElement.isDisplayed() ? CommonEvents.isPresent(webElement) : false;
+            return webElement.isDisplayed() ? isPresent(webElement) : false;
         } catch (ExceptionHasMessage e) {
             return false;
         }
