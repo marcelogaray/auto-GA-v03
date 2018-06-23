@@ -64,4 +64,59 @@ public class SHAccidentFormModal extends BasePage {
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
+
+    public void setEmployeeField() {
+        CommonEvents.jsClickElement(employeeAuto);
+        CommonEvents.jsClickElement(employeeOption);
+    }
+
+    public void setTitleField() {
+        CommonEvents.setInputField(title, "Titulo Accidente");
+    }
+
+    public void setCodeField() {
+        CommonEvents.setInputField(code, "Codigo");
+    }
+
+    public void setLevelRiskField() {
+        CommonEvents.setInputField(levelRisk, "1");
+    }
+
+    public void setDateEventField() {
+        CommonEvents.setDateInputField(dateEvent, "5-5-2018");
+    }
+
+    public void setDescriptionField() {
+        CommonEvents.setInputField(description, "Descripcion");
+    }
+
+    /**
+     * verify if one of random ids for typeAccident is pressent
+     */
+    public void setAccidentTypeSelectField() {
+        CommonEvents.jsClickElement(accidentTypeSelect);
+        if (CommonEvents.isPresent(accidentTypeOption1)) {
+            CommonEvents.jsClickElement(accidentTypeOption1);
+        } else if (CommonEvents.isPresent(accidentTypeOption2)) {
+            CommonEvents.jsClickElement(accidentTypeOption2);
+        } else if (CommonEvents.isPresent(accidentTypeOption3)) {
+            CommonEvents.jsClickElement(accidentTypeOption3);
+        }
+    }
+
+    public void setStatusSelectField() {
+        CommonEvents.jsClickElement(statusSelect);
+        CommonEvents.jsClickElement(statusOption);
+    }
+
+    public void fillModalFomFullData() {
+        setEmployeeField();
+        setTitleField();
+        setCodeField();
+        setLevelRiskField();
+        setDateEventField();
+        setDescriptionField();
+        setStatusSelectField();
+        setAccidentTypeSelectField();
+    }
 }
