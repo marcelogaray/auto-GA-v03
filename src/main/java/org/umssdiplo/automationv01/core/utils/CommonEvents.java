@@ -165,16 +165,4 @@ public class CommonEvents {
         return value != null ? value.equals("true") : false;
     }
 
-    /***
-     * Verify if an element is displayed first to verify if is present
-     * @param webElement
-     * @return
-     */
-    public static boolean elementIsPresent(WebElement webElement) {
-        try {
-            return webElement.isDisplayed() ? isPresent(webElement) : false;
-        } catch (ExceptionHasMessage e) {
-            return false;
-        }
-    }
 }
