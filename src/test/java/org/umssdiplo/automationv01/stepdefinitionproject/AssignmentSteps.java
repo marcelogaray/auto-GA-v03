@@ -32,7 +32,7 @@ public class AssignmentSteps {
         assignment.newAssignment();
     }
 
-    @When("^user selects an employee, a equipment and enters observations of the assignment made$")
+    @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
 
@@ -43,9 +43,8 @@ public class AssignmentSteps {
         assignment.registerNewAssignment();
     }
 
-    @Then("^'La asignacion fue registrada correctamente' information message should be displayed$")
+    @Then("^'La asignacion fue registrada correctamente' information message should be displayed on 'Asignacion de Equipos' page$")
     public void la_asignacion_fue_registrada_correctamente_information_message_should_be_displayed() throws Throwable {
         assignment.registeredAssignment();
     }
-
 }
