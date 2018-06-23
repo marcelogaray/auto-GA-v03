@@ -1,3 +1,4 @@
+/*
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.java.en.Given;
@@ -47,4 +48,4 @@ public class AssignmentSteps {
     public void la_asignacion_fue_registrada_correctamente_information_message_should_be_displayed() throws Throwable {
         assignment.registeredAssignment();
     }
-}
+}*/
