@@ -13,7 +13,7 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "save")
     private WebElement acceptNewAssignment;
 
-    @FindBy(className = "swal2-confirm swal2-styled")
+    @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
     private WebElement Ok;
 
     @FindBy(name = "employee")
