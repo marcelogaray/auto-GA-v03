@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.core.utils;
 
-import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -152,6 +151,15 @@ public class CommonEvents {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * This method wait until as element visible.
+     *
+     * @param webElement Is web element.
+     */
+    public static void waitWebElementIsVisible(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
     }
 
     /***
