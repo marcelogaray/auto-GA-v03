@@ -1,7 +1,7 @@
 # Login feature review the behavior in thie feature
-Feature: ORG_Case3
+Feature: ORG_Case7
 
-  Scenario: Verificar que el codigo de empleado sea unico cuando se guarda el empleado en el formulario de registro
+  Scenario: Verificar que al registrar un area la fecha de inicio sea menor a la fecha de fin de actividades
     Given I loging to 'SMARTHOUSE' page
     When I fill properly credentials with admin user
     And go to 'Estructura Organizacional' on 'Header' page
