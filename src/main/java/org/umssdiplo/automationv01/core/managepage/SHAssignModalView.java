@@ -8,16 +8,19 @@ public class SHAssignModalView extends BasePage {
     @FindBy(id = "mat-dialog-1")
     private WebElement assignmentModal;
 
-    @FindBy(name = "closeX")
-    private WebElement closeX;
-
     @FindBy(name = "close")
     private WebElement close;
+
+    @FindBy(name ="closeX")
+    private WebElement closeX;
 
     public boolean isModalDialogPresent() {
         return assignmentModal.isDisplayed();
     }
     public void clickclose(){
-        CommonEvents.clickButton(closeX);
+        CommonEvents.clickButton(close);
+    }
+    public void clickCloseX(){
+        CommonEvents.clickButton((closeX));
     }
 }
