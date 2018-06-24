@@ -12,13 +12,20 @@ public class HeaderWithoutLogin extends BasePage {
     @FindBy(name = "login_button")
     private WebElement loginBtn;
 
-    public SHReport clickReportTab(){
+    @FindBy(name = "home_button")
+    private WebElement homeBtn;
+
+    public SHReport clickReportTab() {
         CommonEvents.clickButton(reportsTab);
         return new SHReport();
     }
 
-    public SHLogin openLoginPage(){
+    public SHLogin openLoginPage() {
         CommonEvents.clickButton(loginBtn);
         return new SHLogin();
+    }
+
+    public void clickHomeTab() {
+        CommonEvents.clickButton(homeBtn);
     }
 }
