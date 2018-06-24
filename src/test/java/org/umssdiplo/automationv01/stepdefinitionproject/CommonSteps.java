@@ -41,6 +41,11 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
     }
 
+    @When("^required data is filled witout one of them on 'Registro Accidente' Modal Form$")
+    public void fillModalFormWithoutOneValidReqData() {
+        shAccidentFomModal.fillModalFomOneIncData();
+    }
+
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
     public void verifyCrearBtnModalFomDisable() {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");

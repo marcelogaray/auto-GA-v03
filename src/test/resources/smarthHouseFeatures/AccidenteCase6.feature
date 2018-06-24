@@ -5,5 +5,6 @@ Feature: SHAccident
     Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And click on 'Accidentes' button on navigation NavigationBar
-    When click on 'Registrar Accidente' button on Accident Page
+    And click on 'Registrar Accidente' button on Accident Page
+    When required data is filled witout one of them on 'Registro Accidente' Modal Form
     Then 'Crear' button from 'Registro Accidente' Modal Form  should be disable
