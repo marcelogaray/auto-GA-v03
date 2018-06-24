@@ -161,4 +161,15 @@ public class CommonEvents {
     public static void waitWebElementIsVisible(WebElement webElement) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
     }
+
+    /***
+     * Verify if an atributte is present on web element
+     * @param webElement
+     * @param attr
+     * @return
+     */
+    public static boolean isAttributPresent(WebElement webElement, String attr) {
+        String value = webElement.getAttribute(attr);
+        return value != null ? value.equals("true") : false;
+    }
 }
