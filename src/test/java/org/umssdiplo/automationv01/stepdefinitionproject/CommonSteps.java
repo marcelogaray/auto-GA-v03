@@ -14,6 +14,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAccident shAccident;
     private SHAccidentFormModal shAccidentFomModal;
+    private SHSwalNotification shSwalNotification;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -46,8 +47,15 @@ public class CommonSteps {
         shAccidentFomModal.fillModalFomFullData();
     }
 
-    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
-    public void verifyCrearBtnModalFomEnable() {
-        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
+
+    @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
+    public void clikOnBtnCrearAccModFom() {
+        shSwalNotification = shAccidentFomModal.clickBtnCrear();
+    }
+
+    @Then("^verify Alert of Success message for new accident register is shown$")
+    public void verifySuccessMessage() {
+        Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
+        Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
     }
 }

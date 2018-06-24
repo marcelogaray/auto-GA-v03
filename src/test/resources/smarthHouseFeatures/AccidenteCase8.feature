@@ -6,5 +6,6 @@ Feature: SHAccident
     And I fill properly credentials with admin user
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
-    When required data is filled on 'Registro Accidente' Modal Form
-    Then 'Crear' button from 'Registro Accidente' Modal Form  should be enable
+    And required data is filled on 'Registro Accidente' Modal Form
+    When click on 'Crear' button form 'Registrar Accidente' Modal Form
+    Then verify Alert of Success message for new accident register is shown
