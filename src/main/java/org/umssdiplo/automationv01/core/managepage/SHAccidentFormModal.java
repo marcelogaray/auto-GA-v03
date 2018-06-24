@@ -77,5 +77,4 @@ public class SHAccidentFormModal extends BasePage {
     public void fillModalFomOneReqData() {
         setEmployeeField();
     }
-
 }
