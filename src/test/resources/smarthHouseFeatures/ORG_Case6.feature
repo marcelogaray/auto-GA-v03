@@ -1,5 +1,5 @@
 # Login feature review the behavior in thie feature
-Feature: ORG_Case5
+Feature: ORG_Case6
 
   Scenario: Verificar que no se realice la eliminacion de un Item si es que este se encuentra asignado a un empleado
     Given Given I loging to 'SMARTHOUSE' page
