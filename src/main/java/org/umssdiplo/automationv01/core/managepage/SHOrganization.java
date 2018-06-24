@@ -88,14 +88,6 @@ public class SHOrganization extends BasePage {
         CommonEvents.setDateInputField(gestionElementNewOrgForm, PropertyAccessor.getInstance().getGestionNewOrg());
     }
 
-    private void setOrgStartDateInputField() {
-        CommonEvents.setDateInputField(startElementNewOrgForm, PropertyAccessor.getInstance().getInitDateNewOrg());
-    }
-
-    private void setOrgEndDateInputField() {
-        CommonEvents.setDateInputField(endElementNewOrgForm, PropertyAccessor.getInstance().getEndDateNewOrg());
-    }
-
     private void clickHierarchicalLevelSelect() {
         CommonEvents.clickButton(hierarchicalLevelSelectElementNewOrgForm);
     }
