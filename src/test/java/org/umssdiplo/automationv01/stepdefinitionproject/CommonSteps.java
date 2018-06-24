@@ -46,8 +46,7 @@ public class CommonSteps {
     public void fillModalFormWithValidReqData() {
         shAccidentFomModal.fillModalFomFullData();
     }
-
-
+    
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
     public void clikOnBtnCrearAccModFom() {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
