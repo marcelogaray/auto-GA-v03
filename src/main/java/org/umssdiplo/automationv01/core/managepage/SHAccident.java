@@ -24,7 +24,7 @@ public class SHAccident extends BasePage {
 
     public boolean isAccientePresent() {
         try {
-            return CommonEvents.elementIsPresent(nuevoRegistro);
+            return CommonEvents.isPresent(nuevoRegistro);
         } catch (NoSuchElementException nse) {
             return false;
         } catch (ExceptionHasMessage e) {
