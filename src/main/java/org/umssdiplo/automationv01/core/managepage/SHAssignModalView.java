@@ -5,7 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAssignModalView extends BasePage {
-    @FindBy(id = "mat-dialog-0")
+    @FindBy(id = "mat-dialog-1")
     private WebElement assignmentModal;
 
     @FindBy(name = "closeX")
@@ -18,7 +18,6 @@ public class SHAssignModalView extends BasePage {
         return assignmentModal.isDisplayed();
     }
     public void clickclose(){
-
         CommonEvents.clickButton(closeX);
     }
 }

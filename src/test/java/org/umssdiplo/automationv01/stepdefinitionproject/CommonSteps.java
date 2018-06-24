@@ -37,7 +37,7 @@ public class CommonSteps {
 
     @Then("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
     public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
-
+        Assert.assertTrue(modalView.isModalDialogPresent());
         modalView.clickclose();
         }
     }
