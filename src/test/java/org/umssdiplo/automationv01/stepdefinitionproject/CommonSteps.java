@@ -53,7 +53,7 @@ public class CommonSteps {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
     }
 
-    @Then("^verify Alert of Success message for new accident register is shown$")
+    @Then("^verify Alert message of Success message is shown for new accident register$")
     public void verifySuccessMessage() {
         Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
