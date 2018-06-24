@@ -6,5 +6,5 @@ Feature: SHAccident
     And I fill properly credentials with admin user
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
-    When required data is filled witout one of them on 'Registro Accidente' Modal Form
+    When one required data is filled  on 'Registro Accidente' Modal Form
     Then 'Crear' button from 'Registro Accidente' Modal Form  should be disable

@@ -70,43 +70,12 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.jsClickElement(employeeOption);
     }
 
-    public void setTitleField() {
-        CommonEvents.setInputField(title, "Titulo Accidente");
-    }
-
-    public void setCodeField() {
-        CommonEvents.setInputField(code, "Codigo");
-    }
-
-    public void setLevelRiskField() {
-        CommonEvents.setInputField(levelRisk, "1");
-    }
-
-    public void setDateEventField() {
-        CommonEvents.setDateInputField(dateEvent, "5-5-2018");
-    }
-
-    public void setDescriptionField() {
-        CommonEvents.setInputField(description, "Descripcion");
-    }
-
-    public void setStatusSelectField() {
-        CommonEvents.jsClickElement(statusSelect);
-        CommonEvents.jsClickElement(statusOption);
-    }
-
     /**
      * fill the modal form Registrar Accidente with
-     * one incomplete data
+     * one required data
      */
-    public void fillModalFomOneIncData() {
+    public void fillModalFomOneReqData() {
         setEmployeeField();
-        setTitleField();
-        setCodeField();
-        setLevelRiskField();
-        setDateEventField();
-        setDescriptionField();
-        setStatusSelectField();
     }
 
 }
