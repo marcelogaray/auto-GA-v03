@@ -26,25 +26,18 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page, press the button 'Nueva Asignacion' on 'Asignacion de Equipos' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page_press_the_button_Nueva_Asignacion_on_Asignacion_de_Equipos_page() throws Throwable {
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
-        assignment.newAssignment();
     }
 
-    @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
-    public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
-        assignment.setData();
-
+    @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
+    public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
+        assignment.viewAssignment();
     }
 
-    @When("^click over 'Crear' button on 'Asignar equipo' modal$")
-    public void click_over_Crear_button_on_Asignar_equipo_modal() throws Throwable {
-        assignment.registerNewAssignment();
-    }
-
-    @Then("^'La asignacion fue registrada correctamente' information message should be displayed on 'Asignacion de Equipos' page$")
-    public void la_asignacion_fue_registrada_correctamente_information_message_should_be_displayed() throws Throwable {
-        assignment.registeredAssignment();
+    @Then("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
+    public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
+        
     }
 }

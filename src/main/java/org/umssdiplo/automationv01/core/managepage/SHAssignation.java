@@ -39,6 +39,10 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-option-0")
     private WebElement equipmentSelect;
 
+    @FindBy(name = "view_assignment")
+    private WebElement view_assignmentElement;
+
+
     public void newAssignment(){
         CommonEvents.clickButton(addAssignmentButton);
     }
@@ -57,5 +61,8 @@ public class SHAssignation extends BasePage {
     public void registeredAssignment(){
 
         CommonEvents.jsClickElement(Ok);
+    }
+    public void viewAssignment(){
+        CommonEvents.jsClickElement(view_assignmentElement);
     }
 }
