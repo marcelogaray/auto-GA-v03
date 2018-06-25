@@ -13,7 +13,7 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAssignation assignment;
-    private SHAssignModalView modalView;
+    private SHAssignModalDelete modalDelete;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -25,43 +25,39 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
 
-    @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
-    public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
-        modalView = assignment.clicViewModal() ;
+    @When("^Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page$")
+    public void click_on_the_dumpster_button_to_remove_the_assignment_on_Asignacion_de_equipos_page() throws Throwable {
+        modalDelete = assignment.clicViewModal();
     }
 
-    @Then("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
-    public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
-        Assert.assertTrue(modalView.isModalDialogPresent());
-
-        }
-    @When("^Click on the 'Close' button on modal 'Ver asignación'$")
-    public void click_on_the_Close_button_on_modal_Ver_asignación() throws Throwable {
-        modalView.clickclose();
+    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
+    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
+        Assert.assertTrue(modalDelete.isEditDialogPresent());
     }
 
-    @Then("^The modal 'Ver asignación' closes$")
-    public void the_modal_Ver_asignación_closes() throws Throwable {
-        Assert.assertTrue( assignment.isButtonSeePresent());
+    @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
+    public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
+        modalDelete.deleteOnEditForm();
     }
 
-    @When("^I reopen the modal 'Ver asignación' on 'Asignación de equipos' page$")
-    public void i_reopen_the_modal_Ver_asignación_on_Asignación_de_equipos_page() throws Throwable {
-        modalView = assignment.clicViewModal() ;
+    @When("^The modal 'Confirmar eliminacion' is displayed$")
+    public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
+        Assert.assertTrue(modalDelete.isConfirmModalPresent());
     }
 
-    @When("^Click on the 'X' button on modal 'Ver asignación'$")
-    public void click_on_the_X_button_on_modal_Ver_asignación() throws Throwable {
-        modalView.clickCloseX();
+    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
+    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
+
     }
 
-    @Then("^The modal 'Ver asignacion' closes$")
-    public void the_modal_Ver_asignacion_closes() throws Throwable {
-        Assert.assertTrue(assignment.isButtonSeePresent());
+    @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
+    public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
+
     }
+
 }

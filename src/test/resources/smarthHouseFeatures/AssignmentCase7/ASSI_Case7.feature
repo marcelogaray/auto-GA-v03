@@ -1,14 +1,13 @@
 Feature: SHViewModalVerAsignacion
   Background: There must be at least one registered assignment
-    Scenario: Verify that the modal 'View Assignment' closes when you click on the 'Close' button or on the 'X' button
+    Scenario: Verify that it is possible to delete a registered assignment
       Given Given I loging to 'SMARTHOUSE' page
       And I fill properly credentials with admin user
-      When Go to 'Asignacion de Equipos' on 'Header' page
-      And Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page
-      And The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee
-      When Click on the 'Close' button on modal 'Ver asignación'
-      Then The modal 'Ver asignación' closes
-      When I reopen the modal 'Ver asignación' on 'Asignación de equipos' page
-      And Click on the 'X' button on modal 'Ver asignación'
-      Then The modal 'Ver asignacion' closes
+      When Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed
+      And Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page
+      When The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee
+      And Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'
+      When The modal 'Confirmar eliminacion' is displayed
+      And Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'
+      Then Se muestra el mensaje 'La asignacion se elimino correctamente'
 
