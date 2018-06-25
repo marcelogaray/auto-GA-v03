@@ -43,18 +43,22 @@ public class CommonSteps {
     }
 
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithValidReqData() {
+    public void fillModalFormWithValidReqData() throws Throwable {
         shAccidentFomModal.fillModalFomFullData();
     }
-    
+
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
-    public void clikOnBtnCrearAccModFom() {
+    public void clikOnBtnCrearAccModFom() throws Throwable {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
     }
 
-    @Then("^verify Alert message of Success message is shown for new accident register$")
-    public void verifySuccessMessage() {
-        Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
-        Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
+    @When("^click on 'aceptar' button from Alert message of Success$")
+    public void verifySuccessMessage() throws Throwable {
+        shSwalNotification.clickAcceptBtn();
+    }
+
+    @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
+    public void verifyRegAccidentShown(String codigo) throws Throwable {
+        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
     }
 }
