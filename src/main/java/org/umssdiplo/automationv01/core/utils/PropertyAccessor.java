@@ -10,6 +10,8 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER = "smartHouseUsername";
     private static final String PASSWORD = "smartHousePassword";
+    private static final String AREA_ID_FOR_REMOVE_II = "areaIdToRemoveII";
+    private static final String MESSAGE_AREA_DELETED = "messageAreaDelete";
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -61,5 +63,13 @@ public class PropertyAccessor {
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
+    }
+
+    public String getAreaIdForRemoveOK() {
+        return getDataProperty(AREA_ID_FOR_REMOVE_II);
+    }
+
+    public String getMessageAreaDeleted() {
+        return getDataProperty(MESSAGE_AREA_DELETED);
     }
 }
