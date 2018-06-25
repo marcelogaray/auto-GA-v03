@@ -52,12 +52,11 @@ public class CommonSteps {
 
     @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
     public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
-
+        modalDelete.acceptDelete();
     }
 
     @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
     public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
-
+        modalDelete.messageDelete();
     }
-
 }

@@ -11,43 +11,32 @@ public class SHAssignModalDelete extends BasePage {
     @FindBy(name = "confirm_delete")
     private WebElement confirmDelete;
 
-    public boolean isEditDialogPresent(){
-        return editModal.isDisplayed();
-    }
-    @FindBy(id="mat-dialog-1")
+    @FindBy(id = "mat-dialog-1")
     private WebElement confirmeDeleteModal;
 
-    public void deleteOnEditForm(){
+    @FindBy(name = "Accept")
+    private WebElement AcceptDelete;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
+    private WebElement okElement;
+
+    public boolean isEditDialogPresent() {
+        return editModal.isDisplayed();
+    }
+
+    public void deleteOnEditForm() {
         CommonEvents.clickButton(confirmDelete);
     }
-    public boolean isConfirmModalPresent(){
+
+    public boolean isConfirmModalPresent() {
         return confirmDelete.isDisplayed();
     }
 
-
-
-
-
-
-
-
-
-    @FindBy(id = "mat-dialog-1")
-    private WebElement assignmentModal;
-
-    @FindBy(name = "close")
-    private WebElement close;
-
-    @FindBy(name ="closeX")
-    private WebElement closeX;
-
-    public boolean isModalDialogPresent() {
-        return assignmentModal.isDisplayed();
+    public void acceptDelete() {
+        CommonEvents.clickButton(AcceptDelete);
     }
-    public void clickclose(){
-        CommonEvents.clickButton(close);
-    }
-    public void clickCloseX(){
-        CommonEvents.clickButton((closeX));
+
+    public void messageDelete() {
+        CommonEvents.clickButton(okElement);
     }
 }
