@@ -45,18 +45,9 @@ public class CommonSteps {
         modalDelete.deleteOnEditForm();
     }
 
-    @When("^The modal 'Confirmar eliminacion' is displayed$")
+    @Then("^The modal 'Confirmar eliminacion' is displayed$")
     public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
         Assert.assertTrue(modalDelete.isConfirmModalPresent());
-    }
-
-    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
-    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
-        modalDelete.acceptDelete();
-    }
-
-    @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
-    public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
-        modalDelete.messageDelete();
+        modalDelete.cancelModal();
     }
 }
