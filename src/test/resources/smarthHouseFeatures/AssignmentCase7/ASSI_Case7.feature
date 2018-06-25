@@ -9,5 +9,5 @@ Feature: SHViewModalVerAsignacion
       And Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'
       When The modal 'Confirmar eliminacion' is displayed
       And Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'
-      Then Se muestra el mensaje 'La asignacion se elimino correctamente'
+      Then The message 'La asignacion se elimino correctamente' is displayed
 

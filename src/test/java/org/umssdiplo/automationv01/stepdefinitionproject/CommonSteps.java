@@ -25,6 +25,7 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
@@ -55,8 +56,8 @@ public class CommonSteps {
         modalDelete.acceptDelete();
     }
 
-    @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
-    public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
+    @Then("^The message 'La asignacion se elimino correctamente' is displayed$")
+    public void the_message_La_asignacion_se_elimino_correctamente_is_displayed() throws Throwable {
         modalDelete.messageDelete();
     }
 }
