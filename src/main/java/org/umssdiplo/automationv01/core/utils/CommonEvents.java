@@ -24,6 +24,14 @@ public class CommonEvents {
         webElement.sendKeys(content);
     }
 
+    /***
+     * This method set empty imput text element.
+     * @param webElement
+     */
+    public static void clearInputField(WebElement webElement) {
+        webElement.clear();
+    }
+
     /**
      * This method set text content to date web element.
      *
@@ -127,6 +135,14 @@ public class CommonEvents {
      */
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
+    }
+
+    /**
+     * This method enter key to back to web element.
+     * @param webElement is the WebElement.
+     */
+    public static void backPress(WebElement webElement) {
+        webElement.sendKeys(Keys.BACK_SPACE);
     }
 
     /***

@@ -62,9 +62,13 @@ public class CommonSteps {
         shAccidentEditFormModal = shAccident.clickEditButton();
     }
 
-    @Then("^verify 'Editar Accidente' form modal is present$")
-    public void checkEditFormModalIsPresent() throws Throwable {
-        Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El formulario de edición de accidentes " +
-                "no se cargo correctamente");
+    @When("^I set empty value to field 'Titulo' on form edit modal$")
+    public void setEmptyValueTitleField() throws Throwable {
+        shAccidentEditFormModal.setTitleField();
+    }
+
+    @Then("^Verify if 'Guardar' button is disabled$")
+    public void checkSaveButtonIsDisabled() throws Throwable {
+        Assert.assertTrue(shAccidentEditFormModal.isSaveBtnEnable(), "El botón 'Guardar' no esta deshabilitado.");
     }
 }
