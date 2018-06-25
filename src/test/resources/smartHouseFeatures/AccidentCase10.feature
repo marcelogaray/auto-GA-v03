@@ -1,7 +1,7 @@
 # Accident feature review the behavior in thie feature
 Feature: SHAccident
 
-  Scenario: Verify if edit modal 'Editar accidente' is opened when edit an accident
+  Scenario: Verify if the form edition is filled with data from accident selected is correct.
     Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And click on 'Accidentes' button on navigation NavigationBar
