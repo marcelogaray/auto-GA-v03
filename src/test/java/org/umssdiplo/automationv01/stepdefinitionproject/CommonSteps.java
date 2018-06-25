@@ -13,7 +13,7 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAssignation assignment;
-    private SHAssignModalDelete modalDelete;
+    private SHAssignModalForm modalForm;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -25,29 +25,30 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
+
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
 
-    @When("^Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page$")
-    public void click_on_the_dumpster_button_to_remove_the_assignment_on_Asignacion_de_equipos_page() throws Throwable {
-        modalDelete = assignment.clicViewModal();
+    @When("^Click on the 'Nueva asignación' button on 'Asignacion de equipos' page$")
+    public void click_on_the_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
+        modalForm = assignment.clickFormModal();
     }
 
-    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
-    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
-        Assert.assertTrue(modalDelete.isEditDialogPresent());
+    @When("^The modal 'Asignar equipo' is displayed$")
+    public void the_modal_Asignar_equipo_is_displayed() throws Throwable {
+        Assert.assertTrue(modalForm.isFormModalPresent());
     }
 
-    @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
-    public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
-        modalDelete.deleteOnEditForm();
+    @When("^Just enter data in the 'Observaciones' field on the 'Asignar equipo' modal$")
+    public void just_enter_data_in_the_Observaciones_field_on_the_Asignar_equipo_modal() throws Throwable {
+        modalForm.setObservations();
     }
 
-    @Then("^The modal 'Confirmar eliminacion' is displayed$")
-    public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
-        Assert.assertTrue(modalDelete.isConfirmModalPresent());
-        modalDelete.cancelModal();
+    @Then("^The 'Crear' button is not enabled on the 'Asignar equipo' modal$")
+    public void the_Crear_button_is_not_enabled_on_the_Asignar_equipo_modal() throws Throwable {
+        Assert.assertFalse(modalForm.isButtonCreateEnabled());
+        modalForm.cancelAssignment();
     }
 }
