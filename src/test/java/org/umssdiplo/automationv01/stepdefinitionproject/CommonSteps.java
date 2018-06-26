@@ -93,7 +93,7 @@ public class CommonSteps {
         employee.clickAcceptAlertButton();
     }
 
-    @When("^I click on 'Ver detalles de empleado' button on 'Jhony Ayala Fernandez' item on 'Lista de Empleados' page$")
+    @When("^I click on 'Ver detalles de empleado' button on 'Margotd Leticia Fernandez Garcia' item on 'Lista de Empleados' page$")
     public void clickViewDetailsEmployee() {
 
         employee.clickViewDetailsEmployee();
