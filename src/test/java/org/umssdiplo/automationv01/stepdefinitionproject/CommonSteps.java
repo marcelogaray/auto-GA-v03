@@ -102,9 +102,6 @@ public class CommonSteps {
     @Then("^I should see the detail of information of employee selected$")
     public void employeeDetailsIsDisplayed() throws Throwable {
 
-        Assert.assertTrue(employee.isDetailsVisible());
+        Assert.assertTrue(employee.isDetailsVisible(),"don't show the employee detail");
     }
-
-
-
 }
