@@ -5,10 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
+import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
@@ -16,6 +13,7 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHOrganization organization;
+    private SHEmployee employee;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -64,6 +62,24 @@ public class CommonSteps {
         organization.pressConfirmAlertButton();
         organization.cancelModal();
      }
+
+    @And("^I click on 'Personal' option on 'Header' page$")
+    public void load_Personal_page() {
+
+        employee = headerWithLogin.clickEmployeeTab();
+    }
+
+    @And("^I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page$")
+    public void showConfirmAlert() {
+
+        employee.clickDeleteButton();
+    }
+
+    @Then("^I should see the Confirm alert with the next text: 'Estas Seguro que deseas eliminar al Empleado!'$")
+    public void theConfirmAlertIsDisplayed() throws Throwable {
+        Assert.assertTrue(employee.isAlertPresent());
+        employee.clickCancelAlertButton();
+    }
 
 
 }
