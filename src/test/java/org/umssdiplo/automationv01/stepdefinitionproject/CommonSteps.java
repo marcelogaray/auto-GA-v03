@@ -48,7 +48,7 @@ public class CommonSteps {
 
     @Then("^I should see the 'Crear Area' modal form$")
      public void theModalOrganizationIsDisplayed() throws Throwable {
-        Assert.assertTrue(organization.isModalFormPresent());
+        Assert.assertTrue(organization.isModalFormPresent(),"The new Organization modal form isn't visible");
         organization.cancelModal();
      }
 
