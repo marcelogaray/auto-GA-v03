@@ -35,7 +35,7 @@ public class SHAccident extends BasePage {
     /***
      * click on first coincidence view
      */
-    public SHAccidentVieWmodal verifyListelementContent(String accCode) {
+    public SHAccidentVieWmodal clickViewModal(String accCode) {
         List<WebElement> elements = CommonEvents.findElementsClassName(listElementContent);
         int i = 1;
         for (WebElement ele : elements) {
