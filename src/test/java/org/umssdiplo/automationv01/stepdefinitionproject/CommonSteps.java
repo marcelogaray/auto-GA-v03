@@ -46,9 +46,22 @@ public class CommonSteps {
         organization.openModalOrganizationForm();
     }
 
-    @Then("^I should see the 'Crear Area' modal form$")
-     public void theModalOrganizationIsDisplayed() throws Throwable {
-        Assert.assertTrue(organization.isModalFormPresent());
+    @And("^I fill Organization information, specially Organization Code with 'ORG-0001'$")
+    public void fillOrganizationDataInModalForm() {
+
+        organization.fillOrganizationDataInModalForm();
+    }
+
+    @And("^I click on 'Crear' button in 'Crear Area' modal form$")
+    public void saveOrganizationModalForm() {
+
+        organization.saveOrganizationModalForm();
+    }
+
+    @Then("^I should see the alert with the next text: 'Already exists a Organization with the code ORG-0001'$")
+     public void theAlertIsDisplayed() throws Throwable {
+        Assert.assertTrue(organization.isAlertPresent());
+        organization.pressConfirmAlertButton();
         organization.cancelModal();
      }
 

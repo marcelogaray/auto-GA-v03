@@ -62,4 +62,10 @@ public class PropertyAccessor {
     public String getPassword() {
         return getDataProperty(PASSWORD);
     }
+
+    public String getTextValueProperty(String name) {
+        return getDataProperty(name);
+    }
+
+
 }
