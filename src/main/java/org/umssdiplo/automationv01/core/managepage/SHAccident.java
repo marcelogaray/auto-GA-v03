@@ -9,10 +9,21 @@ public class SHAccident extends BasePage {
     @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccBtn;
 
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[1]")
+    private WebElement viewButton;
+
     public SHAccidentFormModal clickRegistarAccBtn() {
         if (CommonEvents.isClickable(registrarAccBtn)) {
             CommonEvents.clickButton(registrarAccBtn);
         }
         return new SHAccidentFormModal();
+    }
+
+    public SHViewAccident clickViewButton() {
+        CommonEvents.waitUntil(5000);
+        if (CommonEvents.isClickable(viewButton)) {
+            CommonEvents.clickButton(viewButton);
+        }
+        return new SHViewAccident();
     }
 }
