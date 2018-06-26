@@ -7,4 +7,4 @@ Feature: ORG_Case1
     And I go to 'Estructura Organizacional' on 'Header' page
     And I click on 'Detail' button on 'Gerencia General' item on 'Organization List' page
     And I click on 'Nueva Area' button on 'Organization Detail' page
-    Then I should see the "Crear Area" modal form
+    Then I should see the 'Crear Area' modal form

@@ -29,6 +29,7 @@ public class SHOrganization extends BasePage {
     }
 
     public boolean isModalFormPresent() {
+        CommonEvents.waitUntil(500);
         return formModal.isDisplayed();
     }
 
