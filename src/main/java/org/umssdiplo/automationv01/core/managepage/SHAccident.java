@@ -29,21 +29,21 @@ public class SHAccident extends BasePage {
 
     public boolean verifyListelement(String accCode) {
         List<WebElement> elements = CommonEvents.findElementsClassName(listElemet);
-        return CommonEvents.findWebElement(elements, accCode).getText().equals(accCode) ? true : false;
+        return CommonEvents.findWebElement(elements, accCode).getText().equals(accCode);
     }
 
-    public void verifyListelementContent() {
+    /***
+     * click on first coincidence view
+     */
+    public SHAccidentVieWmodal verifyListelementContent(String accCode) {
         List<WebElement> elements = CommonEvents.findElementsClassName(listElementContent);
-        System.out.println("Nro Elementos: " + elements.size());
         int i = 1;
         for (WebElement ele : elements) {
-            System.out.println(i);
-            if (ele.getText().equals("Codigo")) {
-                // CommonEvents.jsClickElement(ele.findElement(By.xpath("//mat-list-item["+i+"]/div/a[1]")));
+            if (ele.getText().equals(accCode)) {
                 CommonEvents.jsClickElement(ele.findElement(By.xpath("//mat-list-item[" + i + "]/div/a[1]")));
-                System.out.println(ele.getText() + " " + i);
             }
             i = i + 1;
         }
+        return new SHAccidentVieWmodal();
     }
 }
