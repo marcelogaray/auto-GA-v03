@@ -26,11 +26,19 @@ public class SHEmployee extends BasePage {
         CommonEvents.clickButton(confirmAlertButton);
     }
 
+    public void clickAcceptAlertButton() {
+        CommonEvents.clickButton(confirmAlertButton);
+    }
+
     public void clickCancelAlertButton() {
         CommonEvents.clickButton(cancelAlertButton);
     }
 
     public boolean isAlertPresent() {
+        return CommonEvents.isVisible(alertContent);
+    }
+
+    public boolean isAlertVisible() {
         return CommonEvents.isVisible(alertContent);
     }
 }

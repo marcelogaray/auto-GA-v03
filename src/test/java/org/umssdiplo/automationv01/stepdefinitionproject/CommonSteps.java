@@ -81,5 +81,18 @@ public class CommonSteps {
         employee.clickCancelAlertButton();
     }
 
+    @And("^I Confirm alert  'Estas Seguro que deseas eliminar al Empleado!', click in \"Si, Eliminar\" button$")
+    public void clickConfirmAlert() {
+
+        employee.clickConfirmAlertButton();
+    }
+
+    @Then("^I should see the alert with the next text: 'No se pudo eliminar porque tiene algun equipo o item asignado'$")
+    public void theErrorAlertIsDisplayed() throws Throwable {
+        Assert.assertTrue(employee.isAlertVisible());
+        employee.clickAcceptAlertButton();
+    }
+
+
 
 }
