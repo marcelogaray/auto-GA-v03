@@ -18,6 +18,13 @@ public class SHLogin extends BasePage {
     @FindBy(name = "close_login_button")
     private WebElement closeLoginBtn;
 
+    @FindBy(name = "logout_button")
+    private WebElement logOutBtn;
+
+    public SHLogin() {
+        CommonEvents.waitWebElementIsVisible(closeLoginBtn);
+    }
+
     public void setUsernameInputField() {
         CommonEvents.setInputField(usernameInputField, PropertyAccessor.getInstance().getUser());
     }
@@ -27,6 +34,7 @@ public class SHLogin extends BasePage {
     }
 
     public void clickAcceptLoginButton() {
+
         CommonEvents.clickButton(aceptLoginBtn);
     }
 
@@ -34,10 +42,15 @@ public class SHLogin extends BasePage {
         CommonEvents.clickButton(closeLoginBtn);
     }
 
+    public void isLogoutButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(logOutBtn);
+    }
+
     public HeaderWithLogin fillCredentials() {
         setUsernameInputField();
         setPasswordInputField();
         clickAcceptLoginButton();
+        isLogoutButtonVisible();
         clickCloseLoginButton();
         return new HeaderWithLogin();
     }

@@ -36,16 +36,18 @@ public class CommonSteps {
 
     @And("^I click on 'Detail' button on 'Gerencia General' item on 'Organization List' page$")
     public void goToArea() {
+
         organization.openOrganizationDetailView();
     }
 
     @And("^I click on 'Nueva Area' button on 'Organization Detail' page$")
     public void openModalOrganizationForm() {
+
         organization.openModalOrganizationForm();
     }
 
     @Then("^I should see the 'Crear Area' modal form$")
-     public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
+     public void theModalOrganizationIsDisplayed() throws Throwable {
         Assert.assertTrue(organization.isModalFormPresent());
         organization.cancelModal();
      }

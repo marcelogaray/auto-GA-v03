@@ -1,5 +1,5 @@
 # Login feature review the behavior in thie feature
-Feature: ORG_Case2
+Feature: ORG_Case1
 
   Scenario: Check that the 'Crear Area' form is displayed, click on the 'Nueva Area' button
     Given Given I loging to 'SMARTHOUSE' page
