@@ -10,6 +10,11 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER = "smartHouseUsername";
     private static final String PASSWORD = "smartHousePassword";
+    private static final String NEW_ORG_NAME = "newOrgName";
+    private static final String NEW_ORG_DESCRIPTION = "newOrgDescription";
+    private static final String NEW_ORG_GESTION = "newOrgGestion";
+    private static final String NEW_ORG_CODE = "newOrgCode";
+    private static final String ORG_CREATED_MESSAGE = "messageAreaCreated";
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -61,5 +66,25 @@ public class PropertyAccessor {
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
+    }
+
+    public String getNewOrgName() {
+        return getDataProperty(NEW_ORG_NAME);
+    }
+
+    public String getNewOrgDescription() {
+        return getDataProperty(NEW_ORG_DESCRIPTION);
+    }
+
+    public String getNewOrgGestion() {
+        return getDataProperty(NEW_ORG_GESTION);
+    }
+
+    public String getNewOrgCode() {
+        return getDataProperty(NEW_ORG_CODE);
+    }
+
+    public String getMessageOrgCreated() {
+        return getDataProperty(ORG_CREATED_MESSAGE);
     }
 }
