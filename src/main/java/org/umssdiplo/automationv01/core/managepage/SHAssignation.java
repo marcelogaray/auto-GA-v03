@@ -12,9 +12,15 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "new_assignment")
     private WebElement new_assigment;
 
+    @FindBy(xpath = "//*[@id=\"Assignation_equips\"]/div[2]/button")
+    private WebElement close_modal;
+
     public SHAssignationModal ClickRegistarAccBtn() {
         CommonEvents.clickButton(new_assigment);
         return new SHAssignationModal();
+    }
+    public void Close(){
+        CommonEvents.clickButton(close_modal);
     }
 
 }

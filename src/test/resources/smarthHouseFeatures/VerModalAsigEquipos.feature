@@ -4,3 +4,4 @@ Feature:show modal 'Asignacion de equios'
     Given insert login
     And press the button 'asignacion de equipos'
     And press 'nueva asignacion'
+    And press 'X' para salir

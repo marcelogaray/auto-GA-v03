@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import org.umssdiplo.automationv01.core.managepage.*;
@@ -30,4 +31,9 @@ public class ModalAsigEquipos {
    @And("^press 'nueva asignacion'$")
     public void pressNuevaAsignacion() throws Throwable {
        assignment.ClickRegistarAccBtn(); }
+
+    @And("^press 'X' para salir$")
+    public void pressXParaSalir() throws Throwable {
+        assignment.Close();
+    }
 }
