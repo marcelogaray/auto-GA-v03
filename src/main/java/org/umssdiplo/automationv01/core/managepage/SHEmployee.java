@@ -50,7 +50,7 @@ public class SHEmployee extends BasePage {
 
     public void clickViewDetailsEmployee() {
         CommonEvents.clickButton(detailsButton);
-        CommonEvents.waitUntil(600);
+        CommonEvents.waitUntil(2000);
     }
 
     public boolean isDetailsVisible() {
