@@ -19,18 +19,22 @@ public class SHAssignModalDelete extends BasePage {
 
 
     public boolean isEditDialogPresent() {
+
         return editModal.isDisplayed();
     }
 
     public void deleteOnEditForm() {
+
         CommonEvents.clickButton(confirmDelete);
     }
 
     public boolean isConfirmModalPresent() {
+
         return confirmDelete.isDisplayed();
     }
 
     public void cancelModal(){
+
         CommonEvents.clickButton(cancelDelete);
     }
 }
