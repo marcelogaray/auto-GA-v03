@@ -35,10 +35,12 @@ public class SHEmployee extends BasePage {
     }
 
     public boolean isAlertPresent() {
+        CommonEvents.waitUntil(1000);
         return CommonEvents.isVisible(alertContent);
     }
 
     public boolean isAlertVisible() {
+        CommonEvents.waitUntil(1000);
         return CommonEvents.isVisible(alertContent);
     }
 }
