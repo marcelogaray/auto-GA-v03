@@ -59,6 +59,6 @@ public class CommonSteps {
 
     @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
     public void verifyRegAccidentShown(String codigo) throws Throwable {
-        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
+        shAccident.verifyListelementContent();
     }
 }
