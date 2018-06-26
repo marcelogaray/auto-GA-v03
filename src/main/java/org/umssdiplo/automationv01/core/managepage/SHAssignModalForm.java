@@ -18,8 +18,8 @@ public class SHAssignModalForm extends BasePage {
     @FindBy(name = "cancel")
     private WebElement cancelAssignmentElement;
 
-
     public boolean isFormModalPresent() {
+
         return newFormModal.isDisplayed();
     }
 
@@ -29,10 +29,12 @@ public class SHAssignModalForm extends BasePage {
     }
 
     public boolean isButtonCreateEnabled(){
+
         return createElement.isEnabled();
     }
 
     public void cancelAssignment(){
+
         CommonEvents.clickButton(cancelAssignmentElement);
     }
 }
