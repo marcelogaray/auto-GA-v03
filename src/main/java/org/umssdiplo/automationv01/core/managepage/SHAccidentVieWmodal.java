@@ -3,7 +3,7 @@ package org.umssdiplo.automationv01.core.managepage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
-public class ShAccidentVieWmodal extends BasePage {
+public class SHAccidentVieWmodal extends BasePage {
 
     @FindBy(id = "mat-dialog-0")
     private WebElement viewModal;
