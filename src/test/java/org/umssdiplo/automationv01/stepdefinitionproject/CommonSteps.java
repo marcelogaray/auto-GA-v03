@@ -14,6 +14,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAccident accident;
     private SHDeleteConfirmModal deleteConfirmModal;
+    private int countAccident;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -31,6 +32,11 @@ public class CommonSteps {
         accident = headerWithLogin.clickAccidentTab();
     }
 
+    @And("^I obtain the count of accidents registers$")
+    public void getCountOfRegisters() throws Throwable {
+        countAccident = accident.getSizeOfRegisters();
+    }
+
     @When("^I click on accident delete option$")
     public void clickDeleteButton() throws Throwable {
         deleteConfirmModal = accident.clickDeleteButton();
@@ -40,5 +46,16 @@ public class CommonSteps {
     public void verifyConfirmDeleteModal() throws Throwable {
         Assert.assertTrue(deleteConfirmModal.isModalDialogPresent(), "El modal de confirmación de eliminación " +
                 "no ha sido desplegado");
+    }
+
+    @And("^I click on 'Aceptar' button the accident selected is deleted$")
+    public void clickConfirmButtonDeleteModal() throws Throwable {
+        accident = deleteConfirmModal.clickDeleteButton();
+    }
+
+    @Then("^Verify the size of accident registers decrease in a one item$")
+    public void compareListSize() throws Throwable {
+        int result = countAccident - 1;
+        Assert.assertEquals(accident.getSizeOfRegisters(), result, "No se elimino el registro seleccionado.");
     }
 }
