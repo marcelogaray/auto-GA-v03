@@ -53,6 +53,11 @@ public class CommonSteps {
         organization.clickSaveItemButton();
     }
 
+    @And("^verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page$")
+    public void verifyOrgCreatedMessage() {
+        Assert.assertEquals(organization.getMessageItemCreated(), organization.getAlertMessage());
+    }
+
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
     public void clickAceptarInformationMessage() {
         organization.clickAcceptButtonMessage();

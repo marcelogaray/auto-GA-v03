@@ -12,6 +12,9 @@ public class SHOrganization extends BasePage {
     @FindBy(name = "newItem_button")
     private WebElement newItemButton;
 
+    @FindBy(id = "swal2-content")
+    private WebElement messageAlert;
+
     @FindBy(name = "code")
     private WebElement codeFieldInputElement;
 
@@ -102,6 +105,15 @@ public class SHOrganization extends BasePage {
 
     public boolean isNewItemVisible() {
         return CommonEvents.isVisible(newItem);
+    }
+
+    public String getAlertMessage() {
+        return CommonEvents.getTextContent(messageAlert);
+    }
+
+    public String getMessageItemCreated() {
+        return PropertyAccessor.getInstance().getMessageItemCreated();
+
     }
 
     public void fillNewItemForm() {
