@@ -27,6 +27,7 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
+
     @And("^go to 'Estructura Organizacional' on 'Header' page$")
     public void load_Organization_page() {
         organization = headerWithLogin.clickOrganizationTab();
@@ -44,6 +45,6 @@ public class CommonSteps {
 
     @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
     public void areaWithEmployeeMessageIsDisplayed() {
-        Assert.assertEquals(organization.getAreaWithEmployeeMessage(), organization.getAlertMessage());
+        Assert.assertEquals(organization.getAlertMessage(), organization.getAreaWithEmployeeMessage());
     }
 }
