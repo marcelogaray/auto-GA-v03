@@ -44,9 +44,10 @@ public class SHAccidentEditFormModal extends BasePage {
         CommonEvents.setInputField(description, "Descripcion 2");
     }
 
-    public void clickSaveButton() {
+    public SHAccident clickSaveButton() {
         CommonEvents.waitUntil(2000);
         CommonEvents.clickButton(saveButton);
+        return new SHAccident();
     }
 
     public void fillEditModalForm() {

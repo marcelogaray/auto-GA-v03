@@ -75,7 +75,7 @@ public class CommonSteps {
 
     @And("^click on 'Guardar' button on modal 'Editar Accidente'$")
     public void clickSaveEditModalForm() throws Throwable {
-        shAccidentEditFormModal.clickSaveButton();
+        shAccident = shAccidentEditFormModal.clickSaveButton();
     }
 
     @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
