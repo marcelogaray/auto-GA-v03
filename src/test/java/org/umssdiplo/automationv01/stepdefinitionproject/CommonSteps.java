@@ -55,7 +55,7 @@ public class CommonSteps {
 
     @And("^verify 'El área fue creado correctamente' message info is displayed on 'Organization' page$")
     public void verifyOrgCreatedMessage() {
-        Assert.assertEquals(organization.getMessageOrgCreated(), organization.getAlertMessage());
+        Assert.assertEquals(organization.getAlertMessage(), organization.getMessageOrgCreated());
     }
 
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
