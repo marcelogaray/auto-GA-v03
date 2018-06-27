@@ -33,7 +33,7 @@ public class SHOrganization extends BasePage {
     @FindBy(name = "salaryScaleKey")
     private WebElement salarialScaleSelectElement;
 
-    @FindBy(id = "mat-option-10389")
+    @FindBy(id = "mat-option-1155")
     private WebElement salarialScaleOptionElement;
 
     @FindBy(name = "typeContractKey")
