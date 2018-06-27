@@ -48,6 +48,6 @@ public class CommonSteps {
 
     @Then("^'El codigo de empleado ya se encuentra asignado a otro empleado' information message should be displayed$")
     public void is_message_code_duplicated_showed() throws Throwable {
-        Assert.assertEquals(employeeForm.getDuplicateCodeMessage(), employeeForm.getAlertMessage());
+        Assert.assertEquals(employeeForm.getAlertMessage(), employeeForm.getDuplicateCodeMessage());
     }
 }
