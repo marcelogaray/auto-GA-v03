@@ -1,4 +1,4 @@
-Feature: SHViewModalVerAsignacion
+Feature: SHDeleteAsign
   Background: There must be at least one registered assignment
     Scenario: Verify that it is possible to delete a registered assignment
       Given Given I loging to 'SMARTHOUSE' page
