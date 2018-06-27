@@ -36,7 +36,7 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-dialog-0")
     private WebElement equipmentOption;
 
-    @FindBy(id = "mat-option-0")
+    @FindBy(id = "mat-option-100")
     private WebElement equipmentSelect;
 
     public void newAssignment(){
