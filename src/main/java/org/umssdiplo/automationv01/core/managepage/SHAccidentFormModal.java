@@ -57,6 +57,10 @@ public class SHAccidentFormModal extends BasePage {
     @FindBy(id = "mat-option-0")
     private WebElement statusOption;
 
+    public SHAccidentFormModal() {
+        CommonEvents.isVisible(modalDialog);
+    }
+
     public boolean isModalDialogPresent() {
         return modalDialog.isDisplayed();
     }
