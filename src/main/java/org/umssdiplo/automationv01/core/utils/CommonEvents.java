@@ -170,6 +170,6 @@ public class CommonEvents {
      */
     public static boolean isAttributPresent(WebElement webElement, String attr) {
         String value = webElement.getAttribute(attr);
-        return value != null ? value.equals("true") : false;
+        return value != null && value.equals("true");
     }
 }
