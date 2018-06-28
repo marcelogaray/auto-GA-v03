@@ -115,6 +115,11 @@ public class SHAccidentFormModal extends BasePage {
     }
 
     public void fillModalFomFullData() {
+        try{
+            Thread.sleep(2000);
+        }catch (Exception e){
+
+        }
         setEmployeeField();
         setTitleField();
         setCodeField();

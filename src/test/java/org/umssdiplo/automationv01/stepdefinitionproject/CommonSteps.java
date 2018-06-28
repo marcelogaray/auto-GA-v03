@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -114,5 +115,10 @@ public class CommonSteps {
     public void checkStateAccidentValue() throws Throwable {
         Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), "Estado", "El dato de " +
                 "estado no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify that \"([^\"]*)\" is displayed in the 'Empleado' textfield on 'Editar accidente' modal page$")
+    public void verifyThatIsDisplayedInTheEmpleadoTextfieldOnEditarAccidenteModalPage(String nameEmployee) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), nameEmployee, "El nombre del empleado no corresponde al registro seleccionado.");
     }
 }

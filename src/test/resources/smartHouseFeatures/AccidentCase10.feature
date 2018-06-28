@@ -9,11 +9,13 @@ Feature: SHAccident
     When required data is filled on 'Registro Accidente' Modal Form
     And click on 'Crear' button on modal 'Registro de Accidente'
     When I click on edit button on list of accidents
-    Then verify 'Empleado' show data employee from accident on 'Editar accidente'
-    Then verify 'Título' show data title from accident on 'Editar accidente'
-    Then verify 'Código' show data code from accident on 'Editar accidente'
-#    Then verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'
-#    Then verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'
-    Then verify 'Descripcion' show data description from accident on 'Editar accidente'
-#    Then verify 'Estado' show data state from accident on 'Editar accidente'
-#    Then verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'
+#    Then verify 'Empleado' show data employee from accident on 'Editar accidente'
+    Then verify that "Nataly" is displayed in the 'Empleado' textfield on 'Editar accidente' modal page
+
+    And verify 'Título' show data title from accident on 'Editar accidente'
+    And verify 'Código' show data code from accident on 'Editar accidente'
+    And verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'
+    And verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'
+    And verify 'Descripcion' show data description from accident on 'Editar accidente'
+    And verify 'Estado' show data state from accident on 'Editar accidente'
+    And verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'
