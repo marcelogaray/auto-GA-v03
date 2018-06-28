@@ -68,5 +68,4 @@ public class SHAccidentEditFormModal extends BasePage {
     public String getStatusValue() {
         return statusSelect.getAttribute("value");
     }
-
 }

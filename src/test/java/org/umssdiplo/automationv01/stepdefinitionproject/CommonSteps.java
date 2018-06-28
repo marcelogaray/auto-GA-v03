@@ -12,9 +12,9 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
-    private SHAccident shAccident;
-    private SHAccidentFormModal shAccidentFomModal;
-    private SHAccidentEditFormModal shAccidentEditFormModal;
+    private SHAssignation assignment;
+    private SHAssignmentNewModal assignmentNewModal;
+    private SHAssignmentEditModal assignmentEditModal;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -26,93 +26,46 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-
-    @And("^click on 'Accidentes' button on navigation NavigationBar$")
-    public void clikOnAccTabNav() throws Throwable {
-        shAccident = headerWithLogin.clickAccidentTab();
+    @Given("^Click on 'Asignación de Equipos' button on Header page$")
+    public void click_on_Asignación_de_Equipos_button_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+        assignment.isViewButtonVisible();
     }
 
-    @When("^click on 'Registrar Accidente' button on Accident Page$")
-    public void clickOnBtnRegAccPage() throws Throwable {
-        shAccidentFomModal = shAccident.ClickRegistarAccBtn();
+    /*@Given("^Click on 'Nueva asignación' button on 'Asignacion de equipos' page$")
+    public void click_on_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
+        assignmentNewModal = assignment.newAssignment();
     }
 
-    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
-    public void checkModalFomDisplayed() throws Throwable {
-        Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
+    @When("^The required information is filled out in the form$")
+    public void the_required_information_is_filled_out_in_the_form() throws Throwable {
+        assignmentNewModal.setData();
     }
 
-    @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithValidReqData() {
-        shAccidentFomModal.fillModalFomFullData();
+    @When("^Click on 'Crear' button on modal 'Asignar equipo'$")
+    public void click_on_Crear_button_on_modal_Asignar_equipo() throws Throwable {
+        assignmentNewModal.registerNewAssignment();
+        assignmentNewModal.registeredAssignment();
+    }
+*/
+    @When("^Click on the edit button of an assignment$")
+    public void click_on_the_edit_button_of_an_assignment() throws Throwable {
+        assignmentEditModal = assignment.clicViewEditModal();
+        assignmentEditModal.clickEditInModal();
     }
 
-    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
-    public void verifyCrearBtnModalFomEnable() {
-        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
+    @Then("^verify the id of the employee in the form 'Editar asignacion'$")
+    public void verify_the_id_of_the_employee_in_the_form_Editar_asignacion() throws Throwable {
+        Assert.assertEquals(assignmentEditModal.getEmployee(), "EMP-1-Ruben Moscoso", "El codigo del empleado es distinto");
     }
 
-    @And("^click on 'Crear' button on modal 'Registro de Accidente'$")
-    public void clickCreateButton() throws Throwable {
-        shAccidentFomModal.clickCreateButton();
+    @Then("^verify the id of the equipment in the form 'Editar asignacion'$")
+    public void verify_the_id_of_the_equipment_in_the_form_Editar_asignacion() throws Throwable {
+        Assert.assertEquals(assignmentEditModal.getEquipment(), "1", "El codigo del equipo es diferente" );
     }
 
-    @When("^I click on edit button on list of accidents$")
-    public void clickEditButton() throws Throwable {
-        shAccidentEditFormModal = shAccident.clickEditButton();
-    }
-
-    @Then("^verify 'Editar Accidente' form modal is present$")
-    public void checkEditFormModalIsPresent() throws Throwable {
-        Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El formulario de edición de accidentes " +
-                "no se cargo correctamente");
-    }
-
-    @Then("^verify 'Empleado' show data employee from accident on 'Editar accidente'$")
-    public void checkEmployeeValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), "1", "El dato empleado no " +
-                "corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
-    public void checkTitleValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente", "El dato de " +
-                "titulo no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
-    public void checkCodeValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo", "El dato de " +
-                "código no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
-    public void checkLevelRiskValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "1", "El dato de " +
-                "nivel de riesgo no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'$")
-    public void checkTypeAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getAccidentTypeValue(), "1", "El dato de " +
-                "nivel de riesgo no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'$")
-    public void checkSuccessDateAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getDateEventValue(), "05-05-2018", "El dato de " +
-                "fecha de suceso no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
-    public void checkDescriptionAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion", "El dato de " +
-                "descripción no corresponde al registro seleccionado.");
-    }
-
-    @Then("^verify 'Estado' show data state from accident on 'Editar accidente'$")
-    public void checkStateAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), "Estado", "El dato de " +
-                "estado no corresponde al registro seleccionado.");
+    @Then("^verify 'Observaciones' in the form 'Editar asignacion'$")
+    public void verify_Observaciones_in_the_form_Editar_asignacion() throws Throwable {
+        Assert.assertEquals(assignmentEditModal.getObservations(), "Asignacion", "Las observaciones no corresponden a este registro");
     }
 }
