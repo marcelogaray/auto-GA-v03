@@ -28,12 +28,11 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-dialog-0")
     private WebElement employeeOption;
 
-    @FindBy(id = "mat-option-13")
-    private WebElement employeeSelect;
+    @FindBy(name = "view_assignment")
+    private WebElement viewAssignment;
 
-    @FindBy(id = "mat-dialog-0")
-    private WebElement equipmentOption;
 
-    @FindBy(id = "mat-option-0")
-    private WebElement equipmentSelect;
+    public  boolean assignationIsPresent(){
+        return viewAssignment.isEnabled();
+    }
 }

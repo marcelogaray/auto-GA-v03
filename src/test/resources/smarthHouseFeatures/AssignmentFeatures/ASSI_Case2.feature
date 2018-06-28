@@ -4,3 +4,4 @@ Feature: SHListAssignments
     Given  Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     When Go to 'Asignacion de Equipos' on 'Header' page
+    Then The assignments are listed
