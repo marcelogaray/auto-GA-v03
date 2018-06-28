@@ -10,7 +10,7 @@ public class SHAccidentEditFormModal extends BasePage {
     private WebElement editTitleModal;
 
     public boolean isEditModalPresent() {
-        return editTitleModal.isDisplayed();
+        return CommonEvents.isPresent(editTitleModal);
     }
 
 }
