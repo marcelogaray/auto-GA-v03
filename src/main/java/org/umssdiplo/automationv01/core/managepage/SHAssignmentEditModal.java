@@ -6,11 +6,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class SHAssignmentEditModal extends BasePage{
-        @FindBy(name = "assignment_button")
-        private WebElement assignmentTab;
 
-        @FindBy(name = "new_assignment")
-        private WebElement addAssignmentButton;
 
         @FindBy(name = "save")
         private WebElement acceptNewAssignment;
@@ -39,9 +35,7 @@ public class SHAssignmentEditModal extends BasePage{
         @FindBy(id = "mat-option-100")
         private WebElement equipmentSelect;
 
-        public void newAssignment(){
-            CommonEvents.clickButton(addAssignmentButton);
-        }
+
         public void setData() {
             String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
             CommonEvents.jsClickElement(employeeKeyElement);
