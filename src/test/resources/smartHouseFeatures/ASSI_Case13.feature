@@ -9,6 +9,4 @@ Feature: Assignment
     And Click on the button 'Nuevo registro'
     When required data is filled on 'Nuevo registro de tipo de equipo' modal form
     And click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'
-    When I click on view button on list of  equipment types list
-    Then verify the name of the equipment type in the modal 'Ver tipo de equipo'
-    Then verify the desciption of the equipment type in the modal 'Ver tipo de equipo'
+    Then Verify new registered equipment type "Codigo" is shown in accedent page
