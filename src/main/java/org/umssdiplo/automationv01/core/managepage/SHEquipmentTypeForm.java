@@ -32,9 +32,11 @@ public class SHEquipmentTypeForm extends BasePage{
 
     public void setData() {
 
+        String name = PropertyAccessor.getInstance().getSHDataProperty("name");
         isCancelButtonVisible();
-        setNameField();
-        setDescriptionField();
+        CommonEvents.setInputField(equipmentTypeName, name);
         CommonEvents.clickButton(createEquipmetType);
+
+
     }
 }
