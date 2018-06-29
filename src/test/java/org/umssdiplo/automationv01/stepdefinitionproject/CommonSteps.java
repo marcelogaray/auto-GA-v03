@@ -54,18 +54,8 @@ public class CommonSteps {
         equipmentType.clickButtonOk();
     }
 
-    @When("^I click on view button on list of  equipment types list$")
-    public void i_click_on_view_button_on_list_of_equipment_types_list() throws Throwable {
-
-    }
-
-    @Then("^verify the name of the equipment type in the modal 'Ver tipo de equipo'$")
-    public void verify_the_name_of_the_equipment_type_in_the_modal_Ver_tipo_de_equipo() throws Throwable {
-
-    }
-
-    @Then("^verify the desciption of the equipment type in the modal 'Ver tipo de equipo'$")
-    public void verify_the_desciption_of_the_equipment_type_in_the_modal_Ver_tipo_de_equipo() throws Throwable {
+    @Then("^verify new registered equipment type \"([^\"]*)\" is shown in equipment type page$")
+    public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String arg1) throws Throwable {
 
     }
 

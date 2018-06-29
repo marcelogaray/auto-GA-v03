@@ -9,4 +9,4 @@ Feature: Assignment
     And Click on the button 'Nuevo registro'
     When required data is filled on 'Nuevo registro de tipo de equipo' modal form
     And click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'
-    Then Verify new registered equipment type "Codigo" is shown in accedent page
+    Then verify new registered equipment type "Guantes" is shown in equipment type page

@@ -5,6 +5,8 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
+import java.util.List;
+
 public class SHEquipmentType extends BasePage {
 
     @FindBy(name = "equipmentType")
@@ -30,6 +32,9 @@ public class SHEquipmentType extends BasePage {
 
     @FindBy(xpath ="/html/body/div[2]/div/div[3]/button[1]")
     private WebElement buttonOk;
+
+    @FindBy(className = "mat-list-text")
+    private WebElement equipmentTypeList;
 
     public void isViewButtonVisible() {
         CommonEvents.waitWebElementIsVisible(viewButton);
@@ -62,6 +67,11 @@ public class SHEquipmentType extends BasePage {
 
         CommonEvents.clickButton(buttonOk);
     }
+    public boolean verifyListEquipmentType(String name) {
+        List<WebElement> elements = CommonEvents.findElementsClassName(equipmentTypeList);
+        return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
+    }
+
 }
 
 
