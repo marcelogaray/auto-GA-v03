@@ -12,8 +12,7 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
-   private SHEquipmentType equipmentType;
-   private SHEquipmentTypeForm equipmentTypeForm;
+    private SHEquipmentType equipmentType;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -55,54 +54,7 @@ public class CommonSteps {
     }
 
     @Then("^verify new registered equipment type \"([^\"]*)\" is shown in equipment type page$")
-    public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String arg1) throws Throwable {
-        Assert.assertTrue(equipmentType.verifyListEquipmentType(),"No esta registrado");
+    public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String name) throws Throwable {
+        Assert.assertTrue(equipmentType.verifyListEquipmentType(name), "No esta registrado");
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-    @When("^Click on the edit button of an assignment$")
-    public void click_on_the_edit_button_of_an_assignment() throws Throwable {
-        assignmentEditModal = assignment.clicViewEditModal();
-        assignmentEditModal.clickEditInModal();
-    }
-
-    @Then("^verify the id of the employee in the form 'Editar asignacion'$")
-    public void verify_the_id_of_the_employee_in_the_form_Editar_asignacion() throws Throwable {
-        Assert.assertEquals(assignmentEditModal.getEmployee(), "EMP-1-Ruben Moscoso", "El codigo del empleado es distinto");
-    }
-
-    @Then("^verify the id of the equipment in the form 'Editar asignacion'$")
-    public void verify_the_id_of_the_equipment_in_the_form_Editar_asignacion() throws Throwable {
-        Assert.assertEquals(assignmentEditModal.getEquipment(), "1", "El codigo del equipo es diferente" );
-    }
-
-    @Then("^verify 'Observaciones' in the form 'Editar asignacion'$")
-    public void verify_Observaciones_in_the_form_Editar_asignacion() throws Throwable {
-        Assert.assertEquals(assignmentEditModal.getObservations(), "Asignacion", "Las observaciones no corresponden a este registro");
-    }*/
 }
