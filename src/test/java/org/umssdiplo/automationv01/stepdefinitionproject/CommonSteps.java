@@ -34,23 +34,24 @@ public class CommonSteps {
 
     @Given("^Click on the button 'Ver tipos de equipos registrados'$")
     public void click_on_the_button_Ver_tipos_de_equipos_registrados() throws Throwable {
+        equipmentType.isViewButtonVisible();
         equipmentType.clickViewEquipmentType();
     }
 
     @Given("^Click on the button 'Nuevo registro'$")
     public void click_on_the_button_Nuevo_registro() throws Throwable {
-        equipmentTypeForm = equipmentType.clickNewRegister();
+        equipmentType.isVisibleViewList();
+        equipmentType.clickRegisterNewEquipmentType();
     }
 
     @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
     public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
-             
-
+        equipmentType.setData();
     }
 
     @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
     public void click_on_Crear_button_on_modal_Nuevo_registro_de_tipo_de_equipo() throws Throwable {
-
+        equipmentType.clickButtonOk();
     }
 
     @When("^I click on view button on list of  equipment types list$")
