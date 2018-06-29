@@ -5,6 +5,8 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
+import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -14,6 +16,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
+    private Employee employeeData;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -38,7 +41,8 @@ public class CommonSteps {
 
     @And("^fill new employee form on 'New Employee Form' page with duplicate 'employee code'$")
     public void click_over_new_employee_button() throws Throwable {
-        employeeForm.fillNewEmployeeForm();
+        employeeData = FileReaderManager.getInstance().getJsonReader().getEmployeeData();
+        employeeForm.fillNewEmployeeForm(employeeData);
     }
 
     @And("^click over 'Guardar' button on 'New Employee Form' page$")
@@ -48,6 +52,7 @@ public class CommonSteps {
 
     @Then("^'El codigo de empleado ya se encuentra asignado a otro empleado' information message should be displayed$")
     public void is_message_code_duplicated_showed() throws Throwable {
-        Assert.assertEquals(employeeForm.getAlertMessage(), employeeForm.getDuplicateCodeMessage());
+        String messageExpected = String.format("El codigo de empleado %s ya se encuentra asignado a otro empleado", employeeData.getEmployeeCode());
+        Assert.assertEquals(employeeForm.getAlertMessage(), messageExpected);
     }
 }

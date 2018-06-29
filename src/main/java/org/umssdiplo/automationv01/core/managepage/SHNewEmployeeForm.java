@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
@@ -64,32 +65,32 @@ public class SHNewEmployeeForm extends BasePage {
         CommonEvents.waitWebElementIsVisible(acceptNewEmployee);
     }
 
-    private void setEmployeeCodeInputField() {
-        CommonEvents.setInputField(employeeCodeElement, PropertyAccessor.getInstance().getNewEmployeeCode());
+    private void setEmployeeCodeInputField(String employeeCode) {
+        CommonEvents.setInputField(employeeCodeElement, employeeCode);
     }
 
-    private void setEmployeeNameInputField() {
-        CommonEvents.setInputField(firstNameElement, PropertyAccessor.getInstance().getNewEmployeeName());
+    private void setEmployeeNameInputField(String employeeName) {
+        CommonEvents.setInputField(firstNameElement, employeeName);
     }
 
-    private void setEmployeeLastNameInputField() {
-        CommonEvents.setInputField(lastNameElement, PropertyAccessor.getInstance().getNewEmployeeLastName());
+    private void setEmployeeLastNameInputField(String employeeLastName) {
+        CommonEvents.setInputField(lastNameElement, employeeLastName);
     }
 
-    private void setEmployeeNacionalityInputField() {
-        CommonEvents.setInputField(nationalityElement, PropertyAccessor.getInstance().getNewEmployeeNacionality());
+    private void setEmployeeNacionalityInputField(String employeeNacionality) {
+        CommonEvents.setInputField(nationalityElement, employeeNacionality);
     }
 
-    private void setEmployeeBirthDateInputField() {
-        CommonEvents.setDateInputField(birthDateElement, PropertyAccessor.getInstance().getNewEmployeeBirthDate());
+    private void setEmployeeBirthDateInputField(String birthDate) {
+        CommonEvents.setDateInputField(birthDateElement, birthDate);
     }
 
-    private void setEmployeeAdmisionDateInputField() {
-        CommonEvents.setDateInputField(admisionDateElement, PropertyAccessor.getInstance().getNewEmployeeAdmisionDate());
+    private void setEmployeeAdmisionDateInputField(String admisionDate) {
+        CommonEvents.setDateInputField(admisionDateElement, admisionDate);
     }
 
-    private void setEmployeeRegistrationDateInputField() {
-        CommonEvents.setDateInputField(registrationDateElement, PropertyAccessor.getInstance().getNewEmployeeRegistrationDate());
+    private void setEmployeeRegistrationDateInputField(String registrationDate) {
+        CommonEvents.setDateInputField(registrationDateElement, registrationDate);
     }
 
     private void clickOrganizationSelect() {
@@ -120,28 +121,23 @@ public class SHNewEmployeeForm extends BasePage {
         CommonEvents.clickButton(acceptNewEmployee);
     }
 
-    public String getDuplicateCodeMessage() {
-        String message = String.format(PropertyAccessor.getInstance().getNewEmployeeDuplicateCodeMessage(), PropertyAccessor.getInstance().getNewEmployeeCode());
-        return message;
-    }
-
     public String getAlertMessage() {
         return CommonEvents.getTextContent(messageAlert);
     }
 
-    public void fillNewEmployeeForm() {
+    public void fillNewEmployeeForm(Employee employee) {
         clickOrganizationSelect();
         selectOrganization();
-        setEmployeeCodeInputField();
-        setEmployeeNameInputField();
-        setEmployeeLastNameInputField();
-        setEmployeeBirthDateInputField();
+        setEmployeeCodeInputField(employee.getEmployeeCode());
+        setEmployeeNameInputField(employee.getFirstName());
+        setEmployeeLastNameInputField(employee.getLastName());
+        setEmployeeBirthDateInputField(employee.getBirthDate());
         clickGenderSelect();
         selectGender();
-        setEmployeeNacionalityInputField();
-        setEmployeeAdmisionDateInputField();
+        setEmployeeNacionalityInputField(employee.getNationality());
+        setEmployeeAdmisionDateInputField(employee.getAdmisionDate());
         clickStatusSelect();
         selectStatus();
-        setEmployeeRegistrationDateInputField();
+        setEmployeeRegistrationDateInputField(employee.getRegistrationDate());
     }
 }
