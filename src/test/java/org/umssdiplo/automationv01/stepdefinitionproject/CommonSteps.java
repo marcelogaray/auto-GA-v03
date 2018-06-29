@@ -44,7 +44,8 @@ public class CommonSteps {
 
     @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
     public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
-        equipmentTypeForm.setData();
+             
+
     }
 
     @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
