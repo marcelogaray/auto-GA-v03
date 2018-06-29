@@ -29,6 +29,7 @@ public class SHEquipmentTypeForm extends BasePage{
     public void setDescriptionField(){
         CommonEvents.setInputField(equipmentTypeDescription, "Descripcion");
     }
+
     public void setData() {
 
         isCancelButtonVisible();
