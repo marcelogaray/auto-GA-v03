@@ -10,22 +10,18 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class JsonDataReader {
-    private final String customerFilePath = PropertyAccessor.getInstance().getJsonDataFilePath() + "employee.json";
-    private Employee employee;
-
-    public JsonDataReader() {
-        employee = getEmployeeData();
-    }
+    private final String dataFilePath = PropertyAccessor.getInstance().getJsonDataFilePath();
 
     public Employee getEmployeeData() {
+        String employeJsonDataFilePath = dataFilePath + "employee.json";
         Gson gson = new Gson();
         BufferedReader bufferReader = null;
         try {
-            bufferReader = new BufferedReader(new FileReader(customerFilePath));
+            bufferReader = new BufferedReader(new FileReader(employeJsonDataFilePath));
             Employee employee = gson.fromJson(bufferReader, Employee.class);
             return employee;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Json file not found at path : " + customerFilePath);
+            throw new RuntimeException("Json file not found at path : " + employeJsonDataFilePath);
         } finally {
             try {
                 if (bufferReader != null) bufferReader.close();
