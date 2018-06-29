@@ -12,9 +12,8 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
-    private SHAssignation assignment;
-    private SHAssignmentNewModal assignmentNewModal;
-    private SHAssignmentEditModal assignmentEditModal;
+   private SHEquipmentType equipmentType;
+   private SHEquipmentTypeForm equipmentTypeForm;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -26,28 +25,74 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-    @Given("^Click on 'Asignación de Equipos' button on Header page$")
-    public void click_on_Asignación_de_Equipos_button_on_Header_page() throws Throwable {
-        assignment = headerWithLogin.clickAssignTab();
-        assignment.isViewButtonVisible();
+
+    @Given("^Click on 'Equipos de Seguridad' button on Header page$")
+    public void click_on_Equipos_de_Seguridad_button_on_Header_page() throws Throwable {
+        equipmentType = headerWithLogin.clickEquipmentTab();
+
     }
 
-    /*@Given("^Click on 'Nueva asignación' button on 'Asignacion de equipos' page$")
-    public void click_on_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
-        assignmentNewModal = assignment.newAssignment();
+    @Given("^Click on the button 'Ver tipos de equipos registrados'$")
+    public void click_on_the_button_Ver_tipos_de_equipos_registrados() throws Throwable {
+        equipmentType.clickViewEquipmentType();
     }
 
-    @When("^The required information is filled out in the form$")
-    public void the_required_information_is_filled_out_in_the_form() throws Throwable {
-        assignmentNewModal.setData();
+    @Given("^Click on the button 'Nuevo registro'$")
+    public void click_on_the_button_Nuevo_registro() throws Throwable {
+        equipmentTypeForm = equipmentType.clickNewRegister();
     }
 
-    @When("^Click on 'Crear' button on modal 'Asignar equipo'$")
-    public void click_on_Crear_button_on_modal_Asignar_equipo() throws Throwable {
-        assignmentNewModal.registerNewAssignment();
-        assignmentNewModal.registeredAssignment();
+    @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
+    public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
+        equipmentTypeForm.setData();
     }
-*/
+
+    @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
+    public void click_on_Crear_button_on_modal_Nuevo_registro_de_tipo_de_equipo() throws Throwable {
+
+    }
+
+    @When("^I click on view button on list of  equipment types list$")
+    public void i_click_on_view_button_on_list_of_equipment_types_list() throws Throwable {
+
+    }
+
+    @Then("^verify the name of the equipment type in the modal 'Ver tipo de equipo'$")
+    public void verify_the_name_of_the_equipment_type_in_the_modal_Ver_tipo_de_equipo() throws Throwable {
+
+    }
+
+    @Then("^verify the desciption of the equipment type in the modal 'Ver tipo de equipo'$")
+    public void verify_the_desciption_of_the_equipment_type_in_the_modal_Ver_tipo_de_equipo() throws Throwable {
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
     @When("^Click on the edit button of an assignment$")
     public void click_on_the_edit_button_of_an_assignment() throws Throwable {
         assignmentEditModal = assignment.clicViewEditModal();
@@ -67,5 +112,5 @@ public class CommonSteps {
     @Then("^verify 'Observaciones' in the form 'Editar asignacion'$")
     public void verify_Observaciones_in_the_form_Editar_asignacion() throws Throwable {
         Assert.assertEquals(assignmentEditModal.getObservations(), "Asignacion", "Las observaciones no corresponden a este registro");
-    }
+    }*/
 }
