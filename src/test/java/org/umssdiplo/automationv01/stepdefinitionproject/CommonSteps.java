@@ -56,7 +56,7 @@ public class CommonSteps {
 
     @Then("^verify new registered equipment type \"([^\"]*)\" is shown in equipment type page$")
     public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String arg1) throws Throwable {
-
+        Assert.assertTrue(equipmentType.verifyListEquipmentType(),"No esta registrado");
     }
 
 
