@@ -9,5 +9,7 @@ Feature: SHDeleteAsign
       And Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'
       When The modal 'Confirmar eliminacion' is displayed
       And Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'
-      Then The message 'La asignacion se elimino correctamente' is displayed
+      And The message 'La asignacion se elimino correctamente' is displayed
+      Then The assignment to name "Juan  "is no longer present in the system
+
 
