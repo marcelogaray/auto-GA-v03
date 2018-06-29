@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 import java.util.List;
@@ -31,6 +32,7 @@ public class SHAccident extends BasePage {
     }
 
     public int getSizeOfRegisters() {
+        //Todo revisar ManageDriver.getInstance().getWebDriver();
         return listAccidents.size();
     }
 }
