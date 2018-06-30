@@ -49,7 +49,7 @@ public class CommonSteps {
     @And("^I logOut Form 'SMARTHOUSE' Page$")
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
-        login.logOut();
+        login.clicklogOutButton();
     }
 
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
