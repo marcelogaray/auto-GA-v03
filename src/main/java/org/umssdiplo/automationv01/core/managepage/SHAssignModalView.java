@@ -14,10 +14,19 @@ public class SHAssignModalView extends BasePage {
     @FindBy(name = "close")
     private WebElement close;
 
+    @FindBy(className = "mat-card")
+    private WebElement employeeName;
+
+    @FindBy(className = "mat-list-text")
+    private WebElement equipmentName;
+
     public boolean isModalDialogPresent() {
         return assignmentModal.isDisplayed();
     }
-    public void clickclose(){
-        CommonEvents.clickButton(closeX);
+    public String getEmployeeName(){
+        return employeeName.getText();
+    }
+    public void isButtonCloseVisible() {
+        CommonEvents.waitWebElementIsVisible(close);
     }
 }
