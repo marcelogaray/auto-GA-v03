@@ -32,8 +32,8 @@ public class CommonSteps {
         assignment = headerWithLogin.clickAssignTab();
     }
 
-    @When("^Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page$")
-    public void click_on_the_dumpster_button_to_remove_the_assignment_on_Asignacion_de_equipos_page() throws Throwable {
+    @When("^Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page$")
+    public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
         modalDelete = assignment.clicViewModal();
     }
 
@@ -41,7 +41,10 @@ public class CommonSteps {
     public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
         Assert.assertTrue(modalDelete.isEditDialogPresent());
     }
+    @When("^Obtain the total of assignments made to the employee$")
+    public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
 
+    }
     @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
     public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
         modalDelete.deleteOnEditForm();
@@ -62,8 +65,8 @@ public class CommonSteps {
         modalDelete.messageDelete();
     }
 
-    @Then("^The assignment is not present in the system$")
-    public void the_assignment_is_not_present_in_the_system() throws Throwable {
+    @Then("^The assignment is not present in the in the list of assignments made$")
+    public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
         modalDelete = assignment.clicViewModal();
         int assignments = countAssignments-1;
         Assert.assertEquals(modalDelete.getSizeAssignments(),assignments, "La asignacion no fue eliminada");

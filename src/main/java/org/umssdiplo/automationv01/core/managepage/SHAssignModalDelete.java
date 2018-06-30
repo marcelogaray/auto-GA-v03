@@ -47,4 +47,5 @@ public class SHAssignModalDelete extends BasePage {
             return listDeleteModal.size();
         }
 
+    public int 
 }
