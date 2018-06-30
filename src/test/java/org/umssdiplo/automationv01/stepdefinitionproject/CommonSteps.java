@@ -14,6 +14,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAssignation assignment;
     private SHAssignModalDelete modalDelete;
+    private countAssignments;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -64,7 +65,7 @@ public class CommonSteps {
     @Then("^The assignment is not present in the system$")
     public void the_assignment_is_not_present_in_the_system() throws Throwable {
         modalDelete = assignment.clicViewModal();
-        int assignments = countAssignment-1;
+        int assignments = countAssignments-1;
         Assert.assertEquals(modalDelete.getSizeAssignments(),assignments, "La asignacion no fue eliminada");
     }
 }
