@@ -45,6 +45,6 @@ public class CommonSteps {
 
     @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
     public void areaWithEmployeeMessageIsDisplayed() {
-        Assert.assertEquals(organization.getAlertMessage(), organization.getAreaWithEmployeeMessage());
+        Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
     }
 }

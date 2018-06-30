@@ -33,11 +33,6 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(removeOrganizationButton);
     }
 
-    public String getAreaWithEmployeeMessage() {
-        String message = String.format(PropertyAccessor.getInstance().getAreaWithEMployeeMessage(), PropertyAccessor.getInstance().getAreaIdForRemove());
-        return message;
-    }
-
     public String getAlertMessage() {
         return CommonEvents.getTextContent(messageAlert);
     }
