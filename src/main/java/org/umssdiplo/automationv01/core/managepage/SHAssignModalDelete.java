@@ -28,6 +28,9 @@ public class SHAssignModalDelete extends BasePage {
     @FindBy(className = "mat-list")
     private WebElement listAssignments;
 
+    @FindBy(name = "closeEdit")
+    private WebElement closeModalEdit;
+
     public boolean isEditDialogPresent() {
         return editModal.isDisplayed();
     }
@@ -58,5 +61,10 @@ public class SHAssignModalDelete extends BasePage {
 
     public void isListPresent() {
         CommonEvents.waitWebElementIsVisible(listAssignments);
+    }
+
+    public void closeEditModal(){
+        isDeleteButtonPresent();
+        CommonEvents.clickButton(closeModalEdit);
     }
 }

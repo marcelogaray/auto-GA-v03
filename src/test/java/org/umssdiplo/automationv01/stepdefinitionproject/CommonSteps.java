@@ -76,4 +76,11 @@ public class CommonSteps {
         int assignments = countAssignments - 1;
         Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
     }
+
+    @And("^Logout system$")
+    public void logout_system() throws Throwable {
+        modalDelete.closeEditModal();
+        login = headerWithoutLogin.openLoginPage();
+        assignment.logOutSystem();
+    }
 }

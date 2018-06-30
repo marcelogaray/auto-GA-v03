@@ -12,5 +12,6 @@ Feature: SHDeleteAsign
       And Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'
       And The message 'La asignacion se elimino correctamente' is displayed
       Then The assignment is not present in the in the list of assignments made
+      And Logout system
 
 
