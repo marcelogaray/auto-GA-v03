@@ -39,12 +39,16 @@ public class CommonSteps {
 
     @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
     public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
-        Assert.assertTrue(modalDelete.isEditDialogPresent());
+        Assert.assertTrue(modalDelete.isEditDialogPresent(), "El modal 'Editar asignación' no se desplego");
     }
+
     @When("^Obtain the total of assignments made to the employee$")
     public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
-
+        modalDelete.isDeleteButtonPresent();
+        modalDelete.isListPresent();
+        countAssignments = modalDelete.getSizeAssignments();
     }
+
     @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
     public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
         modalDelete.deleteOnEditForm();
@@ -52,7 +56,7 @@ public class CommonSteps {
 
     @When("^The modal 'Confirmar eliminacion' is displayed$")
     public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
-        Assert.assertTrue(modalDelete.isConfirmModalPresent());
+        Assert.assertTrue(modalDelete.isConfirmModalPresent(), "El modal 'Confirmar eliminacion' no se desplego");
     }
 
     @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
@@ -68,7 +72,8 @@ public class CommonSteps {
     @Then("^The assignment is not present in the in the list of assignments made$")
     public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
         modalDelete = assignment.clicViewModal();
-        int assignments = countAssignments-1;
-        Assert.assertEquals(modalDelete.getSizeAssignments(),assignments, "La asignacion no fue eliminada");
+        modalDelete.isDeleteButtonPresent();
+        int assignments = countAssignments - 1;
+        Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
     }
 }

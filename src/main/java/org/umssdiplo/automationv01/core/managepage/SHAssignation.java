@@ -9,7 +9,7 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "delete_assignment")
     private WebElement deleteElement;
 
-    public SHAssignModalDelete clicViewModal (){
+    public SHAssignModalDelete clicViewModal() {
         CommonEvents.clickButton(deleteElement);
         return new SHAssignModalDelete();
     }

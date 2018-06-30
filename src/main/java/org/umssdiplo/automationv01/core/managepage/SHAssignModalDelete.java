@@ -22,8 +22,11 @@ public class SHAssignModalDelete extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
     private WebElement okElement;
 
-    @FindBy(className = "mat-list" )
-    private List<WebElement> listDeleteModal;
+    @FindBy(name = "assignmentsList")
+    private List<WebElement> assignmentsList;
+
+    @FindBy(className = "mat-list")
+    private WebElement listAssignments;
 
     public boolean isEditDialogPresent() {
         return editModal.isDisplayed();
@@ -41,11 +44,19 @@ public class SHAssignModalDelete extends BasePage {
         CommonEvents.clickButton(AcceptDelete);
     }
 
-    public void messageDelete() { CommonEvents.clickButton(okElement);}
+    public void messageDelete() {
+        CommonEvents.clickButton(okElement);
+    }
 
-    public int getSizeAssignments(){
-            return listDeleteModal.size();
-        }
+    public int getSizeAssignments() {
+        return assignmentsList.size();
+    }
 
-    public int 
+    public void isDeleteButtonPresent() {
+        CommonEvents.waitWebElementIsVisible(confirmDelete);
+    }
+
+    public void isListPresent() {
+        CommonEvents.waitWebElementIsVisible(listAssignments);
+    }
 }
