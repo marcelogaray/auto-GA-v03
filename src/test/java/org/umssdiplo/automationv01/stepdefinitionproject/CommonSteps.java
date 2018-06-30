@@ -49,11 +49,12 @@ public class CommonSteps {
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
         Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-1-Ruben Moscoso", "El nombre del empleado no coincide");
-
     }
 
-    @Then("^Verify if the equipment assignment is correct$")
-    public void verify_if_the_equipment_assignment_is_correct() throws Throwable {
-        Assert.assertEquals(modalEdit.getEquipmentName(), "5", "El equipo no es el esperado");
+    @And("^Logout system$")
+    public void logout_system() throws Throwable {
+        modalEdit.closeModalEdit();
+        login = headerWithoutLogin.openLoginPage();
+        assignment.logOutSystem();
     }
 }

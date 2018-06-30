@@ -21,6 +21,9 @@ public class SHAssignModalEdit extends BasePage {
     @FindBy(name = "actualizar")
     private WebElement actualizarAssignment;
 
+    @FindBy(name = "closeEdit")
+    private WebElement closeModalEdit;
+
     public boolean isModalEditPresent() {
         return modalEdit.isDisplayed();
     }
@@ -46,5 +49,9 @@ public class SHAssignModalEdit extends BasePage {
     public void clickAssignmentSpecific() {
         isEditButtonVisible();
         CommonEvents.clickButton(editAssignmentInModal);
+    }
+
+    public void closeModalEdit() {
+        CommonEvents.clickButton(closeModalEdit);
     }
 }

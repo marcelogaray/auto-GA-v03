@@ -8,7 +8,8 @@ public class SHAssignation extends BasePage {
 
     @FindBy(name = "edit_assignment")
     private WebElement buttonEditModal;
-
+    @FindBy(name = "logout_button")
+    private WebElement logOut;
 
     public void isEditButtonVisible() {
         CommonEvents.waitWebElementIsVisible(buttonEditModal);
@@ -19,4 +20,14 @@ public class SHAssignation extends BasePage {
         CommonEvents.clickButton(buttonEditModal);
         return new SHAssignModalEdit();
     }
+
+    public void isLogoutButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(logOut);
+    }
+
+    public void logOutSystem() {
+        isLogoutButtonVisible();
+        CommonEvents.clickButton(logOut);
+    }
+
 }
