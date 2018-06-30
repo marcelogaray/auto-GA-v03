@@ -12,7 +12,7 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
 
-    @Given("^Given I loging to 'SMARTHOUSE' page")
+    @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
         headerWithoutLogin = LoadPage.headerWithoutLogin();
         login = headerWithoutLogin.openLoginPage();
@@ -21,5 +21,11 @@ public class CommonSteps {
     @And("^I fill properly credentials with admin user$")
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
+    }
+
+    @And("^I logOut Form 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
     }
 }

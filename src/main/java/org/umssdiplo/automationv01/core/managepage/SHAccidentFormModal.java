@@ -1,4 +1,4 @@
 package org.umssdiplo.automationv01.core.managepage;
 
-public class SHAccident extends BasePage {
+public class SHAccidentFormModal extends BasePage {
 }
