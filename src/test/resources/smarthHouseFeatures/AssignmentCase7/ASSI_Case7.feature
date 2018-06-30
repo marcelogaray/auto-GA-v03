@@ -10,6 +10,6 @@ Feature: SHDeleteAsign
       When The modal 'Confirmar eliminacion' is displayed
       And Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'
       And The message 'La asignacion se elimino correctamente' is displayed
-      Then The assignment to name "Juan  "is no longer present in the system
+      Then The assignment is not present in the system
 
 

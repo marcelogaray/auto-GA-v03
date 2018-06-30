@@ -56,8 +56,15 @@ public class CommonSteps {
         modalDelete.acceptDelete();
     }
 
-    @Then("^The message 'La asignacion se elimino correctamente' is displayed$")
+    @And("^The message 'La asignacion se elimino correctamente' is displayed$")
     public void the_message_La_asignacion_se_elimino_correctamente_is_displayed() throws Throwable {
         modalDelete.messageDelete();
+    }
+
+    @Then("^The assignment is not present in the system$")
+    public void the_assignment_is_not_present_in_the_system() throws Throwable {
+        modalDelete = assignment.clicViewModal();
+        int assignments = countAssignment-1;
+        Assert.assertEquals(modalDelete.getSizeAssignments(),assignments, "La asignacion no fue eliminada");
     }
 }
