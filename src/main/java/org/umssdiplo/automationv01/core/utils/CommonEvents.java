@@ -1,9 +1,6 @@
 package org.umssdiplo.automationv01.core.utils;
 
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
@@ -171,5 +168,13 @@ public class CommonEvents {
     public static boolean isAttributPresent(WebElement webElement, String attr) {
         String value = webElement.getAttribute(attr);
         return value != null && value.equals("true");
+    }
+
+    /**
+     * this method return a list of webelements base on class attribute
+     */
+    public static List<WebElement> findElementsClassName(WebElement webElement) {
+        List<WebElement> element = ManageDriver.getInstance().getWebDriver().findElements(By.className(webElement.getAttribute("class")));
+        return element;
     }
 }

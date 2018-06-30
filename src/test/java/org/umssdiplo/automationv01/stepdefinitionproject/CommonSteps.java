@@ -51,9 +51,13 @@ public class CommonSteps {
     public void fillModalFormWithOneValidReqData() {
         shAccidentFomModal.fillModalFomOneReqData();
     }
+    @When("^required data is filled on 'Registro Accidente' Modal Form$")
+    public void fillModalFormWithValidReqData() throws Throwable {
+        shAccidentFomModal.fillModalFomFullData();
+    }
 
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
-    public void clikOnBtnCrearAccModFom() {
+    public void clikOnBtnCrearAccModFom() throws Throwable {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
     }
 
@@ -61,8 +65,18 @@ public class CommonSteps {
     public void verifySuccessMessage() {
         Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
+    }
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
     public void verifyCrearBtnModalFomDisable() {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
+    }
+    @When("^click on 'aceptar' button from Alert message of Success$")
+    public void clikAcceptBtnAlert() throws Throwable {
+        shSwalNotification.clickAcceptBtn();
+    }
+
+    @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
+    public void verifyRegAccidentShown(String codigo) throws Throwable {
+        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
     }
 }
