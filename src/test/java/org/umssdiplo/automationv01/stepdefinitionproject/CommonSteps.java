@@ -14,7 +14,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAssignation assignment;
     private SHAssignModalDelete modalDelete;
-    private countAssignments;
+    private int countAssignments;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
