@@ -146,4 +146,12 @@ public class SHAccidentFormModal extends BasePage {
         setDescriptionField();
         setStatusSelectField();
     }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one required data
+     */
+    public void fillModalFomOneReqData() {
+        setEmployeeField();
+    }
 }
