@@ -48,15 +48,15 @@ public class CommonSteps {
     }
 
     @And("^I close de 'Registro Accidente'Form Modal$")
-    public void close_Accident_Modal_Form() {
+    public void close_Accident_Modal_Form() throws Throwable {
         shAccidentFomModal.closeModalDialog();
     }
 
     @When("^one required data is filled  on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithOneValidReqData() {
+    public void fillModalFormWithOneValidReqData() throws Throwable {
         shAccidentFomModal.fillModalFomOneReqData();
     }
-    
+
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
     public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
         shAccidentFomModal.fillModalFomFullData();
@@ -68,12 +68,12 @@ public class CommonSteps {
     }
 
     @Then("^verify Alert message of Success message is shown for new accident register$")
-    public void verifySuccessMessage() {
+    public void verifySuccessMessage() throws Throwable {
         Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
     }
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
-    public void verifyCrearBtnModalFomDisable() {
+    public void verifyCrearBtnModalFomDisable() throws Throwable {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
     }
     @When("^click on 'aceptar' button from Alert message of Success$")
