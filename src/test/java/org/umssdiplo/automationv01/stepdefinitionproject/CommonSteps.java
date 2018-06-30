@@ -33,18 +33,10 @@ public class CommonSteps {
         assignment = headerWithLogin.clickAssignTab();
     }
 
-    @When("^The assignments are listed on 'Asignacion de equipos' page$")
-    public void the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {
+    @Then("^Verify that the assignments are listed on 'Asignacion de equipos' page$")
+    public void verify_that_the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {
         Assert.assertTrue(assignment.assignationIsPresent(), "No se listan las asignaciones realizadas");
-    }
-
-    @Then("^Verify that the first employee on the list is \"([^\"]*)\" on 'Asignacion de equipos' page$")
-    public void verify_that_the_first_employee_on_the_list_is_on_Asignacion_de_equipos_page(String name) throws Throwable {
-
-    }
-
-    @Then("^Verify that all employees to whom equipment was assigned are listed on 'Asignacion de Equipos' page$")
-    public void verify_that_all_employees_to_whom_equipment_was_assigned_are_listed_on_Asignacion_de_Equipos_page() throws Throwable {
-
+        login = headerWithoutLogin.openLoginPage();
+        assignment.logOutSystem();
     }
 }

@@ -158,9 +158,8 @@ public class CommonEvents {
     public static void waitWebElementIsVisible(WebElement webElement) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
     }
-    public static List<WebElement> findElementsName(WebElement webElement) {
-        List<WebElement> element = ManageDriver.getInstance().getWebDriver().findElements(By.name(webElement.getAttribute("class")));
+    public static List<WebElement> findElementsClassName(WebElement webElement) {
+        List<WebElement> element = ManageDriver.getInstance().getWebDriver().findElements(By.className(webElement.getAttribute("class")));
         return element;
     }
-
 }
