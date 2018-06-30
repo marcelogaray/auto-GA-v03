@@ -33,8 +33,12 @@ public class SHAssignation extends BasePage {
 
     @FindBy(name = "view_assignment")
     private WebElement viewAssignment;
+
     @FindBy(name = "employeesWithAssignments")
     private WebElement equipmentAssignment;
+
+    @FindBy(className = "mat-list")
+    private List<WebElement> employeeWithassignments;
 
     public  boolean assignationIsPresent(){
         return viewAssignment.isEnabled();
@@ -43,5 +47,11 @@ public class SHAssignation extends BasePage {
         List<WebElement> elements = CommonEvents.findElementsName(equipmentAssignment);
         return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
 
+    }
+    public void isViewAssignmentVisible() {
+        CommonEvents.waitWebElementIsVisible(viewAssignment);
+    }
+    public int getSizeofEmployeesWithAssignments(){
+        return employeeWithassignments.size();
     }
 }
