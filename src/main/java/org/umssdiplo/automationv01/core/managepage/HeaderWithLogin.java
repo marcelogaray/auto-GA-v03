@@ -12,7 +12,7 @@ public class HeaderWithLogin extends BasePage {
     @FindBy(name = "emp_button")
     private WebElement employeeTab;
 
-    @FindBy(name = "accidents_button")
+    @FindBy(id = "accidentLink")
     private WebElement accidentsTab;
 
     @FindBy(name = "assignment_button")
@@ -29,7 +29,7 @@ public class HeaderWithLogin extends BasePage {
     }
 
     public SHAccident clickAccidentTab() {
-        CommonEvents.clickButton(employeeTab);
+        CommonEvents.clickButton(accidentsTab);
         return new SHAccident();
     }
 
