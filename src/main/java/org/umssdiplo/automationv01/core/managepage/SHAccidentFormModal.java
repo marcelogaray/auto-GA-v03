@@ -132,4 +132,18 @@ public class SHAccidentFormModal extends BasePage {
         setStatusSelectField();
         setAccidentTypeSelectField();
     }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one incomplete data
+     */
+    public void fillModalFomOneIncData() {
+        setEmployeeField();
+        setTitleField();
+        setCodeField();
+        setLevelRiskField();
+        setDateEventField();
+        setDescriptionField();
+        setStatusSelectField();
+    }
 }
