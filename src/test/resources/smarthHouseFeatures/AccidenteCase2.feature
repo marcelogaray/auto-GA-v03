@@ -8,3 +8,5 @@ Feature: SHAccident
     And click on 'Registrar Accidente' button on Accident Page
     When required data is filled on 'Registro Accidente' Modal Form
     Then 'Crear' button from 'Registro Accidente' Modal Form  should be enable
+    And I close de 'Registro Accidente'Form Modal
+    And  I logOut Form 'SMARTHOUSE' Page

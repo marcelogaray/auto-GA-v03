@@ -42,17 +42,23 @@ public class CommonSteps {
     }
 
     @And("^I close de 'Registro Accidente'Form Modal$")
-    public void close_Accident_Modal_Form() {
+    public void close_Accident_Modal_Form() throws Throwable {
         shAccidentFomModal.closeModalDialog();
     }
 
+    @And("^I logOut Form 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.logOut();
+    }
+
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithValidReqData() {
+    public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
         shAccidentFomModal.fillModalFomFullData();
     }
 
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
-    public void verifyCrearBtnModalFomEnable() {
+    public void verify_Crear_Btn_Modal_Fom_isEnable() throws Throwable {
         Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
     }
 }

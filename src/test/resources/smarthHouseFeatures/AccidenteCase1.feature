@@ -7,3 +7,5 @@ Feature: SHAccident
     And click on 'Accidentes' button on navigation NavigationBar
     When click on 'Registrar Accidente' button on Accident Page
     Then verify that 'Registro Accidente'Form Modal is Displayed
+    And I close de 'Registro Accidente'Form Modal
+    And  I logOut Form Page
