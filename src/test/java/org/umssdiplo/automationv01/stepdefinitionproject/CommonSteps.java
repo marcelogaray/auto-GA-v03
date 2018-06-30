@@ -98,4 +98,19 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
     }
+        @And("^I logOut Form 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clicklogOutButton();
+    }
+
+    @When("^required data is filled on 'Registro Accidente' Modal Form$")
+    public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
+        shAccidentFomModal.fillModalFomFullData();
+    }
+
+    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
+    public void verify_Crear_Btn_Modal_Fom_isEnable() throws Throwable {
+        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
+    }
 }

@@ -45,7 +45,7 @@ public class SHLogin extends BasePage {
         CommonEvents.waitWebElementIsVisible(logOutBtn);
     }
 
-    public void logOut() {
+    public void clicklogOutButton(() {
         CommonEvents.jsClickElement(logOutBtn);
     }
 
