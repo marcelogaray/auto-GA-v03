@@ -45,4 +45,9 @@ public class CommonSteps {
     public void close_Accident_Modal_Form() {
         shAccidentFomModal.closeModalDialog();
     }
+
+    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
+    public void verifyCrearBtnModalFomDisable() {
+        Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
+    }
 }

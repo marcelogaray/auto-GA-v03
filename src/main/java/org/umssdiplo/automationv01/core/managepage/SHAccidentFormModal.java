@@ -72,4 +72,5 @@ public class SHAccidentFormModal extends BasePage {
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
+
 }
