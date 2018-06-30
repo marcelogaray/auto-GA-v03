@@ -6,7 +6,7 @@ import org.testng.annotations.AfterTest;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 @CucumberOptions(
-        features = {"src/test/resources/smarthHouseFeatures/AccidenteCase1.feature"},
+        features = {"src/test/resources/smarthHouseFeatures/AccidenteCase7.feature"},
         format = {"pretty",
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",

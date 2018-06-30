@@ -73,4 +73,16 @@ public class SHAccidentFormModal extends BasePage {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
 
+    public void setEmployeeField() {
+        CommonEvents.jsClickElement(employeeAuto);
+        CommonEvents.jsClickElement(employeeOption);
+    }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one required data
+     */
+    public void fillModalFomOneReqData() {
+        setEmployeeField();
+    }
 }

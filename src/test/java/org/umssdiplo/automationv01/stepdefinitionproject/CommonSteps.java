@@ -46,6 +46,11 @@ public class CommonSteps {
         shAccidentFomModal.closeModalDialog();
     }
 
+    @When("^one required data is filled  on 'Registro Accidente' Modal Form$")
+    public void fillModalFormWithOneValidReqData() {
+        shAccidentFomModal.fillModalFomOneReqData();
+    }
+
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
     public void verifyCrearBtnModalFomDisable() {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
