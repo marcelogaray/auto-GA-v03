@@ -44,6 +44,9 @@ public class SHLogin extends BasePage {
     public void isLogoutButtonVisible() {
         CommonEvents.waitWebElementIsVisible(logOutBtn);
     }
+    public void clickLogOutButton() {
+        CommonEvents.jsClickElement(logOutBtn);
+    }
 
     public HeaderWithLogin fillCredentials() {
         setUsernameInputField();

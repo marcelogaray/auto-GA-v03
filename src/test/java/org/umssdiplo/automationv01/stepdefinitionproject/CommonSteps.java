@@ -27,6 +27,11 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
+    @And("^I logOut From 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
+    }
 
     @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
     public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
