@@ -73,6 +73,11 @@ public class SHAccidentFormModal extends BasePage {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
 
+    public SHSwalNotification clickBtnCrear() {
+        CommonEvents.jsClickElement(crearBtn);
+        return new SHSwalNotification();
+    }
+
     public void setEmployeeField() {
         CommonEvents.jsClickElement(employeeAuto);
         CommonEvents.jsClickElement(employeeOption);
