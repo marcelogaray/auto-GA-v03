@@ -61,6 +61,10 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.isVisible(modalDialog);
     }
 
+    public void closeModalDialog() {
+        CommonEvents.jsClickElement(closeBtn);
+    }
+
     public boolean isModalDialogPresent() {
         return modalDialog.isDisplayed();
     }
