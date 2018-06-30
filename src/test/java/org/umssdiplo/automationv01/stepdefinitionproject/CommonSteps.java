@@ -45,6 +45,6 @@ public class CommonSteps {
 
     @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
     public void areaWithEmployeeMessageIsDisplayed() {
-        Assert.assertEquals(organization.getAreaWithEmployeeMessage(), organization.getAlertMessage());
+        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
     }
 }
