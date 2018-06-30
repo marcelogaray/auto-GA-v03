@@ -56,8 +56,9 @@ public class CommonSteps {
     public void fillModalFormWithOneValidReqData() {
         shAccidentFomModal.fillModalFomOneReqData();
     }
+    
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithValidReqData() throws Throwable {
+    public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
         shAccidentFomModal.fillModalFomFullData();
     }
 
@@ -102,11 +103,6 @@ public class CommonSteps {
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clicklogOutButton();
-    }
-
-    @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
-        shAccidentFomModal.fillModalFomFullData();
     }
 
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
