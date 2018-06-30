@@ -4,9 +4,10 @@ Feature: SHViewModalVerAsignacion
       Given Given I loging to 'SMARTHOUSE' page
       And I fill properly credentials with admin user
       When Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed
-      And Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page
+      And Click on the edit button to the first assignment on 'Asignacion de equipos' page
       When The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee
-      And Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'
-      Then The modal 'Confirmar eliminacion' is displayed
+      Then Verify if the employee's name is correct
+      Then Verify if the equipment assignment is correct
+
 
 

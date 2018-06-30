@@ -6,11 +6,16 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAssignation extends BasePage {
 
-    @FindBy(name = "delete_assignment")
-    private WebElement deleteElement;
+    @FindBy(name = "edit_assignment")
+    private WebElement buttonEditModal;
 
-    public SHAssignModalDelete clicViewModal (){
-        CommonEvents.clickButton(deleteElement);
-        return new SHAssignModalDelete();
+
+    public void isEditButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(buttonEditModal);
+    }
+    public SHAssignModalEdit clickEditModal(){
+        isEditButtonVisible();
+        CommonEvents.clickButton(buttonEditModal);
+        return new SHAssignModalEdit();
     }
 }
