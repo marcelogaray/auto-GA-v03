@@ -4,7 +4,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
 import org.umssdiplo.automationv01.core.managepage.SHAssignation;
@@ -27,6 +26,7 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page, press the button 'Nueva Asignacion' on 'Asignacion de Equipos' page$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_press_the_button_Nueva_Asignacion_on_Asignacion_de_Equipos_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
@@ -48,9 +48,10 @@ public class CommonSteps {
     public void la_asignacion_fue_registrada_correctamente_information_message_should_be_displayed() throws Throwable {
         assignment.registeredAssignment();
     }
-    @And ("^Logout system$")
-    public void logout_system() throws Throwable{
-        login = headerWithoutLogin.openLoginPage();
-        assignment.logOutSystem();
+
+    @And("^I logOut From 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
     }
 }

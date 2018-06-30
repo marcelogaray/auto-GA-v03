@@ -30,7 +30,7 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-dialog-0")
     private WebElement employeeOption;
 
-    @FindBy(id= "mat-option-13")
+    @FindBy(id = "mat-option-13")
     private WebElement employeeSelect;
 
     @FindBy(id = "mat-dialog-0")
@@ -46,14 +46,16 @@ public class SHAssignation extends BasePage {
     public void isCrearButtonVisible() {
         CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
     }
+
     public boolean isCrearButtonEnabled() {
         acceptNewAssignment.isEnabled();
         return isCrearButtonEnabled();
     }
 
-    public void newAssignment(){
+    public void newAssignment() {
         CommonEvents.clickButton(addAssignmentButton);
     }
+
     public void setData() {
         String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
         isCrearButtonVisible();
@@ -63,11 +65,13 @@ public class SHAssignation extends BasePage {
         CommonEvents.jsClickElement(equipmentSelect);
         CommonEvents.setInputField(observationsElement, observations);
     }
-    public void registerNewAssignment(){
+
+    public void registerNewAssignment() {
 
         CommonEvents.jsClickElement(acceptNewAssignment);
     }
-    public void registeredAssignment(){
+
+    public void registeredAssignment() {
 
         CommonEvents.jsClickElement(Ok);
     }
