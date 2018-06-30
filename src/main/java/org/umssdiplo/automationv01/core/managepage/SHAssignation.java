@@ -2,6 +2,9 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.utils.CommonEvents;
+
+import java.util.List;
 
 public class SHAssignation extends BasePage {
     @FindBy(name = "assignment_button")
@@ -30,9 +33,15 @@ public class SHAssignation extends BasePage {
 
     @FindBy(name = "view_assignment")
     private WebElement viewAssignment;
-
+    @FindBy(name = "employeesWithAssignments")
+    private WebElement equipmentAssignment;
 
     public  boolean assignationIsPresent(){
         return viewAssignment.isEnabled();
+    }
+    public boolean verifyAssignments (String name){
+        List<WebElement> elements = CommonEvents.findElementsName(equipmentAssignment);
+        return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
+
     }
 }
