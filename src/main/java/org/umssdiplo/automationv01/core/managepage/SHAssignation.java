@@ -13,7 +13,8 @@ public class SHAssignation extends BasePage {
     public void isEditButtonVisible() {
         CommonEvents.waitWebElementIsVisible(buttonEditModal);
     }
-    public SHAssignModalEdit clickEditModal(){
+
+    public SHAssignModalEdit clickEditModal() {
         isEditButtonVisible();
         CommonEvents.clickButton(buttonEditModal);
         return new SHAssignModalEdit();

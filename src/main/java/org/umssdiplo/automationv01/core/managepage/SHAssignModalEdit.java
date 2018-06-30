@@ -6,20 +6,45 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAssignModalEdit extends BasePage {
 
-    @FindBy(id = "mat-dialog-1" )
+    @FindBy(id = "mat-dialog-1")
     private WebElement modalEdit;
 
-    public boolean isModalEditDisplayed(){
-        CommonEvents.isPresent(modalEdit);
+    @FindBy(className = "mat-card")
+    private WebElement employeeName;
+
+    @FindBy(className = "mat-input-2")
+    private WebElement equipmentName;
+
+    @FindBy(name = "edit")
+    private WebElement editAssignmentInModal;
+
+    @FindBy(name = "actualizar")
+    private WebElement actualizarAssignment;
+
+    public boolean isModalEditPresent() {
+        return modalEdit.isDisplayed();
     }
 
+    public void isEditButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(editAssignmentInModal);
+    }
 
+    public void isActualizarButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(actualizarAssignment);
+    }
 
+    public String getEmployeeName() {
+        isActualizarButtonVisible();
+        return employeeName.getText();
+    }
 
+    public String getEquipmentName() {
+        isActualizarButtonVisible();
+        return equipmentName.getText();
+    }
 
-
-
-
-
-
+    public void clickAssignmentSpecific() {
+        isEditButtonVisible();
+        CommonEvents.clickButton(editAssignmentInModal);
+    }
 }

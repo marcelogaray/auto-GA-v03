@@ -6,6 +6,7 @@ Feature: SHViewModalVerAsignacion
       When Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed
       And Click on the edit button to the first assignment on 'Asignacion de equipos' page
       When The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee
+      And Click on the edit button of one of the equipments assigned to that employee
       Then Verify if the employee's name is correct
       Then Verify if the equipment assignment is correct
 

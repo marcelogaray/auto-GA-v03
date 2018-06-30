@@ -25,30 +25,35 @@ public class CommonSteps {
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
+
     @When("^Click on the edit button to the first assignment on 'Asignacion de equipos' page$")
     public void click_on_the_edit_button_to_the_first_assignment_on_Asignacion_de_equipos_page() throws Throwable {
-       modalEdit = assignment.clickEditModal();
+        modalEdit = assignment.clickEditModal();
     }
 
     @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
     public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
+        Assert.assertTrue(modalEdit.isModalEditPresent());
+    }
 
+    @And("^Click on the edit button of one of the equipments assigned to that employee$")
+    public void click_on_the_edit_button_of_one_of_the_equipments_assigned_to_that_employee() throws Throwable {
+        modalEdit.clickAssignmentSpecific();
     }
 
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-1-Ruben Moscoso", "El nombre del empleado no coincide");
 
     }
 
     @Then("^Verify if the equipment assignment is correct$")
     public void verify_if_the_equipment_assignment_is_correct() throws Throwable {
-
+        Assert.assertEquals(modalEdit.getEquipmentName(), "5", "El equipo no es el esperado");
     }
-
-
-
 }
