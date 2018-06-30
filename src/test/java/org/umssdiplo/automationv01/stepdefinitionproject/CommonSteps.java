@@ -27,18 +27,23 @@ public class CommonSteps {
     }
 
     @And("^click on 'Accidentes' button on navigation NavigationBar$")
-    public void clikOnAccTabNav() throws Throwable {
+    public void clik_On_Accidentes_On_Navigarion_Bar() throws Throwable {
         shAccident = headerWithLogin.clickAccidentTab();
     }
 
     @When("^click on 'Registrar Accidente' button on Accident Page$")
-    public void clickOnBtnRegAccPage() throws Throwable {
+    public void click_On_Reg_Accident_Btn_On_Acc_Page() throws Throwable {
         shAccidentFomModal = shAccident.ClickRegistarAccBtn();
     }
 
     @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
-    public void checkModalFomDisplayed() throws Throwable {
+    public void check_Accident_Modal_Form_Displayed() throws Throwable {
         Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
+    }
+
+    @And("^I close de 'Registro Accidente'Form Modal$")
+    public void close_Accident_Modal_Form() {
+        shAccidentFomModal.closeModalDialog();
     }
 
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
