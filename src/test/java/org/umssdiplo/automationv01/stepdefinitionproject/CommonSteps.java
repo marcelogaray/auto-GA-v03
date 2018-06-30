@@ -42,9 +42,14 @@ public class CommonSteps {
         modalView.isButtonCloseVisible();
     }
 
-
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-1 - Ruben Moscoso", "El nombre del empleado no es el esperado");
+    }
+    @And ("^Logout system$")
+    public void logout_system() throws Throwable{
+        modalView.closeModalView();
+        login = headerWithoutLogin.openLoginPage();
+        assignment.logOutSystem();
     }
 }
