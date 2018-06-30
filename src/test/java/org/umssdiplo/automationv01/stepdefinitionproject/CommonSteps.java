@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -8,6 +9,9 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
+import java.util.List;
+import java.util.Map;
+
 public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
@@ -15,6 +19,7 @@ public class CommonSteps {
     private SHAccident shAccident;
     private SHAccidentFormModal shAccidentFomModal;
     private SHSwalNotification shSwalNotification;
+    private SHAccidentVieWmodal shAccidentVieWmodal;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -75,8 +80,22 @@ public class CommonSteps {
         shSwalNotification.clickAcceptBtn();
     }
 
-    @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
-    public void verifyRegAccidentShown(String codigo) throws Throwable {
-        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
+    @Then("^click on view of  new registered accident on accedent page$")
+    public void clickViewModal(DataTable accientCode) throws Throwable {
+        List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
+        shAccidentVieWmodal = shAccident.clickViewModal(data.get(0).get("code"));
+    }
+
+    @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
+    public void verifyDefaulDataIsShown(DataTable defaulData) throws Throwable {
+        List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
+        Assert.assertTrue(shAccidentVieWmodal.getEmployee().equals(data.get(0).get("employeeCode")), "El Codigo de Empleado no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getTitle().equals(data.get(0).get("titleAcc")), "El Titulo del Acciente no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getCode().equals(data.get(0).get("codeAcc")), "El Codigo del accidente o no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getLevelRisk().equals(data.get(0).get("lvlRiskCode")), "El Nivel de Riesgo no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getAcidentType().equals(data.get(0).get("accTypeCode")), "El Tipo de Acciente no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getDateEvent().equals(data.get(0).get("dateEvent")), "La Fecha del Accidente no es la misma");
+        Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
+        Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
     }
 }
