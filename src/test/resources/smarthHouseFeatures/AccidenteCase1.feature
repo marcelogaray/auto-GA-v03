@@ -8,4 +8,4 @@ Feature: SHAccident
     When click on 'Registrar Accidente' button on Accident Page
     Then verify that 'Registro Accidente'Form Modal is Displayed
     And I close de 'Registro Accidente'Form Modal
-    And  I logOut Form Page
+    And  I logOut Form 'SMARTHOUSE' Page
