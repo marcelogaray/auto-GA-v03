@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
 import org.umssdiplo.automationv01.core.managepage.SHAssignation;
@@ -46,5 +47,10 @@ public class CommonSteps {
     @Then("^'La asignacion fue registrada correctamente' information message should be displayed on 'Asignacion de Equipos' page$")
     public void la_asignacion_fue_registrada_correctamente_information_message_should_be_displayed() throws Throwable {
         assignment.registeredAssignment();
+    }
+    @And ("^Logout system$")
+    public void logout_system() throws Throwable{
+        login = headerWithoutLogin.openLoginPage();
+        assignment.logOutSystem();
     }
 }

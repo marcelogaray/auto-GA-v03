@@ -39,11 +39,24 @@ public class SHAssignation extends BasePage {
     @FindBy(id = "mat-option-100")
     private WebElement equipmentSelect;
 
+    @FindBy(name = "logout_button")
+    private WebElement logOut;
+
+
+    public void isCrearButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
+    }
+    public boolean isCrearButtonEnabled() {
+        acceptNewAssignment.isEnabled();
+        return isCrearButtonEnabled();
+    }
+
     public void newAssignment(){
         CommonEvents.clickButton(addAssignmentButton);
     }
     public void setData() {
         String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
+        isCrearButtonVisible();
         CommonEvents.jsClickElement(employeeKeyElement);
         CommonEvents.jsClickElement(employeeSelect);
         CommonEvents.jsClickElement(equipmentKeyElement);

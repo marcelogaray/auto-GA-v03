@@ -8,3 +8,4 @@ Feature: SHListAssignments
     And user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal
     And click over 'Crear' button on 'Asignar equipo' modal
     Then 'La asignacion fue registrada correctamente' information message should be displayed on 'Asignacion de Equipos' page
+    And Logout system
