@@ -153,15 +153,6 @@ public class CommonEvents {
         }
     }
 
-    /**
-     * This method wait until as element visible.
-     *
-     * @param webElement Is web element.
-     */
-    public static void waitWebElementIsVisible(WebElement webElement) {
-        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-    }
-
     /***
      * Verify if an atributte is present on web element
      * @param webElement
@@ -171,5 +162,14 @@ public class CommonEvents {
     public static boolean isAttributPresent(WebElement webElement, String attr) {
         String value = webElement.getAttribute(attr);
         return value != null ? value.equals("true") : false;
+    }
+
+    /**
+     * This method wait until as element visible.
+     *
+     * @param webElement Is web element.
+     */
+    public static void waitWebElementIsVisible(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
     }
 }

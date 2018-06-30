@@ -14,6 +14,7 @@ public class CommonSteps {
     private HeaderWithoutLogin headerWithoutLogin;
     private SHAccident shAccident;
     private SHAccidentFormModal shAccidentFomModal;
+    private SHAccidentEditFormModal shAccidentEditFormModal;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -49,5 +50,21 @@ public class CommonSteps {
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
     public void verifyCrearBtnModalFomEnable() {
         Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
+    }
+
+    @And("^click on 'Crear' button on modal 'Registro de Accidente'$")
+    public void clickCreateButton() throws Throwable {
+        shAccidentFomModal.clickCreateButton();
+    }
+
+    @When("^I click on edit button on list of accidents$")
+    public void clickEditButton() throws Throwable {
+        shAccidentEditFormModal = shAccident.clickEditButton();
+    }
+
+    @Then("^verify 'Editar Accidente' form modal is present$")
+    public void checkEditFormModalIsPresent() throws Throwable {
+        Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El formulario de edición de accidentes " +
+                "no se cargo correctamente");
     }
 }
