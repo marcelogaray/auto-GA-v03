@@ -23,14 +23,16 @@ public class SHAssignModalView extends BasePage {
     public boolean isModalDialogPresent() {
         return assignmentModal.isDisplayed();
     }
-    public String getEmployeeName(){
+
+    public String getEmployeeName() {
         return employeeName.getText();
     }
+
     public void isButtonCloseVisible() {
         CommonEvents.waitWebElementIsVisible(close);
     }
 
-    public void closeModalView(){
+    public void closeModalView() {
         isButtonCloseVisible();
         CommonEvents.clickButton(close);
     }
