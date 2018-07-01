@@ -15,10 +15,11 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "logout_button")
     private WebElement logOut;
 
-    public SHAssignModalView clicViewModal (){
+    public SHAssignModalView clicViewModal() {
         CommonEvents.clickButton(view_assignmentElement);
         return new SHAssignModalView();
     }
+
     public void isLogoutButtonVisible() {
         CommonEvents.waitWebElementIsVisible(logOut);
     }
