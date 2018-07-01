@@ -86,6 +86,10 @@ public class CommonSteps {
         shSwalNotification.clickAcceptBtn();
     }
 
+    @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
+    public void verifyRegAccidentShown(String codigo) throws Throwable {
+        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
+    }
     @Then("^click on view of  new registered accident on accedent page$")
     public void clickViewModal(DataTable accientCode) throws Throwable {
         List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
