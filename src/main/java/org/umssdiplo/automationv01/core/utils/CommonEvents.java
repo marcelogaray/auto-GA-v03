@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.core.utils;
 
+import com.sun.xml.internal.ws.api.message.ExceptionHasMessage;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -151,6 +152,17 @@ public class CommonEvents {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    /***
+     * Verify if an atributte is present on web element
+     * @param webElement
+     * @param attr
+     * @return
+     */
+    public static boolean isAttributPresent(WebElement webElement, String attr) {
+        String value = webElement.getAttribute(attr);
+        return value != null ? value.equals("true") : false;
     }
 
     /**
