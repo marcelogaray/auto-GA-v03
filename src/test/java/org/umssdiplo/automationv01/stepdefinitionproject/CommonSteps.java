@@ -8,12 +8,6 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHAssignation;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
