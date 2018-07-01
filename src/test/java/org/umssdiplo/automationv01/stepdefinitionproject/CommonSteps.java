@@ -41,7 +41,5 @@ public class CommonSteps {
     @Then("^Verify that the assignments are listed on 'Asignacion de equipos' page$")
     public void verify_that_the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {
         Assert.assertTrue(assignment.assignationIsPresent(), "No se listan las asignaciones realizadas");
-        login = headerWithoutLogin.openLoginPage();
-        assignment.logOutSystem();
     }
 }

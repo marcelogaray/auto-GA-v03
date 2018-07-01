@@ -26,6 +26,7 @@ public class SHAssignation extends BasePage {
         return viewAssignment.isEnabled();
     }
 
+
     public void isLogoutButtonVisible() {
         CommonEvents.waitWebElementIsVisible(logOut);
     }
