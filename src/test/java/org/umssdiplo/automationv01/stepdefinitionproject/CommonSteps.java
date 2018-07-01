@@ -21,10 +21,10 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
+    private SHOrganization organization;
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
-    private SHOrganization organization;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -62,6 +62,26 @@ public class CommonSteps {
     public void is_message_code_duplicated_showed() throws Throwable {
         String messageExpected = String.format("El codigo de empleado %s ya se encuentra asignado a otro empleado", employeeData.getEmployeeCode());
         Assert.assertEquals(employeeForm.getAlertMessage(), messageExpected);
+    }
+
+    @And("^go to 'Estructura Organizacional' on 'Header' page$")
+    public void load_Organization_page() {
+        organization = headerWithLogin.clickOrganizationTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
+    public void goToArea() {
+        organization.openOrganizationDetailView();
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page$")
+    public void clickRemoveOrganizationButton() {
+        organization.removeOrganization();
+    }
+
+    @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
+    public void areaWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
     }
 
     @And("^go to 'Estructura Organizacional' on 'Header' page$")

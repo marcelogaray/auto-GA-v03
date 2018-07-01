@@ -35,4 +35,34 @@ public class SHOrganization extends BasePage {
     public String getAlertMessage() {
         return CommonEvents.getTextContent(messageAlert);
     }
+    @FindBy(name = "org_button")
+    private WebElement organizationTab;
+
+    @FindBy(name = "org_1")
+    private WebElement organizationDetailButton;
+
+    @FindBy(name = "newOrganization_button")
+    private WebElement addOrganizationButton;
+
+    @FindBy(name = "del_org_2")
+    private WebElement removeOrganizationButton;
+
+    @FindBy(id = "swal2-content")
+    private WebElement messageAlert;
+
+    public void openOrganizationDetailView() {
+        CommonEvents.clickButton(organizationDetailButton);
+    }
+
+    public void openNewOrganizationForm() {
+        CommonEvents.clickButton(addOrganizationButton);
+    }
+
+    public void removeOrganization() {
+        CommonEvents.clickButton(removeOrganizationButton);
+    }
+
+    public String getAlertMessage() {
+        return CommonEvents.getTextContent(messageAlert);
+    }
 }
