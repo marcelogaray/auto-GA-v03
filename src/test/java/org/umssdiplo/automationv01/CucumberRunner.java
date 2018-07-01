@@ -6,13 +6,13 @@ import org.testng.annotations.AfterTest;
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 @CucumberOptions(
-        features = {"src/test/resources/smarthHouseFeatures/ORG_Case3.feature"},
+        features = {"src/test/resources/smarthHouseFeatures/ORG_Case7.feature"},
         format = {"pretty",
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",
                 "junit:build/test-report.xml"}
 )
-public class CucumberRunner extends AbstractTestNGCucumberTests {
+public class CucumberRunner extends AbstractTestNGCucumberTests{
     @AfterTest
     public void closeWebDriver() {
         ManageDriver.getInstance().getWebDriver().quit();
