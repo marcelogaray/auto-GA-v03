@@ -37,12 +37,14 @@ public class CommonSteps {
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
+
     @When("^Click on 'Nueva asignacion'$")
     public void click_on_Nueva_asignacion() throws Throwable {
         assignment.newAssignment();
     }
+
     @And("^Create new assignment$")
-    public void create_new_assignment() throws Throwable{
+    public void create_new_assignment() throws Throwable {
         assignment.setData();
         assignment.registerNewAssignment();
         assignment.registeredAssignment();
@@ -89,7 +91,7 @@ public class CommonSteps {
     }
 
     @And("^I close edit modal$")
-    public void i_close_edit_modal() throws Throwable{
+    public void i_close_edit_modal() throws Throwable {
         modalDelete.closeEditModal();
     }
 }
