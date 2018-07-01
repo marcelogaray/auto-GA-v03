@@ -9,19 +9,6 @@ import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHAssignation;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
@@ -122,6 +109,12 @@ public class CommonSteps {
         organization.fillNewOrganizationForm(organizationData);
     }
 
+    @And("^fill 'New Organization' modal form on 'Organization' page with property data$")
+    public void fillFormOrganizationDataProperty() {
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case10");
+        organization.fillNewOrganizationFormCorrectly(organizationData);
+    }
+
     @And("^click 'Crear' button on 'New Organization' modal on 'Organization' page$")
     public void clickCreateOrganizationButton() {
         organization.clickSaveOrganizationButton();
@@ -214,14 +207,8 @@ public class CommonSteps {
     }
 
     @And("^verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page$")
-    public void verifyOrgCreatedMessage() {
+    public void verifyItemCreatedMessage() {
         Assert.assertEquals(organization.getAlertMessage(), "El Item fue creado correctamente");
-    }
-
-    @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
-
-    public void clickAceptarInformationMessage() {
-        organization.clickAcceptButtonMessage();
     }
 
     @Then("^new item must be present in items list$")
@@ -229,34 +216,9 @@ public class CommonSteps {
         Assert.assertTrue(organization.isNewItemVisible(), "The new item is not present in the list items.");
     }
 
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void goToEstOrg() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
-    @And("^click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page$")
-    public void goToArea() {
-        organization.openActiveOrganizationDetailView();
-    }
-
-    @And("^click 'Nuea Area' button on 'Organization' page$")
-    public void clickNewOrganization() {
-        organization.openNewOrganizationModalForm();
-    }
-
-    @And("^fill 'New Organization' modal form on 'Organization' page with 'start date' biger than 'end date'$")
-    public void fillFormOrganizationDataWithStartBigerEndDate() {
-        organization.fillNewOrganizationForm();
-    }
-
-    @And("^click 'Crear' button on 'New Organization' modal on 'Organization' page$")
-    public void clickCreateOrganizationButton() {
-        organization.clickSaveOrganizationButton();
-    }
-
     @And("^verify 'El área fue creado correctamente' message info is displayed on 'Organization' page$")
     public void verifyOrgCreatedMessage() {
-        Assert.assertEquals(organization.getAlertMessage(), organization.getMessageOrgCreated());
+        Assert.assertEquals(organization.getAlertMessage(), "El área fue creado correctamente");
     }
 
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
@@ -265,7 +227,7 @@ public class CommonSteps {
     }
 
     @Then("^the new area must be present in the areas list.$")
-    public void idStartDateBiggerEndDate() {
+    public void isNewAreaPresent() {
         Assert.assertTrue(organization.isNewOrganizationVisible(), "The new organization is not present in the list.");
     }
 }

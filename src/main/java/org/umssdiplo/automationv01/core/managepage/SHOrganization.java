@@ -67,10 +67,10 @@ public class SHOrganization extends BasePage {
     @FindBy(css = "#btn_date_picket_end > button")
     private WebElement endDateElementDatePicket;
 
-    @FindBy(xpath = "//td[ contains(@aria-label,'27 June 2018')]")
+    @FindBy(xpath = "//td[contains(@aria-label,'27 July 2018')]")
     private WebElement selectStartDatePicker;
 
-    @FindBy(xpath = "//td[ contains(@aria-label,'25 June 2018')]")
+    @FindBy(xpath = "//td[contains(@aria-label,'25 July 2018')]")
     private WebElement selectEndaDatePicker;
 
     @FindBy(name = "org_1")
@@ -129,6 +129,15 @@ public class SHOrganization extends BasePage {
 
     @FindBy(className = "swal2-confirm")
     private WebElement acceptButtonMessageConfirmation;
+
+    @FindBy(xpath = "//td[contains(@aria-label,'25 July 2018')]")
+    private WebElement selectDStartDatePicker;
+
+    @FindBy(xpath = "//td[contains(@aria-label,'28 July 2018')]")
+    private WebElement selectDEndaDatePicker;
+
+    @FindBy(xpath = "//h3[contains(text(),'Codigo: ORG-01345')]")
+    private WebElement newOrganizationElement;
 
     public void openActiveOrganizationDetailView() {
         CommonEvents.clickButton(organizationDetailButton);
@@ -207,8 +216,16 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(selectStartDatePicker);
     }
 
+    private void clickStartDateC() {
+        CommonEvents.clickButton(selectDStartDatePicker);
+    }
+
     private void clickEndDate() {
         CommonEvents.clickButton(selectEndaDatePicker);
+    }
+
+    private void clickEndDateC() {
+        CommonEvents.clickButton(selectDEndaDatePicker);
     }
 
     public void fillNewOrganizationForm(Organization organization) {
@@ -220,6 +237,19 @@ public class SHOrganization extends BasePage {
         clickStartDate();
         clickEndDatePicker();
         clickEndDate();
+        clickHierarchicalLevelSelect();
+        clickHierarchicalLevelOption();
+    }
+
+    public void fillNewOrganizationFormCorrectly(Organization organization) {
+        setOrgNameInputField(organization.getAreaNameNewOrg());
+        setOrgDescriptionInputField(organization.getDescriptionNewOrg());
+        setOrgGestionInputField(organization.getGestionNewOrg());
+        setOrgCodeInputField(organization.getCodeNewOrg());
+        clickStartDatePicker();
+        clickStartDateC();
+        clickEndDatePicker();
+        clickEndDateC();
         clickHierarchicalLevelSelect();
         clickHierarchicalLevelOption();
     }
@@ -321,137 +351,6 @@ public class SHOrganization extends BasePage {
         clickSalaryScaleOptionElement();
         clickTypeContractSelectElement();
         clickTypeContractOptionElement();
-    }
-    @FindBy(name = "org_1")
-    private WebElement organizationDetailButton;
-
-    @FindBy(name = "newOrganization_button")
-    private WebElement addOrganizationButton;
-
-    @FindBy(id = "swal2-content")
-    private WebElement messageAlert;
-
-    @FindBy(name = "name")
-    private WebElement nameElementNewOrgForm;
-
-    @FindBy(name = "description")
-    private WebElement descripitionElementNewOrgForm;
-
-    @FindBy(name = "gestion")
-    private WebElement gestionElementNewOrgForm;
-
-    @FindBy(name = "code")
-    private WebElement codeElementNewOrgForm;
-
-    @FindBy(name = "start")
-    private WebElement startElementNewOrgForm;
-
-    @FindBy(name = "end")
-    private WebElement endElementNewOrgForm;
-
-    @FindBy(name = "hierarchicalLevelKey")
-    private WebElement hierarchicalLevelSelectElementNewOrgForm;
-
-    @FindBy(id = "mat-option-4")
-    private WebElement hierarchicalLevelOptionElementNewOrgForm;
-
-    @FindBy(name = "saveNewOrganization")
-    private WebElement saveOrganizationButton;
-
-    @FindBy(css = "#btn_date_picket_start > button")
-    private WebElement startDateElementDatePicket;
-
-    @FindBy(css = "#btn_date_picket_end > button")
-    private WebElement endDateElementDatePicket;
-
-    @FindBy(xpath = "//td[ contains(@aria-label,'25 June 2018')]")
-    private WebElement selectDStartDatePicker;
-
-    @FindBy(xpath = "//td[ contains(@aria-label,'28 June 2018')]")
-    private WebElement selectDEndaDatePicker;
-
-    @FindBy(xpath = "//h3[contains(text(),'Codigo: ORG-01345')]")
-    private WebElement newOrganizationElement;
-
-    @FindBy(className = "swal2-confirm")
-    private WebElement acceptButtonMessageConfirmation;
-
-    public void openActiveOrganizationDetailView() {
-        CommonEvents.clickButton(organizationDetailButton);
-    }
-
-    public void openNewOrganizationModalForm() {
-        CommonEvents.clickButton(addOrganizationButton);
-    }
-
-    public String getAlertMessage() {
-        return CommonEvents.getTextContent(messageAlert);
-    }
-
-    public String getMessageOrgCreated() {
-        return PropertyAccessor.getInstance().getMessageOrgCreated();
-    }
-
-    private void setOrgNameInputField() {
-        CommonEvents.setDateInputField(nameElementNewOrgForm, PropertyAccessor.getInstance().getNewOrgName());
-    }
-
-    private void setOrgDescriptionInputField() {
-        CommonEvents.setDateInputField(descripitionElementNewOrgForm, PropertyAccessor.getInstance().getNewOrgDescription());
-    }
-
-    private void setOrgCodeInputField() {
-        CommonEvents.setDateInputField(codeElementNewOrgForm, PropertyAccessor.getInstance().getNewOrgCode());
-    }
-
-    private void setOrgGestionInputField() {
-        CommonEvents.setDateInputField(gestionElementNewOrgForm, PropertyAccessor.getInstance().getNewOrgGestion());
-    }
-
-    private void clickHierarchicalLevelSelect() {
-        CommonEvents.clickButton(hierarchicalLevelSelectElementNewOrgForm);
-    }
-
-    private void clickHierarchicalLevelOption() {
-        CommonEvents.clickButton(hierarchicalLevelOptionElementNewOrgForm);
-    }
-
-    private void clickStartDatePicker() {
-        CommonEvents.clickButton(startDateElementDatePicket);
-    }
-
-    private void clickEndDatePicker() {
-        CommonEvents.clickButton(endDateElementDatePicket);
-    }
-
-
-    private void clickStartDate() {
-        CommonEvents.clickButton(selectDStartDatePicker);
-    }
-
-    private void clickEndDate() {
-        CommonEvents.clickButton(selectDEndaDatePicker);
-    }
-
-    public void clickAcceptButtonMessage() {
-        CommonEvents.clickButton(acceptButtonMessageConfirmation);
-    }
-
-    public void fillNewOrganizationForm() {
-        setOrgNameInputField();
-        setOrgDescriptionInputField();
-        setOrgGestionInputField();
-        setOrgCodeInputField();
-        clickStartDatePicker();
-        clickStartDate();
-        clickEndDatePicker();
-        clickEndDate();
-        clickHierarchicalLevelSelect();
-        clickHierarchicalLevelOption();
-    }
-
-    public void clickSaveOrganizationButton() {
-        CommonEvents.clickButton(saveOrganizationButton);
     }
 
     public boolean isNewOrganizationVisible() {
