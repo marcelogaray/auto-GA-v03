@@ -11,16 +11,26 @@ public class SHAssignModalView extends BasePage {
     @FindBy(name = "close")
     private WebElement close;
 
-    @FindBy(name ="closeX")
+    @FindBy(name = "closeX")
     private WebElement closeX;
 
     public boolean isModalDialogPresent() {
         return assignmentModal.isDisplayed();
     }
-    public void clickclose(){
+
+    public void isCerrarButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(close);
+    }
+
+    public void isCloseXButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(closeX);
+    }
+
+    public void clickclose() {
         CommonEvents.clickButton(close);
     }
-    public void clickCloseX(){
+
+    public void clickCloseX() {
         CommonEvents.clickButton((closeX));
     }
 }
