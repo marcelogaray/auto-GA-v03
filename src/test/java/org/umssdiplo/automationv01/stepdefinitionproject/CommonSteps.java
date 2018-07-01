@@ -7,14 +7,8 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
+import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
@@ -24,6 +18,7 @@ public class CommonSteps {
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
+    private Organization organizationData;
     private SHOrganization organization;
 
     @Given("^I loging to 'SMARTHOUSE' page")
@@ -74,14 +69,15 @@ public class CommonSteps {
         organization.openActiveOrganizationDetailView();
     }
 
-    @And("^click 'Nuea Area' button on 'Organization' page$")
+    @And("^click 'Nueva Area' button on 'Organization' page$")
     public void clickNewOrganization() {
         organization.openNewOrganizationModalForm();
     }
 
     @And("^fill 'New Organization' modal form on 'Organization' page with 'start date' biger than 'end date'$")
     public void fillFormOrganizationDataWithStartBigerEndDate() {
-        organization.fillNewOrganizationForm();
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case7");
+        organization.fillNewOrganizationForm(organizationData);
     }
 
     @And("^click 'Crear' button on 'New Organization' modal on 'Organization' page$")
@@ -91,6 +87,7 @@ public class CommonSteps {
 
     @Then("^'La fecha de inicio de actividades debe ser menor a la fecha final' information message should be displayed.$")
     public void idStartDateBiggerEndDate() {
-        Assert.assertEquals(organization.getInitDateBigerEndDateMessage(), organization.getAlertMessage());
+        String expectedMessage = String.format("La fecha de inicio de actividades (%s) debe ser menor a la fecha final (%s).", organizationData.getInitDateActivitiesNewOrg(), organizationData.getEndDateActivitiesNewOrg());
+        Assert.assertEquals(organization.getAlertMessage(), expectedMessage);
     }
 }

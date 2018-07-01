@@ -2,8 +2,8 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
-import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class SHOrganization extends BasePage {
 
@@ -63,29 +63,24 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(addOrganizationButton);
     }
 
-    public String getInitDateBigerEndDateMessage() {
-        String message = String.format(PropertyAccessor.getInstance().getMessageErrorInitdateBigerEnddate(), PropertyAccessor.getInstance().getInitDateNewOrg(), PropertyAccessor.getInstance().getEndDateNewOrg());
-        return message;
-    }
-
     public String getAlertMessage() {
         return CommonEvents.getTextContent(messageAlert);
     }
 
-    private void setOrgNameInputField() {
-        CommonEvents.setDateInputField(nameElementNewOrgForm, PropertyAccessor.getInstance().getNameNewOrg());
+    private void setOrgNameInputField(String organizationName) {
+        CommonEvents.setDateInputField(nameElementNewOrgForm, organizationName);
     }
 
-    private void setOrgDescriptionInputField() {
-        CommonEvents.setDateInputField(descripitionElementNewOrgForm, PropertyAccessor.getInstance().getDescNewOrg());
+    private void setOrgDescriptionInputField(String organizationDescription) {
+        CommonEvents.setDateInputField(descripitionElementNewOrgForm, organizationDescription);
     }
 
-    private void setOrgCodeInputField() {
-        CommonEvents.setDateInputField(codeElementNewOrgForm, PropertyAccessor.getInstance().getCodeNewOrg());
+    private void setOrgCodeInputField(String organizationCode) {
+        CommonEvents.setDateInputField(codeElementNewOrgForm, organizationCode);
     }
 
-    private void setOrgGestionInputField() {
-        CommonEvents.setDateInputField(gestionElementNewOrgForm, PropertyAccessor.getInstance().getGestionNewOrg());
+    private void setOrgGestionInputField(String organizationGestion) {
+        CommonEvents.setDateInputField(gestionElementNewOrgForm, organizationGestion);
     }
 
     private void clickHierarchicalLevelSelect() {
@@ -113,11 +108,11 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(selectEndaDatePicker);
     }
 
-    public void fillNewOrganizationForm() {
-        setOrgNameInputField();
-        setOrgDescriptionInputField();
-        setOrgGestionInputField();
-        setOrgCodeInputField();
+    public void fillNewOrganizationForm(Organization organization) {
+        setOrgNameInputField(organization.getAreaNameNewOrg());
+        setOrgDescriptionInputField(organization.getDescriptionNewOrg());
+        setOrgGestionInputField(organization.getGestionNewOrg());
+        setOrgCodeInputField(organization.getCodeNewOrg());
         clickStartDatePicker();
         clickStartDate();
         clickEndDatePicker();
