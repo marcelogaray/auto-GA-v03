@@ -37,15 +37,20 @@ public class CommonSteps {
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
     }
+    @When("^Click on 'Nueva asignacion'$")
+    public void click_on_Nueva_asignacion() throws Throwable {
+        assignment.newAssignment();
+    }
+    @And("^Create new assignment$")
+    public void create_new_assignment() throws Throwable{
+        assignment.setData();
+        assignment.registerNewAssignment();
+        assignment.registeredAssignment();
+    }
 
     @When("^Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page$")
     public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
         modalDelete = assignment.clicViewModal();
-    }
-
-    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
-    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
-        Assert.assertTrue(modalDelete.isEditDialogPresent(), "El modal 'Editar asignación' no se desplego");
     }
 
     @When("^Obtain the total of assignments made to the employee$")
@@ -81,5 +86,10 @@ public class CommonSteps {
         modalDelete.isDeleteButtonPresent();
         int assignments = countAssignments - 1;
         Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
+    }
+
+    @And("^I close edit modal$")
+    public void i_close_edit_modal() throws Throwable{
+        modalDelete.closeEditModal();
     }
 }

@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import java.util.List;
 
 public class SHAssignModalDelete extends BasePage {
-    @FindBy(id = "mat-dialog-1")
+    @FindBy(id = "mat-dialog-0")
     private WebElement editModal;
 
     @FindBy(name = "confirm_delete")
@@ -28,7 +28,7 @@ public class SHAssignModalDelete extends BasePage {
     @FindBy(className = "mat-list")
     private WebElement listAssignments;
 
-    @FindBy(name = "closeEdit")
+    @FindBy(name = "closeX")
     private WebElement closeModalEdit;
 
     public boolean isEditDialogPresent() {
