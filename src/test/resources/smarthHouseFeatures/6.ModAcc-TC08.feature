@@ -7,6 +7,8 @@ Feature: SHAccident
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
     And required data is filled on 'Registro Accidente' Modal Form
+      | employeeCode | titleAcc         | codeAcc | lvlRiskCode | accTypeCode | dateEvent  | Description | statusCode |
+      | 1            | Titulo Accidente | Codigo  | 1           | 1           | 05-05-2018 | Descripcion | 1          |
     When click on 'Crear' button form 'Registrar Accidente' Modal Form
     Then  verify Alert message of Success message is shown for new accident register
     And click on 'aceptar' button from Alert message of Success

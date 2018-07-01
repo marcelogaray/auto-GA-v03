@@ -58,13 +58,17 @@ public class CommonSteps {
     }
 
     @When("^required data is filled on 'Registro Accidente' Modal Form$")
-    public void fill_Modal_Form_With_Valid_Req_Data() throws Throwable {
-        shAccidentFomModal.fillModalFomFullData();
+    public void fill_Modal_Form_With_Valid_Req_Data(DataTable defaulData) throws Throwable {
+        List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
+        shAccidentFomModal.fillModalFomFullData(data.get(0).get("titleAcc"), data.get(0).get("codeAcc"),
+                data.get(0).get("lvlRiskCode"), data.get(0).get("dateEvent"), data.get(0).get("Description"));
     }
 
     @When("^required data is filled witout one of them on 'Registro Accidente' Modal Form$")
-    public void fill_Modal_Form_Without_One_Valid_Req_Data() throws Throwable {
-        shAccidentFomModal.fillModalFomOneIncData();
+    public void fill_Modal_Form_Without_One_Valid_Req_Data(DataTable defaulData) throws Throwable {
+        List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
+        shAccidentFomModal.fillModalFomOneIncData(data.get(0).get("titleAcc"), data.get(0).get("codeAcc"),
+                data.get(0).get("lvlRiskCode"), data.get(0).get("dateEvent"), data.get(0).get("Description"));
     }
 
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
@@ -77,19 +81,23 @@ public class CommonSteps {
         Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
     }
+
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
     public void verify_Crear_Btn_Modal_Form_Disable() throws Throwable {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
     }
+
     @When("^click on 'aceptar' button from Alert message of Success$")
     public void clik_Accept_Btn_Alert() throws Throwable {
         shSwalNotification.clickAcceptBtn();
     }
 
-    @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
-    public void verify_Registered_Accident_Shown(String codigo) throws Throwable {
-        Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
+    @Then("^verify new registered accident is shown in accedent page$")
+    public void verify_Registered_Accident_Shown(DataTable accientCode) throws Throwable {
+        List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
+        Assert.assertTrue(shAccident.verifyListelement(data.get(0).get("codeAcc")), "Error, el Accidente no existe en la lista de accientes");
     }
+
     @Then("^click on view of  new registered accident on accedent page$")
     public void click_View_Modal_From_Accident_Page(DataTable accientCode) throws Throwable {
         List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
@@ -99,7 +107,8 @@ public class CommonSteps {
     @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
     public void verify_Defaul_Data_IsShown(DataTable defaulData) throws Throwable {
         List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
-        Assert.assertTrue(shAccidentVieWmodal.getEmployee().equals(data.get(0).get("employeeCode")), "El Codigo de Empleado no es el mismo");
+        Assert.assertTrue(shAccidentVieWmodal.getEmployee().equals(data.get(0).get("employeeCode")) ||
+                shAccidentVieWmodal.getEmployee().equals("1"), "El Codigo de Empleado no es el mismo");
         Assert.assertTrue(shAccidentVieWmodal.getTitle().equals(data.get(0).get("titleAcc")), "El Titulo del Acciente no es el mismo");
         Assert.assertTrue(shAccidentVieWmodal.getCode().equals(data.get(0).get("codeAcc")), "El Codigo del accidente o no es el mismo");
         Assert.assertTrue(shAccidentVieWmodal.getLevelRisk().equals(data.get(0).get("lvlRiskCode")), "El Nivel de Riesgo no es el mismo");
@@ -108,7 +117,8 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
     }
-        @And("^I logOut Form 'SMARTHOUSE' Page$")
+
+    @And("^I logOut Form 'SMARTHOUSE' Page$")
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clicklogOutButton();

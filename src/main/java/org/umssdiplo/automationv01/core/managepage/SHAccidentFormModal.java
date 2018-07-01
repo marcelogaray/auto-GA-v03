@@ -83,24 +83,24 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.jsClickElement(employeeOption);
     }
 
-    public void setTitleField() {
-        CommonEvents.setInputField(title, "Titulo Accidente");
+    public void setTitleField(String titleField) {
+        CommonEvents.setInputField(title, titleField);
     }
 
-    public void setCodeField() {
-        CommonEvents.setInputField(code, "Codigo");
+    public void setCodeField(String codeField) {
+        CommonEvents.setInputField(code, codeField);
     }
 
-    public void setLevelRiskField() {
-        CommonEvents.setInputField(levelRisk, "1");
+    public void setLevelRiskField(String levelRiskField) {
+        CommonEvents.setInputField(levelRisk, levelRiskField);
     }
 
-    public void setDateEventField() {
-        CommonEvents.setDateInputField(dateEvent, "5-5-2018");
+    public void setDateEventField(String dateEventField) {
+        CommonEvents.setDateInputField(dateEvent, dateEventField);
     }
 
-    public void setDescriptionField() {
-        CommonEvents.setInputField(description, "Descripcion");
+    public void setDescriptionField(String descriptionField) {
+        CommonEvents.setInputField(description, descriptionField);
     }
 
     /**
@@ -122,14 +122,14 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.jsClickElement(statusOption);
     }
 
-    public void fillModalFomFullData() {
+    public void fillModalFomFullData(String title, String code, String lvlRisk, String dateEvent, String descr) {
         isModalDialogPresent();
         setEmployeeField();
-        setTitleField();
-        setCodeField();
-        setLevelRiskField();
-        setDateEventField();
-        setDescriptionField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
         setStatusSelectField();
         setAccidentTypeSelectField();
     }
@@ -138,14 +138,14 @@ public class SHAccidentFormModal extends BasePage {
      * fill the modal form Registrar Accidente with
      * one incomplete data
      */
-    public void fillModalFomOneIncData() {
+    public void fillModalFomOneIncData(String title, String code, String lvlRisk, String dateEvent, String descr) {
         isModalDialogPresent();
         setEmployeeField();
-        setTitleField();
-        setCodeField();
-        setLevelRiskField();
-        setDateEventField();
-        setDescriptionField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
         setStatusSelectField();
     }
 
