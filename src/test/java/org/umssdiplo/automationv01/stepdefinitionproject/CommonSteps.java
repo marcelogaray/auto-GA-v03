@@ -62,6 +62,11 @@ public class CommonSteps {
         shAccidentFomModal.fillModalFomFullData();
     }
 
+    @When("^required data is filled witout one of them on 'Registro Accidente' Modal Form$")
+    public void fillModalFormWithoutOneValidReqData() throws Throwable {
+        shAccidentFomModal.fillModalFomOneIncData();
+    }
+
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
     public void clikOnBtnCrearAccModFom() throws Throwable {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
