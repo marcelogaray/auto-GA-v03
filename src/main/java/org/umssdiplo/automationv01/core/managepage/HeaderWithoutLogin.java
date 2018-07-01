@@ -26,6 +26,7 @@ public class HeaderWithoutLogin extends BasePage {
     }
 
     public void clickHomeTab() {
+        CommonEvents.waitUntil(1);
         CommonEvents.clickButton(homeBtn);
     }
 }

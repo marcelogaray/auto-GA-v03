@@ -77,11 +77,6 @@ public class CommonSteps {
         organization = headerWithLogin.clickOrganizationTab();
     }
 
-    @And("^click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page$")
-    public void goToArea() {
-        organization.openActiveOrganizationDetailView();
-    }
-
     @And("^click 'Nuea Area' button on 'Organization' page$")
     public void clickNewOrganization() {
         organization.openNewOrganizationModalForm();
