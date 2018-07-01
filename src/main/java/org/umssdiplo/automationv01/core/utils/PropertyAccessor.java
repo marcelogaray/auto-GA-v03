@@ -10,8 +10,7 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER = "smartHouseUsername";
     private static final String PASSWORD = "smartHousePassword";
-    private static final String ITEM_ID_FOR_REMOVE = "itemToRemove";
-    private static final String MESSAGE_ITEM_WITH_EMPLOYEE = "messageErrorItemWithEmployee";
+    private static final String JSON_DATA_FILE_PATH = "testDataResourcePath";
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -65,11 +64,7 @@ public class PropertyAccessor {
         return getDataProperty(PASSWORD);
     }
 
-    public String getItemIdForRemove() {
-        return getDataProperty(ITEM_ID_FOR_REMOVE);
-    }
-
-    public String getItemWithEMployeeMessage() {
-        return getDataProperty(MESSAGE_ITEM_WITH_EMPLOYEE);
+    public String getJsonDataFilePath() {
+        return getDataProperty(JSON_DATA_FILE_PATH);
     }
 }
