@@ -106,4 +106,9 @@ public class CommonSteps {
     public void isNewOrganizationButtonNotPresent() {
         Assert.assertFalse(organization.isNewOrganizationButtonPresent(), "'New Organization' button is present.");
     }
+
+    @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
+    public void itemWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
+    }
 }
