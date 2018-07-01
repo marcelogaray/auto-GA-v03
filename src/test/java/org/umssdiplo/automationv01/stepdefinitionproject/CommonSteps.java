@@ -8,13 +8,6 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
@@ -84,23 +77,8 @@ public class CommonSteps {
         Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
     }
 
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void load_Organization_page() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
-    @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
-    public void goToArea() {
-        organization.openOrganizationDetailView();
-    }
-
     @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
     public void clickRemoveItemButton() {
         organization.removeItem();
-    }
-
-    @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
-    public void areaWithEmployeeMessageIsDisplayed() {
-        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
     }
 }

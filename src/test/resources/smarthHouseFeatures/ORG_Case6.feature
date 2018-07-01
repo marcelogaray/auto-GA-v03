@@ -2,8 +2,8 @@
 Feature: ORG_Case6
 
   Scenario: Verificar que no se realice la eliminacion de un Item si es que este se encuentra asignado a un empleado
-    Given Given I loging to 'SMARTHOUSE' page
-    When I fill properly credentials with admin user
+    Given I loging to 'SMARTHOUSE' page
+    When fill properly credentials in 'Login' modal
     And go to 'Estructura Organizacional' on 'Header' page
     And click 'Detail' button on 'Gerencia General' option on 'Organization' page
     And click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page
