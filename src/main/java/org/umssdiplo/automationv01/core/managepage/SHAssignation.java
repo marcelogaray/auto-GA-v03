@@ -29,5 +29,4 @@ public class SHAssignation extends BasePage {
         isLogoutButtonVisible();
         CommonEvents.clickButton(logOut);
     }
-
 }

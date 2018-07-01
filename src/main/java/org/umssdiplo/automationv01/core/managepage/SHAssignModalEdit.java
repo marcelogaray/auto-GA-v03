@@ -21,7 +21,7 @@ public class SHAssignModalEdit extends BasePage {
     @FindBy(name = "actualizar")
     private WebElement actualizarAssignment;
 
-    @FindBy(name = "closeEdit")
+    @FindBy(name = "closeX")
     private WebElement closeModalEdit;
 
     public boolean isModalEditPresent() {

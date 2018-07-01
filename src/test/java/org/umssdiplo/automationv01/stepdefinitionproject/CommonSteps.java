@@ -26,6 +26,12 @@ public class CommonSteps {
         headerWithLogin = login.fillCredentials();
     }
 
+    @And("^I logOut From 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
+    }
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
@@ -48,13 +54,7 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-1-Ruben Moscoso", "El nombre del empleado no coincide");
-    }
-
-    @And("^Logout system$")
-    public void logout_system() throws Throwable {
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
         modalEdit.closeModalEdit();
-        login = headerWithoutLogin.openLoginPage();
-        assignment.logOutSystem();
     }
 }
