@@ -148,9 +148,9 @@ public class CommonSteps {
         organization.navigateToLegalOrg();
     }
 
-    @And("^click 'Eliminar' button on 'Organization' page$")
-    public void clickRemoveOrganizationButton() {
-        organization.removeOrganization();
+    @And("^click 'Eliminar' button on 'Organization' page.$")
+    public void clickRemoveOrganizationButton2() {
+        organization.removeOrganization2();
     }
 
     @And("^click 'Aceptar' button on 'Information Message' modal$")
