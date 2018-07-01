@@ -15,11 +15,11 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
+    private SHOrganization organization;
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
     private Organization organizationData;
-    private SHOrganization organization;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -65,7 +65,7 @@ public class CommonSteps {
     }
 
     @And("^click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page$")
-    public void goToArea() {
+    public void goToActiveArea() {
         organization.openActiveOrganizationDetailView();
     }
 
@@ -89,5 +89,55 @@ public class CommonSteps {
     public void idStartDateBiggerEndDate() {
         String expectedMessage = String.format("La fecha de inicio de actividades (%s) debe ser menor a la fecha final (%s).", organizationData.getInitDateActivitiesNewOrg(), organizationData.getEndDateActivitiesNewOrg());
         Assert.assertEquals(organization.getAlertMessage(), expectedMessage);
+    }
+
+    @And("^go to 'Estructura Organizacional' on 'Header' page$")
+    public void load_Organization_page() {
+        organization = headerWithLogin.clickOrganizationTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
+    public void goToArea() {
+        organization.openOrganizationDetailView();
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page$")
+    public void clickRemoveOrganizationButton() {
+        organization.removeOrganization();
+    }
+
+    @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
+    public void areaWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
+    }
+
+    @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
+    public void clickRemoveItemButton() {
+        organization.removeItem();
+    }
+
+    @And("^click 'Cancelar' button on 'New Organization' modal form$")
+    public void clickCancelNewOrganization() {
+        organization.clickCancelNewOrganizationButton();
+    }
+
+    @And("^go to 'Home' on 'Header' page$")
+    public void goToHome() {
+        headerWithoutLogin.clickHomeTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Disabled' option on 'Organization page'$")
+    public void goToDisabledArea() {
+        organization.openInactiveOrganizationDetailView();
+    }
+
+    @Then("^'Nueva Area' button is not present on 'Organization' page$")
+    public void isNewOrganizationButtonNotPresent() {
+        Assert.assertFalse(organization.isNewOrganizationButtonPresent(), "'New Organization' button is present.");
+    }
+
+    @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
+    public void itemWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
     }
 }
