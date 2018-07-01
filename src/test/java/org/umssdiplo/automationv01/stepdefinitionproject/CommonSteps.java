@@ -91,11 +91,6 @@ public class CommonSteps {
         Assert.assertEquals(organization.getAlertMessage(), expectedMessage);
     }
 
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void load_Organization_page() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
     @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
     public void goToArea() {
         organization.openOrganizationDetailView();
