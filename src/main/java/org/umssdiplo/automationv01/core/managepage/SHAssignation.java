@@ -42,9 +42,15 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "logout_button")
     private WebElement logOut;
 
+    @FindBy(name = "view_assignment")
+    private WebElement viewAssignment;
 
     public void isCrearButtonVisible() {
         CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
+    }
+
+    public void isViewButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(viewAssignment);
     }
 
     public boolean isCrearButtonEnabled() {
@@ -74,5 +80,10 @@ public class SHAssignation extends BasePage {
     public void registeredAssignment() {
 
         CommonEvents.jsClickElement(Ok);
+    }
+
+    public boolean assignationIsPresent() {
+        isViewButtonVisible();
+        return viewAssignment.isEnabled();
     }
 }

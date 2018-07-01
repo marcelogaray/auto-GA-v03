@@ -9,6 +9,12 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
+import org.umssdiplo.automationv01.core.managepage.SHAssignation;
+import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.List;
@@ -91,6 +97,16 @@ public class CommonSteps {
     public void is_message_code_duplicated_showed() throws Throwable {
         String messageExpected = String.format("El codigo de empleado %s ya se encuentra asignado a otro empleado", employeeData.getEmployeeCode());
         Assert.assertEquals(employeeForm.getAlertMessage(), messageExpected);
+    }
+
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
+
+    @Then("^Verify that the assignments are listed on 'Asignacion de equipos' page$")
+    public void verify_that_the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {
+        Assert.assertTrue(assignment.assignationIsPresent(), "No se listan las asignaciones realizadas");
     }
 
     @And("^click on 'Accidentes' button on navigation NavigationBar$")
