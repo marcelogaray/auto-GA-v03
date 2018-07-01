@@ -12,6 +12,18 @@ public class SHEquiposSegu extends BasePage {
     @FindBy(id = "crear")
     private WebElement crearEquipoBtn;
 
+    @FindBy(id = "Show_tipo_equipos")
+    private WebElement VerTipoEquipos;
+
+    @FindBy(id = "Nuevo_Tipo_Equipo")
+    private WebElement NuevoTipoEquipo;
+
+    @FindBy(id = "creartipoEquipo")
+    private WebElement CrearTipoEquipo;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
+    private WebElement confirmacionTipoEquipo;
+
     public SHEquiposSegu() {
         CommonEvents.isClickable(registrarEquipoBtn);
     }
@@ -26,4 +38,21 @@ public class SHEquiposSegu extends BasePage {
         return new SHEquiposSegurModal();
     }
 
+    public  SHEquiposSegurModal ClickVerTiposEquiposRegistrados() {
+        CommonEvents.clickButton(VerTipoEquipos);
+        return new SHEquiposSegurModal();
+    }
+
+    public  SHEquiposSegurModal ClickNuevoTipoEquipo() {
+        CommonEvents.clickButton(NuevoTipoEquipo);
+        return new SHEquiposSegurModal();
+    }
+    public SHEquiposSegurModal ClickCrearTipoEquipo(){
+        CommonEvents.clickButton(CrearTipoEquipo);
+        return new SHEquiposSegurModal();
+    }
+    public SHEquiposSegurModal ClickconfirmacionTipoEquipo(){
+        CommonEvents.clickButton(confirmacionTipoEquipo);
+        return new SHEquiposSegurModal();
+    }
 }

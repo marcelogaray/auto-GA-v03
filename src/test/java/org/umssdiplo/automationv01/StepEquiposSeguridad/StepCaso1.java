@@ -5,6 +5,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -36,7 +37,11 @@ public class StepCaso1 {
     public void clickOnNuevoRegistroDeEquiposButtonOnAccidentPage() throws Throwable {
         shEquiposSegurModal = shEquiposSegu.ClickRegistarEquipoBtn();
     }
+    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
+    public void checkModalFomDisplayed() throws Throwable {
+        Assert.assertTrue(shEquiposSegurModal.isModalDialogPresent(), "El Formulario se visualizo Correctamente");
 
+    }
     @When("^required data is filled witout one of them on 'nuevo registro' Modal Form$")
     public void requiredDataIsFilledWitoutOneOfThemOnNuevoRegistroModalForm() throws Throwable {
         shEquiposSegurModal.fillModalFomOneIncData();
