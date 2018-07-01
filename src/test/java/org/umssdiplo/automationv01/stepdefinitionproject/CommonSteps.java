@@ -81,4 +81,29 @@ public class CommonSteps {
     public void clickRemoveItemButton() {
         organization.removeItem();
     }
+
+    @And("^click 'Nuea Area' button on 'Organization' page$")
+    public void clickNewOrganization() {
+        organization.openNewOrganizationModalForm();
+    }
+
+    @And("^click 'Cancelar' button on 'New Organization' modal form$")
+    public void clickCancelNewOrganization() {
+        organization.clickCancelNewOrganizationButton();
+    }
+
+    @And("^go to 'Home' on 'Header' page$")
+    public void goToHome() {
+        headerWithoutLogin.clickHomeTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Disabled' option on 'Organization page'$")
+    public void goToDisabledArea() {
+        organization.openInactiveOrganizationDetailView();
+    }
+
+    @Then("^'Nueva Area' button is not present on 'Organization' page$")
+    public void isNewOrganizationButtonNotPresent() {
+        Assert.assertFalse(organization.isNewOrganizationButtonPresent(), "'New Organization' button is present.");
+    }
 }
