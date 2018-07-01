@@ -3,7 +3,7 @@ Feature: SHAccident
 
   Scenario: Verify that data inserted into 'Registrar Accidente' Modal Form is the same shown on 'Ver Accidente Registrado' modal view
     Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
+    And fill properly credentials in 'Login' modal
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
     And required data is filled on 'Registro Accidente' Modal Form
@@ -18,4 +18,4 @@ Feature: SHAccident
       | employeeCode | titleAcc         | codeAcc | lvlRiskCode | accTypeCode | dateEvent                    | Description | statusCode |
       | 18           | Titulo Accidente | Codigo2 | 1           | 1           | 2018-05-05T00:00:00.000+0000 | Descripcion | 1          |
     And I click on close button form view Accident  modal form from Accident page
-    And  I logOut Form 'SMARTHOUSE' Page
+    And I logOut From 'SMARTHOUSE' Page

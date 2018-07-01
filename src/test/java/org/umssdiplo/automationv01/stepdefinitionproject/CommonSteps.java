@@ -9,16 +9,6 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHAssignation;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.List;
@@ -73,7 +63,7 @@ public class CommonSteps {
     @And("^I logOut From 'SMARTHOUSE' Page$")
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
-        login.clickLogOutButton();
+        login.clicklogOutButton();
     }
 
     @And("^go to 'Employee' on 'Header' page$")
@@ -197,11 +187,5 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getDateEvent().equals(data.get(0).get("dateEvent")), "La Fecha del Accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
-    }
-
-    @And("^I logOut Form 'SMARTHOUSE' Page$")
-    public void logOut_From_SMATHOUSE_Page() throws Throwable {
-        headerWithoutLogin.openLoginPage();
-        login.clicklogOutButton();
     }
 }

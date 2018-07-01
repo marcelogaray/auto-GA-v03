@@ -3,7 +3,7 @@ Feature: SHAccident
 
   Scenario: Verify 'Crear' button from 'Registrar Accidente' Modal Form is Enable when requiered data is filled
     Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
+    And fill properly credentials in 'Login' modal
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
     When required data is filled on 'Registro Accidente' Modal Form
@@ -11,4 +11,4 @@ Feature: SHAccident
       | 1            | Titulo Accidente | Codigo  | 1           | 1           | 05-05-2018 | Descripcion | 1          |
     Then verify 'Crear' button from 'Registro Accidente' Modal Form is enable
     And I close de 'Registro Accidente'Form Modal
-    And  I logOut Form 'SMARTHOUSE' Page
+    And  I logOut From 'SMARTHOUSE' Page

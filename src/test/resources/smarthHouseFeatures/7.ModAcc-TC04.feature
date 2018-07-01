@@ -3,7 +3,7 @@ Feature: SHAccident
 
   Scenario: Verify new registered accidente is shown in the accidente page
     Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
+    And fill properly credentials in 'Login' modal
     And click on 'Accidentes' button on navigation NavigationBar
     And click on 'Registrar Accidente' button on Accident Page
     And required data is filled on 'Registro Accidente' Modal Form
@@ -14,4 +14,4 @@ Feature: SHAccident
     Then verify new registered accident is shown in accedent page
       | codeAcc |
       | Codigo1 |
-    And  I logOut Form 'SMARTHOUSE' Page
+    And  I logOut From 'SMARTHOUSE' Page
