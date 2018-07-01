@@ -178,11 +178,6 @@ public class CommonSteps {
         Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
     }
 
-    @And("^navigate to 'Gerencia General' option on 'Organization' page$")
-    public void goToGGArea() {
-        organization.navigateToLegalOrg();
-    }
-
     @And("^click 'Eliminar' button on 'Organization' page.$")
     public void clickRemoveOrganizationButton2() {
         organization.removeOrganization2();
@@ -198,11 +193,6 @@ public class CommonSteps {
         Assert.assertFalse(organization.isOrganizationMaktDetailButtonVisible(), "The Area was not be eliminated");
     }
 
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void load_Organization_page() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
     @And("^navigate to 'Gerencia General' option on 'Organization' page$")
     public void goToGGArea() {
         organization.openActiveOrganizationDetailView();
@@ -215,7 +205,7 @@ public class CommonSteps {
 
     @And("^fill 'New Item' modal form on 'Organization' page$")
     public void fillNewItemForm() {
-        organization.fillNewItemForm();
+        organization.fillNewItemForm("ITM-050");
     }
 
     @And("^click 'Crear' button on 'New Item' modal on 'Organization' page$")
@@ -225,7 +215,7 @@ public class CommonSteps {
 
     @And("^verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page$")
     public void verifyOrgCreatedMessage() {
-        Assert.assertEquals(organization.getAlertMessage(), organization.getMessageItemCreated());
+        Assert.assertEquals(organization.getAlertMessage(), "El Item fue creado correctamente");
     }
 
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")

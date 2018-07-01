@@ -91,6 +91,45 @@ public class SHOrganization extends BasePage {
     @FindBy(className = "swal2-confirm")
     private WebElement okButtonMessageAlert;
 
+    @FindBy(name = "newItem_button")
+    private WebElement newItemButton;
+
+    @FindBy(name = "code")
+    private WebElement codeFieldInputElement;
+
+    @FindBy(name = "cityKey")
+    private WebElement citySelectElement;
+
+    @FindBy(id = "mat-option-156")
+    private WebElement cityOptionElement;
+
+    @FindBy(name = "positionKey")
+    private WebElement positionSelectElement;
+
+    @FindBy(id = "mat-option-5")
+    private WebElement positionOptionElement;
+
+    @FindBy(name = "salaryScaleKey")
+    private WebElement salarialScaleSelectElement;
+
+    @FindBy(id = "mat-option-1155")
+    private WebElement salarialScaleOptionElement;
+
+    @FindBy(name = "typeContractKey")
+    private WebElement typeContractSelectElement;
+
+    @FindBy(id = "mat-option-0")
+    private WebElement typeContractOptionElement;
+
+    @FindBy(name = "save_new_item")
+    private WebElement saveItemButton;
+
+    @FindBy(xpath = ".//h3[contains(text(),'ITM-050')]")
+    private WebElement newItem;
+
+    @FindBy(className = "swal2-confirm")
+    private WebElement acceptButtonMessageConfirmation;
+
     public void openActiveOrganizationDetailView() {
         CommonEvents.clickButton(organizationDetailButton);
     }
@@ -219,54 +258,6 @@ public class SHOrganization extends BasePage {
         openOrganizationGAFDetailView();
         openOrganizationVtsDetailView();
     }
-    @FindBy(name = "org_1")
-    private WebElement organizationDetailButton;
-
-    @FindBy(name = "newItem_button")
-    private WebElement newItemButton;
-
-    @FindBy(id = "swal2-content")
-    private WebElement messageAlert;
-
-    @FindBy(name = "code")
-    private WebElement codeFieldInputElement;
-
-    @FindBy(name = "cityKey")
-    private WebElement citySelectElement;
-
-    @FindBy(id = "mat-option-156")
-    private WebElement cityOptionElement;
-
-    @FindBy(name = "positionKey")
-    private WebElement positionSelectElement;
-
-    @FindBy(id = "mat-option-5")
-    private WebElement positionOptionElement;
-
-    @FindBy(name = "salaryScaleKey")
-    private WebElement salarialScaleSelectElement;
-
-    @FindBy(id = "mat-option-1155")
-    private WebElement salarialScaleOptionElement;
-
-    @FindBy(name = "typeContractKey")
-    private WebElement typeContractSelectElement;
-
-    @FindBy(id = "mat-option-0")
-    private WebElement typeContractOptionElement;
-
-    @FindBy(name = "save_new_item")
-    private WebElement saveItemButton;
-
-    @FindBy(xpath = ".//h3[contains(text(),'ITM-050')]")
-    private WebElement newItem;
-
-    @FindBy(className = "swal2-confirm")
-    private WebElement acceptButtonMessageConfirmation;
-
-    public void openActiveOrganizationDetailView() {
-        CommonEvents.clickButton(organizationDetailButton);
-    }
 
     public void clickNewItemButton() {
         CommonEvents.clickButton(newItemButton);
@@ -276,8 +267,8 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(saveItemButton);
     }
 
-    private void setCodeInputField() {
-        CommonEvents.setInputField(codeFieldInputElement, PropertyAccessor.getInstance().getNewItemCode());
+    private void setCodeItemInputField(String itemCode) {
+        CommonEvents.setInputField(codeFieldInputElement, itemCode);
     }
 
     private void clickPositionSelectElement() {
@@ -320,17 +311,8 @@ public class SHOrganization extends BasePage {
         return CommonEvents.isVisible(newItem);
     }
 
-    public String getAlertMessage() {
-        return CommonEvents.getTextContent(messageAlert);
-    }
-
-    public String getMessageItemCreated() {
-        return PropertyAccessor.getInstance().getMessageItemCreated();
-
-    }
-
-    public void fillNewItemForm() {
-        setCodeInputField();
+    public void fillNewItemForm(String itemCode) {
+        setCodeItemInputField(itemCode);
         clickCitySelectElement();
         clickCityOptionElement();
         clickPositionSelectElement();
