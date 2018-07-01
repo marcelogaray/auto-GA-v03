@@ -53,7 +53,7 @@ public class CommonSteps {
     }
 
     @When("^one required data is filled  on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithOneValidReqData() throws Throwable {
+    public void fill_Modal_Form_WithOne_Valid_Req_Data() throws Throwable {
         shAccidentFomModal.fillModalFomOneReqData();
     }
 
@@ -63,41 +63,41 @@ public class CommonSteps {
     }
 
     @When("^required data is filled witout one of them on 'Registro Accidente' Modal Form$")
-    public void fillModalFormWithoutOneValidReqData() throws Throwable {
+    public void fill_Modal_Form_Without_One_Valid_Req_Data() throws Throwable {
         shAccidentFomModal.fillModalFomOneIncData();
     }
 
     @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
-    public void clikOnBtnCrearAccModFom() throws Throwable {
+    public void clik_On_Crear_Btn_Accident_Mododal_Form() throws Throwable {
         shSwalNotification = shAccidentFomModal.clickBtnCrear();
     }
 
     @Then("^verify Alert message of Success message is shown for new accident register$")
-    public void verifySuccessMessage() throws Throwable {
+    public void verify_Success_Message_is_Displayed() throws Throwable {
         Assert.assertTrue(shSwalNotification.isDialogPresent(), "Error, El dialogo no esta presente");
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
     }
     @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
-    public void verifyCrearBtnModalFomDisable() throws Throwable {
+    public void verify_Crear_Btn_Modal_Form_Disable() throws Throwable {
         Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
     }
     @When("^click on 'aceptar' button from Alert message of Success$")
-    public void clikAcceptBtnAlert() throws Throwable {
+    public void clik_Accept_Btn_Alert() throws Throwable {
         shSwalNotification.clickAcceptBtn();
     }
 
     @Then("^verify new registered accident \"([^\"]*)\" is shown in accedent page$")
-    public void verifyRegAccidentShown(String codigo) throws Throwable {
+    public void verify_Registered_Accident_Shown(String codigo) throws Throwable {
         Assert.assertTrue(shAccident.verifyListelement(codigo), "Error");
     }
     @Then("^click on view of  new registered accident on accedent page$")
-    public void clickViewModal(DataTable accientCode) throws Throwable {
+    public void click_View_Modal_From_Accident_Page(DataTable accientCode) throws Throwable {
         List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
         shAccidentVieWmodal = shAccident.clickViewModal(data.get(0).get("code"));
     }
 
     @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
-    public void verifyDefaulDataIsShown(DataTable defaulData) throws Throwable {
+    public void verify_Defaul_Data_IsShown(DataTable defaulData) throws Throwable {
         List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
         Assert.assertTrue(shAccidentVieWmodal.getEmployee().equals(data.get(0).get("employeeCode")), "El Codigo de Empleado no es el mismo");
         Assert.assertTrue(shAccidentVieWmodal.getTitle().equals(data.get(0).get("titleAcc")), "El Titulo del Acciente no es el mismo");

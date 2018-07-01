@@ -9,7 +9,7 @@ import java.util.List;
 
 public class SHAccident extends BasePage {
 
-    @FindBy(id = "RegistrarAccidente")
+    @FindBy(xpath = "//a[@id='RegistrarAccidente']")
     private WebElement registrarAccBtn;
 
     @FindBy(className = "mat-list-text")
@@ -23,7 +23,7 @@ public class SHAccident extends BasePage {
     }
 
     public SHAccidentFormModal ClickRegistarAccBtn() {
-        CommonEvents.clickButton(registrarAccBtn);
+        CommonEvents.jsClickElement(registrarAccBtn);
         return new SHAccidentFormModal();
     }
 

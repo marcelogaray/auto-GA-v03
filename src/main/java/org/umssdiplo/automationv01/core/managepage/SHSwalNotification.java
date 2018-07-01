@@ -27,6 +27,10 @@ public class SHSwalNotification extends BasePage {
     @FindBy(className = "swal2-confirm")
     private WebElement acceptBtn;
 
+    public SHSwalNotification() {
+        dialog.isDisplayed();
+    }
+
     public boolean isDialogPresent() {
         return dialog.isDisplayed();
     }

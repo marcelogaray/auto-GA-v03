@@ -29,6 +29,10 @@ public class SHAccidentVieWmodal extends BasePage {
     @FindBy(id = "cerrar")
     private WebElement cerrarBtn;
 
+    public SHAccidentVieWmodal() {
+        viewModal.isDisplayed();
+    }
+
     public String getEmployee() {
         return CommonEvents.getTextContent(employee);
     }

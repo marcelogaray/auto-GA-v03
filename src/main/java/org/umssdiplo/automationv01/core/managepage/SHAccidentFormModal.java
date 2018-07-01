@@ -123,6 +123,7 @@ public class SHAccidentFormModal extends BasePage {
     }
 
     public void fillModalFomFullData() {
+        isModalDialogPresent();
         setEmployeeField();
         setTitleField();
         setCodeField();
@@ -138,6 +139,7 @@ public class SHAccidentFormModal extends BasePage {
      * one incomplete data
      */
     public void fillModalFomOneIncData() {
+        isModalDialogPresent();
         setEmployeeField();
         setTitleField();
         setCodeField();
@@ -152,6 +154,7 @@ public class SHAccidentFormModal extends BasePage {
      * one required data
      */
     public void fillModalFomOneReqData() {
+        isModalDialogPresent();
         setEmployeeField();
     }
 }

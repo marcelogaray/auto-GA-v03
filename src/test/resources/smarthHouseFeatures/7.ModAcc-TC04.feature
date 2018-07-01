@@ -10,3 +10,4 @@ Feature: SHAccident
     And click on 'Crear' button form 'Registrar Accidente' Modal Form
     When  click on 'aceptar' button from Alert message of Success
     Then verify new registered accident "Codigo" is shown in accedent page
+    And  I logOut Form 'SMARTHOUSE' Page
