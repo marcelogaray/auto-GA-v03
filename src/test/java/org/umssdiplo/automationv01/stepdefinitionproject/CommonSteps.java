@@ -5,13 +5,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
@@ -24,6 +17,7 @@ public class CommonSteps {
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
+    private SHOrganization organization;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
