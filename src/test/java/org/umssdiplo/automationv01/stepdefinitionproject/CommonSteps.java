@@ -42,14 +42,30 @@ public class CommonSteps {
         shAccidentFomModal = shAccident.ClickRegistarAccBtn();
     }
 
-    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
-    public void check_Accident_Modal_Form_Displayed() throws Throwable {
-        Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
+    @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
+    public void clik_On_Crear_Btn_Accident_Mododal_Form() throws Throwable {
+        shSwalNotification = shAccidentFomModal.clickBtnCrear();
+    }
+
+    @When("^click on 'aceptar' button from Alert message of Success$")
+    public void clik_Accept_Btn_Alert() throws Throwable {
+        shSwalNotification.clickAcceptBtn();
+    }
+
+    @Then("^click on view of  new registered accident on accedent page$")
+    public void click_View_Modal_From_Accident_Page(DataTable accientCode) throws Throwable {
+        List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
+        shAccidentVieWmodal = shAccident.clickViewModal(data.get(0).get("code"));
     }
 
     @And("^I close de 'Registro Accidente'Form Modal$")
     public void close_Accident_Modal_Form() throws Throwable {
         shAccidentFomModal.closeModalDialog();
+    }
+
+    @And("^I click on close button form view Accident  modal form from Accident page$")
+    public void close_View_Accident_Modal_Form() throws Throwable {
+        shAccidentVieWmodal.closeAccidentViewDialog();
     }
 
     @When("^one required data is filled  on 'Registro Accidente' Modal Form$")
@@ -71,9 +87,9 @@ public class CommonSteps {
                 data.get(0).get("lvlRiskCode"), data.get(0).get("dateEvent"), data.get(0).get("Description"));
     }
 
-    @When("^click on 'Crear' button form 'Registrar Accidente' Modal Form$")
-    public void clik_On_Crear_Btn_Accident_Mododal_Form() throws Throwable {
-        shSwalNotification = shAccidentFomModal.clickBtnCrear();
+    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
+    public void check_Accident_Modal_Form_Displayed() throws Throwable {
+        Assert.assertTrue(shAccidentFomModal.isModalDialogPresent(), "El Formulario no se Cargo Correctamente");
     }
 
     @Then("^verify Alert message of Success message is shown for new accident register$")
@@ -82,14 +98,14 @@ public class CommonSteps {
         Assert.assertTrue(shSwalNotification.isSuccess(), "Error, No se muestra success");
     }
 
-    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be disable$")
-    public void verify_Crear_Btn_Modal_Form_Disable() throws Throwable {
-        Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
+    @Then("^verify 'Crear' button from 'Registro Accidente' Modal Form is enable$")
+    public void verify_Crear_Btn_Modal_Fom_isEnable() throws Throwable {
+        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
     }
 
-    @When("^click on 'aceptar' button from Alert message of Success$")
-    public void clik_Accept_Btn_Alert() throws Throwable {
-        shSwalNotification.clickAcceptBtn();
+    @Then("^verify 'Crear' button from 'Registro Accidente' Modal Form is disable$")
+    public void verify_Crear_Btn_Modal_Form_Disable() throws Throwable {
+        Assert.assertTrue(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta deshabilitado");
     }
 
     @Then("^verify new registered accident is shown in accedent page$")
@@ -98,14 +114,8 @@ public class CommonSteps {
         Assert.assertTrue(shAccident.verifyListelement(data.get(0).get("codeAcc")), "Error, el Accidente no existe en la lista de accientes");
     }
 
-    @Then("^click on view of  new registered accident on accedent page$")
-    public void click_View_Modal_From_Accident_Page(DataTable accientCode) throws Throwable {
-        List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
-        shAccidentVieWmodal = shAccident.clickViewModal(data.get(0).get("code"));
-    }
-
     @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
-    public void verify_Defaul_Data_IsShown(DataTable defaulData) throws Throwable {
+    public void verify_Default_Data_IsShown(DataTable defaulData) throws Throwable {
         List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
         Assert.assertTrue(shAccidentVieWmodal.getEmployee().equals(data.get(0).get("employeeCode")) ||
                 shAccidentVieWmodal.getEmployee().equals("1"), "El Codigo de Empleado no es el mismo");
@@ -122,10 +132,5 @@ public class CommonSteps {
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clicklogOutButton();
-    }
-
-    @Then("^'Crear' button from 'Registro Accidente' Modal Form  should be enable$")
-    public void verify_Crear_Btn_Modal_Fom_isEnable() throws Throwable {
-        Assert.assertFalse(shAccidentFomModal.isCrearBtnEnable(), "Error, El boton crear no esta habilitado");
     }
 }

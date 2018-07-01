@@ -64,4 +64,8 @@ public class SHAccidentVieWmodal extends BasePage {
     public String getStatus() {
         return CommonEvents.getTextContent(status);
     }
+
+    public void closeAccidentViewDialog() {
+        CommonEvents.jsClickElement(closeBtn);
+    }
 }

@@ -9,6 +9,6 @@ Feature: SHAccident
     When required data is filled on 'Registro Accidente' Modal Form
       | employeeCode | titleAcc         | codeAcc | lvlRiskCode | accTypeCode | dateEvent  | Description | statusCode |
       | 1            | Titulo Accidente | Codigo  | 1           | 1           | 05-05-2018 | Descripcion | 1          |
-    Then 'Crear' button from 'Registro Accidente' Modal Form  should be enable
+    Then verify 'Crear' button from 'Registro Accidente' Modal Form is enable
     And I close de 'Registro Accidente'Form Modal
     And  I logOut Form 'SMARTHOUSE' Page
