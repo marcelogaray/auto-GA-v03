@@ -17,7 +17,7 @@ public class SHAssignModalView extends BasePage {
     @FindBy(className = "mat-card")
     private WebElement employeeName;
 
-    @FindBy(className = "mat-list-text")
+    @FindBy(className = "mat-list-item-content")
     private WebElement equipmentName;
 
     public boolean isModalDialogPresent() {
@@ -26,6 +26,10 @@ public class SHAssignModalView extends BasePage {
 
     public String getEmployeeName() {
         return employeeName.getText();
+    }
+
+    public String getEquipmentName() {
+        return equipmentName.getText();
     }
 
     public void isButtonCloseVisible() {

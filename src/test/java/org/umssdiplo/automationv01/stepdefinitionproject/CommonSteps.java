@@ -53,4 +53,9 @@ public class CommonSteps {
         Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
         modalView.closeModalView();
     }
+
+    @Then("^Verify if the equipment assignment is correct$")
+    public void verify_if_the_equipment_assignment_is_correct() throws Throwable {
+        Assert.assertEquals(modalView.getEquipmentName(), "Casco", "El equipo no esta en la lista");
+    }
 }

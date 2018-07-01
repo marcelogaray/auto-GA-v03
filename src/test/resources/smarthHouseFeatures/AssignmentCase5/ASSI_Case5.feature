@@ -7,7 +7,4 @@ Feature: SHViewModalVerAsignacion
       And Click on the button to see the first assignment in the list on 'Asignacion de Equipos' page
       And The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee
       Then Verify if the employee's name is correct
-      And I logOut From 'SMARTHOUSE' Page
-
-
-
+      Then Verify if the equipment assignment is correct
