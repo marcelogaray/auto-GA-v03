@@ -16,12 +16,4 @@ public class SHAssignation extends BasePage {
         CommonEvents.clickButton(deleteElement);
         return new SHAssignModalDelete();
     }
-    public void isLogoutButtonVisible() {
-        CommonEvents.waitWebElementIsVisible(logOut);
-    }
-
-    public void logOutSystem() {
-        isLogoutButtonVisible();
-        CommonEvents.clickButton(logOut);
-    }
 }

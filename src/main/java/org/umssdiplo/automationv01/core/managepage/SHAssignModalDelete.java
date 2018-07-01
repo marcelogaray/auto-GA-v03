@@ -63,7 +63,7 @@ public class SHAssignModalDelete extends BasePage {
         CommonEvents.waitWebElementIsVisible(listAssignments);
     }
 
-    public void closeEditModal(){
+    public void closeEditModal() {
         isDeleteButtonPresent();
         CommonEvents.clickButton(closeModalEdit);
     }

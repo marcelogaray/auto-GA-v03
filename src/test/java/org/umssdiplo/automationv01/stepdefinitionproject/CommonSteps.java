@@ -27,6 +27,12 @@ public class CommonSteps {
         headerWithLogin = login.fillCredentials();
     }
 
+    @And("^I logOut From 'SMARTHOUSE' Page$")
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
+    }
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
     public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
@@ -75,12 +81,5 @@ public class CommonSteps {
         modalDelete.isDeleteButtonPresent();
         int assignments = countAssignments - 1;
         Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
-    }
-
-    @And("^Logout system$")
-    public void logout_system() throws Throwable {
-        modalDelete.closeEditModal();
-        login = headerWithoutLogin.openLoginPage();
-        assignment.logOutSystem();
     }
 }
