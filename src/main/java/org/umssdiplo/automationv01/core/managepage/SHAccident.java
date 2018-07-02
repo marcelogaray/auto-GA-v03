@@ -9,8 +9,14 @@ import java.util.List;
 
 public class SHAccident extends BasePage {
 
-    @FindBy(xpath = "//a[@id='RegistrarAccidente']")
+    @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccBtn;
+
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[2]")
+    private WebElement editButton;
+
+    @FindBy(xpath = "mat-dialog-4")
+    private WebElement nuevoRegistro;
 
     @FindBy(className = "mat-list-text")
     private WebElement listElemet;
@@ -18,8 +24,24 @@ public class SHAccident extends BasePage {
     @FindBy(className = "mat-list-item-content")
     private WebElement listElementContent;
 
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[3]")
+    private WebElement deleteButton;
+
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[1]")
+    private WebElement viewButton;
+
+    @FindBy(id = "listAccidents")
+    private List<WebElement> listAccidents;
+
     public SHAccident() {
         CommonEvents.isClickable(registrarAccBtn);
+    }
+
+    public SHAccidentFormModal clickRegistarAccBtn() {
+        if (CommonEvents.isClickable(registrarAccBtn)) {
+            CommonEvents.clickButton(registrarAccBtn);
+        }
+        return new SHAccidentFormModal();
     }
 
     public SHAccidentFormModal ClickRegistarAccBtn() {
@@ -27,9 +49,19 @@ public class SHAccident extends BasePage {
         return new SHAccidentFormModal();
     }
 
+    public SHDeleteConfirmModal clickDeleteButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(deleteButton);
+        return new SHDeleteConfirmModal();
+    }
+
     public boolean verifyListelement(String accCode) {
         List<WebElement> elements = CommonEvents.findElementsClassName(listElemet);
         return CommonEvents.findWebElement(elements, accCode).getText().equals(accCode);
+    }
+
+    public boolean isAccientePresent() {
+        return CommonEvents.isPresent(nuevoRegistro);
     }
 
     /***
@@ -45,5 +77,24 @@ public class SHAccident extends BasePage {
             i = i + 1;
         }
         return new SHAccidentVieWmodal();
+    }
+
+    public SHAccidentEditFormModal clickEditButton() {
+        CommonEvents.waitUntil(3000);
+        CommonEvents.clickButton(editButton);
+        return new SHAccidentEditFormModal();
+    }
+
+    public SHViewAccident clickViewButton() {
+        CommonEvents.waitUntil(5000);
+        if (CommonEvents.isClickable(viewButton)) {
+            CommonEvents.clickButton(viewButton);
+        }
+        return new SHViewAccident();
+    }
+
+    public int getSizeOfRegisters() {
+        //Todo revisar ManageDriver.getInstance().getWebDriver();
+        return listAccidents.size();
     }
 }
