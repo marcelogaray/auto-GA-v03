@@ -7,4 +7,5 @@ Feature: EMP_Case1
     And I click on 'Personal' option on 'Header' page
     And I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page
     Then I should see the Confirm alert with the next text: 'Estas Seguro que deseas eliminar al Empleado!'
+    And I close the Confirm alert
     And  I logOut Form 'SMARTHOUSE' Page

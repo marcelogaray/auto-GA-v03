@@ -91,8 +91,13 @@ public class CommonSteps {
     @Then("^I should see the Confirm alert with the next text: 'Estas Seguro que deseas eliminar al Empleado!'$")
     public void theConfirmAlertIsDisplayed() throws Throwable {
         Assert.assertTrue(employee.isAlertPresent(),"The confirm alert is not showing");
+
+    }
+    @And("^I close the Confirm alert$")
+    public void closeConfirmAler()throws Throwable{
         employee.clickCancelAlertButton();
     }
+
 
     @And("^I Confirm alert  'Estas Seguro que deseas eliminar al Empleado!', click in \"Si, Eliminar\" button$")
     public void clickConfirmAlert() {
@@ -103,6 +108,11 @@ public class CommonSteps {
     @Then("^I should see the alert with the next text: 'No se pudo eliminar porque tiene algun equipo o item asignado'$")
     public void theErrorAlertIsDisplayed() throws Throwable {
         Assert.assertTrue(employee.isAlertVisible(),"The Alert whit the application response is not showed");
+    }
+
+    @And("^I accept the Confirm alert$")
+    public void acceptConfirmAlert() {
+
         employee.clickAcceptAlertButton();
     }
 
@@ -132,13 +142,23 @@ public class CommonSteps {
 
     @Then("^I should see the 'Items' available to assign the employee$")
     public void itemOptionsDisplayed() throws Throwable {
-
         Assert.assertTrue(employee.isItemOptionsVisible(),"don't show the item options");
+    }
+
+    @And("^I click on cancel button of form of item assignment$")
+    public void cancelItemAssignmentModal() {
+
+        employee.cancelItemAssignmentModal();
     }
 
     @Then("^I should see the 'Crear Area' modal form$")
     public void theModalOrganizationIsDisplayed() throws Throwable {
         Assert.assertTrue(organizationForm.isModalFormPresent());
+    }
+
+    @And("^I click on cancel button of form of new organization$")
+    public void cancelModalOrganization() {
+
         organizationForm.cancelModal();
     }
 }
