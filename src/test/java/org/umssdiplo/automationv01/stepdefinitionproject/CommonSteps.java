@@ -33,6 +33,7 @@ public class CommonSteps {
     private SHAccidentEditFormModal shAccidentEditFormModal;
     private SHDeleteConfirmModal deleteConfirmModal;
     private SHViewAccident viewAccident;
+    private int countAccident;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -405,6 +406,17 @@ public class CommonSteps {
     @Then("^Verify if the status value is correct$")
     public void verifyStatusValueIsCorrect() throws Throwable {
         Assert.assertEquals(viewAccident.getStatus(), "1", "El valor del estado no es el correcto.");
+    }
+
+    @And("^I click on 'Aceptar' button the accident selected is deleted$")
+    public void clickConfirmButtonDeleteModal() throws Throwable {
+        shAccident = deleteConfirmModal.clickDeleteButton();
+    }
+
+    @Then("^Verify the size of accident registers decrease in a one item$")
+    public void compareListSize() throws Throwable {
+        int result = countAccident - 1;
+        Assert.assertEquals(shAccident.getSizeOfRegisters(), result, "No se elimino el registro seleccionado.");
     }
 
 }
