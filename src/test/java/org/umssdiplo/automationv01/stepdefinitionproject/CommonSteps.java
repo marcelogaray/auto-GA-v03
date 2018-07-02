@@ -5,10 +5,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
-import org.umssdiplo.automationv01.core.managepage.SHOrganization;
+import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
+import org.umssdiplo.automationv01.core.dataTypes.Organization;
+import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class CommonSteps {
@@ -16,6 +15,8 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHOrganization organization;
+    private SHOrganizationForm organizationForm;
+    private Organization organizationData;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -26,6 +27,13 @@ public class CommonSteps {
     @When("^I fill properly credentials with admin user$")
     public void fill_credentials_with_admin_user() throws Throwable {
         headerWithLogin = login.fillCredentials();
+    }
+
+    @And("^I logOut Form 'SMARTHOUSE' Page$")
+    
+    public void logOut_From_SMATHOUSE_Page() throws Throwable {
+        headerWithoutLogin.openLoginPage();
+        login.clickLogOutButton();
     }
 
     @And("^I go to 'Estructura Organizacional' on 'Header' page$")
@@ -43,26 +51,26 @@ public class CommonSteps {
     @And("^I click on 'Nueva Area' button on 'Organization Detail' page$")
     public void openModalOrganizationForm() {
 
-        organization.openModalOrganizationForm();
+        organizationForm = organization.openModalOrganizationForm();
     }
 
     @And("^I fill Organization information, specially Organization Code with 'ORG-0001'$")
     public void fillOrganizationDataInModalForm() {
-
-        organization.fillOrganizationDataInModalForm();
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData();
+        organizationForm.fillOrganizationDataInModalForm(organizationData);
     }
 
     @And("^I click on 'Crear' button in 'Crear Area' modal form$")
     public void saveOrganizationModalForm() {
 
-        organization.saveOrganizationModalForm();
+        organizationForm.saveOrganizationModalForm();
     }
 
     @Then("^I should see the alert with the next text: 'Already exists a Organization with the code ORG-0001'$")
      public void theAlertIsDisplayed() throws Throwable {
-        Assert.assertTrue(organization.isAlertPresent());
-        organization.pressConfirmAlertButton();
-        organization.cancelModal();
+        Assert.assertTrue(organizationForm.isAlertPresent(),"don't show the message");
+        organizationForm.pressConfirmAlertButton();
+        organizationForm.cancelModal();
      }
 
 
