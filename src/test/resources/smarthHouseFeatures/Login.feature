@@ -2,6 +2,6 @@
 Feature: SHLogin
 
   Scenario: Home page is displayed once set credential in login page
-    Given Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
+    Given I loging to 'SMARTHOUSE' page
+    And fill properly credentials in 'Login' modal
     And  I logOut From 'SMARTHOUSE' Page
