@@ -8,4 +8,8 @@ Feature: registrar un nuevo registro de 'tipo de equipo'
     When fill dates 'Nuevo Registro'
     And click on button 'Crear'
     Then click on button 'ok'
+    When click on edit
+    And modif desciption
+    Then click on 'actualizar'
+
 

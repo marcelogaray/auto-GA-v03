@@ -27,7 +27,8 @@ public class SHEquiposSegurModal extends BasePage {
     private WebElement Descipcion;
 
     @FindBy(id = "crear")
-    private WebElement crearBtn;
+    //*[@id="crear"]/button
+    private WebElement crearEquipoBtn;
 
     //############################ Ver Tipos De Equipos Registrados #################################
 
@@ -39,12 +40,10 @@ public class SHEquiposSegurModal extends BasePage {
 
 
     //######################## Metodos de Nuevo Registro de Equipos #################################
-    public boolean isModalDialogPresent() {
-        return modalDialog.isDisplayed();
-    }
 
     public boolean isCrearBtnEnable() {
-        return CommonEvents.isAttributPresent(crearBtn, "disabled");
+        return CommonEvents.isClickable(crearEquipoBtn);
+
     }
 
     public void setEquiposIndumentarias() {CommonEvents.setInputField(EquiposIndumentarias, "casco duro"); }

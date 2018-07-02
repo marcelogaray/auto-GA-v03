@@ -37,11 +37,11 @@ public class StepCaso1 {
     public void clickOnNuevoRegistroDeEquiposButtonOnAccidentPage() throws Throwable {
         shEquiposSegurModal = shEquiposSegu.ClickRegistarEquipoBtn();
     }
-    @Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
+    /*@Then("^verify that 'Registro Accidente'Form Modal is Displayed$")
     public void checkModalFomDisplayed() throws Throwable {
         Assert.assertTrue(shEquiposSegurModal.isModalDialogPresent(), "El Formulario se visualizo Correctamente");
 
-    }
+    }*/
     @When("^required data is filled witout one of them on 'nuevo registro' Modal Form$")
     public void requiredDataIsFilledWitoutOneOfThemOnNuevoRegistroModalForm() throws Throwable {
         shEquiposSegurModal.fillModalFomOneIncData();
