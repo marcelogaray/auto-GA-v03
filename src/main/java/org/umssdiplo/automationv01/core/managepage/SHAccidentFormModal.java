@@ -1,10 +1,7 @@
 package org.umssdiplo.automationv01.core.managepage;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAccidentFormModal extends BasePage {
@@ -67,18 +64,4 @@ public class SHAccidentFormModal extends BasePage {
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
     }
-
-
-    public void closeFromXButtonHeader() {
-        WebElement waitElement = (new WebDriverWait(webDriver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnClose")));
-        CommonEvents.clickButton(closeBtn);
-    }
-
-    public void closeFromCancelButton() {
-        WebElement waitElement = (new WebDriverWait(webDriver, 20))
-                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnCancel")));
-        CommonEvents.clickButton(cancelBtn);
-    }
-
 }

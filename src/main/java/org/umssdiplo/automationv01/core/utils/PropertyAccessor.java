@@ -55,13 +55,11 @@ public class PropertyAccessor {
         return getDataProperty(BASE_URL);
     }
 
-    public String getUser() { return getDataProperty(USER); }
+    public String getUser() {
+        return getDataProperty(USER);
+    }
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
-    }
-
-    public String getSHDataProperty(String data) {
-        return getDataProperty(data);
     }
 }
