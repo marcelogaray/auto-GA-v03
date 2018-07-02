@@ -5,6 +5,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
@@ -18,9 +19,9 @@ public class CommonSteps {
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
     private SHOrganization organization;
+    private SHEmployee employee;
     private SHOrganizationForm organizationForm;
     private Organization organizationData;
-    private SHEmployee employee;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -94,6 +95,20 @@ public class CommonSteps {
         Assert.assertTrue(employee.isAlertPresent(),"The confirm alert is not showing");
         employee.clickCancelAlertButton();
     }
+
+
+    @And("^I Confirm alert  'Estas Seguro que deseas eliminar al Empleado!', click in \"Si, Eliminar\" button$")
+    public void clickConfirmAlert() {
+
+        employee.clickConfirmAlertButton();
+    }
+
+    @Then("^I should see the alert with the next text: 'No se pudo eliminar porque tiene algun equipo o item asignado'$")
+    public void theErrorAlertIsDisplayed() throws Throwable {
+        Assert.assertTrue(employee.isAlertVisible(),"The Alert whit the application response is not showed");
+        employee.clickAcceptAlertButton();
+    }
+
 
 
 }
