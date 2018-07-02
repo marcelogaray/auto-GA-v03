@@ -9,3 +9,5 @@ Feature: ORG_Case3
     And fill new employee form on 'New Employee Form' page with duplicate 'employee code'
     And click over 'Guardar' button on 'New Employee Form' page
     Then 'El codigo de empleado ya se encuentra asignado a otro empleado' information message should be displayed
+    And click 'Aceptar' button on 'Message Information' modal on 'Employee Form' page
+    And  I logOut From 'SMARTHOUSE' Page

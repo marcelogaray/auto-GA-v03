@@ -21,12 +21,13 @@ public class HeaderWithoutLogin extends BasePage {
     }
 
     public SHLogin openLoginPage() {
+        CommonEvents.waitUntil(50);
         CommonEvents.clickButton(loginBtn);
         return new SHLogin();
     }
 
     public void clickHomeTab() {
-        CommonEvents.waitUntil(1);
+        CommonEvents.waitUntil(50);
         CommonEvents.clickButton(homeBtn);
     }
 }
