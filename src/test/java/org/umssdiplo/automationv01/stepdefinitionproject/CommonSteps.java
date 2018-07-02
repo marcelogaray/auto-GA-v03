@@ -8,6 +8,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
+import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -24,6 +25,7 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
+    private SHOrganization organization;
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
@@ -32,6 +34,7 @@ public class CommonSteps {
     private SHAccidentFormModal shAccidentFomModal;
     private SHSwalNotification shSwalNotification;
     private SHAccidentVieWmodal shAccidentVieWmodal;
+    private Organization organizationData;
     private SHAssignModalView modalView;
     private SHAssignModalDelete modalDelete;
     private int countAssignments;
@@ -132,6 +135,10 @@ public class CommonSteps {
         Assert.assertEquals(employeeForm.getAlertMessage(), messageExpected);
     }
 
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
 
     @Then("^Verify that the assignments are listed on 'Asignacion de equipos' page$")
     public void verify_that_the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {
@@ -232,6 +239,149 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getDateEvent().equals(data.get(0).get("dateEvent")), "La Fecha del Accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
+    }
+
+    @And("^go to 'Estructura Organizacional' on 'Header' page$")
+    public void goToEstOrg() {
+        organization = headerWithLogin.clickOrganizationTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page$")
+    public void goToActiveArea() {
+        organization.openActiveOrganizationDetailView();
+    }
+
+    @And("^click 'Nueva Area' button on 'Organization' page$")
+    public void clickNewOrganization() {
+        organization.openNewOrganizationModalForm();
+    }
+
+    @And("^fill 'New Organization' modal form on 'Organization' page with 'start date' biger than 'end date'$")
+    public void fillFormOrganizationDataWithStartBigerEndDate() {
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case7");
+        organization.fillNewOrganizationForm(organizationData);
+    }
+
+    @And("^fill 'New Organization' modal form on 'Organization' page with property data$")
+    public void fillFormOrganizationDataProperty() {
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case10");
+        organization.fillNewOrganizationFormCorrectly(organizationData);
+    }
+
+    @And("^click 'Crear' button on 'New Organization' modal on 'Organization' page$")
+    public void clickCreateOrganizationButton() {
+        organization.clickSaveOrganizationButton();
+    }
+
+    @Then("^'La fecha de inicio de actividades debe ser menor a la fecha final' information message should be displayed.$")
+    public void idStartDateBiggerEndDate() {
+        String expectedMessage = String.format("La fecha de inicio de actividades (%s) debe ser menor a la fecha final (%s).", organizationData.getInitDateActivitiesNewOrg(), organizationData.getEndDateActivitiesNewOrg());
+        Assert.assertEquals(organization.getAlertMessage(), expectedMessage);
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
+    public void goToArea() {
+        organization.openOrganizationDetailView();
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page$")
+    public void clickRemoveOrganizationButton() {
+        organization.removeOrganization();
+    }
+
+    @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
+    public void areaWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
+    }
+
+    @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
+    public void clickRemoveItemButton() {
+        organization.removeItem();
+    }
+
+    @And("^click 'Cancelar' button on 'New Organization' modal form$")
+    public void clickCancelNewOrganization() {
+        organization.clickCancelNewOrganizationButton();
+    }
+
+    @And("^go to 'Home' on 'Header' page$")
+    public void goToHome() {
+        headerWithoutLogin.clickHomeTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Disabled' option on 'Organization page'$")
+    public void goToDisabledArea() {
+        organization.openInactiveOrganizationDetailView();
+    }
+
+    @Then("^'Nueva Area' button is not present on 'Organization' page$")
+    public void isNewOrganizationButtonNotPresent() {
+        Assert.assertFalse(organization.isNewOrganizationButtonPresent(), "'New Organization' button is present.");
+    }
+
+    @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
+    public void itemWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page.$")
+    public void clickRemoveOrganizationButton2() {
+        organization.removeOrganization2();
+    }
+
+    @And("^click 'Aceptar' button on 'Information Message' modal$")
+    public void clickOkButtonMessageConfirmation() {
+        organization.clickOkButtonMessageAlert();
+    }
+
+    @Then("^the area should not be present in the list$")
+    public void isAreaDeletedPresente() {
+        Assert.assertFalse(organization.isOrganizationMaktDetailButtonVisible(), "The Area was not be eliminated");
+    }
+
+    @And("^navigate to 'Gerencia General' option on 'Organization' page$")
+    public void goToGGArea() {
+        organization.openActiveOrganizationDetailView();
+    }
+
+    @And("^click 'Nuevo Item' button on 'Organization' page$")
+    public void clickNuevoItemButton() {
+        organization.clickNewItemButton();
+    }
+
+    @And("^fill 'New Item' modal form on 'Organization' page$")
+    public void fillNewItemForm() {
+        organization.fillNewItemForm("ITM-050");
+    }
+
+    @And("^click 'Crear' button on 'New Item' modal on 'Organization' page$")
+    public void clickCrearItemButton() {
+        organization.clickSaveItemButton();
+    }
+
+    @And("^verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page$")
+    public void verifyItemCreatedMessage() {
+        Assert.assertEquals(organization.getAlertMessage(), "El Item fue creado correctamente");
+    }
+
+    @Then("^new item must be present in items list$")
+    public void isPresentNewItem() {
+        Assert.assertTrue(organization.isNewItemVisible(), "The new item is not present in the list items.");
+    }
+
+    @And("^verify 'El área fue creado correctamente' message info is displayed on 'Organization' page$")
+    public void verifyOrgCreatedMessage() {
+        Assert.assertEquals(organization.getAlertMessage(), "El área fue creado correctamente");
+    }
+
+    @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
+    public void clickAceptarInformationMessage() {
+        organization.clickAcceptButtonMessage();
+    }
+
+    @Then("^the new area must be present in the areas list.$")
+    public void isNewAreaPresent() {
+        Assert.assertTrue(organization.isNewOrganizationVisible(), "The new organization is not present in the list.");
     }
     @When("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
     public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
