@@ -43,6 +43,9 @@ public class SHOrganizationForm extends BasePage {
     @FindBy(className = "swal2-confirm")
     private WebElement confirmAlertButton;
 
+    @FindBy(name = "newOrganizationForm")
+    private WebElement formModal;
+
     public SHOrganizationForm(){
         CommonEvents.waitWebElementIsVisible(createButton);
     }
@@ -101,5 +104,9 @@ public class SHOrganizationForm extends BasePage {
 
     public void pressConfirmAlertButton() {
         CommonEvents.clickButton(confirmAlertButton);
+    }
+
+    public boolean isModalFormPresent() {
+        return formModal.isDisplayed();
     }
 }

@@ -9,7 +9,6 @@ import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
-import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.io.Console;
@@ -35,7 +34,6 @@ public class CommonSteps {
     }
 
     @And("^I logOut Form 'SMARTHOUSE' Page$")
-
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clickLogOutButton();
@@ -96,7 +94,6 @@ public class CommonSteps {
         employee.clickCancelAlertButton();
     }
 
-
     @And("^I Confirm alert  'Estas Seguro que deseas eliminar al Empleado!', click in \"Si, Eliminar\" button$")
     public void clickConfirmAlert() {
 
@@ -127,7 +124,6 @@ public class CommonSteps {
         employee.clickAssignItemButton();
     }
 
-
     @When("^I click in the 'Item' drop down list$")
     public void clickItemDropDownList() {
 
@@ -138,5 +134,11 @@ public class CommonSteps {
     public void itemOptionsDisplayed() throws Throwable {
 
         Assert.assertTrue(employee.isItemOptionsVisible(),"don't show the item options");
+    }
+
+    @Then("^I should see the 'Crear Area' modal form$")
+    public void theModalOrganizationIsDisplayed() throws Throwable {
+        Assert.assertTrue(organizationForm.isModalFormPresent());
+        organizationForm.cancelModal();
     }
 }

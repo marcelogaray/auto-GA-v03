@@ -8,3 +8,4 @@ Feature: ORG_Case1
     And I click on 'Detail' button on 'Gerencia General' item on 'Organization List' page
     And I click on 'Nueva Area' button on 'Organization Detail' page
     Then I should see the 'Crear Area' modal form
+    And  I logOut Form 'SMARTHOUSE' Page
