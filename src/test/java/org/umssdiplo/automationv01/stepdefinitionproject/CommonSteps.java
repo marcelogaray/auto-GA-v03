@@ -10,6 +10,12 @@ import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
+import org.umssdiplo.automationv01.core.managepage.SHAssignation;
+import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.List;
@@ -29,6 +35,9 @@ public class CommonSteps {
     private SHSwalNotification shSwalNotification;
     private SHAccidentVieWmodal shAccidentVieWmodal;
     private Organization organizationData;
+    private SHAssignModalView modalView;
+    private SHAssignModalDelete modalDelete;
+    private int countAssignments;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -47,10 +56,40 @@ public class CommonSteps {
         assignment.newAssignment();
     }
 
+
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
 
+    }
+
+    @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
+    public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal() ;
+    }
+    @When("^Click on 'Nueva asignacion'$")
+    public void click_on_Nueva_asignacion() throws Throwable {
+        assignment.newAssignment();
+    }
+
+    @And("^Create new assignment$")
+    public void create_new_assignment() throws Throwable {
+        assignment.setData();
+        assignment.registerNewAssignment();
+        assignment.registeredAssignment();
+    }
+
+    @When("^Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page$")
+    public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+    }
+    @When("^Click on the button to see the first assignment in the list on 'Asignacion de Equipos' page$")
+    public void click_on_the_button_to_see_the_first_assignment_in_the_list_on_Asignacion_de_Equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal();
     }
 
     @When("^click over 'Crear' button on 'Asignar equipo' modal$")
@@ -343,5 +382,84 @@ public class CommonSteps {
     @Then("^the new area must be present in the areas list.$")
     public void isNewAreaPresent() {
         Assert.assertTrue(organization.isNewOrganizationVisible(), "The new organization is not present in the list.");
+    }
+    @When("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
+    public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
+        Assert.assertTrue(modalView.isModalDialogPresent(), "el modal 'Ver asignacion' no se desplego correctamente");
+        modalView.isButtonCloseVisible();
+    }
+
+    @Then("^Verify if the employee's name is correct$")
+    public void verify_if_the_employee_s_name_is_correct() throws Throwable {
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        modalView.closeModalView();
+        Assert.assertTrue(modalView.isModalDialogPresent());
+        modalView.isCerrarButtonVisible();
+
+    }
+
+    @When("^Click on the 'Close' button on modal 'Ver asignación'$")
+    public void click_on_the_Close_button_on_modal_Ver_asignación() throws Throwable {
+        modalView.clickclose();
+    }
+
+    @Then("^The modal 'Ver asignación' closes$")
+    public void the_modal_Ver_asignación_closes() throws Throwable {
+        Assert.assertTrue(assignment.isButtonSeePresent());
+    }
+
+    @When("^I reopen the modal 'Ver asignación' on 'Asignación de equipos' page$")
+    public void i_reopen_the_modal_Ver_asignación_on_Asignación_de_equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal();
+        modalView.isCloseXButtonVisible();
+    }
+
+    @When("^Click on the 'X' button on modal 'Ver asignación'$")
+    public void click_on_the_X_button_on_modal_Ver_asignación() throws Throwable {
+        modalView.clickCloseX();
+    }
+
+    @Then("^The modal 'Ver asignacion' closes$")
+    public void the_modal_Ver_asignacion_closes() throws Throwable {
+        Assert.assertTrue(assignment.isButtonSeePresent());
+    }
+    @When("^Obtain the total of assignments made to the employee$")
+    public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
+        modalDelete.isDeleteButtonPresent();
+        modalDelete.isListPresent();
+        countAssignments = modalDelete.getSizeAssignments();
+    }
+
+    @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
+    public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
+        modalDelete.deleteOnEditForm();
+    }
+
+    @When("^The modal 'Confirmar eliminacion' is displayed$")
+    public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
+        Assert.assertTrue(modalDelete.isConfirmModalPresent(), "El modal 'Confirmar eliminacion' no se desplego");
+    }
+
+    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
+    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
+        modalDelete.acceptDelete();
+    }
+
+    @And("^The message 'La asignacion se elimino correctamente' is displayed$")
+    public void the_message_La_asignacion_se_elimino_correctamente_is_displayed() throws Throwable {
+        modalDelete.messageDelete();
+    }
+
+    @Then("^The assignment is not present in the in the list of assignments made$")
+    public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+        modalDelete.isDeleteButtonPresent();
+        int assignments = countAssignments - 1;
+        Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
+    }
+
+    @And("^I close edit modal$")
+    public void i_close_edit_modal() throws Throwable {
+        modalDelete.closeEditModal();
     }
 }
