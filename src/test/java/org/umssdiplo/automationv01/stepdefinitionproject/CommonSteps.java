@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -245,5 +246,58 @@ public class CommonSteps {
     public void checkEditFormModalIsPresent() throws Throwable {
         Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El formulario de edición de accidentes " +
                 "no se cargo correctamente");
+    }
+
+    @Then("^verify 'Empleado' show data employee from accident on 'Editar accidente'$")
+    public void checkEmployeeValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), "1", "El dato empleado no " +
+                "corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
+    public void checkTitleValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente", "El dato de " +
+                "titulo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
+    public void checkCodeValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo", "El dato de " +
+                "código no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
+    public void checkLevelRiskValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "1", "El dato de " +
+                "nivel de riesgo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'$")
+    public void checkTypeAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getAccidentTypeValue(), "1", "El dato de " +
+                "nivel de riesgo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'$")
+    public void checkSuccessDateAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDateEventValue(), "05-05-2018", "El dato de " +
+                "fecha de suceso no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
+    public void checkDescriptionAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion", "El dato de " +
+                "descripción no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Estado' show data state from accident on 'Editar accidente'$")
+    public void checkStateAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), "Estado", "El dato de " +
+                "estado no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify that \"([^\"]*)\" is displayed in the 'Empleado' textfield on 'Editar accidente' modal page$")
+    public void verifyThatIsDisplayedInTheEmpleadoTextfieldOnEditarAccidenteModalPage(String nameEmployee) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), nameEmployee, "El nombre del empleado no corresponde al registro seleccionado.");
     }
 }

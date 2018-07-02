@@ -131,6 +131,11 @@ public class SHAccidentFormModal extends BasePage {
     }
 
     public void fillModalFomFullData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
         isModalDialogPresent();
         setEmployeeField();
         setTitleField(title);
