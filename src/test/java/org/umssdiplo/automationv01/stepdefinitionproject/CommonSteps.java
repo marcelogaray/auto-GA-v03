@@ -220,11 +220,6 @@ public class CommonSteps {
         Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
     }
 
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void load_Organization_page() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
     @And("^click 'Nuea Area' button on 'Organization' page$")
     public void clickNewOrganization() {
         organization.openNewOrganizationModalForm();
