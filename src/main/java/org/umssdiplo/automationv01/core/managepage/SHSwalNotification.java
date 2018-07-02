@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHSwalNotification extends BasePage {
 
@@ -24,5 +25,21 @@ public class SHSwalNotification extends BasePage {
     private WebElement infoIcon;
 
     @FindBy(className = "swal2-confirm")
-    private WebElement accepBtn;
+    private WebElement acceptBtn;
+
+    public SHSwalNotification() {
+        dialog.isDisplayed();
+    }
+
+    public boolean isDialogPresent() {
+        return dialog.isDisplayed();
+    }
+
+    public boolean isSuccess() {
+        return successIcon.isDisplayed();
+    }
+
+    public void clickAcceptBtn() {
+        CommonEvents.jsClickElement(acceptBtn);
+    }
 }

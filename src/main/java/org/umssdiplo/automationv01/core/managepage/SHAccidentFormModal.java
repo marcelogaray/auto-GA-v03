@@ -57,11 +57,104 @@ public class SHAccidentFormModal extends BasePage {
     @FindBy(id = "mat-option-0")
     private WebElement statusOption;
 
+    public SHAccidentFormModal() {
+        CommonEvents.isVisible(modalDialog);
+    }
+
+    public void closeModalDialog() {
+        CommonEvents.jsClickElement(closeBtn);
+    }
+
     public boolean isModalDialogPresent() {
         return modalDialog.isDisplayed();
     }
 
     public boolean isCrearBtnEnable() {
         return CommonEvents.isAttributPresent(crearBtn, "disabled");
+    }
+
+    public SHSwalNotification clickBtnCrear() {
+        CommonEvents.jsClickElement(crearBtn);
+        return new SHSwalNotification();
+    }
+
+    public void setEmployeeField() {
+        CommonEvents.jsClickElement(employeeAuto);
+        CommonEvents.jsClickElement(employeeOption);
+    }
+
+    public void setTitleField(String titleField) {
+        CommonEvents.setInputField(title, titleField);
+    }
+
+    public void setCodeField(String codeField) {
+        CommonEvents.setInputField(code, codeField);
+    }
+
+    public void setLevelRiskField(String levelRiskField) {
+        CommonEvents.setInputField(levelRisk, levelRiskField);
+    }
+
+    public void setDateEventField(String dateEventField) {
+        CommonEvents.setDateInputField(dateEvent, dateEventField);
+    }
+
+    public void setDescriptionField(String descriptionField) {
+        CommonEvents.setInputField(description, descriptionField);
+    }
+
+    /**
+     * verify if one of random ids for typeAccident is pressent
+     */
+    public void setAccidentTypeSelectField() {
+        CommonEvents.jsClickElement(accidentTypeSelect);
+        if (CommonEvents.isPresent(accidentTypeOption1)) {
+            CommonEvents.jsClickElement(accidentTypeOption1);
+        } else if (CommonEvents.isPresent(accidentTypeOption2)) {
+            CommonEvents.jsClickElement(accidentTypeOption2);
+        } else if (CommonEvents.isPresent(accidentTypeOption3)) {
+            CommonEvents.jsClickElement(accidentTypeOption3);
+        }
+    }
+
+    public void setStatusSelectField() {
+        CommonEvents.jsClickElement(statusSelect);
+        CommonEvents.jsClickElement(statusOption);
+    }
+
+    public void fillModalFomFullData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        isModalDialogPresent();
+        setEmployeeField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
+        setStatusSelectField();
+        setAccidentTypeSelectField();
+    }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one incomplete data
+     */
+    public void fillModalFomOneIncData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        isModalDialogPresent();
+        setEmployeeField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
+        setStatusSelectField();
+    }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one required data
+     */
+    public void fillModalFomOneReqData() {
+        isModalDialogPresent();
+        setEmployeeField();
     }
 }
