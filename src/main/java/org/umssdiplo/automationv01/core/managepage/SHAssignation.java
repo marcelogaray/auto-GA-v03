@@ -83,10 +83,10 @@ public class SHAssignation extends BasePage {
         return new SHAssignModalDelete();
     }
 
-
-
-
-
+    public SHAssignModalForm clickFormModal() {
+        CommonEvents.clickButton(addAssignmentButton);
+        return new SHAssignModalForm();
+    }
     public void newAssignment() {
         CommonEvents.clickButton(addAssignmentButton);
     }

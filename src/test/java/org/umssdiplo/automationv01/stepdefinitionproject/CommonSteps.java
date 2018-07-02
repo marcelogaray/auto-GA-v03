@@ -40,6 +40,7 @@ public class CommonSteps {
     private int countAssignments;
     private SHAssignModalEdit modalEdit;
     private SHEquipmentType equipmentType;
+    private SHAssignModalForm modalForm;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -527,4 +528,30 @@ public class CommonSteps {
         Assert.assertTrue(equipmentType.verifyListEquipmentType(name), "No esta registrado");
     }
 
+
+    @When("^Click on the 'Nueva asignación' button on 'Asignacion de equipos' page$")
+    public void click_on_the_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
+        modalForm = assignment.clickFormModal();
+    }
+
+    @When("^The modal 'Asignar equipo' is displayed$")
+    public void the_modal_Asignar_equipo_is_displayed() throws Throwable {
+        Assert.assertTrue(modalForm.isFormModalPresent());
+    }
+
+    @When("^Just enter data in the 'Observaciones' field on the 'Asignar equipo' modal$")
+    public void just_enter_data_in_the_Observaciones_field_on_the_Asignar_equipo_modal() throws Throwable {
+        modalForm.setObservations();
+    }
+
+    @Then("^The 'Crear' button is not enabled on the 'Asignar equipo' modal$")
+    public void the_Crear_button_is_not_enabled_on_the_Asignar_equipo_modal() throws Throwable {
+        Assert.assertFalse(modalForm.isButtonCreateEnabled(), "Crear boton esta habilitado");
+
+    }
+
+    @And("Close the 'Asignar equipo' modal$")
+    public void close_the_Asignar_equipo_modal() throws Throwable {
+        modalForm.cancelAssignment();
+    }
 }
