@@ -10,6 +10,7 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER = "smartHouseUsername";
     private static final String PASSWORD = "smartHousePassword";
+    private static final String JSON_DATA_FILE_PATH = "testDataResourcePath";
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -59,6 +60,10 @@ public class PropertyAccessor {
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
+    }
+
+    public String getJsonDataFilePath() {
+        return getDataProperty(JSON_DATA_FILE_PATH);
     }
 
     public String getSHDataProperty(String data) {
