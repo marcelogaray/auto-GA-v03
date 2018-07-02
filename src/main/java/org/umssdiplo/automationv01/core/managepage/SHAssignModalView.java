@@ -24,6 +24,21 @@ public class SHAssignModalView extends BasePage {
         return assignmentModal.isDisplayed();
     }
 
+    public void isCerrarButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(close);
+    }
+
+    public void isCloseXButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(closeX);
+    }
+
+    public void clickclose() {
+        CommonEvents.clickButton(close);
+    }
+
+    public void clickCloseX() {
+        CommonEvents.clickButton((closeX));
+
     public String getEmployeeName() {
         return employeeName.getText();
     }
