@@ -24,13 +24,28 @@ public class SHAccident extends BasePage {
     @FindBy(className = "mat-list-item-content")
     private WebElement listElementContent;
 
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[3]")
+    private WebElement deleteButton;
+
     public SHAccident() {
         CommonEvents.isClickable(registrarAccBtn);
+    }
+
+    public SHAccidentFormModal clickRegistarAccBtn() {
+        if (CommonEvents.isClickable(registrarAccBtn)) {
+            CommonEvents.clickButton(registrarAccBtn);
+        }
+        return new SHAccidentFormModal();
     }
 
     public SHAccidentFormModal ClickRegistarAccBtn() {
         CommonEvents.jsClickElement(registrarAccBtn);
         return new SHAccidentFormModal();
+    }
+
+    public SHDeleteConfirmModal clickDeleteButton() {
+        CommonEvents.clickButton(deleteButton);
+        return new SHDeleteConfirmModal();
     }
 
     public boolean verifyListelement(String accCode) {

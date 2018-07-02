@@ -31,6 +31,7 @@ public class CommonSteps {
     private SHSwalNotification shSwalNotification;
     private SHAccidentVieWmodal shAccidentVieWmodal;
     private SHAccidentEditFormModal shAccidentEditFormModal;
+    private SHDeleteConfirmModal deleteConfirmModal;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -337,4 +338,22 @@ public class CommonSteps {
         Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion 2", "El dato de " +
                 "descripción no corresponde al registro editado seleccionado.");
     }
+
+
+    @And("^I select accident option on menú$")
+    public void selectAccidentTab() throws Throwable {
+        accident = headerWithLogin.clickAccidentTab();
+    }
+
+    @When("^I click on accident delete option$")
+    public void clickDeleteButton() throws Throwable {
+        deleteConfirmModal = accident.clickDeleteButton();
+    }
+
+    @Then("^I verify if a confirm delete modal is opened$")
+    public void verifyConfirmDeleteModal() throws Throwable {
+        Assert.assertTrue(deleteConfirmModal.isModalDialogPresent(), "El modal de confirmación de eliminación " +
+                "no ha sido desplegado");
+    }
+
 }
