@@ -13,9 +13,9 @@ Feature: SHAccident
     Then verify that "Nataly" is displayed in the 'Empleado' textfield on 'Editar accidente' modal page
 
     And verify 'Título' show data title from accident on 'Editar accidente'
-    And verify 'Código' show data code from accident on 'Editar accidente'
-    And verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'
+    And verify 'Código' show data code from accident on 'Editar accidente' when edited
+    And verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente' when edited
     And verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'
-    And verify 'Descripcion' show data description from accident on 'Editar accidente'
+    And verify 'Descripcion' show data description from accident on 'Editar accidente' when edited
     And verify 'Estado' show data state from accident on 'Editar accidente'
     And verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'
