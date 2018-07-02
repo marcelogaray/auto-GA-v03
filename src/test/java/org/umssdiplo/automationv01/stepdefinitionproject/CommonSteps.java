@@ -82,7 +82,7 @@ public class CommonSteps {
 
     @When("^Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page$")
     public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
-        modalDelete = assignment.clicViewModal();
+        modalDelete = assignment.clicViewModalDelete();
     }
     @When("^Click on the button to see the first assignment in the list on 'Asignacion de Equipos' page$")
     public void click_on_the_button_to_see_the_first_assignment_in_the_list_on_Asignacion_de_Equipos_page() throws Throwable {
@@ -302,7 +302,7 @@ public class CommonSteps {
 
     @Then("^The assignment is not present in the in the list of assignments made$")
     public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
-        modalDelete = assignment.clicViewModal();
+        modalDelete = assignment.clicViewModalDelete();
         modalDelete.isDeleteButtonPresent();
         int assignments = countAssignments - 1;
         Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");

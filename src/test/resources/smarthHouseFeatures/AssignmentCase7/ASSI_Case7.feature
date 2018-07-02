@@ -3,9 +3,9 @@ Feature: SHDeleteAsign
   Background: There must be at least one registered assignment
 
   Scenario: Verify that it is possible to delete a registered assignment
-    Given Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
-    When Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed
+    Given I loging to 'SMARTHOUSE' page
+    And fill properly credentials in 'Login' modal
+    When Go to 'Asignacion de Equipos' on 'Header' page
     And Click on 'Nueva asignacion'
     And Create new assignment
     And Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page
