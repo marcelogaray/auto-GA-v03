@@ -87,4 +87,29 @@ public class SHAccidentEditFormModal extends BasePage {
         CommonEvents.jsClickElement(code);
         CommonEvents.setInputField(code, "Code");
     }
+
+    public void setCodeField() {
+        CommonEvents.setInputField(code, "Codigo 2");
+    }
+
+    public void setLevelRiskField() {
+        CommonEvents.setInputField(levelRisk, "2");
+    }
+
+    public void setDescriptionField() {
+        CommonEvents.setInputField(description, "Descripcion 2");
+    }
+
+    public SHAccident clickSaveButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(saveButton);
+        return new SHAccident();
+    }
+
+    public void fillEditModalForm() {
+        setTitleField();
+        setCodeField();
+        setLevelRiskField();
+        setDescriptionField();
+    }
 }

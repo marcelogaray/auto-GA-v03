@@ -58,7 +58,7 @@ public class SHAccident extends BasePage {
     }
 
     public SHAccidentEditFormModal clickEditButton() {
-        CommonEvents.waitUntil(2000);
+        CommonEvents.waitUntil(3000);
         CommonEvents.clickButton(editButton);
         return new SHAccidentEditFormModal();
     }

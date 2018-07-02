@@ -303,4 +303,38 @@ public class CommonSteps {
     public void verifyThatIsDisplayedInTheEmpleadoTextfieldOnEditarAccidenteModalPage(String nameEmployee) throws Throwable {
         Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), nameEmployee, "El nombre del empleado no corresponde al registro seleccionado.");
     }
+
+    @And("^I fill edit modal form 'Editar Accidente'$")
+    public void fillEditModalForm() throws Throwable {
+        shAccidentEditFormModal.fillEditModalForm();
+    }
+
+    @And("^click on 'Guardar' button on modal 'Editar Accidente'$")
+    public void clickSaveEditModalForm() throws Throwable {
+        shAccident = shAccidentEditFormModal.clickSaveButton();
+    }
+
+    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
+    public void checkTitleValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente 2", "El dato de " +
+                "titulo no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
+    public void checkCodeValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo 2", "El dato de " +
+                "código no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
+    public void checkLevelRiskValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "2", "El dato de " +
+                "nivel de riesgo no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
+    public void checkDescriptionAccidentValueEdited() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion 2", "El dato de " +
+                "descripción no corresponde al registro editado seleccionado.");
+    }
 }
