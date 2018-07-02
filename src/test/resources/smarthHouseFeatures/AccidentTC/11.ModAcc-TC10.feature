@@ -19,3 +19,4 @@ Feature: SHAccident
     And verify 'Descripcion' show data description from accident on 'Editar accidente' when edited
     And verify 'Estado' show data state from accident on 'Editar accidente'
     And verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'
+    And  I logOut From 'SMARTHOUSE' Page

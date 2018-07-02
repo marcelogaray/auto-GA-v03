@@ -7,3 +7,4 @@ Feature: SHLogin
     And I select accident option on menú
     When I click on accident delete option
     Then I verify if a confirm delete modal is opened
+    And  I logOut From 'SMARTHOUSE' Page

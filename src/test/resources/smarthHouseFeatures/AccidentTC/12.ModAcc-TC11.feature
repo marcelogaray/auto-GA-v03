@@ -11,3 +11,4 @@ Feature: SHAccident
     When I click on edit button on list of accidents
     And I set empty value to field 'Titulo' on form edit modal
     Then Verify if 'Guardar' button is disabled
+    And  I logOut From 'SMARTHOUSE' Page

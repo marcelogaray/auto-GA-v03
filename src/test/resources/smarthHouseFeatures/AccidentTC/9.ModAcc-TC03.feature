@@ -10,3 +10,4 @@ Feature: SHAccident
     And I click on 'Registrar accidente' button
     And Close modal 'Registro de Accidente' from 'Cancel' button
     Then I verify if the modal is not present
+    And  I logOut From 'SMARTHOUSE' Page

@@ -9,4 +9,5 @@ Feature: SHAccident
     When required data is filled on 'Registro Accidente' Modal Form
     And click on 'Crear' button on modal 'Registro de Accidente'
     When I click on edit button on list of accidents
-    Then verify 'Editar Accidente' form modal is present
+    Then verify 'Editar Accidente' form modal is
+    And  I logOut From 'SMARTHOUSE' Page

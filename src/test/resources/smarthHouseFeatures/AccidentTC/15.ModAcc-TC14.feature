@@ -14,4 +14,5 @@ Feature: SHLogin
     Then Verify if the level risk value is correct
     Then Verify if the status value is correct
     Then Verify if the title value is correct
+    And  I logOut From 'SMARTHOUSE' Page
 

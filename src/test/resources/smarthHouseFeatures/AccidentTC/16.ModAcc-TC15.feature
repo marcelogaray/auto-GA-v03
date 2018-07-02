@@ -9,3 +9,4 @@ Feature: SHLogin
     When I click on accident delete option
     And I click on 'Aceptar' button the accident selected is deleted
     Then Verify the size of accident registers decrease in a one item
+    And  I logOut From 'SMARTHOUSE' Page
