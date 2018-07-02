@@ -10,6 +10,10 @@ import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
+import org.umssdiplo.automationv01.core.managepage.SHAssignation;
+import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.util.List;
@@ -28,6 +32,10 @@ public class CommonSteps {
     private SHAccidentFormModal shAccidentFomModal;
     private SHSwalNotification shSwalNotification;
     private SHAccidentVieWmodal shAccidentVieWmodal;
+    private SHAccidentEditFormModal shAccidentEditFormModal;
+    private SHDeleteConfirmModal deleteConfirmModal;
+    private SHViewAccident viewAccident;
+    private int countAccident;
     private Organization organizationData;
     private SHAssignModalView modalView;
     private SHAssignModalDelete modalDelete;
@@ -54,6 +62,10 @@ public class CommonSteps {
     }
 
 
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
@@ -284,6 +296,216 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
     }
 
+    @And("^I select accident menu 'Accidentes'$")
+    public void openRegisterModal() throws Throwable {
+        shAccident = headerWithLogin.clickAccidentTab();
+    }
+
+    @And("^I click on 'Registrar accidente' button$")
+    public void selectAccidentMenu() throws Throwable {
+        shAccidentFomModal = shAccident.ClickRegistarAccBtn();
+    }
+
+    @And("^Close modal 'Registro de Accidente' from 'x' button$")
+    public void closeModalAccidentRegister() throws Throwable {
+        shAccidentFomModal.closeFromXButtonHeader();
+    }
+
+    @And("^Close modal 'Registro de Accidente' from 'Cancel' button$")
+    public void closeModalAccidentRegisterFromCancel() throws Throwable {
+        shAccidentFomModal.closeFromCancelButton();
+    }
+
+    @Then("^I verify if the modal is not present$")
+    public void verifyModalNotPresent() throws Throwable {
+        Assert.assertEquals(shAccident.isAccientePresent(), false, "Modal was not close");
+    }
+
+    @And("^click on 'Crear' button on modal 'Registro de Accidente'$")
+    public void clickCreateButton() throws Throwable {
+        shAccidentFomModal.clickCreateButton();
+    }
+
+    @When("^I click on edit button on list of accidents$")
+    public void clickEditButton() throws Throwable {
+        shAccidentEditFormModal = shAccident.clickEditButton();
+    }
+
+    @When("^I set empty value to field 'Titulo' on form edit modal$")
+    public void setEmptyValueTitleField() throws Throwable {
+        shAccidentEditFormModal.setTitleField();
+    }
+
+    @Then("^Verify if 'Guardar' button is disabled$")
+    public void checkSaveButtonIsDisabled() throws Throwable {
+        Assert.assertTrue(shAccidentEditFormModal.isSaveBtnEnable(), "El botón 'Guardar' no esta deshabilitado.");
+    }
+
+    @Then("^verify 'Empleado' show data employee from accident on 'Editar accidente'$")
+    public void checkEmployeeValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), "1", "El dato empleado no " +
+                "corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
+    public void checkTitleValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente", "El dato de " +
+                "titulo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
+    public void checkCodeValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo", "El dato de " +
+                "código no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
+    public void checkLevelRiskValueAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "1", "El dato de " +
+                "nivel de riesgo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'$")
+    public void checkTypeAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getAccidentTypeValue(), "1", "El dato de " +
+                "nivel de riesgo no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'$")
+    public void checkSuccessDateAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDateEventValue(), "05-05-2018", "El dato de " +
+                "fecha de suceso no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
+    public void checkDescriptionAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion", "El dato de " +
+                "descripción no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify 'Estado' show data state from accident on 'Editar accidente'$")
+    public void checkStateAccidentValue() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), "Estado", "El dato de " +
+                "estado no corresponde al registro seleccionado.");
+    }
+
+    @Then("^verify that \"([^\"]*)\" is displayed in the 'Empleado' textfield on 'Editar accidente' modal page$")
+    public void verifyThatIsDisplayedInTheEmpleadoTextfieldOnEditarAccidenteModalPage(String nameEmployee) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), nameEmployee, "El nombre del empleado no corresponde al registro seleccionado.");
+    }
+
+    @And("^I fill edit modal form 'Editar Accidente'$")
+    public void fillEditModalForm() throws Throwable {
+        shAccidentEditFormModal.fillEditModalForm();
+    }
+
+    @And("^click on 'Guardar' button on modal 'Editar Accidente'$")
+    public void clickSaveEditModalForm() throws Throwable {
+        shAccident = shAccidentEditFormModal.clickSaveButton();
+    }
+
+    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
+    public void checkTitleValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente 2", "El dato de " +
+                "titulo no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
+    public void checkCodeValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo 2", "El dato de " +
+                "código no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
+    public void checkLevelRiskValueEditedAccident() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "2", "El dato de " +
+                "nivel de riesgo no corresponde al registro editado seleccionado.");
+    }
+
+    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
+    public void checkDescriptionAccidentValueEdited() throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion 2", "El dato de " +
+                "descripción no corresponde al registro editado seleccionado.");
+    }
+
+
+    @And("^I select accident option on menú$")
+    public void selectAccidentTab() throws Throwable {
+        shAccident = headerWithLogin.clickAccidentTab();
+    }
+
+    @When("^I click on accident delete option$")
+    public void clickDeleteButton() throws Throwable {
+        deleteConfirmModal = shAccident.clickDeleteButton();
+    }
+
+    @Then("^I verify if a confirm delete modal is opened$")
+    public void verifyConfirmDeleteModal() throws Throwable {
+        Assert.assertTrue(deleteConfirmModal.isModalDialogPresent(), "El modal de confirmación de eliminación " +
+                "no ha sido desplegado");
+    }
+
+    @And("^I open Accident tab option$")
+    public void openAccidentTab() throws Throwable {
+        shAccident = headerWithLogin.clickAccidentTab();
+    }
+
+    @When("^I click on view icon$")
+    public void clickViewIcon() throws Throwable {
+        viewAccident = shAccident.clickViewButton();
+    }
+
+    @Then("^Verify if the employee value is correct$")
+    public void verifyEmployeeValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getEmployeeValue(), "1", "El valor del empleado no es el correcto.");
+    }
+
+    @Then("^Verify if the title value is correct$")
+    public void verifyTitleValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getTitleValue(), "Titulo Accidente", "El valor del título no es el correcto.");
+    }
+
+    @Then("^Verify if the code value is correct$")
+    public void verifyCodeValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getCodeValue(), "Codigo", "El valor del código no es el correcto.");
+    }
+
+    @Then("^Verify if the level risk value is correct$")
+    public void verifyLevelRiskValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getLevelRiskValue(), "1", "El valor del nivel de riesgo no es el correcto.");
+    }
+
+    @Then("^Verify if the accidentType value is correct$")
+    public void verifyAccidentTypeValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getAccidentType(), "1", "El valor del tipo de accidente no es el correcto.");
+    }
+
+    @Then("^Verify if the date event value is correct$")
+    public void verifyDateEventValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getDateEvent(), "2018-05-05T00:00:00.000+0000", "El valor de la fecha de suceso no es el correcto.");
+    }
+
+    @Then("^Verify if the description value is correct$")
+    public void verifyDescriptionValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getDescription(), "Descripcion", "El valor de la descripcion no es el correcto.");
+    }
+
+    @Then("^Verify if the status value is correct$")
+    public void verifyStatusValueIsCorrect() throws Throwable {
+        Assert.assertEquals(viewAccident.getStatus(), "1", "El valor del estado no es el correcto.");
+    }
+
+    @And("^I click on 'Aceptar' button the accident selected is deleted$")
+    public void clickConfirmButtonDeleteModal() throws Throwable {
+        shAccident = deleteConfirmModal.clickDeleteButton();
+    }
+
+    @Then("^Verify the size of accident registers decrease in a one item$")
+    public void compareListSize() throws Throwable {
+        int result = countAccident - 1;
+        Assert.assertEquals(shAccident.getSizeOfRegisters(), result, "No se elimino el registro seleccionado.");
+    }
+
     @And("^go to 'Estructura Organizacional' on 'Header' page$")
     public void goToEstOrg() {
         organization = headerWithLogin.clickOrganizationTab();
@@ -418,8 +640,13 @@ public class CommonSteps {
     }
 
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
-    public void clickAceptarInformationMessage() {
+    public void clickAceptarInformationMessageOrganization() {
         organization.clickAcceptButtonMessage();
+    }
+
+    @And("^click 'Aceptar' button on 'Message Information' modal on 'Employee Form' page$")
+    public void clickAceptarInformationMessageEmployeeForm() {
+        employeeForm.clickAcceptButtonMessage();
     }
 
     @Then("^the new area must be present in the areas list.$")
@@ -438,7 +665,7 @@ public class CommonSteps {
         Assert.assertEquals(modalView.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
         modalView.closeModalView();
         Assert.assertTrue(modalView.isModalDialogPresent());
-
+        modalView.isCerrarButtonVisible();
 
     }
 
@@ -473,7 +700,6 @@ public class CommonSteps {
     public void the_modal_Ver_asignacion_closes() throws Throwable {
         Assert.assertTrue(assignment.isButtonSeePresent());
     }
-
     @When("^Obtain the total of assignments made to the employee$")
     public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
         modalDelete.isDeleteButtonPresent();
@@ -491,9 +717,27 @@ public class CommonSteps {
         Assert.assertTrue(modalDelete.isConfirmModalPresent(), "El modal 'Confirmar eliminacion' no se desplego");
     }
 
+    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
+    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
+        modalDelete.acceptDelete();
+    }
+
     @And("^The message 'La asignacion se elimino correctamente' is displayed$")
     public void the_message_La_asignacion_se_elimino_correctamente_is_displayed() throws Throwable {
         modalDelete.messageDelete();
+    }
+
+    @Then("^The assignment is not present in the in the list of assignments made$")
+    public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+        modalDelete.isDeleteButtonPresent();
+        int assignments = countAssignments - 1;
+        Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
+    }
+
+    @And("^I close edit modal$")
+    public void i_close_edit_modal() throws Throwable {
+        modalDelete.closeEditModal();
     }
 
     @Given("^Click on 'Equipos de Seguridad' button on Header page$")

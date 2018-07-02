@@ -1,7 +1,10 @@
 package org.umssdiplo.automationv01.core.managepage;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHAccidentFormModal extends BasePage {
@@ -103,6 +106,11 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.setInputField(description, descriptionField);
     }
 
+    public void clickCreateButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(crearBtn);
+    }
+
     /**
      * verify if one of random ids for typeAccident is pressent
      */
@@ -123,6 +131,11 @@ public class SHAccidentFormModal extends BasePage {
     }
 
     public void fillModalFomFullData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
         isModalDialogPresent();
         setEmployeeField();
         setTitleField(title);
@@ -156,5 +169,17 @@ public class SHAccidentFormModal extends BasePage {
     public void fillModalFomOneReqData() {
         isModalDialogPresent();
         setEmployeeField();
+    }
+
+    public void closeFromXButtonHeader() {
+        WebElement waitElement = (new WebDriverWait(webDriver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnClose")));
+        CommonEvents.clickButton(closeBtn);
+    }
+
+    public void closeFromCancelButton() {
+        WebElement waitElement = (new WebDriverWait(webDriver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnCancel")));
+        CommonEvents.clickButton(cancelBtn);
     }
 }

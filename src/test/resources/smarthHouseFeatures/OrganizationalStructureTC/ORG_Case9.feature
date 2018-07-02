@@ -12,3 +12,4 @@ Feature: ORG_Case9
     And verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page
     And click 'Aceptar' button on 'Message Information' modal on 'Organization' page
     Then new item must be present in items list
+    And  I logOut From 'SMARTHOUSE' Page

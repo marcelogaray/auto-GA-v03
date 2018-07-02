@@ -17,8 +17,20 @@ public class CommonEvents {
      */
     public static void setInputField(WebElement webElement, String content) {
         ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
-        webElement.clear();
+        if(isInputOfTypeDate(webElement)) {
+            webElement.sendKeys(Keys.DELETE);
+        } else {
+            webElement.clear();
+        }
         webElement.sendKeys(content);
+    }
+
+    /***
+     * This method set empty imput text element.
+     * @param webElement
+     */
+    public static void clearInputField(WebElement webElement) {
+        webElement.clear();
     }
 
     /**
@@ -126,6 +138,14 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    /**
+     * This method enter key to back to web element.
+     * @param webElement is the WebElement.
+     */
+    public static void backPress(WebElement webElement) {
+        webElement.sendKeys(Keys.BACK_SPACE);
+    }
+
     /***
      * This method to know if an element is clickable
      * @param webElement
@@ -133,6 +153,14 @@ public class CommonEvents {
      */
     public static boolean isClickable(WebElement webElement) {
         return ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement)).isEnabled();
+    }
+
+    /**
+     * This method return true if the current FluentWebElement is an input of type date
+     */
+    private static boolean isInputOfTypeDate(WebElement webElement)
+    {
+        return ("input".equalsIgnoreCase(webElement.getTagName()) && "date".equalsIgnoreCase(webElement.getAttribute("type")));
     }
 
     /***
@@ -169,7 +197,7 @@ public class CommonEvents {
         String value = webElement.getAttribute(attr);
         return value != null && value.equals("true");
     }
-    
+
     public static List<WebElement> findElementsClassName(WebElement webElement) {
         List<WebElement> element = ManageDriver.getInstance().getWebDriver().findElements(By.className(webElement.getAttribute("class")));
         return element;
