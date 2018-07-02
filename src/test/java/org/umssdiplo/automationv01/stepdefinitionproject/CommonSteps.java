@@ -120,4 +120,23 @@ public class CommonSteps {
 
         Assert.assertTrue(employee.isDetailsVisible(),"don't show the employee detail");
     }
+
+    @And("^I click on 'Asignar nuevo item' for employee 'Ruben Moscoso' in the list employe page$")
+    public void clickAssignItem() {
+
+        employee.clickAssignItemButton();
+    }
+
+
+    @When("^I click in the 'Item' drop down list$")
+    public void clickItemDropDownList() {
+
+        employee.clickItemDropDownList();
+    }
+
+    @Then("^I should see the 'Items' available to assign the employee$")
+    public void itemOptionsDisplayed() throws Throwable {
+
+        Assert.assertTrue(employee.isItemOptionsVisible(),"don't show the item options");
+    }
 }

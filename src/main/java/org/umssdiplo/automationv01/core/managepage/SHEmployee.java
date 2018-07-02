@@ -67,6 +67,7 @@ public class SHEmployee extends BasePage {
 
     public void clickViewDetailsEmployee() {
         CommonEvents.clickButton(detailsButton);
+        CommonEvents.waitUntil(2000);
     }
 
     public boolean isDetailsVisible() {
