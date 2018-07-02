@@ -61,11 +61,6 @@ public class CommonSteps {
         assignment.newAssignment();
     }
 
-
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
-        assignment = headerWithLogin.clickAssignTab();
-    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
@@ -97,28 +92,11 @@ public class CommonSteps {
     }
 
 
-    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
-    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
-        modalDelete.acceptDelete();
-    }
-
     @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
     public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
         modalDelete.messageDelete();
     }
 
-    @Then("^The assignment is not present in the in the list of assignments made$")
-    public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
-        modalDelete = assignment.clicViewModalDelete();
-        modalDelete.isDeleteButtonPresent();
-        int assignments = countAssignments - 1;
-        Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
-    }
-
-    @And("^I close edit modal$")
-    public void i_close_edit_modal() throws Throwable {
-        modalDelete.closeEditModal();
-    }
 
     @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
     public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
@@ -160,7 +138,7 @@ public class CommonSteps {
     @And("^I logOut From 'SMARTHOUSE' Page$")
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
-        login.clickLogOutButton();
+        login.clicklogOutButton();
     }
 
     @And("^go to 'Employee' on 'Header' page$")
