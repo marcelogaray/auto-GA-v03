@@ -8,3 +8,4 @@ Feature: EMP_Case4
     And I click on 'Asignar nuevo item' for employee 'Ruben Moscoso' in the list employe page
     When I click in the 'Item' drop down list
     Then I should see the 'Items' available to assign the employee
+    And  I logOut Form 'SMARTHOUSE' Page

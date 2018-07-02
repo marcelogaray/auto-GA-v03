@@ -7,3 +7,4 @@ Feature: EMP_Case3
     And I click on 'Personal' option on 'Header' page
     When I click on 'Ver detalles de empleado' button on 'Margotd Leticia Fernandez Garcia' item on 'Lista de Empleados' page
     Then I should see the detail of information of employee selected
+    And  I logOut Form 'SMARTHOUSE' Page
