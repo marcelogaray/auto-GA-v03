@@ -33,6 +33,9 @@ public class SHAccidentEditFormModal extends BasePage {
     @FindBy(name = "status")
     private WebElement statusSelect;
 
+    @FindBy(id = "save")
+    private WebElement saveButton;
+
     public boolean isEditModalPresent() {
         return CommonEvents.isPresent(editTitleModal);
     }
@@ -69,4 +72,19 @@ public class SHAccidentEditFormModal extends BasePage {
         return statusSelect.getAttribute("value");
     }
 
+    public void setTitleField() {
+        CommonEvents.clearInputField(title);
+        CommonEvents.pressEnterKey(title);
+        CommonEvents.backPress(title);
+    }
+
+    public boolean isSaveBtnEnable() {
+        CommonEvents.waitUntil(3000);
+        return CommonEvents.isAttributPresent(saveButton, "disabled");
+    }
+
+    public void clickCodeField() {
+        CommonEvents.jsClickElement(code);
+        CommonEvents.setInputField(code, "Code");
+    }
 }
