@@ -4,7 +4,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
-import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class SHNewEmployeeForm extends BasePage {
     @FindBy(name = "save_employee_btn")
@@ -60,6 +59,9 @@ public class SHNewEmployeeForm extends BasePage {
 
     @FindBy(id = "swal2-content")
     private WebElement messageAlert;
+
+    @FindBy(className = "swal2-confirm")
+    private WebElement acceptButtonMessageConfirmation;
 
     public SHNewEmployeeForm() {
         CommonEvents.waitWebElementIsVisible(acceptNewEmployee);
@@ -139,5 +141,9 @@ public class SHNewEmployeeForm extends BasePage {
         clickStatusSelect();
         selectStatus();
         setEmployeeRegistrationDateInputField(employee.getRegistrationDate());
+    }
+
+    public void clickAcceptButtonMessage() {
+        CommonEvents.clickButton(acceptButtonMessageConfirmation);
     }
 }

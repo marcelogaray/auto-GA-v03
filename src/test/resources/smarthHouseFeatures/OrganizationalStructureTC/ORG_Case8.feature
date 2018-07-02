@@ -9,3 +9,4 @@ Feature: ORG_Case8
     And click 'Eliminar' button on 'Organization' page.
     And click 'Aceptar' button on 'Information Message' modal
     Then the area should not be present in the list
+    And  I logOut From 'SMARTHOUSE' Page

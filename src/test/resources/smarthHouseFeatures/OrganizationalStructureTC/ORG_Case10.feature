@@ -12,3 +12,4 @@ Feature: ORG_Case10
     And verify 'El área fue creado correctamente' message info is displayed on 'Organization' page
     And click 'Aceptar' button on 'Message Information' modal on 'Organization' page
     Then the new area must be present in the areas list.
+    And  I logOut From 'SMARTHOUSE' Page

@@ -508,7 +508,7 @@ public class CommonSteps {
 
     @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
     public void clickRemoveItemButton() {
-        organization.removeItem();
+        organization.removeItem();;
     }
 
     @And("^click 'Cancelar' button on 'New Organization' modal form$")
@@ -587,8 +587,13 @@ public class CommonSteps {
     }
 
     @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
-    public void clickAceptarInformationMessage() {
+    public void clickAceptarInformationMessageOrganization() {
         organization.clickAcceptButtonMessage();
+    }
+
+    @And("^click 'Aceptar' button on 'Message Information' modal on 'Employee Form' page$")
+    public void clickAceptarInformationMessageEmployeeForm() {
+        employeeForm.clickAcceptButtonMessage();
     }
 
     @Then("^the new area must be present in the areas list.$")
