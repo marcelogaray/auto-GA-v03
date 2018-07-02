@@ -22,7 +22,7 @@ public class SHLogin extends BasePage {
     private WebElement logOutBtn;
 
     public SHLogin() {
-        CommonEvents.isClickable(passwordInputField);
+        CommonEvents.isClickable(aceptLoginBtn);
     }
 
     public void setUsernameInputField() {
@@ -48,6 +48,7 @@ public class SHLogin extends BasePage {
     }
 
     public void clicklogOutButton() {
+        isLogoutButtonVisible();
         CommonEvents.jsClickElement(logOutBtn);
     }
 
