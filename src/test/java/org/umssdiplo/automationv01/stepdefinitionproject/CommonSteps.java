@@ -27,7 +27,7 @@ public class CommonSteps {
     }
 
     @When("^I fill properly credentials with admin user$")
-    public void fill_credentials_with_admin_user() throws Throwable {
+    public void fillCredentialsWithAdminUser() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
 
