@@ -342,12 +342,12 @@ public class CommonSteps {
 
     @And("^I select accident option on menú$")
     public void selectAccidentTab() throws Throwable {
-        accident = headerWithLogin.clickAccidentTab();
+        shAccident = headerWithLogin.clickAccidentTab();
     }
 
     @When("^I click on accident delete option$")
     public void clickDeleteButton() throws Throwable {
-        deleteConfirmModal = accident.clickDeleteButton();
+        deleteConfirmModal = shAccident.clickDeleteButton();
     }
 
     @Then("^I verify if a confirm delete modal is opened$")
