@@ -13,15 +13,15 @@ public class JsonDataReader {
     private final String dataFilePath = PropertyAccessor.getInstance().getJsonDataFilePath();
 
     public Organization getOrganizationData() {
-        String employeJsonDataFilePath = dataFilePath + "organization.json";
+        String jsonDataFilePath = dataFilePath + "organization.json";
         Gson gson = new Gson();
         BufferedReader bufferReader = null;
         try {
-            bufferReader = new BufferedReader(new FileReader(employeJsonDataFilePath));
+            bufferReader = new BufferedReader(new FileReader(jsonDataFilePath));
             Organization organization = gson.fromJson(bufferReader, Organization.class);
             return organization;
         } catch (FileNotFoundException e) {
-            throw new RuntimeException("Json file not found at path : " + employeJsonDataFilePath);
+            throw new RuntimeException("Json file not found at path : " + jsonDataFilePath);
         } finally {
             try {
                 if (bufferReader != null) bufferReader.close();

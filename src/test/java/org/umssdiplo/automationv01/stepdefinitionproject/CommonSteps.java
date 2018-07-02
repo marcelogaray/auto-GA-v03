@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
+import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 import java.io.Console;
@@ -19,6 +20,7 @@ public class CommonSteps {
     private SHOrganization organization;
     private SHOrganizationForm organizationForm;
     private Organization organizationData;
+    private SHEmployee employee;
 
     @Given("^Given I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -74,6 +76,24 @@ public class CommonSteps {
         organizationForm.pressConfirmAlertButton();
         organizationForm.cancelModal();
      }
+
+    @And("^I click on 'Personal' option on 'Header' page$")
+    public void load_Personal_page() {
+
+        employee = headerWithLogin.clickEmployeeTab();
+    }
+
+    @And("^I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page$")
+    public void showConfirmAlert() {
+
+        employee.clickDeleteButton();
+    }
+
+    @Then("^I should see the Confirm alert with the next text: 'Estas Seguro que deseas eliminar al Empleado!'$")
+    public void theConfirmAlertIsDisplayed() throws Throwable {
+        Assert.assertTrue(employee.isAlertPresent(),"The confirm alert is not showing");
+        employee.clickCancelAlertButton();
+    }
 
 
 }

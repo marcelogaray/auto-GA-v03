@@ -40,6 +40,7 @@ public class SHEmployee extends BasePage {
     private WebElement itemOptionList;
 
 
+
     public void clickDeleteButton() {
         CommonEvents.clickButton(deleteButton);
     }
