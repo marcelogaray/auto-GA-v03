@@ -30,6 +30,23 @@ public class JsonDataReader {
             }
         }
     }
+  public Organization getOrganizationData() {
+        String employeJsonDataFilePath = dataFilePath + "organization.json";
+        Gson gson = new Gson();
+        BufferedReader bufferReader = null;
+        try {
+            bufferReader = new BufferedReader(new FileReader(employeJsonDataFilePath));
+            Organization organization = gson.fromJson(bufferReader, Organization.class);
+            return organization;
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException("Json file not found at path : " + employeJsonDataFilePath);
+        } finally {
+            try {
+                if (bufferReader != null) bufferReader.close();
+            } catch (IOException ignore) {
+            }
+        }
+    }
 
     public Organization getOrganizationData(String jsonFileName) {
         String employeJsonDataFilePath = dataFilePath + jsonFileName + ".json";

@@ -13,6 +13,9 @@ public class SHOrganization extends BasePage {
     @FindBy(name = "org_1")
     private WebElement organizationDetailButton;
 
+    @FindBy(name = "newOrganization_button")
+    private WebElement newOrganizationbutton;
+
     @FindBy(name = "org_77")
     private WebElement organizationBlockedDetailButton;
 
@@ -163,6 +166,11 @@ public class SHOrganization extends BasePage {
         CommonEvents.clickButton(organizationDetailButton);
     }
 
+    public SHOrganizationForm openModalOrganizationForm(){
+        CommonEvents.clickButton(newOrganizationbutton);
+        return new SHOrganizationForm();
+    }
+  
     public void removeItem() {
         CommonEvents.clickButton(removeItemButton);
     }

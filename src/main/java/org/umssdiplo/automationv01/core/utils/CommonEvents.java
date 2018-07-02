@@ -202,5 +202,4 @@ public class CommonEvents {
         List<WebElement> element = ManageDriver.getInstance().getWebDriver().findElements(By.className(webElement.getAttribute("class")));
         return element;
     }
-
 }

@@ -36,6 +36,7 @@ public class SHLogin extends BasePage {
     }
 
     public void clickAcceptLoginButton() {
+
         CommonEvents.clickButton(aceptLoginBtn);
     }
 
@@ -51,7 +52,7 @@ public class SHLogin extends BasePage {
         isLogoutButtonVisible();
         CommonEvents.jsClickElement(logOutBtn);
     }
-
+  
     public HeaderWithLogin fillCredentials() {
         setUsernameInputField();
         setPasswordInputField();
