@@ -10,6 +10,8 @@ import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
+import java.io.Console;
+
 public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
@@ -30,7 +32,7 @@ public class CommonSteps {
     }
 
     @And("^I logOut Form 'SMARTHOUSE' Page$")
-    
+
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clickLogOutButton();
@@ -68,7 +70,7 @@ public class CommonSteps {
 
     @Then("^I should see the alert with the next text: 'Already exists a Organization with the code ORG-0001'$")
      public void theAlertIsDisplayed() throws Throwable {
-        Assert.assertTrue(organizationForm.isAlertPresent(),"don't show the message");
+        Assert.assertTrue(organizationForm.isAlertPresent());
         organizationForm.pressConfirmAlertButton();
         organizationForm.cancelModal();
      }
