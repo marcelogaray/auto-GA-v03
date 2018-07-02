@@ -25,7 +25,7 @@ public class SHAssignModalView extends BasePage {
     }
 
     public void isCerrarButtonVisible() {
-        CommonEvents.waitWebElementIsVisible(close);
+        CommonEvents.waitWebElementIsVisible(closeX);
     }
 
     public void isCloseXButtonVisible() {

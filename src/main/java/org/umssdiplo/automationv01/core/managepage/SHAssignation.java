@@ -45,28 +45,11 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "view_assignment")
     private WebElement viewAssignment;
 
-    public void isCrearButtonVisible() {
-        CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
-    }
+    @FindBy(name = "new_assignment")
+    private WebElement newAssignmentElement;
 
-    public void isViewButtonVisible() {
-        CommonEvents.waitWebElementIsVisible(viewAssignment);
-    }
-
-    public boolean isCrearButtonEnabled() {
-        acceptNewAssignment.isEnabled();
-        return isCrearButtonEnabled();
-    }
-
-
-
-
-
-    public boolean assignationIsPresent() {
-        isViewButtonVisible();
-        return viewAssignment.isEnabled();
-    }
-
+    @FindBy(name = "closeX")
+    private WebElement closeX;
 
     @FindBy(name = "view_assignment")
     private WebElement view_assignmentElement;
@@ -75,6 +58,35 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "delete_assignment")
     private WebElement deleteElement;
 
+    @FindBy(name = "edit_assignment")
+    private WebElement buttonEditModal;
+
+
+    public void isCrearButtonVisible() {
+
+        CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
+    }
+
+    public void isViewButtonVisible() {
+
+        CommonEvents.waitWebElementIsVisible(viewAssignment);
+    }
+
+    public boolean isCrearButtonEnabled() {
+        acceptNewAssignment.isEnabled();
+        return isCrearButtonEnabled();
+    }
+
+    public boolean assignationIsPresent() {
+        isViewButtonVisible();
+        return viewAssignment.isEnabled();
+    }
+
+
+    public void isEditButtonVisible() {
+
+        CommonEvents.waitWebElementIsVisible(buttonEditModal);
+    }
 
 
     public SHAssignModalDelete clicViewModalDelete() {
@@ -83,10 +95,13 @@ public class SHAssignation extends BasePage {
     }
 
 
-
-
+    public SHAssignModalForm clickFormModal() {
+        CommonEvents.clickButton(newAssignmentElement);
+        return new SHAssignModalForm();
+    }
 
     public void newAssignment() {
+
         CommonEvents.clickButton(addAssignmentButton);
     }
 
@@ -110,15 +125,19 @@ public class SHAssignation extends BasePage {
         CommonEvents.jsClickElement(Ok);
     }
 
-
     public boolean isButtonSeePresent() {
+
         return view_assignmentElement.isDisplayed();
     }
-    @FindBy(name = "closeX")
-    private WebElement closeX;
 
-    public SHAssignModalView clicViewModal (){
+    public SHAssignModalView clicViewModal() {
         CommonEvents.clickButton(view_assignmentElement);
         return new SHAssignModalView();
+    }
+
+    public SHAssignModalEdit clickEditModal() {
+        isEditButtonVisible();
+        CommonEvents.clickButton(buttonEditModal);
+        return new SHAssignModalEdit();
     }
 }

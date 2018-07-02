@@ -40,6 +40,9 @@ public class CommonSteps {
     private SHAssignModalView modalView;
     private SHAssignModalDelete modalDelete;
     private int countAssignments;
+    private SHAssignModalEdit modalEdit;
+    private SHEquipmentType equipmentType;
+    private SHAssignModalForm modalForm;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -58,21 +61,48 @@ public class CommonSteps {
         assignment.newAssignment();
     }
 
-
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
-        assignment = headerWithLogin.clickAssignTab();
-    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
-
     }
+
+    @When("^Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page$")
+    public void click_on_the_dumpster_button_to_remove_the_assignment_on_Asignacion_de_equipos_page() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+    }
+
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
+
+    @When("^Click on the edit button to the first assignment on 'Asignacion de equipos' page$")
+    public void click_on_the_edit_button_to_the_first_assignment_on_Asignacion_de_equipos_page() throws Throwable {
+        modalEdit = assignment.clickEditModal();
+    }
+
+    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
+    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
+        Assert.assertTrue(modalEdit.isModalEditPresent());
+    }
+
+    @And("^Click on the edit button of one of the equipments assigned to that employee$")
+    public void click_on_the_edit_button_of_one_of_the_equipments_assigned_to_that_employee() throws Throwable {
+        modalEdit.clickAssignmentSpecific();
+    }
+
+
+    @Then("^Se muestra el mensaje 'La asignacion se elimino correctamente'$")
+    public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
+        modalDelete.messageDelete();
+    }
+
 
     @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
     public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
-        modalView = assignment.clicViewModal() ;
+        modalView = assignment.clicViewModal();
     }
+
     @When("^Click on 'Nueva asignacion'$")
     public void click_on_Nueva_asignacion() throws Throwable {
         assignment.newAssignment();
@@ -89,6 +119,7 @@ public class CommonSteps {
     public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
         modalDelete = assignment.clicViewModalDelete();
     }
+
     @When("^Click on the button to see the first assignment in the list on 'Asignacion de Equipos' page$")
     public void click_on_the_button_to_see_the_first_assignment_in_the_list_on_Asignacion_de_Equipos_page() throws Throwable {
         modalView = assignment.clicViewModal();
@@ -508,7 +539,7 @@ public class CommonSteps {
 
     @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
     public void clickRemoveItemButton() {
-        organization.removeItem();;
+        organization.removeItem();
     }
 
     @And("^click 'Cancelar' button on 'New Organization' modal form$")
@@ -600,6 +631,7 @@ public class CommonSteps {
     public void isNewAreaPresent() {
         Assert.assertTrue(organization.isNewOrganizationVisible(), "The new organization is not present in the list.");
     }
+
     @When("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
     public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
         Assert.assertTrue(modalView.isModalDialogPresent(), "el modal 'Ver asignacion' no se desplego correctamente");
@@ -608,11 +640,17 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
         modalView.closeModalView();
         Assert.assertTrue(modalView.isModalDialogPresent());
         modalView.isCerrarButtonVisible();
 
+    }
+
+    @Then("^Verify if the employee's name is correct in modal Edit assignment$")
+    public void verify_if_the_employee_s_name_is_correct_in_modal_Edit_assignment() throws Throwable {
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
+        modalEdit.closeModalEdit();
     }
 
     @When("^Click on the 'Close' button on modal 'Ver asignación'$")
@@ -680,4 +718,63 @@ public class CommonSteps {
         modalDelete.closeEditModal();
     }
 
+    @Given("^Click on 'Equipos de Seguridad' button on Header page$")
+    public void click_on_Equipos_de_Seguridad_button_on_Header_page() throws Throwable {
+        equipmentType = headerWithLogin.clickEquipmentTab();
+
+    }
+
+    @Given("^Click on the button 'Ver tipos de equipos registrados'$")
+    public void click_on_the_button_Ver_tipos_de_equipos_registrados() throws Throwable {
+        equipmentType.isViewButtonVisible();
+        equipmentType.clickViewEquipmentType();
+    }
+
+    @Given("^Click on the button 'Nuevo registro'$")
+    public void click_on_the_button_Nuevo_registro() throws Throwable {
+        equipmentType.isVisibleViewList();
+        equipmentType.clickRegisterNewEquipmentType();
+    }
+
+    @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
+    public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
+        equipmentType.setData();
+    }
+
+    @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
+    public void click_on_Crear_button_on_modal_Nuevo_registro_de_tipo_de_equipo() throws Throwable {
+        equipmentType.clickButtonOk();
+    }
+
+    @Then("^verify new registered equipment type \"([^\"]*)\" is shown in equipment type page$")
+    public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String name) throws Throwable {
+        Assert.assertTrue(equipmentType.verifyListEquipmentType(name), "No esta registrado");
+    }
+
+
+    @When("^Click on the 'Nueva asignación' button on 'Asignacion de equipos' page$")
+    public void click_on_the_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
+        modalForm = assignment.clickFormModal();
+    }
+
+    @When("^The modal 'Asignar equipo' is displayed$")
+    public void the_modal_Asignar_equipo_is_displayed() throws Throwable {
+        Assert.assertTrue(modalForm.isFormModalPresent());
+    }
+
+    @When("^Just enter data in the 'Observaciones' field on the 'Asignar equipo' modal$")
+    public void just_enter_data_in_the_Observaciones_field_on_the_Asignar_equipo_modal() throws Throwable {
+        modalForm.setObservations();
+    }
+
+    @Then("^The 'Crear' button is not enabled on the 'Asignar equipo' modal$")
+    public void the_Crear_button_is_not_enabled_on_the_Asignar_equipo_modal() throws Throwable {
+        Assert.assertFalse(modalForm.isButtonCreateEnabled(), "Crear boton esta habilitado");
+
+    }
+
+    @And("Close the 'Asignar equipo' modal$")
+    public void close_the_Asignar_equipo_modal() throws Throwable {
+        modalForm.cancelAssignment();
+    }
 }
