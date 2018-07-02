@@ -27,6 +27,9 @@ public class SHAccident extends BasePage {
     @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[3]")
     private WebElement deleteButton;
 
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[1]")
+    private WebElement viewButton;
+
     public SHAccident() {
         CommonEvents.isClickable(registrarAccBtn);
     }
@@ -76,5 +79,13 @@ public class SHAccident extends BasePage {
         CommonEvents.waitUntil(3000);
         CommonEvents.clickButton(editButton);
         return new SHAccidentEditFormModal();
+    }
+
+    public SHViewAccident clickViewButton() {
+        CommonEvents.waitUntil(5000);
+        if (CommonEvents.isClickable(viewButton)) {
+            CommonEvents.clickButton(viewButton);
+        }
+        return new SHViewAccident();
     }
 }
