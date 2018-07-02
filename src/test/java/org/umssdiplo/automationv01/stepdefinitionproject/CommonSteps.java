@@ -203,11 +203,6 @@ public class CommonSteps {
     }
 
     @And("^go to 'Estructura Organizacional' on 'Header' page$")
-    public void load_Organization_page() {
-        organization = headerWithLogin.clickOrganizationTab();
-    }
-
-    @And("^go to 'Estructura Organizacional' on 'Header' page$")
     public void goToEstOrg() {
         organization = headerWithLogin.clickOrganizationTab();
     }
@@ -260,9 +255,6 @@ public class CommonSteps {
         Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
     }
 
-    @And("^click 'Nuea Area' button on 'Organization' page$")
-    public void clickNewOrganization() {
-        organization.openNewOrganizationModalForm();
     @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
     public void clickRemoveItemButton() {
         organization.removeItem();
