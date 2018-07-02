@@ -8,6 +8,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
+import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
@@ -22,6 +23,7 @@ public class CommonSteps {
     private SHLogin login;
     private HeaderWithLogin headerWithLogin;
     private HeaderWithoutLogin headerWithoutLogin;
+    private SHOrganization organization;
     private SHEmployee employee;
     private SHNewEmployeeForm employeeForm;
     private Employee employeeData;
@@ -34,6 +36,10 @@ public class CommonSteps {
     private SHDeleteConfirmModal deleteConfirmModal;
     private SHViewAccident viewAccident;
     private int countAccident;
+    private Organization organizationData;
+    private SHAssignModalView modalView;
+    private SHAssignModalDelete modalDelete;
+    private int countAssignments;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -52,10 +58,40 @@ public class CommonSteps {
         assignment.newAssignment();
     }
 
+
+    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
+    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
+        assignment = headerWithLogin.clickAssignTab();
+    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
 
+    }
+
+    @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
+    public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal() ;
+    }
+    @When("^Click on 'Nueva asignacion'$")
+    public void click_on_Nueva_asignacion() throws Throwable {
+        assignment.newAssignment();
+    }
+
+    @And("^Create new assignment$")
+    public void create_new_assignment() throws Throwable {
+        assignment.setData();
+        assignment.registerNewAssignment();
+        assignment.registeredAssignment();
+    }
+
+    @When("^Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page$")
+    public void click_on_remove_assignment_of_the_first_employee_from_the_list_on_Asignacion_de_equipos_page() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+    }
+    @When("^Click on the button to see the first assignment in the list on 'Asignacion de Equipos' page$")
+    public void click_on_the_button_to_see_the_first_assignment_in_the_list_on_Asignacion_de_Equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal();
     }
 
     @When("^click over 'Crear' button on 'Asignar equipo' modal$")
@@ -206,8 +242,6 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentVieWmodal.getDescription().equals(data.get(0).get("Description")), "La descripcion del accidente no es la misma");
         Assert.assertTrue(shAccidentVieWmodal.getStatus().equals(data.get(0).get("statusCode")), "El Estado del accidente no es el mismo");
     }
-
-
 
     @And("^I select accident menu 'Accidentes'$")
     public void openRegisterModal() throws Throwable {
@@ -417,6 +451,228 @@ public class CommonSteps {
     public void compareListSize() throws Throwable {
         int result = countAccident - 1;
         Assert.assertEquals(shAccident.getSizeOfRegisters(), result, "No se elimino el registro seleccionado.");
+    }
+
+    @And("^go to 'Estructura Organizacional' on 'Header' page$")
+    public void goToEstOrg() {
+        organization = headerWithLogin.clickOrganizationTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page$")
+    public void goToActiveArea() {
+        organization.openActiveOrganizationDetailView();
+    }
+
+    @And("^click 'Nueva Area' button on 'Organization' page$")
+    public void clickNewOrganization() {
+        organization.openNewOrganizationModalForm();
+    }
+
+    @And("^fill 'New Organization' modal form on 'Organization' page with 'start date' biger than 'end date'$")
+    public void fillFormOrganizationDataWithStartBigerEndDate() {
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case7");
+        organization.fillNewOrganizationForm(organizationData);
+    }
+
+    @And("^fill 'New Organization' modal form on 'Organization' page with property data$")
+    public void fillFormOrganizationDataProperty() {
+        organizationData = FileReaderManager.getInstance().getJsonReader().getOrganizationData("organization_ORG_Case10");
+        organization.fillNewOrganizationFormCorrectly(organizationData);
+    }
+
+    @And("^click 'Crear' button on 'New Organization' modal on 'Organization' page$")
+    public void clickCreateOrganizationButton() {
+        organization.clickSaveOrganizationButton();
+    }
+
+    @Then("^'La fecha de inicio de actividades debe ser menor a la fecha final' information message should be displayed.$")
+    public void idStartDateBiggerEndDate() {
+        String expectedMessage = String.format("La fecha de inicio de actividades (%s) debe ser menor a la fecha final (%s).", organizationData.getInitDateActivitiesNewOrg(), organizationData.getEndDateActivitiesNewOrg());
+        Assert.assertEquals(organization.getAlertMessage(), expectedMessage);
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General' option on 'Organization' page$")
+    public void goToArea() {
+        organization.openOrganizationDetailView();
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page$")
+    public void clickRemoveOrganizationButton() {
+        organization.removeOrganization();
+    }
+
+    @Then("^'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed$")
+    public void areaWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El area con id 2 no puede eliminarse ya que tiene areas y/o empleados asignados.");
+    }
+
+    @And("^click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page$")
+    public void clickRemoveItemButton() {
+        organization.removeItem();
+    }
+
+    @And("^click 'Cancelar' button on 'New Organization' modal form$")
+    public void clickCancelNewOrganization() {
+        organization.clickCancelNewOrganizationButton();
+    }
+
+    @And("^go to 'Home' on 'Header' page$")
+    public void goToHome() {
+        headerWithoutLogin.clickHomeTab();
+    }
+
+    @And("^click 'Detail' button on 'Gerencia General Disabled' option on 'Organization page'$")
+    public void goToDisabledArea() {
+        organization.openInactiveOrganizationDetailView();
+    }
+
+    @Then("^'Nueva Area' button is not present on 'Organization' page$")
+    public void isNewOrganizationButtonNotPresent() {
+        Assert.assertFalse(organization.isNewOrganizationButtonPresent(), "'New Organization' button is present.");
+    }
+
+    @Then("^'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.$")
+    public void itemWithEmployeeMessageIsDisplayed() {
+        Assert.assertEquals(organization.getAlertMessage(), "El item con id 29 no puede eliminarse ya que se encuentra asignado a un empleado.");
+    }
+
+    @And("^click 'Eliminar' button on 'Organization' page.$")
+    public void clickRemoveOrganizationButton2() {
+        organization.removeOrganization2();
+    }
+
+    @And("^click 'Aceptar' button on 'Information Message' modal$")
+    public void clickOkButtonMessageConfirmation() {
+        organization.clickOkButtonMessageAlert();
+    }
+
+    @Then("^the area should not be present in the list$")
+    public void isAreaDeletedPresente() {
+        Assert.assertFalse(organization.isOrganizationMaktDetailButtonVisible(), "The Area was not be eliminated");
+    }
+
+    @And("^navigate to 'Gerencia General' option on 'Organization' page$")
+    public void goToGGArea() {
+        organization.openActiveOrganizationDetailView();
+    }
+
+    @And("^click 'Nuevo Item' button on 'Organization' page$")
+    public void clickNuevoItemButton() {
+        organization.clickNewItemButton();
+    }
+
+    @And("^fill 'New Item' modal form on 'Organization' page$")
+    public void fillNewItemForm() {
+        organization.fillNewItemForm("ITM-050");
+    }
+
+    @And("^click 'Crear' button on 'New Item' modal on 'Organization' page$")
+    public void clickCrearItemButton() {
+        organization.clickSaveItemButton();
+    }
+
+    @And("^verify 'El Item fue creado correctamente' message info is displayed on 'Organization' page$")
+    public void verifyItemCreatedMessage() {
+        Assert.assertEquals(organization.getAlertMessage(), "El Item fue creado correctamente");
+    }
+
+    @Then("^new item must be present in items list$")
+    public void isPresentNewItem() {
+        Assert.assertTrue(organization.isNewItemVisible(), "The new item is not present in the list items.");
+    }
+
+    @And("^verify 'El área fue creado correctamente' message info is displayed on 'Organization' page$")
+    public void verifyOrgCreatedMessage() {
+        Assert.assertEquals(organization.getAlertMessage(), "El área fue creado correctamente");
+    }
+
+    @And("^click 'Aceptar' button on 'Message Information' modal on 'Organization' page$")
+    public void clickAceptarInformationMessage() {
+        organization.clickAcceptButtonMessage();
+    }
+
+    @Then("^the new area must be present in the areas list.$")
+    public void isNewAreaPresent() {
+        Assert.assertTrue(organization.isNewOrganizationVisible(), "The new organization is not present in the list.");
+    }
+    @When("^The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee$")
+    public void the_modal_Ver_asignacion_is_displayed_that_lists_all_the_equipment_that_was_assigned_to_that_employee() throws Throwable {
+        Assert.assertTrue(modalView.isModalDialogPresent(), "el modal 'Ver asignacion' no se desplego correctamente");
+        modalView.isButtonCloseVisible();
+    }
+
+    @Then("^Verify if the employee's name is correct$")
+    public void verify_if_the_employee_s_name_is_correct() throws Throwable {
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        modalView.closeModalView();
+        Assert.assertTrue(modalView.isModalDialogPresent());
+        modalView.isCerrarButtonVisible();
+
+    }
+
+    @When("^Click on the 'Close' button on modal 'Ver asignación'$")
+    public void click_on_the_Close_button_on_modal_Ver_asignación() throws Throwable {
+        modalView.clickclose();
+    }
+
+    @Then("^The modal 'Ver asignación' closes$")
+    public void the_modal_Ver_asignación_closes() throws Throwable {
+        Assert.assertTrue(assignment.isButtonSeePresent());
+    }
+
+    @When("^I reopen the modal 'Ver asignación' on 'Asignación de equipos' page$")
+    public void i_reopen_the_modal_Ver_asignación_on_Asignación_de_equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal();
+        modalView.isCloseXButtonVisible();
+    }
+
+    @When("^Click on the 'X' button on modal 'Ver asignación'$")
+    public void click_on_the_X_button_on_modal_Ver_asignación() throws Throwable {
+        modalView.clickCloseX();
+    }
+
+    @Then("^The modal 'Ver asignacion' closes$")
+    public void the_modal_Ver_asignacion_closes() throws Throwable {
+        Assert.assertTrue(assignment.isButtonSeePresent());
+    }
+    @When("^Obtain the total of assignments made to the employee$")
+    public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
+        modalDelete.isDeleteButtonPresent();
+        modalDelete.isListPresent();
+        countAssignments = modalDelete.getSizeAssignments();
+    }
+
+    @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
+    public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
+        modalDelete.deleteOnEditForm();
+    }
+
+    @When("^The modal 'Confirmar eliminacion' is displayed$")
+    public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
+        Assert.assertTrue(modalDelete.isConfirmModalPresent(), "El modal 'Confirmar eliminacion' no se desplego");
+    }
+
+    @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
+    public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
+        modalDelete.acceptDelete();
+    }
+
+    @And("^The message 'La asignacion se elimino correctamente' is displayed$")
+    public void the_message_La_asignacion_se_elimino_correctamente_is_displayed() throws Throwable {
+        modalDelete.messageDelete();
+    }
+
+    @Then("^The assignment is not present in the in the list of assignments made$")
+    public void the_assignment_is_not_present_in_the_in_the_list_of_assignments_made() throws Throwable {
+        modalDelete = assignment.clicViewModalDelete();
+        modalDelete.isDeleteButtonPresent();
+        int assignments = countAssignments - 1;
+        Assert.assertEquals(modalDelete.getSizeAssignments(), assignments, "La asignacion no fue eliminada");
+    }
+
+    @And("^I close edit modal$")
+    public void i_close_edit_modal() throws Throwable {
+        modalDelete.closeEditModal();
     }
 
 }

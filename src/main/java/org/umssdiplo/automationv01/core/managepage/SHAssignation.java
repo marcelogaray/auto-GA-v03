@@ -58,6 +58,34 @@ public class SHAssignation extends BasePage {
         return isCrearButtonEnabled();
     }
 
+
+
+
+
+    public boolean assignationIsPresent() {
+        isViewButtonVisible();
+        return viewAssignment.isEnabled();
+    }
+
+
+    @FindBy(name = "view_assignment")
+    private WebElement view_assignmentElement;
+
+
+    @FindBy(name = "delete_assignment")
+    private WebElement deleteElement;
+
+
+
+    public SHAssignModalDelete clicViewModalDelete() {
+        CommonEvents.clickButton(deleteElement);
+        return new SHAssignModalDelete();
+    }
+
+
+
+
+
     public void newAssignment() {
         CommonEvents.clickButton(addAssignmentButton);
     }
@@ -82,8 +110,15 @@ public class SHAssignation extends BasePage {
         CommonEvents.jsClickElement(Ok);
     }
 
-    public boolean assignationIsPresent() {
-        isViewButtonVisible();
-        return viewAssignment.isEnabled();
+
+    public boolean isButtonSeePresent() {
+        return view_assignmentElement.isDisplayed();
+    }
+    @FindBy(name = "closeX")
+    private WebElement closeX;
+
+    public SHAssignModalView clicViewModal (){
+        CommonEvents.clickButton(view_assignmentElement);
+        return new SHAssignModalView();
     }
 }
