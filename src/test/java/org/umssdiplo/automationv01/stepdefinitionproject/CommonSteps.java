@@ -109,6 +109,15 @@ public class CommonSteps {
         employee.clickAcceptAlertButton();
     }
 
+    @When("^I click on 'Ver detalles de empleado' button on 'Margotd Leticia Fernandez Garcia' item on 'Lista de Empleados' page$")
+    public void clickViewDetailsEmployee() {
 
+        employee.clickViewDetailsEmployee();
+    }
 
+    @Then("^I should see the detail of information of employee selected$")
+    public void employeeDetailsIsDisplayed() throws Throwable {
+
+        Assert.assertTrue(employee.isDetailsVisible(),"don't show the employee detail");
+    }
 }
