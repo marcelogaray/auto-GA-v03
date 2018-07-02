@@ -357,15 +357,14 @@ public class CommonSteps {
                 "no ha sido desplegado");
     }
 
-
     @And("^I open Accident tab option$")
     public void openAccidentTab() throws Throwable {
-        accident = headerWithLogin.clickAccidentTab();
+        shAccident = headerWithLogin.clickAccidentTab();
     }
 
     @When("^I click on view icon$")
     public void clickViewIcon() throws Throwable {
-        viewAccident = accident.clickViewButton();
+        viewAccident = shAccident.clickViewButton();
     }
 
     @Then("^Verify if the employee value is correct$")
