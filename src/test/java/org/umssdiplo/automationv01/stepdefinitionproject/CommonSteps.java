@@ -32,6 +32,7 @@ public class CommonSteps {
     private SHAccidentFormModal shAccidentFomModal;
     private SHSwalNotification shSwalNotification;
     private SHAccidentVieWmodal shAccidentVieWmodal;
+    private SHAccidentEditFormModal shAccidentEditFormModal;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -230,5 +231,21 @@ public class CommonSteps {
     @Then("^I verify if the modal is not present$")
     public void verifyModalNotPresent() throws Throwable {
         Assert.assertEquals(accident.isAccientePresent(), false, "Modal was not close");
+    }
+
+    @And("^click on 'Crear' button on modal 'Registro de Accidente'$")
+    public void clickCreateButton() throws Throwable {
+        shAccidentFomModal.clickCreateButton();
+    }
+
+    @When("^I click on edit button on list of accidents$")
+    public void clickEditButton() throws Throwable {
+        shAccidentEditFormModal = shAccident.clickEditButton();
+    }
+
+    @Then("^verify 'Editar Accidente' form modal is present$")
+    public void checkEditFormModalIsPresent() throws Throwable {
+        Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El formulario de edición de accidentes " +
+                "no se cargo correctamente");
     }
 }

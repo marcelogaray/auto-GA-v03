@@ -12,6 +12,9 @@ public class SHAccident extends BasePage {
     @FindBy(id = "RegistrarAccidente")
     private WebElement registrarAccBtn;
 
+    @FindBy(xpath = "//*[@id=\"listAccidents\"]/div/a[2]")
+    private WebElement editButton;
+
     @FindBy(xpath = "mat-dialog-4")
     private WebElement nuevoRegistro;
 
@@ -52,5 +55,11 @@ public class SHAccident extends BasePage {
             i = i + 1;
         }
         return new SHAccidentVieWmodal();
+    }
+
+    public SHAccidentEditFormModal clickEditButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(editButton);
+        return new SHAccidentEditFormModal();
     }
 }

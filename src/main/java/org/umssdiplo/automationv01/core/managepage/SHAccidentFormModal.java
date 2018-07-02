@@ -106,6 +106,11 @@ public class SHAccidentFormModal extends BasePage {
         CommonEvents.setInputField(description, descriptionField);
     }
 
+    public void clickCreateButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(crearBtn);
+    }
+
     /**
      * verify if one of random ids for typeAccident is pressent
      */
