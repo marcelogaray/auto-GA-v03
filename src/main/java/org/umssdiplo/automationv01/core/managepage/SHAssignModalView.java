@@ -38,7 +38,7 @@ public class SHAssignModalView extends BasePage {
 
     public void clickCloseX() {
         CommonEvents.clickButton((closeX));
-
+    }
     public String getEmployeeName() {
         return employeeName.getText();
     }

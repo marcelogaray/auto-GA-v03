@@ -50,6 +50,8 @@ public class CommonSteps {
         assignment = headerWithLogin.clickAssignTab();
         assignment.newAssignment();
     }
+
+
     @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
     public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
         assignment = headerWithLogin.clickAssignTab();
@@ -112,10 +114,6 @@ public class CommonSteps {
         Assert.assertEquals(employeeForm.getAlertMessage(), messageExpected);
     }
 
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
-        assignment = headerWithLogin.clickAssignTab();
-    }
 
     @Then("^Verify that the assignments are listed on 'Asignacion de equipos' page$")
     public void verify_that_the_assignments_are_listed_on_Asignacion_de_equipos_page() throws Throwable {

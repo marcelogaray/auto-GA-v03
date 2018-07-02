@@ -3,8 +3,8 @@ Feature: SHViewModalVerAsignacion
   Background: There must be at least one registered assignment
 
   Scenario: Verify that the modal 'View Assignment' closes when you click on the 'Close' button or on the 'X' button
-    Given Given I loging to 'SMARTHOUSE' page
-    And I fill properly credentials with admin user
+    Given I loging to 'SMARTHOUSE' page
+    And fill properly credentials in 'Login' modal
     When Go to 'Asignacion de Equipos' on 'Header' page
     And Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page
     And The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee
