@@ -9,8 +9,6 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.dataProviders.FileReaderManager;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.managepage.*;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
 import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
 import org.umssdiplo.automationv01.core.managepage.SHAssignation;
@@ -210,27 +208,27 @@ public class CommonSteps {
 
     @And("^I select accident menu 'Accidentes'$")
     public void openRegisterModal() throws Throwable {
-        accident = headerWithLogin.clickAccidentTab();
+        shAccident = headerWithLogin.clickAccidentTab();
     }
 
     @And("^I click on 'Registrar accidente' button$")
     public void selectAccidentMenu() throws Throwable {
-        accidentFormModal = accident.clickRegistarAccBtn();
+        shAccidentFomModal = shAccident.ClickRegistarAccBtn();
     }
 
     @And("^Close modal 'Registro de Accidente' from 'x' button$")
     public void closeModalAccidentRegister() throws Throwable {
-        accidentFormModal.closeFromXButtonHeader();
+        shAccidentFomModal.closeFromXButtonHeader();
     }
 
     @And("^Close modal 'Registro de Accidente' from 'Cancel' button$")
     public void closeModalAccidentRegisterFromCancel() throws Throwable {
-        accidentFormModal.closeFromCancelButton();
+        shAccidentFomModal.closeFromCancelButton();
     }
 
     @Then("^I verify if the modal is not present$")
     public void verifyModalNotPresent() throws Throwable {
-        Assert.assertEquals(accident.isAccientePresent(), false, "Modal was not close");
+        Assert.assertEquals(shAccident.isAccientePresent(), false, "Modal was not close");
     }
 
     @And("^click on 'Crear' button on modal 'Registro de Accidente'$")
