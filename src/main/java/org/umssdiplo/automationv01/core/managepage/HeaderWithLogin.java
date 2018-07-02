@@ -15,11 +15,11 @@ public class HeaderWithLogin extends BasePage {
     @FindBy(id = "accidentLink")
     private WebElement accidentsTab;
 
-    @FindBy(name = "aassign_button")
+    @FindBy(name = "assignment_button")
     private WebElement assignTab;
 
-    @FindBy(id = "equipos_seguridad")
-    private WebElement equipostab;
+    @FindBy(name = "equipment_button")
+    private WebElement equipmentTab;
 
     public SHOrganization clickOrganizationTab() {
         CommonEvents.clickButton(organizationTab);
@@ -37,8 +37,12 @@ public class HeaderWithLogin extends BasePage {
     }
 
     public SHAssignation clickAssignTab() {
-        CommonEvents.clickButton(employeeTab);
+        CommonEvents.clickButton(assignTab);
         return new SHAssignation();
+    }
+    public SHEquipmentType clickEquipmentTab(){
+        CommonEvents.clickButton((equipmentTab));
+        return new SHEquipmentType();
     }
 
     public SHEquiposSegu clickequiposTab() {
