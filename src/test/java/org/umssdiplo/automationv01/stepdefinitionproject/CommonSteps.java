@@ -58,38 +58,15 @@ public class CommonSteps {
     }
 
 
-    @When("^Go to 'Asignacion de Equipos' on 'Header' page$")
-    public void go_to_Asignacion_de_Equipos_on_Header_page() throws Throwable {
-        assignment = headerWithLogin.clickAssignTab();
-    }
     @When("^user selects an employee, a equipment and enters observations of the assignment made on 'Asignar Equipo' modal$")
     public void user_selects_an_employee_a_equipment_and_enters_observations_of_the_assignment_made() throws Throwable {
         assignment.setData();
+    }
 
     @When("^Click on the dumpster button to remove the assignment on 'Asignacion de equipos' page$")
     public void click_on_the_dumpster_button_to_remove_the_assignment_on_Asignacion_de_equipos_page() throws Throwable {
-        modalDelete = assignment.clicViewModal();
+        modalDelete = assignment.clicViewModalDelete();
     }
-
-    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
-    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
-        Assert.assertTrue(modalDelete.isEditDialogPresent());
-    }
-
-    @When("^Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'$")
-    public void click_on_the_dumpster_button_to_remove_the_assignment_on_the_modal_Editar_Asignacion() throws Throwable {
-        modalDelete.deleteOnEditForm();
-    }
-
-    @When("^The modal 'Confirmar eliminacion' is displayed$")
-    public void the_modal_Confirmar_eliminacion_is_displayed() throws Throwable {
-        Assert.assertTrue(modalDelete.isConfirmModalPresent());
-    }
-        @And("^I logOut From 'SMARTHOUSE' Page$")
-        public void logOut_From_SMATHOUSE_Page() throws Throwable {
-            headerWithoutLogin.openLoginPage();
-            login.clickLogOutButton();
-        }
 
         @When("^Go to 'Asignacion de Equipos' on 'Header' page,assignments are listed$")
         public void go_to_Asignacion_de_Equipos_on_Header_page_assignments_are_listed() throws Throwable {
@@ -111,11 +88,6 @@ public class CommonSteps {
             modalEdit.clickAssignmentSpecific();
         }
 
-        @Then("^Verify if the employee's name is correct$")
-        public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-            Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
-            modalEdit.closeModalEdit();
-        }
 
     @When("^Click on the 'Aceptar' button, on the modal 'Confirmar eliminacion'$")
     public void click_on_the_Aceptar_button_on_the_modal_Confirmar_eliminacion() throws Throwable {
@@ -177,7 +149,7 @@ public class CommonSteps {
         @And("^I logOut From 'SMARTHOUSE' Page$")
         public void logOut_From_SMATHOUSE_Page() throws Throwable {
             headerWithoutLogin.openLoginPage();
-            login.clicklogOutButton();
+            login.clickLogOutButton();
         }
 
         @And("^go to 'Employee' on 'Header' page$")
@@ -463,12 +435,18 @@ public class CommonSteps {
 
         @Then("^Verify if the employee's name is correct$")
         public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-            Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+            Assert.assertEquals(modalView.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
             modalView.closeModalView();
             Assert.assertTrue(modalView.isModalDialogPresent());
-            modalView.isCerrarButtonVisible();
+
 
         }
+
+    @Then("^Verify if the employee's name is correct in modal Edit ssignment$")
+    public void verify_if_the_employee_s_name_is_correct_in_modal_Edit_assignment() throws Throwable {
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        modalEdit.closeModalEdit();
+    }
 
         @When("^Click on the 'Close' button on modal 'Ver asignación'$")
         public void click_on_the_Close_button_on_modal_Ver_asignación() throws Throwable {

@@ -58,15 +58,10 @@ public class SHAssignation extends BasePage {
         return isCrearButtonEnabled();
     }
 
-
-
-
-
     public boolean assignationIsPresent() {
         isViewButtonVisible();
         return viewAssignment.isEnabled();
     }
-
 
     @FindBy(name = "view_assignment")
     private WebElement view_assignmentElement;
@@ -77,17 +72,12 @@ public class SHAssignation extends BasePage {
 
     @FindBy(name = "edit_assignment")
     private WebElement buttonEditModal;
-    @FindBy(name = "logout_button")
-    private WebElement logOut;
+
     public void isEditButtonVisible() {
         CommonEvents.waitWebElementIsVisible(buttonEditModal);
     }
 
 
-    public SHAssignModalDelete clicViewModal (){
-        CommonEvents.clickButton(deleteElement);
-        return new SHAssignModalDelete();
-    }
     public SHAssignModalDelete clicViewModalDelete() {
         CommonEvents.clickButton(deleteElement);
         return new SHAssignModalDelete();
