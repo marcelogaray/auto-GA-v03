@@ -91,15 +91,97 @@ public class SHAssignation extends BasePage {
     @FindBy(name = "view_assignment")
     private WebElement view_assignmentElement;
 
+
+    @FindBy(name = "delete_assignment")
+    private WebElement deleteElement;
+
+    @FindBy(name = "logout_button")
+    private WebElement logOut;
+
+    @FindBy(name = "assignment_button")
+    private WebElement assignmentTab;
+
+    @FindBy(name = "new_assignment")
+    private WebElement addAssignmentButton;
+
+    @FindBy(name = "save")
+    private WebElement acceptNewAssignment;
+
+    @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
+    private WebElement Ok;
+
+    @FindBy(name = "employee")
+    private WebElement employeeKeyElement;
+
+    @FindBy(name = "equipment")
+    private WebElement equipmentKeyElement;
+
+    @FindBy(name = "observations")
+    private WebElement observationsElement;
+
+    @FindBy(id = "mat-dialog-0")
+    private WebElement employeeOption;
+
+    @FindBy(id = "mat-option-13")
+    private WebElement employeeSelect;
+
+    @FindBy(id = "mat-dialog-0")
+    private WebElement equipmentOption;
+
+    @FindBy(id = "mat-option-100")
+    private WebElement equipmentSelect;
+
+
+    public SHAssignModalDelete clicViewModal() {
+        CommonEvents.clickButton(deleteElement);
+        return new SHAssignModalDelete();
+    }
+
+    public void isCrearButtonVisible() {
+        CommonEvents.waitWebElementIsVisible(acceptNewAssignment);
+    }
+
+    public boolean isCrearButtonEnabled() {
+        acceptNewAssignment.isEnabled();
+        return isCrearButtonEnabled();
+    }
+
+    public void newAssignment() {
+        CommonEvents.clickButton(addAssignmentButton);
+    }
+
+    public void setData() {
+        String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
+        isCrearButtonVisible();
+        CommonEvents.jsClickElement(employeeKeyElement);
+        CommonEvents.jsClickElement(employeeSelect);
+        CommonEvents.jsClickElement(equipmentKeyElement);
+        CommonEvents.jsClickElement(equipmentSelect);
+        CommonEvents.setInputField(observationsElement, observations);
+    }
+
+    public void registerNewAssignment() {
+
+        CommonEvents.jsClickElement(acceptNewAssignment);
+    }
+
+    public void registeredAssignment() {
+
+        CommonEvents.jsClickElement(Ok);
+    }
+
+    public SHAssignModalView clicViewModal (){
+        CommonEvents.clickButton(view_assignmentElement);
+        return new SHAssignModalView();
+    }
+    public boolean isButtonSeePresent() {
+        return view_assignmentElement.isDisplayed();
+    }
     @FindBy(name = "closeX")
     private WebElement closeX;
 
     public SHAssignModalView clicViewModal (){
         CommonEvents.clickButton(view_assignmentElement);
         return new SHAssignModalView();
-    }
-
-    public boolean isButtonSeePresent() {
-        return view_assignmentElement.isDisplayed();
     }
 }
