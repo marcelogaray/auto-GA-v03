@@ -6,6 +6,9 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class SHLogin extends BasePage {
+    @FindBy(id = "mat-dialog-0")
+    private WebElement loginDialog;
+
     @FindBy(name = "username")
     private WebElement usernameInputField;
 
