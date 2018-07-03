@@ -1,4 +1,4 @@
-Feature: SHListAssignments
+Feature: Register Assignment
   Background: The employee to whom the equipment is assigned is registered in the system
   The equipment to be assigned is registered in the system
   Scenario: Verify that a equipment can be assigned to an employee

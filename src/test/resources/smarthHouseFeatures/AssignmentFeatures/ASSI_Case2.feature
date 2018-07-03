@@ -1,4 +1,4 @@
-Feature: SHListAssignments
+Feature: ListAssignments
 
   Background: There is at least one assignment registered in the system
 

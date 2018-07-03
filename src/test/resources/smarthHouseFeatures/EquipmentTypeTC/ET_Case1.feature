@@ -1,7 +1,6 @@
-Feature: EquiType
+Feature: Register Equipment Type
 
-  Scenario:
-  Verify that when registering a type of equipment it appears in the list of equipment types
+  Scenario: Verify that when registering a type of equipment it appears in the list of equipment types
     Given I loging to 'SMARTHOUSE' page
     And fill properly credentials in 'Login' modal
     And Click on 'Equipos de Seguridad' button on Header page
