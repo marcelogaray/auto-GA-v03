@@ -764,7 +764,7 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct in modal Edit assignment$")
     public void verify_if_the_employee_s_name_is_correct_in_modal_Edit_assignment() throws Throwable {
-        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no coincide");
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
         modalEdit.closeModalEdit();
     }
 

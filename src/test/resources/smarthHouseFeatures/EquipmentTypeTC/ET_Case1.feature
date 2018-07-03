@@ -9,5 +9,5 @@ Feature: EquiType
     And Click on the button 'Nuevo registro'
     When required data is filled on 'Nuevo registro de tipo de equipo' modal form
     And click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'
-    Then verify new registered equipment type "Guantes" is shown in equipment type page
+    Then verify new registered equipment type "TipoEq" is shown in equipment type page
     And I logOut From 'SMARTHOUSE' Page
