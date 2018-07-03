@@ -61,23 +61,18 @@ public class CommonSteps {
     }
 
     @And("^I logOut Form 'SMARTHOUSE' Page$")
-
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
-        headerWithoutLogin.openLoginPage();
+        headerWithoutLogin.openLoginPageInstantied();
         login.clicklogOutButton();
     }
 
     @And("^I go to 'Estructura Organizacional' on 'Header' page$")
     public void load_Organization_page() {
-
         organization = headerWithLogin.clickOrganizationTab();
     }
 
-
-
     @And("^I click on 'Nueva Area' button on 'Organization Detail' page$")
     public void openModalOrganizationForm() {
-
         organizationForm = organization.openModalOrganizationForm();
     }
 
@@ -89,7 +84,6 @@ public class CommonSteps {
 
     @And("^I click on 'Crear' button in 'Crear Area' modal form$")
     public void saveOrganizationModalForm() {
-
         organizationForm.saveOrganizationModalForm();
     }
 

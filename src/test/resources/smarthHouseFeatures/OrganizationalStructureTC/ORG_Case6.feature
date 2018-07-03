@@ -9,4 +9,4 @@ Feature: ORG_Case6
     And click 'Eliminar' button on 'Item ITM-001' element on 'Organization' page
     Then 'El item con id XX no puede eliminarse ya que se encuentra asignado a un empleado' information message should be displayed.
     And click 'Aceptar' button on 'Message Information' modal on 'Organization' page
-    And  I logOut From 'SMARTHOUSE' Page
+    And I logOut Form 'SMARTHOUSE' Page
