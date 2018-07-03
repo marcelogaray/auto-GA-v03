@@ -2,7 +2,7 @@
 Feature: SHAccident
 
   Scenario: The user close the dialog to register accidents from header 'x' button and 'Cancelar' button
-    Given Given I loging to 'SMARTHOUSE' page
+    Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And I select accident menu 'Accidentes'
     And I click on 'Registrar accidente' button

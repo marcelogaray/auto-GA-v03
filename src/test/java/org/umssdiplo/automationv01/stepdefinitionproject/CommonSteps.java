@@ -16,11 +16,8 @@ import java.io.Console;
 import org.umssdiplo.automationv01.core.dataTypes.Employee;
 import org.umssdiplo.automationv01.core.dataTypes.Organization;
 import org.umssdiplo.automationv01.core.managepage.*;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
-import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
-import org.umssdiplo.automationv01.core.managepage.SHAssignation;
-import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
 import java.util.List;
 import java.util.Map;
 
@@ -61,8 +58,8 @@ public class CommonSteps {
     public void fillCredentialsWithAdminUser() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
-  
-    @And("^I logOut Form 'SMARTHOUSE' Page$")
+
+    @And("^I logOut From 'SMARTHOUSE' Page$")
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
         login.clicklogOutButton();
@@ -70,13 +67,11 @@ public class CommonSteps {
 
     @And("^I go to 'Estructura Organizacional' on 'Header' page$")
     public void load_Organization_page() {
-
         organization = headerWithLogin.clickOrganizationTab();
     }
 
     @And("^I click on 'Nueva Area' button on 'Organization Detail' page$")
     public void openModalOrganizationForm() {
-
         organizationForm = organization.openModalOrganizationForm();
     }
 
@@ -88,16 +83,15 @@ public class CommonSteps {
 
     @And("^I click on 'Crear' button in 'Crear Area' modal form$")
     public void saveOrganizationModalForm() {
-
         organizationForm.saveOrganizationModalForm();
     }
 
     @Then("^I should see the alert with the next text: 'Already exists a Organization with the code ORG-0001'$")
-     public void theAlertIsDisplayed() throws Throwable {
+    public void theAlertIsDisplayed() throws Throwable {
         Assert.assertTrue(organizationForm.isAlertPresent());
         organizationForm.pressConfirmAlertButton();
         organizationForm.cancelModal();
-     }
+    }
 
     @And("^I click on 'Personal' option on 'Header' page$")
     public void load_Personal_page() {
@@ -230,7 +224,6 @@ public class CommonSteps {
     public void se_muestra_el_mensaje_La_asignacion_se_elimino_correctamente() throws Throwable {
         modalDelete.messageDelete();
     }
-
 
     @When("^Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page$")
     public void click_on_the_see_button_of_a_registered_assignment_on_Asignacion_de_Equipos_page() throws Throwable {
@@ -388,11 +381,7 @@ public class CommonSteps {
         List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
         Assert.assertTrue(shAccident.verifyListelement(data.get(0).get("codeAcc")), "Error, el Accidente no existe en la lista de accientes");
     }
-    @And("^I logOut From 'SMARTHOUSE' Page$")
-    public void logOut_From_SMATHOUSE_Page() throws Throwable {
-        headerWithoutLogin.openLoginPage();
-        login.clicklogOutButton();
-    }
+
     @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
     public void verify_Default_Data_IsShown(DataTable defaulData) throws Throwable {
         List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
@@ -768,16 +757,15 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
         modalView.closeModalView();
         Assert.assertTrue(modalView.isModalDialogPresent());
         modalView.isCerrarButtonVisible();
-
     }
 
     @Then("^Verify if the employee's name is correct in modal Edit assignment$")
     public void verify_if_the_employee_s_name_is_correct_in_modal_Edit_assignment() throws Throwable {
-        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no coincide");
         modalEdit.closeModalEdit();
     }
 
@@ -801,7 +789,6 @@ public class CommonSteps {
     public void click_on_the_X_button_on_modal_Ver_asignacion() throws Throwable {
         modalView.clickCloseX();
     }
-
 
     @When("^Obtain the total of assignments made to the employee$")
     public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
@@ -846,7 +833,6 @@ public class CommonSteps {
     @Given("^Click on 'Equipos de Seguridad' button on Header page$")
     public void click_on_Equipos_de_Seguridad_button_on_Header_page() throws Throwable {
         equipmentType = headerWithLogin.clickEquipmentTab();
-
     }
 
     @Given("^Click on the button 'Ver tipos de equipos registrados'$")
@@ -875,7 +861,6 @@ public class CommonSteps {
     public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String name) throws Throwable {
         Assert.assertTrue(equipmentType.verifyListEquipmentType(name), "No esta registrado");
     }
-
 
     @When("^Click on the 'Nueva asignacion' button on 'Asignacion de equipos' page$")
     public void click_on_the_Nueva_asignacion_button_on_Asignacion_de_equipos_page() throws Throwable {

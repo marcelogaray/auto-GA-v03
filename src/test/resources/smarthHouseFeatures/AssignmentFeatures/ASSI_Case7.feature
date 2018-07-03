@@ -6,8 +6,6 @@ Feature: SHDeleteAsign
     Given I loging to 'SMARTHOUSE' page
     And fill properly credentials in 'Login' modal
     When Go to 'Asignacion de Equipos' on 'Header' page
-    And Click on 'Nueva asignacion'
-    And Create new assignment
     And Click on remove assignment of the first employee from the list on 'Asignacion de equipos' page
     And Obtain the total of assignments made to the employee
     And Click on the dumpster button to remove the assignment on the modal 'Editar Asignacion'

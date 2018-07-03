@@ -6,6 +6,9 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class SHLogin extends BasePage {
+    @FindBy(id = "mat-dialog-0")
+    private WebElement loginDialog;
+
     @FindBy(name = "username")
     private WebElement usernameInputField;
 
@@ -22,7 +25,7 @@ public class SHLogin extends BasePage {
     private WebElement logOutBtn;
 
     public SHLogin() {
-        CommonEvents.waitWebElementIsVisible(closeLoginBtn);
+        CommonEvents.isClickable(closeLoginBtn);
     }
 
     public void setUsernameInputField() {
@@ -36,7 +39,6 @@ public class SHLogin extends BasePage {
     }
 
     public void clickAcceptLoginButton() {
-
         CommonEvents.clickButton(aceptLoginBtn);
     }
 
@@ -54,10 +56,12 @@ public class SHLogin extends BasePage {
     }
 
     public HeaderWithLogin fillCredentials() {
-        setUsernameInputField();
-        setPasswordInputField();
-        clickAcceptLoginButton();
-        isLogoutButtonVisible();
+        if (CommonEvents.isVisible(aceptLoginBtn)) {
+            setUsernameInputField();
+            setPasswordInputField();
+            clickAcceptLoginButton();
+            isLogoutButtonVisible();
+        }
         clickCloseLoginButton();
         return new HeaderWithLogin();
     }

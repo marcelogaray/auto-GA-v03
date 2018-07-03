@@ -2,7 +2,7 @@
 Feature: SHLogin
 
   Scenario: Verify if datas is recovery when click on view accident
-    Given Given I loging to 'SMARTHOUSE' page
+    Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And I open Accident tab option
     When I click on view icon

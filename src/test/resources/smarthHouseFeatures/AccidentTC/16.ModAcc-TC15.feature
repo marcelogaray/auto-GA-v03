@@ -2,7 +2,7 @@
 Feature: SHLogin
 
   Scenario: Verify when click on 'Aceptar' button on modal confirm deletion delete the accident.
-    Given Given I loging to 'SMARTHOUSE' page
+    Given I loging to 'SMARTHOUSE' page
     And I fill properly credentials with admin user
     And I select accident option on menú
     And I obtain the count of accidents registers
