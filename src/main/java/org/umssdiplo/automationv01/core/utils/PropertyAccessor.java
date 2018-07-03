@@ -32,7 +32,7 @@ public class PropertyAccessor {
         return PropertyAccessor;
     }
 
-    private String getDataProperty(String nameProperty) {
+    public String getDataProperty(String nameProperty) {
         String property = System.getProperty(nameProperty);
         if (property == null) {
             return properties.getProperty(nameProperty);

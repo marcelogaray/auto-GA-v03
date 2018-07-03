@@ -24,7 +24,7 @@ public class SHAssignModalForm extends BasePage {
     }
 
     public void setObservations() {
-        String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
+        String observations = PropertyAccessor.getInstance().getDataProperty("observations");
         CommonEvents.setInputField(observationsElement, observations);
     }
 

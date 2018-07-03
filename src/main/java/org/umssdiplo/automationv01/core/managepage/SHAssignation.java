@@ -106,7 +106,7 @@ public class SHAssignation extends BasePage {
     }
 
     public void setData() {
-        String observations = PropertyAccessor.getInstance().getSHDataProperty("observations");
+        String observations = PropertyAccessor.getInstance().getDataProperty("observations");
         isCrearButtonVisible();
         CommonEvents.jsClickElement(employeeKeyElement);
         CommonEvents.jsClickElement(employeeSelect);

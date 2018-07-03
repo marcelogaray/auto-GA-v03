@@ -54,8 +54,8 @@ public class SHEquipmentType extends BasePage {
 
     public void setData() {
 
-        String name = PropertyAccessor.getInstance().getSHDataProperty("name");
-        String description = PropertyAccessor.getInstance().getSHDataProperty("description");
+        String name = PropertyAccessor.getInstance().getDataProperty("name");
+        String description = PropertyAccessor.getInstance().getDataProperty("description");
         isCreateButtonVisible();
         CommonEvents.setInputField(equipmentTypeName, name);
         CommonEvents.setInputField(equipmentTypeDescription, description);
