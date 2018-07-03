@@ -8,9 +8,9 @@ Feature: SHViewModalVerAsignacion
     When Go to 'Asignacion de Equipos' on 'Header' page
     And Click on the 'see' button of a registered assignment on 'Asignacion de Equipos' page
     And The modal 'Ver asignacion' is displayed that lists all the equipment that was assigned to that employee
-    When Click on the 'Close' button on modal 'Ver asignación'
-    Then The modal 'Ver asignación' closes
-    When I reopen the modal 'Ver asignación' on 'Asignación de equipos' page
-    And Click on the 'X' button on modal 'Ver asignación'
+    When Click on the 'Close' button on modal 'Ver asignacion'
+    Then The modal 'Ver asignacion' closes
+    When I reopen the modal 'Ver asignacion' on 'Asignacion de equipos' page
+    And Click on the 'X' button on modal 'Ver asignacion'
     Then The modal 'Ver asignacion' closes
     And  I logOut From 'SMARTHOUSE' Page
