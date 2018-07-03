@@ -39,7 +39,6 @@ public class SHLogin extends BasePage {
     }
 
     public void clickAcceptLoginButton() {
-
         CommonEvents.clickButton(aceptLoginBtn);
     }
 
@@ -57,10 +56,12 @@ public class SHLogin extends BasePage {
     }
 
     public HeaderWithLogin fillCredentials() {
-        setUsernameInputField();
-        setPasswordInputField();
-        clickAcceptLoginButton();
-        isLogoutButtonVisible();
+        if (CommonEvents.isVisible(aceptLoginBtn)) {
+            setUsernameInputField();
+            setPasswordInputField();
+            clickAcceptLoginButton();
+            isLogoutButtonVisible();
+        }
         clickCloseLoginButton();
         return new HeaderWithLogin();
     }

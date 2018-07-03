@@ -9,4 +9,4 @@ Feature: ORG_Case5
     And click 'Eliminar' button on 'Organization' page
     Then 'El area con id XX no puede eliminarse ya que tiene areas y/o empleados asignados' information message should be displayed
     And click 'Aceptar' button on 'Message Information' modal on 'Organization' page
-    And  I logOut From 'SMARTHOUSE' Page
+    And I logOut Form 'SMARTHOUSE' Page
