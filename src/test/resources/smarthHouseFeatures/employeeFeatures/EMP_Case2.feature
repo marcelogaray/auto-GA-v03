@@ -3,7 +3,7 @@ Feature: EMP_Case2
 
   Scenario: Verify if the employee does not have an item or equipment assignment
     Given I loging to 'SMARTHOUSE' page
-    When I fill properly credentials with admin user
+    When fill properly credentials in 'Login' modal
     And I click on 'Personal' option on 'Header' page
     And I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page
     And I Confirm alert  'Estas Seguro que deseas eliminar al Empleado!', click in "Si, Eliminar" button
