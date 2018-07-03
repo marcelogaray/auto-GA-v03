@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.List;
+
 public class SHEquiposSegurModal extends BasePage {
 
     //############### Nuevo Registro de equipos  #################
@@ -30,6 +32,9 @@ public class SHEquiposSegurModal extends BasePage {
     //*[@id="crear"]/button
     private WebElement crearEquipoBtn;
 
+    @FindBy(id = "//*[@id=\"columna\"]/div")
+    private WebElement employeeAuto;
+
     //############################ Ver Tipos De Equipos Registrados #################################
 
     @FindBy(id = "TipoEquipoIndumentaria")
@@ -38,12 +43,19 @@ public class SHEquiposSegurModal extends BasePage {
     @FindBy(id = "TipoDescripcion")
     private WebElement TipoDescripcion;
 
+    @FindBy(className = "mat-list-text")
+    private WebElement equipmentList;
+
 
     //######################## Metodos de Nuevo Registro de Equipos #################################
 
     public boolean isCrearBtnEnable() {
         return CommonEvents.isClickable(crearEquipoBtn);
 
+    }
+
+    public String getEmployeeValue() {
+        return employeeAuto.getAttribute("value");
     }
 
     public void setEquiposIndumentarias() {CommonEvents.setInputField(EquiposIndumentarias, "casco duro"); }
@@ -75,6 +87,9 @@ public class SHEquiposSegurModal extends BasePage {
         setTipoEquipoIndumentaria();
         setTipoDescripcion();
     }
-
+    public boolean verifyListEquipmentType(String name) {
+        List<WebElement> elements = CommonEvents.findElementsClassName(equipmentList);
+        return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
+    }
 
 }

@@ -46,7 +46,7 @@ public class HeaderWithLogin extends BasePage {
     }
 
     public SHEquiposSegu clickequiposTab() {
-        CommonEvents.clickButton(equipostab);
+        CommonEvents.clickButton(equipmentTab);
         return new SHEquiposSegu();
     }
 }

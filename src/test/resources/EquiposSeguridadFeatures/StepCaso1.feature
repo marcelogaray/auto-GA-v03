@@ -7,3 +7,5 @@ Scenario: 'Crear' button from 'Registrar Accidente' Modal Form
       And click on 'Nuevo registro de equipos' button on Accident Page
       When required data is filled witout one of them on 'nuevo registro' Modal Form
       Then cilck on 'Crear' button from 'Nuevo registro'
+      And verify new registered equipment "casco duro" is shown in equipment type page
+      And I logOut From 'SMARTHOUSE' Page

@@ -24,6 +24,10 @@ public class SHEquiposSegu extends BasePage {
     @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
     private WebElement confirmacionTipoEquipo;
 
+    @FindBy(xpath = "//*[@id=\"lista\"]/div/a[1]")
+    private WebElement verButton;
+
+
     public SHEquiposSegu() {
         CommonEvents.isClickable(registrarEquipoBtn);
     }
@@ -54,5 +58,10 @@ public class SHEquiposSegu extends BasePage {
     public SHEquiposSegurModal ClickconfirmacionTipoEquipo(){
         CommonEvents.clickButton(confirmacionTipoEquipo);
         return new SHEquiposSegurModal();
+    }
+    public SHEquiposSegurModalView clickVerButton(){
+        CommonEvents.waitUntil(3000);
+        CommonEvents.clickButton(verButton);
+        return new SHEquiposSegurModalView();
     }
 }
