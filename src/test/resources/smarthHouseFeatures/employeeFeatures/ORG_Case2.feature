@@ -10,4 +10,4 @@ Feature: ORG_Case2
     And I fill Organization information, specially Organization Code with 'ORG-0001'
     And I click on 'Crear' button in 'Crear Area' modal form
     Then I should see the alert with the next text: 'Already exists a Organization with the code ORG-0001'
-    And  I logOut Form 'SMARTHOUSE' Page
+    And  I logOut From 'SMARTHOUSE' Page
