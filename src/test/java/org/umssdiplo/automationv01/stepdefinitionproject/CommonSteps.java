@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -47,6 +48,9 @@ public class CommonSteps {
     private SHAssignModalEdit modalEdit;
     private SHEquipmentType equipmentType;
     private SHAssignModalForm modalForm;
+    private SHEquiposSegu shEquiposSegu;
+    private SHEquiposSegurModal shEquiposSegurModal;
+    private SHEquiposSegurModalView modalViewEquip;
 
     @Given("^I loging to 'SMARTHOUSE' page")
     public void smarthouse_s_page_is_loaded() throws Throwable {
@@ -885,5 +889,63 @@ public class CommonSteps {
     @And("Close the 'Asignar equipo' modal$")
     public void close_the_Asignar_equipo_modal() throws Throwable {
         modalForm.cancelAssignment();
+    }
+
+    @And("^click on 'Equipos de Seguridad' button on navigation NavigationBar$")
+    public void clickOnEquiposDeSeguridadButtonOnNavigationNavigationBar() throws Throwable {
+        shEquiposSegu = headerWithLogin.clickequiposTab();
+    }
+
+    @And("^click on 'Ver Tipo De Equipos Registrados' button$")
+    public void clickOnVerTipoDeEquiposRegistradosButton() throws Throwable {
+        shEquiposSegurModal = shEquiposSegu.ClickVerTiposEquiposRegistrados();
+    }
+
+    @And("^click on 'Nuevo Registro' button$")
+    public void clickOnNuevoRegistroButton() throws Throwable {
+        shEquiposSegurModal = shEquiposSegu.ClickNuevoTipoEquipo();
+    }
+
+    @When("^fill dates 'Nuevo Registro'$")
+    public void fillDatesNuevoRegistro() throws Throwable {
+        shEquiposSegurModal.fillModalTipoEquipo();
+    }
+
+    @And("^click on button 'Crear'$")
+    public void clickOnButtonCrear() throws Throwable {
+        shEquiposSegurModal = shEquiposSegu.ClickCrearTipoEquipo();
+    }
+
+    @Then("^click on button 'ok'$")
+    public void clickOnButtonOk() throws Throwable {
+        shEquiposSegurModal= shEquiposSegu.ClickconfirmacionTipoEquipo();
+    }
+
+    @When("^click on 'ver'$")
+    public void clickOnVer() throws Throwable {
+        modalViewEquip = shEquiposSegu.clickVerButton();
+    }
+
+    @And("^The modal 'Ver tipo equipo' is displayed$")
+    public void theModalVerTipoEquipoIsDisplayed() throws Throwable {
+        Assert.assertTrue(modalViewEquip.isModalDialogPresent(), "el modal 'Ver Tipo de Equipo' no se desplego correctamente");
+        modalViewEquip.isButtonCloseVisible();
+    }
+
+    @Then("^Verify if the equipment name is correct$")
+    public void verifyIfTheEquipmentNameIsCorrect() throws Throwable {
+        Assert.assertEquals(modalViewEquip.getTipoEquipo(), "Protectores de Cabeza", "El nombre no es el esperado");
+        modalViewEquip.closeModalView();
+        Assert.assertTrue(modalViewEquip.isModalDialogPresent());
+    }
+
+    @When("^click on 'Nuevo registro de equipos' button on Accident Page$")
+    public void clickOnNuevoRegistroDeEquiposButtonOnAccidentPage() throws Throwable {
+        shEquiposSegurModal = shEquiposSegu.ClickRegistarEquipoBtn();
+    }
+
+    @Then("^'Crear' button from 'Registro de equipos' Modal Form  should be disable$")
+    public void crearButtonFromRegistroDeEquiposModalFormShouldBeDisable() throws Throwable {
+        Assert.assertTrue(shEquiposSegurModal.isCrearBtnEnable());
     }
 }
