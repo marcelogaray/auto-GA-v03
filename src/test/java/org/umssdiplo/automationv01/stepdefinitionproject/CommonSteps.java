@@ -676,7 +676,7 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct$")
     public void verify_if_the_employee_s_name_is_correct() throws Throwable {
-        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no es el esperado");
+        Assert.assertEquals(modalView.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no es el esperado");
         modalView.closeModalView();
         Assert.assertTrue(modalView.isModalDialogPresent());
         modalView.isCerrarButtonVisible();
@@ -684,7 +684,7 @@ public class CommonSteps {
 
     @Then("^Verify if the employee's name is correct in modal Edit assignment$")
     public void verify_if_the_employee_s_name_is_correct_in_modal_Edit_assignment() throws Throwable {
-        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14-David Justiniano Negrete López", "El nombre del empleado no coincide");
+        Assert.assertEquals(modalEdit.getEmployeeName(), "EMP-14 - David Justiniano Negrete López", "El nombre del empleado no coincide");
         modalEdit.closeModalEdit();
     }
 
