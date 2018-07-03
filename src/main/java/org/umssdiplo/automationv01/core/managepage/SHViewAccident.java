@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.managepage;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHViewAccident extends BasePage {
 
@@ -28,6 +29,9 @@ public class SHViewAccident extends BasePage {
 
     @FindBy(id = "status")
     private WebElement status;
+
+    @FindBy(id = "cerrar")
+    private WebElement cerrarBtn;
 
     public String getEmployeeValue() {
         return employee.getText();
@@ -59,6 +63,11 @@ public class SHViewAccident extends BasePage {
 
     public String getStatus() {
         return status.getText();
+    }
+
+    public void clickCloseButton() {
+        CommonEvents.waitWebElementIsVisible(cerrarBtn);
+        CommonEvents.clickButton(cerrarBtn);
     }
 
 }

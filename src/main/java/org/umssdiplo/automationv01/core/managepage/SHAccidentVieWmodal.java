@@ -68,4 +68,7 @@ public class SHAccidentVieWmodal extends BasePage {
     public void closeAccidentViewDialog() {
         CommonEvents.jsClickElement(closeBtn);
     }
+
+
+
 }

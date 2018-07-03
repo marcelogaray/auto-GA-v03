@@ -13,4 +13,5 @@ Feature: SHAccident
     And  click on 'aceptar' button from Alert message of Success
     When I click on edit button on list of accidents
     Then I verify if a edit accident modal is opened
+    And Cancel button on modal edit for close modal
     And  I logOut From 'SMARTHOUSE' Page

@@ -13,6 +13,9 @@ public class SHDeleteConfirmModal extends BasePage {
     @FindBy(id = "delete")
     private WebElement deleteButton;
 
+    @FindBy(id = "cancel")
+    private WebElement cancelButton;
+
     public boolean isModalDialogPresent() {
         return deleteConfirmModal.isDisplayed();
     }
@@ -22,5 +25,10 @@ public class SHDeleteConfirmModal extends BasePage {
         CommonEvents.clickButton(deleteButton);
         CommonEvents.waitUntil(3000);
         return new SHAccident();
+    }
+
+    public void clickCancelButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(cancelButton);
     }
 }

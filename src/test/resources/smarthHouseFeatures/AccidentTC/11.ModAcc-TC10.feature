@@ -14,4 +14,5 @@ Feature: SHAccident
     And verify "Descripcion" show data description from accident on 'Editar accidente'
     And verify "Activo" show data state from accident on 'Editar accidente'
     And verify "05-05-2018" show data success date from accident on 'Editar accidente'
+    And Cancel button on modal edit for close modal
     And  I logOut From 'SMARTHOUSE' Page

@@ -13,4 +13,5 @@ Feature: SHAccident
     Then verify 'Código' show data code from accident on 'Editar accidente' when edited
     Then verify 'Descripcion' show data description from accident on 'Editar accidente' when edited
     Then verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente' when edited
+    And Cancel button on modal edit for close modal
     And  I logOut From 'SMARTHOUSE' Page

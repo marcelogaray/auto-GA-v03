@@ -575,7 +575,7 @@ public class CommonSteps {
 
     @Then("^Verify if the code value is correct$")
     public void verifyCodeValueIsCorrect() throws Throwable {
-        Assert.assertEquals(viewAccident.getCodeValue(), "Codigo", "El valor del código no es el correcto.");
+        Assert.assertEquals(viewAccident.getCodeValue(), "Codigo2", "El valor del código no es el correcto.");
     }
 
     @Then("^Verify if the level risk value is correct$")
@@ -958,5 +958,15 @@ public class CommonSteps {
     @And("^I obtain the count of accidents registers$")
     public void getCountOfRegisters() throws Throwable {
         countAccident = shAccident.getSizeOfRegisters();
+    }
+
+    @And("^Close modal delete confirmation$")
+    public void closeModalDeleteConfirmation() throws Throwable {
+        deleteConfirmModal.clickCancelButton();
+    }
+
+    @And("^Click button close on modal view accident$")
+    public void clickButtonCloseOnModalViewAccident() throws Throwable {
+        viewAccident.clickCloseButton();
     }
 }
