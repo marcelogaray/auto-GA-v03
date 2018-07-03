@@ -3,7 +3,7 @@ Feature: ORG_Case2
 
   Scenario: Validate that the organization code to be registered are unique
     Given I loging to 'SMARTHOUSE' page
-    When I fill properly credentials with admin user
+    When fill properly credentials in 'Login' modal
     And I go to 'Estructura Organizacional' on 'Header' page
     And click 'Detail' button on 'Gerencia General Enabled' option on 'Organization' page
     And I click on 'Nueva Area' button on 'Organization Detail' page
