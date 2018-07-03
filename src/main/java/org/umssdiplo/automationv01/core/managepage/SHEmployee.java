@@ -6,10 +6,11 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SHEmployee extends BasePage {
 
-    @FindBy(xpath = "//a[contains(@class, 'btn-mail')]")
-    private WebElement lastElement;
+    @FindBy(name = "new_employee_button")
+    private WebElement addEmployeeButton;
+
     public SHEmployee() {
-        CommonEvents.waitWebElementIsVisible(lastElement);
+        CommonEvents.waitWebElementIsVisible(addEmployeeButton);
     }
 
     @FindBy(xpath = "//mat-list/mat-list-item[1]/div/a[3]")
@@ -70,7 +71,6 @@ public class SHEmployee extends BasePage {
 
     public void clickViewDetailsEmployee() {
         CommonEvents.clickButton(detailsButton);
-        CommonEvents.waitUntil(2000);
     }
 
     public boolean isDetailsVisible() {
@@ -91,5 +91,10 @@ public class SHEmployee extends BasePage {
 
     public void cancelItemAssignmentModal() {
         CommonEvents.clickButton(cancelItemForm);
+    }
+
+    public SHNewEmployeeForm clickNewEmployeeButton() {
+        CommonEvents.clickButton(addEmployeeButton);
+        return new SHNewEmployeeForm();
     }
 }

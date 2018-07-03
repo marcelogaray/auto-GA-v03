@@ -1,0 +1,185 @@
+package org.umssdiplo.automationv01.core.managepage;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.umssdiplo.automationv01.core.utils.CommonEvents;
+
+public class SHAccidentFormModal extends BasePage {
+
+    @FindBy(id = "mat-dialog-1")
+    private WebElement modalDialog;
+
+    @FindBy(id = "btnClose")
+    private WebElement closeBtn;
+
+    @FindBy(id = "create")
+    private WebElement crearBtn;
+
+    @FindBy(id = "btnCancel")
+    private WebElement cancelBtn;
+
+    @FindBy(name = "employee")
+    private WebElement employeeAuto;
+
+    @FindBy(id = "mat-option-19")
+    private WebElement employeeOption;
+
+    @FindBy(name = "title")
+    private WebElement title;
+
+    @FindBy(name = "code")
+    private WebElement code;
+
+    @FindBy(name = "levelRisk")
+    private WebElement levelRisk;
+
+    @FindBy(name = "accidentTypeKey")
+    private WebElement accidentTypeSelect;
+
+    @FindBy(id = "mat-option-2")
+    private WebElement accidentTypeOption1;
+
+    @FindBy(id = "mat-option-105")
+    private WebElement accidentTypeOption2;
+
+    @FindBy(id = "mat-option-124")
+    private WebElement accidentTypeOption3;
+
+    @FindBy(name = "dateEvent")
+    private WebElement dateEvent;
+
+    @FindBy(name = "describeIssue")
+    private WebElement description;
+
+    @FindBy(name = "status")
+    private WebElement statusSelect;
+
+    @FindBy(id = "mat-option-0")
+    private WebElement statusOption;
+
+    public SHAccidentFormModal() {
+        CommonEvents.isVisible(modalDialog);
+    }
+
+    public void closeModalDialog() {
+        CommonEvents.jsClickElement(closeBtn);
+    }
+
+    public boolean isModalDialogPresent() {
+        return modalDialog.isDisplayed();
+    }
+
+    public boolean isCrearBtnEnable() {
+        return CommonEvents.isAttributPresent(crearBtn, "disabled");
+    }
+
+    public SHSwalNotification clickBtnCrear() {
+        CommonEvents.jsClickElement(crearBtn);
+        return new SHSwalNotification();
+    }
+
+    public void setEmployeeField() {
+        CommonEvents.jsClickElement(employeeAuto);
+        CommonEvents.jsClickElement(employeeOption);
+    }
+
+    public void setTitleField(String titleField) {
+        CommonEvents.setInputField(title, titleField);
+    }
+
+    public void setCodeField(String codeField) {
+        CommonEvents.setInputField(code, codeField);
+    }
+
+    public void setLevelRiskField(String levelRiskField) {
+        CommonEvents.setInputField(levelRisk, levelRiskField);
+    }
+
+    public void setDateEventField(String dateEventField) {
+        CommonEvents.setDateInputField(dateEvent, dateEventField);
+    }
+
+    public void setDescriptionField(String descriptionField) {
+        CommonEvents.setInputField(description, descriptionField);
+    }
+
+    public void clickCreateButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(crearBtn);
+    }
+
+    /**
+     * verify if one of random ids for typeAccident is pressent
+     */
+    public void setAccidentTypeSelectField() {
+        CommonEvents.jsClickElement(accidentTypeSelect);
+        if (CommonEvents.isPresent(accidentTypeOption1)) {
+            CommonEvents.jsClickElement(accidentTypeOption1);
+        } else if (CommonEvents.isPresent(accidentTypeOption2)) {
+            CommonEvents.jsClickElement(accidentTypeOption2);
+        } else if (CommonEvents.isPresent(accidentTypeOption3)) {
+            CommonEvents.jsClickElement(accidentTypeOption3);
+        }
+    }
+
+    public void setStatusSelectField() {
+        CommonEvents.jsClickElement(statusSelect);
+        CommonEvents.jsClickElement(statusOption);
+    }
+
+    public void fillModalFomFullData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        try {
+            Thread.sleep(2000);
+        } catch (Exception e) {
+
+        }
+        isModalDialogPresent();
+        setEmployeeField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
+        setStatusSelectField();
+        setAccidentTypeSelectField();
+    }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one incomplete data
+     */
+    public void fillModalFomOneIncData(String title, String code, String lvlRisk, String dateEvent, String descr) {
+        isModalDialogPresent();
+        setEmployeeField();
+        setTitleField(title);
+        setCodeField(code);
+        setLevelRiskField(lvlRisk);
+        setDateEventField(dateEvent);
+        setDescriptionField(descr);
+        setStatusSelectField();
+    }
+
+    /**
+     * fill the modal form Registrar Accidente with
+     * one required data
+     */
+    public void fillModalFomOneReqData() {
+        isModalDialogPresent();
+        setEmployeeField();
+    }
+
+    public void closeFromXButtonHeader() {
+        WebElement waitElement = (new WebDriverWait(webDriver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnClose")));
+        CommonEvents.clickButton(closeBtn);
+    }
+
+    public void closeFromCancelButton() {
+        WebElement waitElement = (new WebDriverWait(webDriver, 20))
+                .until(ExpectedConditions.presenceOfElementLocated(By.id("btnCancel")));
+        CommonEvents.clickButton(cancelBtn);
+    }
+}
