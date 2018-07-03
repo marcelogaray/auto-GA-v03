@@ -291,7 +291,6 @@ public class CommonSteps {
         List<Map<String, String>> data = accientCode.asMaps(String.class, String.class);
         Assert.assertTrue(shAccident.verifyListelement(data.get(0).get("codeAcc")), "Error, el Accidente no existe en la lista de accientes");
     }
-
     @Then("verify default data inserted into 'Registrar Accidente' Modal Form is shown into 'Ver Accidente Registrado' modal view")
     public void verify_Default_Data_IsShown(DataTable defaulData) throws Throwable {
         List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
