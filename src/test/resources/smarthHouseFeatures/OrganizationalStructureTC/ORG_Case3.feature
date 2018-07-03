@@ -10,4 +10,4 @@ Feature: ORG_Case3
     And click over 'Guardar' button on 'New Employee Form' page
     Then 'El codigo de empleado ya se encuentra asignado a otro empleado' information message should be displayed
     And click 'Aceptar' button on 'Message Information' modal on 'Employee Form' page
-    And  I logOut From 'SMARTHOUSE' Page
+    And I logOut Form 'SMARTHOUSE' Page

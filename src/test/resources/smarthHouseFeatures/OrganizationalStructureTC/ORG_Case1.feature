@@ -12,4 +12,4 @@ Feature: ORG_Case1
     And go to 'Estructura Organizacional' on 'Header' page
     And click 'Detail' button on 'Gerencia General Disabled' option on 'Organization page'
     Then 'Nueva Area' button is not present on 'Organization' page
-    And  I logOut From 'SMARTHOUSE' Page
+    And  I logOut Form 'SMARTHOUSE' Page
