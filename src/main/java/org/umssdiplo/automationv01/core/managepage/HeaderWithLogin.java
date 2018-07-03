@@ -44,4 +44,8 @@ public class HeaderWithLogin extends BasePage {
         CommonEvents.clickButton((equipmentTab));
         return new SHEquipmentType();
     }
+    public SHEquiposSegu clickequiposTab() {
+        CommonEvents.clickButton(equipmentTab);
+        return new SHEquiposSegu();
+    }
 }
