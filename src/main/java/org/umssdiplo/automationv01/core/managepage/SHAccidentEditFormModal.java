@@ -81,6 +81,11 @@ public class SHAccidentEditFormModal extends BasePage {
         CommonEvents.backPress(title);
     }
 
+    public void setEditTitleModal() {
+        CommonEvents.clearInputField(title);
+        CommonEvents.setInputField(title, "Titulo Accidente 4");
+    }
+
     public boolean isSaveBtnEnable() {
         CommonEvents.waitUntil(3000);
         return CommonEvents.isAttributPresent(saveButton, "disabled");
@@ -92,15 +97,15 @@ public class SHAccidentEditFormModal extends BasePage {
     }
 
     public void setCodeField() {
-        CommonEvents.setInputField(code, "Codigo 2");
+        CommonEvents.setInputField(code, "Codigo 4");
     }
 
     public void setLevelRiskField() {
-        CommonEvents.setInputField(levelRisk, "2");
+        CommonEvents.setInputField(levelRisk, "4");
     }
 
     public void setDescriptionField() {
-        CommonEvents.setInputField(description, "Descripcion 2");
+        CommonEvents.setInputField(description, "Descripcion 4");
     }
 
     public SHAccident clickSaveButton() {
@@ -115,7 +120,7 @@ public class SHAccidentEditFormModal extends BasePage {
     }
 
     public void fillEditModalForm() {
-        setTitleField();
+        setEditTitleModal();
         setCodeField();
         setLevelRiskField();
         setDescriptionField();

@@ -505,25 +505,25 @@ public class CommonSteps {
 
     @Then("^verify 'Título' show data title from accident on 'Editar accidente' when edited$")
     public void checkTitleValueEditedAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente 2", "El dato de " +
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente 4", "El dato de " +
                 "titulo no corresponde al registro editado seleccionado.");
     }
 
     @Then("^verify 'Código' show data code from accident on 'Editar accidente' when edited$")
     public void checkCodeValueEditedAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo 2", "El dato de " +
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo 4", "El dato de " +
                 "código no corresponde al registro editado seleccionado.");
     }
 
     @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente' when edited$")
     public void checkLevelRiskValueEditedAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "2", "El dato de " +
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "4", "El dato de " +
                 "nivel de riesgo no corresponde al registro editado seleccionado.");
     }
 
     @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente' when edited$")
     public void checkDescriptionAccidentValueEdited() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion 2", "El dato de " +
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion 4", "El dato de " +
                 "descripción no corresponde al registro editado seleccionado.");
     }
 
@@ -540,6 +540,12 @@ public class CommonSteps {
     @Then("^I verify if a confirm delete modal is opened$")
     public void verifyConfirmDeleteModal() throws Throwable {
         Assert.assertTrue(deleteConfirmModal.isModalDialogPresent(), "El modal de confirmación de eliminación " +
+                "no ha sido desplegado");
+    }
+
+    @Then("^I verify if a edit accident modal is opened$")
+    public void verifyEditAccidentModal() throws Throwable {
+        Assert.assertTrue(shAccidentEditFormModal.isEditModalPresent(), "El modal de edicion de accidentes " +
                 "no ha sido desplegado");
     }
 
@@ -885,5 +891,10 @@ public class CommonSteps {
     @And("Close the 'Asignar equipo' modal$")
     public void close_the_Asignar_equipo_modal() throws Throwable {
         modalForm.cancelAssignment();
+    }
+
+    @And("^I obtain the count of accidents registers$")
+    public void getCountOfRegisters() throws Throwable {
+        countAccident = shAccident.getSizeOfRegisters();
     }
 }
