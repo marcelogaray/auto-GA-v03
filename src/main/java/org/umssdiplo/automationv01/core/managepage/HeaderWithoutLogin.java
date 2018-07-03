@@ -22,7 +22,7 @@ public class HeaderWithoutLogin extends BasePage {
 
     public SHLogin openLoginPage() {
         CommonEvents.waitUntil(50);
-        CommonEvents.clickButton(loginBtn);
+        CommonEvents.jsClickElement(loginBtn);
         return new SHLogin();
     }
 
