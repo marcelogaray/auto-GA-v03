@@ -41,7 +41,7 @@ public class CommonSteps {
     private SHDeleteConfirmModal deleteConfirmModal;
     private SHViewAccident viewAccident;
     private int countAccident;
-    private Organization organizationData;
+
     private SHAssignModalView modalView;
     private SHAssignModalDelete modalDelete;
     private int countAssignments;
@@ -64,7 +64,7 @@ public class CommonSteps {
 
     public void logOut_From_SMATHOUSE_Page() throws Throwable {
         headerWithoutLogin.openLoginPage();
-        login.clickLogOutButton();
+        login.clicklogOutButton();
     }
 
     @And("^I go to 'Estructura Organizacional' on 'Header' page$")
@@ -73,11 +73,7 @@ public class CommonSteps {
         organization = headerWithLogin.clickOrganizationTab();
     }
 
-    @And("^I click on 'Detail' button on 'Gerencia General' item on 'Organization List' page$")
-    public void goToArea() {
 
-        organization.openOrganizationDetailView();
-    }
 
     @And("^I click on 'Nueva Area' button on 'Organization Detail' page$")
     public void openModalOrganizationForm() {
@@ -135,8 +131,8 @@ public class CommonSteps {
         modalEdit = assignment.clickEditModal();
     }
 
-    @When("^The modal 'Editar Asignación' is displayed, with the list of assignments made to that employee$")
-    public void the_modal_Editar_Asignación_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
+    @When("^The modal 'Editar Asignacion' is displayed, with the list of assignments made to that employee$")
+    public void the_modal_Editar_Asignacion_is_displayed_with_the_list_of_assignments_made_to_that_employee() throws Throwable {
         Assert.assertTrue(modalEdit.isModalEditPresent());
     }
 
@@ -189,11 +185,6 @@ public class CommonSteps {
         assignment.registeredAssignment();
     }
 
-    @And("^I logOut From 'SMARTHOUSE' Page$")
-    public void logOut_From_SMATHOUSE_Page() throws Throwable {
-        headerWithoutLogin.openLoginPage();
-        login.clicklogOutButton();
-    }
 
     @And("^go to 'Employee' on 'Header' page$")
     public void load_employee_page() throws Throwable {
@@ -706,31 +697,28 @@ public class CommonSteps {
         modalEdit.closeModalEdit();
     }
 
-    @When("^Click on the 'Close' button on modal 'Ver asignación'$")
-    public void click_on_the_Close_button_on_modal_Ver_asignación() throws Throwable {
+    @When("^Click on the 'Close' button on modal 'Ver asignacion'$")
+    public void click_on_the_Close_button_on_modal_Ver_asignacion() throws Throwable {
         modalView.clickclose();
-    }
-
-    @Then("^The modal 'Ver asignación' closes$")
-    public void the_modal_Ver_asignación_closes() throws Throwable {
-        Assert.assertTrue(assignment.isButtonSeePresent());
-    }
-
-    @When("^I reopen the modal 'Ver asignación' on 'Asignación de equipos' page$")
-    public void i_reopen_the_modal_Ver_asignación_on_Asignación_de_equipos_page() throws Throwable {
-        modalView = assignment.clicViewModal();
-        modalView.isCloseXButtonVisible();
-    }
-
-    @When("^Click on the 'X' button on modal 'Ver asignación'$")
-    public void click_on_the_X_button_on_modal_Ver_asignación() throws Throwable {
-        modalView.clickCloseX();
     }
 
     @Then("^The modal 'Ver asignacion' closes$")
     public void the_modal_Ver_asignacion_closes() throws Throwable {
         Assert.assertTrue(assignment.isButtonSeePresent());
     }
+
+    @When("^I reopen the modal 'Ver asignacion' on 'Asignacion de equipos' page$")
+    public void i_reopen_the_modal_Ver_asignacion_on_Asignacion_de_equipos_page() throws Throwable {
+        modalView = assignment.clicViewModal();
+        modalView.isCloseXButtonVisible();
+    }
+
+    @When("^Click on the 'X' button on modal 'Ver asignacion'$")
+    public void click_on_the_X_button_on_modal_Ver_asignacion() throws Throwable {
+        modalView.clickCloseX();
+    }
+
+
     @When("^Obtain the total of assignments made to the employee$")
     public void obtain_the_total_of_assignments_made_to_the_employee() throws Throwable {
         modalDelete.isDeleteButtonPresent();
@@ -805,8 +793,8 @@ public class CommonSteps {
     }
 
 
-    @When("^Click on the 'Nueva asignación' button on 'Asignacion de equipos' page$")
-    public void click_on_the_Nueva_asignación_button_on_Asignacion_de_equipos_page() throws Throwable {
+    @When("^Click on the 'Nueva asignacion' button on 'Asignacion de equipos' page$")
+    public void click_on_the_Nueva_asignacion_button_on_Asignacion_de_equipos_page() throws Throwable {
         modalForm = assignment.clickFormModal();
     }
 
