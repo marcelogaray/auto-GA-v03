@@ -1,4 +1,4 @@
-Feature: SHViewModalVerAsignacion
+Feature: SHEnabledREgister
 
   Background: There must be at least one registered assignment
 

@@ -1,4 +1,4 @@
-Feature: SHViewModalVerAsignacion
+Feature: SHViewModalEditAsignacion
 
   Background: There must be at least one registered assignment
 
