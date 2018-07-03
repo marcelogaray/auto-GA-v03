@@ -104,6 +104,7 @@ public class SHOrganizationForm extends BasePage {
 
     public void pressConfirmAlertButton() {
         CommonEvents.clickButton(confirmAlertButton);
+        CommonEvents.waitUntil(500);
     }
 
     public boolean isModalFormPresent() {

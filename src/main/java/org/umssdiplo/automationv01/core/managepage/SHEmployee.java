@@ -51,14 +51,17 @@ public class SHEmployee extends BasePage {
 
     public void clickConfirmAlertButton() {
         CommonEvents.clickButton(confirmAlertButton);
+        CommonEvents.waitUntil(500);
     }
 
     public void clickAcceptAlertButton() {
         CommonEvents.clickButton(confirmAlertButton);
+        CommonEvents.waitUntil(500);
     }
 
     public void clickCancelAlertButton() {
         CommonEvents.clickButton(cancelAlertButton);
+        CommonEvents.waitUntil(500);
     }
 
     public boolean isAlertPresent() {
@@ -90,7 +93,9 @@ public class SHEmployee extends BasePage {
     }
 
     public void cancelItemAssignmentModal() {
+        CommonEvents.clickButton(itemOptionList);
         CommonEvents.clickButton(cancelItemForm);
+        CommonEvents.waitUntil(500);
     }
 
     public SHNewEmployeeForm clickNewEmployeeButton() {
