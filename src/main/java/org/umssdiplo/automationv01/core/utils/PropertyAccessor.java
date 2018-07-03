@@ -66,7 +66,5 @@ public class PropertyAccessor {
         return getDataProperty(JSON_DATA_FILE_PATH);
     }
 
-    public String getSHDataProperty(String data) {
-        return getDataProperty(data);
-    }
+
 }

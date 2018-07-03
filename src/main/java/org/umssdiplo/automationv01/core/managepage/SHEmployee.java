@@ -40,6 +40,10 @@ public class SHEmployee extends BasePage {
     @FindBy(xpath = "//*[@id=\"mat-option-2\"]")
     private WebElement itemOptionList;
 
+    @FindBy(xpath = "//*[@id=\"mat-dialog-1\"]/app-positionalhitoricalform/form/mat-dialog-actions/button[1]")
+    private WebElement cancelItemForm;
+
+
 
     public void clickDeleteButton() {
         CommonEvents.clickButton(deleteButton);
@@ -83,6 +87,10 @@ public class SHEmployee extends BasePage {
 
     public boolean isItemOptionsVisible() {
         return CommonEvents.isPresent(itemOptionList);
+    }
+
+    public void cancelItemAssignmentModal() {
+        CommonEvents.clickButton(cancelItemForm);
     }
 
     public SHNewEmployeeForm clickNewEmployeeButton() {
