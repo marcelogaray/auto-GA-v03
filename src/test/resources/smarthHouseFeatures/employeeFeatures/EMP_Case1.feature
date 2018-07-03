@@ -2,7 +2,7 @@
 Feature: EMP_Case1
 
   Scenario: Request confirmation before removing an employee
-    Given Given I loging to 'SMARTHOUSE' page
+    Given I loging to 'SMARTHOUSE' page
     When I fill properly credentials with admin user
     And I click on 'Personal' option on 'Header' page
     And I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page

@@ -2,7 +2,7 @@
 Feature: ORG_Case2
 
   Scenario: Validate that the organization code to be registered are unique
-    Given Given I loging to 'SMARTHOUSE' page
+    Given I loging to 'SMARTHOUSE' page
     When I fill properly credentials with admin user
     And I go to 'Estructura Organizacional' on 'Header' page
     And I click on 'Detail' button on 'Gerencia General' item on 'Organization List' page
