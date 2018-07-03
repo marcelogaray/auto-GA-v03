@@ -9,4 +9,4 @@ Feature: ORG_Case1
     And I click on 'Nueva Area' button on 'Organization Detail' page
     Then I should see the 'Crear Area' modal form
     And I click on cancel button of form of new organization
-    And  I logOut Form 'SMARTHOUSE' Page
+    And  I logOut From 'SMARTHOUSE' Page
