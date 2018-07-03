@@ -1,0 +1,10 @@
+{  
+  "name":"Test Organization",
+  "description":"Organization test description",
+  "gestion":"2017",
+  "code":"ORG-0001",
+  "start":"01-01-2017",
+  "end":"01-01-9999",
+  "hierarchicalLevelKey":1,
+  "status": "Activo"
+}
