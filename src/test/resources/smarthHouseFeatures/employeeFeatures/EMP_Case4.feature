@@ -9,4 +9,4 @@ Feature: EMP_Case4
     When I click in the 'Item' drop down list
     Then I should see the 'Items' available to assign the employee
     And I click on cancel button of form of item assignment
-    And  I logOut Form 'SMARTHOUSE' Page
+    And  I logOut From 'SMARTHOUSE' Page
