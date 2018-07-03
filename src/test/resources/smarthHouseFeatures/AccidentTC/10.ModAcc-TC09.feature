@@ -12,5 +12,5 @@ Feature: SHAccident
     And click on 'Crear' button form 'Registrar Accidente' Modal Form
     And  click on 'aceptar' button from Alert message of Success
     When I click on edit button on list of accidents
-    Then verify 'Editar Accidente' form modal is
+    Then I verify if a edit accident modal is opened
     And  I logOut From 'SMARTHOUSE' Page
