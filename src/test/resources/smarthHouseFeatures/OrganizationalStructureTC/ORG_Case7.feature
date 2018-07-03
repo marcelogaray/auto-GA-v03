@@ -12,4 +12,4 @@ Feature: ORG_Case7
     Then 'La fecha de inicio de actividades debe ser menor a la fecha final' information message should be displayed.
     And click 'Aceptar' button on 'Message Information' modal on 'Organization' page
     And click 'Cancelar' button on 'New Organization' modal form
-    And I logOut Form 'SMARTHOUSE' Page
+    And I logOut From 'SMARTHOUSE' Page
