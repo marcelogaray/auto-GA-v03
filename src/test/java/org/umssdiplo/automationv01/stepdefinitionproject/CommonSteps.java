@@ -856,10 +856,19 @@ public class CommonSteps {
         equipmentType.clickRegisterNewEquipmentType();
     }
 
-    @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
-    public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
-        equipmentType.setData();
+    @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal$")
+    public void required_data_Eq_Type(DataTable defaulData) throws Throwable {
+        List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
+        equipmentType.setData(data.get(0).get("EqTypeName"), data.get(0).get("Description"));
     }
+
+    @Then("^verify new registered equipment type is shown equipment type page$")
+    public void verify_new_registered_Equipment_type(DataTable eqType) throws Throwable {
+        List<Map<String, String>> data = eqType.asMaps(String.class, String.class);
+        Assert.assertTrue(equipmentType.verifyListEquipmentType(data.get(0).get("EqTypeName")), "Error, tipo de equipo no esta presente");
+    }
+
+
 
     @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
     public void click_on_Crear_button_on_modal_Nuevo_registro_de_tipo_de_equipo() throws Throwable {
