@@ -7,7 +7,7 @@ import sun.security.provider.SHA;
 
 public class SHDeleteConfirmModal extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"mat-dialog-title-0\"]/div[1]")
+    @FindBy(id = "dialog-delete")
     private WebElement deleteConfirmModal;
 
     @FindBy(id = "delete")
