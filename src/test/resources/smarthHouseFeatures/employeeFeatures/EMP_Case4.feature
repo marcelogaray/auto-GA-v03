@@ -3,7 +3,7 @@ Feature: EMP_Case4
 
   Scenario: verify that Drop Down List of items is loaded with items
     Given I loging to 'SMARTHOUSE' page
-    When I fill properly credentials with admin user
+    When fill properly credentials in 'Login' modal
     And I click on 'Personal' option on 'Header' page
     And I click on 'Asignar nuevo item' for employee 'Ruben Moscoso' in the list employe page
     When I click in the 'Item' drop down list

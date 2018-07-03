@@ -77,6 +77,7 @@ public class SHAccidentFormModal extends BasePage {
     }
 
     public SHSwalNotification clickBtnCrear() {
+        CommonEvents.isClickable(crearBtn);
         CommonEvents.jsClickElement(crearBtn);
         return new SHSwalNotification();
     }

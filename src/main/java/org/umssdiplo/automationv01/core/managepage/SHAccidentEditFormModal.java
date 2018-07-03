@@ -36,6 +36,9 @@ public class SHAccidentEditFormModal extends BasePage {
     @FindBy(id = "save")
     private WebElement saveButton;
 
+    @FindBy(id = "cancel")
+    private WebElement cancelButton;
+
     public boolean isEditModalPresent() {
         return CommonEvents.isPresent(editTitleModal);
     }
@@ -104,6 +107,11 @@ public class SHAccidentEditFormModal extends BasePage {
         CommonEvents.waitUntil(2000);
         CommonEvents.clickButton(saveButton);
         return new SHAccident();
+    }
+
+    public void clickCancelButton() {
+        CommonEvents.waitUntil(2000);
+        CommonEvents.clickButton(cancelButton);
     }
 
     public void fillEditModalForm() {

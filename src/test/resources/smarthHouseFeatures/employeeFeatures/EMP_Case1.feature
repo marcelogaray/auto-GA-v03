@@ -3,7 +3,7 @@ Feature: EMP_Case1
 
   Scenario: Request confirmation before removing an employee
     Given I loging to 'SMARTHOUSE' page
-    When I fill properly credentials with admin user
+    When fill properly credentials in 'Login' modal
     And I click on 'Personal' option on 'Header' page
     And I click on 'Eliminar Empleado' button on 'Ruben Moscoso' item on 'Lista de Empleados' page
     Then I should see the Confirm alert with the next text: 'Estas Seguro que deseas eliminar al Empleado!'

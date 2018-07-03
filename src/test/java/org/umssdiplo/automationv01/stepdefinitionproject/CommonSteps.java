@@ -441,51 +441,50 @@ public class CommonSteps {
         Assert.assertTrue(shAccidentEditFormModal.isSaveBtnEnable(), "El botón 'Guardar' no esta deshabilitado.");
     }
 
-    @Then("^verify 'Empleado' show data employee from accident on 'Editar accidente'$")
-    public void checkEmployeeValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getEmployeeValue(), "1", "El dato empleado no " +
-                "corresponde al registro seleccionado.");
+    @And("^Cancel button on modal edit for close modal$")
+    public void closeModalEdit() throws Throwable {
+        shAccidentEditFormModal.clickCancelButton();
     }
 
-    @Then("^verify 'Título' show data title from accident on 'Editar accidente'$")
-    public void checkTitleValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), "Titulo Accidente", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data title from accident on 'Editar accidente'$")
+    public void checkTitleValueAccident(String title) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getTitleValue(), title, "El dato de " +
                 "titulo no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Código' show data code from accident on 'Editar accidente'$")
-    public void checkCodeValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), "Codigo", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data code from accident on 'Editar accidente'$")
+    public void checkCodeValueAccident(String code) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getCodeValue(), code, "El dato de " +
                 "código no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Nivel de riesgo' show data level risk from accident on 'Editar accidente'$")
-    public void checkLevelRiskValueAccident() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), "1", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data level risk from accident on 'Editar accidente'$")
+    public void checkLevelRiskValueAccident(String nivel) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getLevelRiskValue(), nivel, "El dato de " +
                 "nivel de riesgo no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Tipo de accidente' show data type accident from accident on 'Editar accidente'$")
-    public void checkTypeAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getAccidentTypeValue(), "1", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data type accident from accident on 'Editar accidente'$")
+    public void checkTypeAccidentValue(String typeAccident) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getAccidentTypeValue(), typeAccident, "El dato de " +
                 "nivel de riesgo no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Fecha de suceso' show data success date from accident on 'Editar accidente'$")
-    public void checkSuccessDateAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getDateEventValue(), "05-05-2018", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data success date from accident on 'Editar accidente'$")
+    public void checkSuccessDateAccidentValue(String fechaSuceso) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDateEventValue(), fechaSuceso, "El dato de " +
                 "fecha de suceso no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Descripcion' show data description from accident on 'Editar accidente'$")
-    public void checkDescriptionAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), "Descripcion", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data description from accident on 'Editar accidente'$")
+    public void checkDescriptionAccidentValue(String description) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getDescriptionValue(), description, "El dato de " +
                 "descripción no corresponde al registro seleccionado.");
     }
 
-    @Then("^verify 'Estado' show data state from accident on 'Editar accidente'$")
-    public void checkStateAccidentValue() throws Throwable {
-        Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), "Estado", "El dato de " +
+    @Then("^verify \"([^\"]*)\" show data state from accident on 'Editar accidente'$")
+    public void checkStateAccidentValue(String state) throws Throwable {
+        Assert.assertEquals(shAccidentEditFormModal.getStatusValue(), state, "El dato de " +
                 "estado no corresponde al registro seleccionado.");
     }
 
