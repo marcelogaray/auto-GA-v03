@@ -1,12 +1,19 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.umssdiplo.automationv01.core.managepage.*;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithLogin;
+import org.umssdiplo.automationv01.core.managepage.HeaderWithoutLogin;
+import org.umssdiplo.automationv01.core.managepage.SHEquipmentType;
+import org.umssdiplo.automationv01.core.managepage.SHLogin;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+import java.util.List;
+import java.util.Map;
 
 public class CommonSteps {
     private SHLogin login;
@@ -20,8 +27,8 @@ public class CommonSteps {
         login = headerWithoutLogin.openLoginPage();
     }
 
-    @And("^I fill properly credentials with admin user$")
-    public void fill_credentials_with_admin_user() throws Throwable {
+    @And("^fill properly credentials in 'Login' modal$")
+    public void fill_credentials_in_Login_modal() throws Throwable {
         headerWithLogin = login.fillCredentials();
     }
 
@@ -44,8 +51,9 @@ public class CommonSteps {
     }
 
     @When("^required data is filled on 'Nuevo registro de tipo de equipo' modal form$")
-    public void required_data_is_filled_on_Nuevo_registro_de_tipo_de_equipo_modal_form() throws Throwable {
-        equipmentType.setData();
+    public void required_data_Eq_Type(DataTable defaulData) throws Throwable {
+        List<Map<String, String>> data = defaulData.asMaps(String.class, String.class);
+        equipmentType.setData(data.get(0).get("EqTypeName"), data.get(0).get("Description"));
     }
 
     @When("^click on 'Crear' button on modal 'Nuevo registro de tipo de equipo'$")
@@ -53,8 +61,9 @@ public class CommonSteps {
         equipmentType.clickButtonOk();
     }
 
-    @Then("^verify new registered equipment type \"([^\"]*)\" is shown in equipment type page$")
-    public void verify_new_registered_equipment_type_is_shown_in_equipment_type_page(String name) throws Throwable {
-        Assert.assertTrue(equipmentType.verifyListEquipmentType(name), "No esta registrado");
+    @Then("^verify new registered equipment type is shown in equipment type page$")
+    public void verify_new_registered_Equipment_type(DataTable eqType) throws Throwable {
+        List<Map<String, String>> data = eqType.asMaps(String.class, String.class);
+        Assert.assertTrue(equipmentType.verifyListEquipmentType(data.get(0).get("EqTypeName")), "Error, tipo de equipo no esta presente");
     }
 }

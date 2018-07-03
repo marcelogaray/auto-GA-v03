@@ -3,12 +3,10 @@ package org.umssdiplo.automationv01.core.managepage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
-import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 import java.util.List;
 
 public class SHEquipmentType extends BasePage {
-
     @FindBy(name = "equipmentType")
     private WebElement viewButton;
 
@@ -19,10 +17,10 @@ public class SHEquipmentType extends BasePage {
     private WebElement viewEquipmentTypeList;
 
     @FindBy(name = "name")
-    private WebElement equipmentTypeName;
+    private WebElement name;
 
     @FindBy(name = "description")
-    private WebElement equipmentTypeDescription;
+    private WebElement description;
 
     @FindBy(name = "create")
     private WebElement createEquipmetType;
@@ -30,7 +28,7 @@ public class SHEquipmentType extends BasePage {
     @FindBy(name = "cancel")
     private WebElement cancelEquipmentType;
 
-    @FindBy(xpath ="/html/body/div[2]/div/div[3]/button[1]")
+    @FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
     private WebElement buttonOk;
 
     @FindBy(className = "mat-list-text")
@@ -39,6 +37,7 @@ public class SHEquipmentType extends BasePage {
     public void isViewButtonVisible() {
         CommonEvents.waitWebElementIsVisible(viewButton);
     }
+
     public void isVisibleViewList() {
         CommonEvents.waitWebElementIsVisible(viewEquipmentTypeList);
     }
@@ -46,32 +45,37 @@ public class SHEquipmentType extends BasePage {
     public void clickViewEquipmentType() {
         CommonEvents.clickButton(viewButton);
     }
-    public void clickRegisterNewEquipmentType(){
+
+    public void clickRegisterNewEquipmentType() {
         CommonEvents.clickButton((newRegister));
     }
+
     public void isCreateButtonVisible() {
         CommonEvents.waitWebElementIsVisible(createEquipmetType);
     }
 
-    public void setData() {
+    public void setNameField(String nameField) {
+        CommonEvents.setInputField(name, nameField);
+    }
 
-        String name = PropertyAccessor.getInstance().getSHDataProperty("name");
-        String description = PropertyAccessor.getInstance().getSHDataProperty("description");
+    public void setDescriptionField(String descriptionField) {
+        CommonEvents.setInputField(description, descriptionField);
+    }
+
+    public void setData(String name, String description) {
+        setNameField(name);
+        setDescriptionField(description);
         isCreateButtonVisible();
-        CommonEvents.setInputField(equipmentTypeName, name);
-        CommonEvents.setInputField(equipmentTypeDescription, description);
         CommonEvents.clickButton(createEquipmetType);
     }
 
-    public void clickButtonOk(){
+    public void clickButtonOk() {
 
         CommonEvents.clickButton(buttonOk);
     }
-    public boolean verifyListEquipmentType(String name) {
+
+    public boolean verifyListEquipmentType(String EqTypeName) {
         List<WebElement> elements = CommonEvents.findElementsClassName(equipmentTypeList);
-        return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
+        return CommonEvents.findWebElement(elements, EqTypeName).getText().equals(EqTypeName);
     }
-
 }
-
-
