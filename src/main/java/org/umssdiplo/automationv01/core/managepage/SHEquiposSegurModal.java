@@ -92,3 +92,7 @@ public class SHEquiposSegurModal extends BasePage {
         return CommonEvents.findWebElement(elements, name).getText().equals(name) ? true : false;
     }
 }
+
+
+
+

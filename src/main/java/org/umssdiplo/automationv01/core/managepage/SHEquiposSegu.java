@@ -65,3 +65,6 @@ public class SHEquiposSegu extends BasePage {
         return new SHEquiposSegurModalView();
     }
 }
+
+
+

@@ -6,3 +6,10 @@ Feature: SHAccident
     And click on 'Equipos de Seguridad' button on navigation NavigationBar
     When click on 'Nuevo registro de equipos' button on Accident Page
     Then 'Crear' button from 'Registro de equipos' Modal Form  should be disable
+
+
+
+
+
+
+

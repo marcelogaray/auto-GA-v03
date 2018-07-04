@@ -11,3 +11,7 @@ Feature: registrar un nuevo registro de 'tipo de equipo'
     When click on 'ver'
     And The modal 'Ver tipo equipo' is displayed
     Then Verify if the equipment name is correct
+
+
+
+

@@ -40,3 +40,9 @@ public class SHEquiposSegurModalView extends BasePage {
         CommonEvents.clickButton(close);
     }
 }
+
+
+
+
+
+
